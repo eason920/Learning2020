@@ -1,0 +1,152 @@
+doctype html
+html(lang='zh')
+	head
+		meta(charset='utf-8')
+		meta(name='viewport', content='width=device-width, initial-scale=1.0')
+		meta(name='description', content='title here')
+		meta(property='og:title', content='title here')
+		meta(property='og:url', content='url here')
+		meta(property='og:image', content='location href hrer')
+		meta(property='og:description', content='content here')
+		link(rel='icon', href='./images/favicon.ico', type='image/ico')
+		title FUNDAY教學中心
+		link(href='css/bootstrap.min.css', rel='stylesheet', type='text/css')
+		link(href='css/pc_a.css', rel='stylesheet', type='text/css')
+		link(rel="stylesheet", href="css/pc.css")
+		script(src='js/jquery-1.11.1.min.js')
+		script.
+			var videoId = 'nglEq0nxEdg';
+		script(src='js/pc.js', type='text/javascript')
+		script(src='./js/share.js')
+	body
+		// v HTML START v
+		.main
+			header
+				input.copy-source(type='text')
+				nav
+					a.logo(href='/')
+					ul
+						li
+							input.play_btn(name='', type='button')
+						li.is-dot
+						li#control-1.control.active
+							b 講解
+							a.toggle(href='#')
+							i 朗讀
+						li.is-dot
+						li
+							input.word_btn(type='button', value='重點單字')
+						li.is-dot
+						li.is-control
+							.share_btn
+								button(type='button')
+								i 分享
+						li.is-dot
+						li
+							a.order_btn(href='#'  onclick="Fa(62);") 免費訂閱
+					.speed
+						b 慢
+						input(type='range', min='1', max='5')
+						b 快
+					.share
+						a.line_btn.share-line(href='#')
+						a.fb_btn.share-fb(href='#')
+						a.link_btn.copy-btn(href='#')
+							.copied 己拷貝連結
+					.mask
+				.navbg
+			.article_mask
+				section
+					aside
+						.title.for-type-a#title-a <%=en_subject%>
+						.sub.for-type-a#subtitle-a <%=ch_subject%>
+						.ArticleInfo1.type2
+							.classification_btn
+								span#class_f 生活｜Culture/文化 CEFR:C1
+								.classification
+									ul
+										li 專業通則
+										li.activity 生活
+										li 社交
+										li 通識
+										li 自我意識
+										li 基礎養成
+						.ArticleInfo2 文章序號:17976 Date:2019/05/16
+						.article-vbox
+							.Article_pic
+								img(src='')
+							// img ^v video box
+							#y-box.is-first-start
+							img.y-start(src='images/y_start.png')
+							.y-small
+					article
+						// 廣告區塊
+						.landbtn-outer
+							a.landbtn-inner.read-more(onclick='Fa(64);', href='#')
+								.landbtn
+									.landbtn-bg
+									.landbtn-text1 閱讀更多文章 >>
+									.landbtn-text2 免費訂閱
+						.mask
+							.english.title.for-type-b#title-b <%=en_subject%>
+							.Chinese.sub.for-type-b#subtitle-b <%=ch_subject%>
+							// 內文區塊
+							.article(style='display:none;')
+								|!! >> part1 here << !!
+								include partials/annotation
+							.article2
+								|!! >> part2 here << !!
+								include partials/annotation
+				.tranglationBody
+					input.close_btn(type='button')
+					.translation_Font Vacabulary
+					.translation_list
+						span
+							| episode (n.)
+							br
+							|  事件、一段經歷
+						|  Boeing engineers are hoping to quickly put the episode behind them.
+						br
+						.is-chinese 波音工程師正希望能趕快將這段插曲拋在腦後。
+						p
+						span
+							| trauma (n.)
+							br
+							|  精神創傷、心理創傷
+						|  If you are dissatisfied with the service, why dont you complain to the hotel manager?
+						br
+						|  如果你對飯店的服務不滿意，爲甚麽不去向經理投訴呢？
+						p
+						span
+							| confront (v.)
+							br
+							|  面對、直面、正視
+						|  The experiments were conducted by scientists in New York.
+						br
+						|  這些實驗是科學家在紐約做的。
+						p
+						span
+							| significance (n.)
+							br
+							|  意義、重要性
+						|  Unions accuse the government of dismantling the National Health Service.
+						br
+						|  工會指責政府企圖破壞國民保健制度。
+						p
+						span
+							| launch (v.)
+							br
+							|  發射
+						|  North Korea launched a ballistic missile over Northern Japan.
+						br
+						|  北韓發射了一枚飛彈到日本北邊區域。
+			// KK 音標
+			#translation_Font
+				a.close_btn
+				.kk
+					| KK:[ˌriɪnˈfɒrs]
+					br
+					| DJ:[ˌriːinˈfɒːs]
+				b v.
+				| 增援；增加；加固；强化
+		// ^ HTML END ^
