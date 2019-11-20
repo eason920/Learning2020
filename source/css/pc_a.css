@@ -995,62 +995,6 @@ section article .read_btn {
 	margin-top: 7px
 }
 
-/*********************
-*
-*  音標
-*
-*********************/
-
-#translation_Font {
-	display: none;
-}
-
-#translation_Font.show {
-	position: absolute;
-	min-width: 300px;
-	background-color: rgba(255, 255, 255, .95);
-	font-size: 1.8rem;
-	color: #000000;
-	border-radius: 10px;
-	display: block;
-	white-space: nowrap;
-	box-shadow: 0px 0px 6px rgba(0, 0, 0, .3);
-	margin-top: 10px;
-	padding-top: 22px;
-	padding-right: 22px;
-	padding-bottom: 15px;
-	padding-left: 22px;
-	z-index: 9000;
-	line-height: 1.2;
-}
-
-#translation_Font .kk {
-	display: block;
-	border-bottom-width: 1px;
-	border-bottom-style: solid;
-	border-bottom-color: #bfbfbf;
-	padding-bottom: 5px;
-	margin-bottom: 5px;
-}
-
-#translation_Font b {
-	display: block;
-	margin-bottom: 5px;
-	color: #ae0000;
-}
-
-#translation_Font .close_btn {
-	background-image: url(../images/close_btn2.png);
-	background-repeat: no-repeat;
-	background-position: center center;
-	display: block;
-	height: 18px;
-	width: 18px;
-	position: absolute;
-	top: 5px;
-	right: 5px;
-}
-
 /* 
 =======================
 == v by Eason 
