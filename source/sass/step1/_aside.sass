@@ -1,0 +1,178 @@
+$gutter-top: 90px
+$h-youtube: 331px
+// ====================================
+// == START
+// ====================================
+aside
+	width: $w-aside
+	display: block
+	float: left
+	height: 100%
+	padding:
+		top: $gutter-top
+		left: 50px
+
+	.title
+		font-size: 5rem
+		font-family: "Times New Roman", Times, serif
+		color: #f74769
+		text-align: right
+		font-weight: 600
+		line-height: 1.1
+
+	.sub
+		font-size: 2.2rem
+		color: #f74769
+		text-align: right
+		line-height: 2
+		font-family: "微軟正黑體", PingFangSC-Regular, Times New Roman
+		font-weight: 600
+		letter-spacing: 1px
+
+.aside-above
+	height: calc( 100% - #{$gutter-top} - #{$h-youtube})
+.aside-below
+	// height: $h-youtube
+
+// ====================================
+// == ARTICLE INFO BOX
+// ====================================
+.ArticleInfo-box
+	display: flex
+	float: right
+	margin:
+		bottom: 10px
+.ArticleInfo1
+	font-size: 1.4rem
+	text-align: right
+	line-height: 1.5
+	font-family: "微軟正黑體", PingFangSC-Regular, Times New Roman
+	font-weight: bold
+	position: relative
+	letter-spacing: 1px
+
+	&.type1
+		color: #FFA801
+
+	&.type2
+		color: #fcb9dd
+
+	&.type3
+		color: #7DDAEB
+
+	&.type4
+		color: #69D685
+
+	&.type5
+		color: #A476C1
+
+	&.type6
+		color: #F83159
+		
+.classification_btn
+	display: inline-block
+	cursor: pointer	
+
+.ArticleInfo2
+	font-size: 1.4rem
+	color: #f86e89
+	text-align: right
+	line-height: 1.5
+	font-family: PingFangTC-Regular, Microsoft JhengHei, sans-serif
+	font-weight: bold
+	letter-spacing: 1px
+
+.classification
+	width: 136px
+	height: 136px
+	position: absolute
+	top: -136px
+	left: -68px
+	box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3)
+	border-radius: 50%
+	transform: translateX(10%)
+	transition: all .6s
+	opacity: 0
+	z-index: 9999
+
+	&.show
+		display: inline-block
+		opacity: 1
+	&.eq0
+		background-image: url(../images/pc_cfc/0.png)
+
+	&.eq1
+		background-image: url(../images/pc_cfc/1.png)
+
+	&.eq2
+		background-image: url(../images/pc_cfc/2.png)
+
+	&.eq3
+		background-image: url(../images/pc_cfc/3.png)
+
+	&.eq4
+		background-image: url(../images/pc_cfc/4.png)
+
+	&.eq5
+		background-image: url(../images/pc_cfc/5.png)
+	ul
+		display: none
+
+
+// ====================================
+// == YOUTUBE
+// ====================================
+.article-vbox
+	clear: both
+	position: relative
+	width: 100%
+	height: $h-youtube
+	transform: translate3d(0, 0, 0)
+
+.Article_pic
+	width: 100%
+	height: 100%
+	position: relative
+	overflow: hidden
+
+	img
+		width: 100%
+		// height: 100%;
+		position: absolute
+		top: 50%
+		transform: translateY(-50%)
+
+#y-box
+	width: 100%
+	height: $h-youtube
+	transform-origin: 100% 100%
+	transform: scale(0.1)
+	opacity: 0
+	// background-color: greenyellow
+	transition: .5s
+	position: absolute
+	bottom: 0
+	right: 0
+
+	&.action
+		transform: scale(1)
+		opacity: 1
+		transition: .5s
+
+.y-start, .y-big, .y-small
+	position: absolute
+	cursor: pointer
+
+.y-start
+	width: 77.5px
+	right: 1px
+	bottom: 1px
+
+.y-big, .y-small
+	width: 60px
+	height: 55px
+	background: url(../images/y_scale.png) no-repeat -3px -2px
+	background-size: 25px 25px
+	display: none
+	top: 0
+	left: 0
