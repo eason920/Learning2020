@@ -13,24 +13,98 @@ aside
 		left: 50px
 
 	.title
-		font-size: 5rem
+		font-size: 6rem
 		font-family: "Times New Roman", Times, serif
 		color: #f74769
 		text-align: right
 		font-weight: 600
-		line-height: 1.1
+		line-height: 1
+		margin:
+			bottom: 5px
 
 	.sub
-		font-size: 2.2rem
+		font-size: 3.5rem
 		color: #f74769
 		text-align: right
-		line-height: 2
+		line-height: 1
 		font-family: "微軟正黑體", PingFangSC-Regular, Times New Roman
 		font-weight: 600
 		letter-spacing: 1px
+		margin:
+			bottom: 25px
 
 .aside-above
 	height: calc( 100% - #{$gutter-top} - #{$h-youtube})
+
+.aside-above-sub
+	color: #ff859c
+	font:
+		size: 3rem
+	line-height: 1.2
+	text:
+		align: right	
+
+.aside-above-sub-en
+	margin:
+		bottom: 10px
+
+.aside-above-sub-ch
+	margin:
+		bottom: 25px
+
+.play_btn
+	background:
+		color: transparent
+		image: url(../images/pc_a/paly_btn.png)
+		repeat: no-repeat
+		size: 50% auto
+		position: 22px 18px
+	border: solid 2px #{$c1}
+	box-shadow: 0 2px 7px 0 rgba(0, 0, 0, 0.35)
+	height: 75px
+	width: 75px
+	border-radius: 50%
+	margin:
+		bottom: 30px
+	&.pause
+		background:
+			image: url(../images/pc_a/pause_btn.png)
+			position: 18px 18px
+
+// speed
+.speed
+	// position: absolute
+	position: relative
+	z-index: 1
+	z-index: 10
+	top: -50px
+	background-color: #fff
+	box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3)
+	text-align: center
+	display: flex
+	flex-direction: column
+	justify-content: space-between
+	height: 180px
+	width: 44px
+	padding-bottom: 10px
+	padding-top: 20px
+	// opacity: 0
+	transition: all .3s
+	left: 40px
+
+	&.show
+		display: flex !important
+		top: 60px
+		opacity: 1
+
+	input[type=range]
+		transform: rotate(90deg) translateY(24px)
+
+	b
+		display: inline-block
+
+
+// -----------------------------------	
 .aside-below
 	// height: $h-youtube
 
@@ -50,32 +124,35 @@ aside
 	font-weight: bold
 	position: relative
 	letter-spacing: 1px
+	color: #ff2c55
 
-	&.type1
-		color: #FFA801
+	// &.type1
+	// 	color: #FFA801
 
-	&.type2
-		color: #fcb9dd
+	// &.type2
+	// 	color: #fcb9dd
 
-	&.type3
-		color: #7DDAEB
+	// &.type3
+	// 	color: #7DDAEB
 
-	&.type4
-		color: #69D685
+	// &.type4
+	// 	color: #69D685
 
-	&.type5
-		color: #A476C1
+	// &.type5
+	// 	color: #A476C1
 
-	&.type6
-		color: #F83159
+	// &.type6
+	// 	color: #F83159
 		
 .classification_btn
 	display: inline-block
 	cursor: pointer	
 
 .ArticleInfo2
+	padding:
+		left: 15px
 	font-size: 1.4rem
-	color: #f86e89
+	color: #4a4a4a
 	text-align: right
 	line-height: 1.5
 	font-family: PingFangTC-Regular, Microsoft JhengHei, sans-serif

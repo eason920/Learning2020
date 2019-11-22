@@ -1,0 +1,314 @@
+// input
+input[type=range]
+	-webkit-appearance: none
+	width: 90px
+	border-radius: 10px
+	display: inline-block
+	vertical-align: middle
+
+	&::-webkit-slider-runnable-track
+		height: 8px
+		border-radius: 10px
+		background: #d8d8d8
+		margin: 18px 10px
+
+	&::-webkit-slider-thumb
+		height: 20px
+		width: 20px
+		border-radius: 50%
+		cursor: pointer
+		-webkit-appearance: none
+		margin-top: -6px
+		background-color: #9b9b9b
+
+	&::-moz-range-progress
+		background: #d8d8d8
+		height: 8px
+		border-radius: 10px
+
+	&::-ms-track
+		height: 20px
+		margin: 10px 10px
+		border-radius: 10px
+		background: transparent
+		border-color: transparent
+		color: transparent
+
+	&::-ms-thumb
+		height: 20px
+		width: 20px
+		border-radius: 50%
+		background: #9b9b9b
+		margin-top: 0
+		border: none
+
+	&::-ms-fill-lower, 
+	&::-ms-fill-upper
+		height: 8px
+		border-radius: 10px
+		background: #d8d8d8
+
+	&:focus
+		outline: none
+		&::-ms-fill-lower, 
+		&::-ms-fill-upper
+			background: #d8d8d8
+
+
+// -----------------------------------
+// -- MAIN
+// -----------------------------------
+nav
+	.formac
+		right: 852px
+
+	ul 
+		li
+			&:nth-last-child(1)
+				border-right-style: none
+			i
+				font-style: normal
+				position: relative
+				top: 3px
+
+.message_btn
+	user-select: none
+	cursor: pointer
+	display: inline-block
+	margin-right: -1.5%
+
+	button
+		background-image: url(../images/pc_a/message_btn.png)
+		background-repeat: no-repeat
+		background-size: cover
+		background-position: center center
+		height: 30px
+		width: 30px
+
+.word_btn
+	color: #f74c6d
+	font-weight: bold
+	line-height: 34px
+
+.order_btn
+	color: #FFFFFF
+	background-color: #f74769
+	padding-right: 20px
+	padding-left: 20px
+	border-radius: 30px
+	line-height: 35px
+	height: 35px
+	display: inline-block
+	text-decoration: none
+
+	
+
+.share
+	position: absolute
+	z-index: 10
+	bottom: 100px
+	background-color: #fff
+	box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3)
+	text-align: center
+	display: inline-block
+	padding-right: 15px
+	padding-left: 15px
+	padding-top: 5px
+	// opacity: 0
+	transition: all .3s
+	right: auto
+
+	&.show
+		top: 65px
+		opacity: 1
+	a
+		background-image: url(../images/line_icn.png)
+		background-repeat: no-repeat
+		background-size: 100% auto
+		height: 30px
+		width: 30px
+		display: block
+		margin-top: 15px
+		margin-bottom: 15px
+		
+.control
+	.toggle
+		-webkit-appearance: none
+		appearance: none
+		-webkit-transition: all .3s
+		-o-transition: all .3s
+		-moz-transition: all .3s
+		transition: all .3s
+		display: inline-block
+		width: 70px
+		height: 8px
+		border-radius: 20px
+		background-color: #d8d8d8
+		cursor: pointer
+		position: relative
+		outline: none
+		margin-top: 15px
+		margin-right: 15px
+		margin-left: 15px
+		outline: none
+		border-top-style: none
+		border-right-style: none
+		border-bottom-style: none
+		border-left-style: none
+
+		&::after
+		content: "\0020"
+		position: absolute
+		display: inline-block
+		width: 20px
+		height: 20px
+		border-radius: 50%
+		background-color: #9b9b9b
+		top: -6px
+		left: 50px
+		-webkit-transition: all .3s
+		-o-transition: all .3s
+		-moz-transition: all .3s
+		transition: all .3s
+
+	&.active .toggle::after
+		left: 0px
+
+		b
+			color: #fb9fb0
+			position: relative
+			top: 3px
+			cursor: pointer
+			user-select: none
+
+		i
+			cursor: pointer
+			user-select: none
+
+	&.active
+		i
+		color: #fb9fb0
+		cursor: pointer
+
+		b
+		color: #f74c6d
+
+
+.line_btn
+	background:
+		image: url(../images/line_icn.png)!important
+
+.fb_btn
+	background:
+		image: url(../images/facebook_icn.png)!important
+
+.ig_btn
+	background:
+		image: url(../images/IG_icn.png)!important
+
+.link_btn
+	background:
+		image: url(../images/link_icn.png)!important
+
+// -----------------------------------
+// -- HEADER NAV
+// -----------------------------------
+header
+	position: absolute
+	z-index: 11
+	left: 0px
+	bottom: 0px
+	display: block
+	width: 100%
+	min-width: 1200px
+	text-align: center
+
+	nav
+		max-width: 1770px
+		display: inline-block
+		font-size: 20px
+		color: #f74c6d
+		font-weight: bold
+		position: relative
+		margin-right: auto
+		margin-left: auto
+		width: 100%
+		text-align: right
+
+		input[type="button"],
+			button
+				border-top-style: none
+				border-right-style: none
+				border-bottom-style: none
+				border-left-style: none
+				background-color: transparent
+				vertical-align: middle
+				height: 38px
+		
+		button
+			svg
+				margin-top: 3px
+
+		ul
+			padding-top: 15px
+			padding-right: 20px
+			padding-bottom: 15px
+			padding-left: 20px
+			list-style-type: none
+			position: relative
+			z-index: 50
+			background-color: #FFF
+			display: inline-block
+			box-shadow: 0px 0px 9px rgba(0, 0, 0, 0.3)
+			width: calc( 100% - 540px - 4%)
+			min-width: 995px
+			margin-left: calc( 540px + 4%)
+			display: flex
+			justify-content: space-around
+
+		li
+			display: inline-block
+			padding-right: 20px
+			padding-left: 20px
+			line-height: 38px
+			vertical-align: middle
+			height: 38px
+			position: relative
+
+	.mask
+		width: 40px
+		position: absolute
+		top: 0px
+		right: -20px
+		height: 100%
+		background-color: #FFF
+		z-index: 50
+
+
+.navbg
+	width: calc((100% - 1770px)/2)
+	position: absolute
+	top: 0px
+	right: 0px
+	height: 100%
+	background-color: #FFF
+	box-shadow: 0px 0px 9px rgba(0, 0, 0, 0.3)
+
+.share_btn
+	user-select: none
+	cursor: pointer
+	display: inline-block
+	margin-left: -1.5%
+
+	button
+		background-image: url(../images/pc_a/share_btn.png)
+		background-repeat: no-repeat
+		background-size: cover
+		background-position: center center
+		height: 30px
+		width: 30px
+
+
+@media screen and (max-width: 1615px)
+	header nav ul
+		margin-left: calc( 100% - 995px)

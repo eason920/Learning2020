@@ -4,12 +4,140 @@ article
 	height: 100%
 	display: block
 	float: left
-	// padding-right: 2%
 	padding-left: 2%
-	font-family: "微軟正黑體 Light"
-	font-size: 1.8rem
-	font-weight: bold
-	padding-top: 90px
+	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif
+	padding-top: 100px
 	line-height: 1.4
 	letter-spacing: 1px
 	padding-bottom: 20px
+
+.read_btn
+	opacity: 0
+	background:
+		image: url(../images/pc_a/sound_icn.png)
+		repeat: no-repeat
+		size: 100% auto
+		color: transparent
+		position: center center
+	border-style: none
+	height: 20px
+	width: 20px
+	padding: 0px
+	vertical-align: middle
+	margin:
+		right: 5px
+		left: 10px
+	transition: opacity .3s
+
+// -----------------------------------
+// -- ENGLISH & CHINESE
+// -----------------------------------
+article
+	.mask
+		width: 100%
+		display: block
+		height: calc( 100% - 55px )
+		overflow-Y: auto
+		padding-right: 3%
+		padding-left: 3%
+		position: relative
+
+.english
+	display: block
+	margin-bottom: 10px
+	font:
+		family: arial
+		weight: normal
+	letter-spacing: 1.2px
+	word-wrap: break-word
+
+	span
+		display: inline-block
+		font:
+			size: 2.2rem
+
+	&:hover
+		.read_btn
+			opacity: 1
+			transition: opacity .3s
+
+.Chinese
+	display: none
+	display: block
+	color: #888
+	font-weight: normal
+	margin-top: 10px
+	margin-bottom: 40px
+
+	span
+		font:
+			size: 1rem
+
+	&.show
+		display: block	
+
+// now reading
+.english.lightheight,
+.Chinese.lightheight
+	color: #000!important
+
+// un reqding
+.english.lightheightBG,
+.Chinese.lightheightBG
+	color: #bbb!important
+
+.english span:hover,
+.Chinese span:hover
+	color: #003368
+	background-color: #fa7e96
+	cursor: pointer
+
+span.is-height-light
+	color: #003368
+	background-color: #fa7e96
+	cursor: pointer
+
+// -----------------------------------
+// -- TITLE
+// -----------------------------------
+#Nt0
+	color: #4a4a4a
+	font:
+		size: 4rem
+		weight: bold
+	line-height: 1.1
+	span
+		font:
+			size: 4rem
+			weight: bold
+
+#Nct0
+	color: #4a4a4a
+	font:
+		size: 3rem
+	margin:
+		bottom: 22px
+	span
+		font:
+			size: 3rem
+
+// -----------------------------------
+// -- ANNOTATION
+// -----------------------------------
+.annotation
+	display: block
+	color: #000
+	background-color: #fff5f7
+	padding: 18px 20px
+	line-height: 1.3
+	margin:
+		top: 20px
+		bottom: 20px
+	font:
+		size: 2rem
+		weight: bold
+		family: '微軟正黑體 Light'
+
+	&.bubblehighlightBG
+		color: rgba(107, 107, 107, 0.6)
+		background-color: #f6f6f6

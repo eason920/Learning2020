@@ -1,0 +1,95 @@
+%block
+	display: flex
+	height: 65px
+.topbar
+	position: fixed
+	top: 0
+	width: 100%
+	height: 76px
+	box-shadow: 0 0 12px rgba(0,0,0, .1)
+	align-items: center
+	z-index: 11
+
+	.wrapper
+		display: flex
+		max-width: 1770px
+		min-width: 1310px
+		margin: 0 auto
+
+.topbar-back
+	width: $w-aside
+	padding:
+		left: 50px
+
+.topbar-back-btn
+	@extend %block
+	align-items: center
+	font:
+		size: 2.2rem
+		weight: bold
+	color: $c1
+
+	&:hover
+		color: $c1
+		text:
+			decoration: none		
+
+// -----------------------------------
+.topbar-main-f1
+	padding: 0 2%
+	width: calc( 100% - #{$w-aside})
+	display: flex
+
+.topbar-main-f2
+	padding: 0 3%
+	width: 100%
+	display: flex
+
+// -----------------------------------
+.topbar-step
+	@extend %block
+	width: calc( 100% - 130px)
+
+.topbar-step-item
+	display: flex
+	align-items: center
+	width: 33.333%
+.topbar-num
+	line-height: 50px
+	width: 50px
+	text-align: center
+	background:
+		color: #f74769
+	border-radius: 50%
+	color: #fff
+	font:
+		size: 4rem
+		weight: bold
+	font-family: serif
+
+.topbar-text
+	font:
+		size: 2.2rem
+		weight: bold
+	padding:
+		left: 10px
+	color: $c1
+
+.active
+	.topbar-num
+		background-color: $c2
+	.topbar-text
+		color: $c2
+// -----------------------------------
+.topbar-icon
+	@extend %block
+	width: 130px
+
+.topbar-icon-item
+	@extend %block
+	width: 65px
+	display: flex
+	justify-content: center
+	align-items: center
+	& > *
+		display: inline-block

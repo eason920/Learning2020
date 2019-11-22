@@ -82,13 +82,7 @@ gulp.task('tmp_module', function(){
 // ====================================
 gulp.task('css', function(){
 	gulp.src('./source/css/**/*.css')
-		.pipe($.postcss([autoprefixer()]))
-		.pipe($.cleanCss())
-		.pipe($.rename(function(path){
-			path.basename += '.min'
-		}))
-		.pipe(gulp.dest('./public/css/'));
-	gulp.src('./source/css/**/*.css')
+		// .pipe($.postcss([autoprefixer()]))
 		.pipe(gulp.dest('./public/css/'));
 	gulp.src('./source/css/**/*.map')
 		.pipe(gulp.dest('./public/css/'));

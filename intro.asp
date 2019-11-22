@@ -197,31 +197,47 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	<script async defer crossorigin="anonymous" src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v4.0&appId=665673953932390&autoLogAppEvents=1"></script>
 	<input type="hidden" name="repeat" id="repeat" value="0" />
 	<!-- v HTML START v -->
-	<div class="main">
+	<div class="topbar">
+      <div class="wrapper">
+        <div class="topbar-back"><a class="topbar-back-btn" href="#">
+            <div class="icon-arrowleft"></div>學習驗收</a></div>
+        <div class="topbar-main-f1">
+          <div class="topbar-main-f2">
+            <ul class="topbar-step">
+              <li class="topbar-step-item active">
+                <div class="topbar-num">1</div>
+                <div class="topbar-text">認識本文</div>
+              </li>
+              <li class="topbar-step-item">
+                <div class="topbar-num">2</div>
+                <div class="topbar-text">加強記憶</div>
+              </li>
+              <li class="topbar-step-item">
+                <div class="topbar-num">3</div>
+                <div class="topbar-text">學習驗收</div>
+              </li>
+            </ul>
+            <div class="topbar-icon"><a class="topbar-icon-item" href="#">
+                <div class="icon-favorite"></div></a><a class="topbar-icon-item" href="#">
+                <div class="icon-print"></div></a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="main">
       <header>
         <input class="copy-source" type="text">
         <nav><a class="logo" href="#"></a>
           <ul>
-            <li>
-              <input class="play_btn" name="" type="button">
-            </li>
-            <li class="is-dot"></li>
             <li class="control active" id="control-1" data-value="1"><b>講解</b><a class="toggle" href="#"></a><i>朗讀</i></li>
-            <li class="is-dot"></li>
             <li>
               <input class="word_btn" type="button" value="重點單字">
             </li>
-            <li class="is-dot"></li>
-            <li class="is-control">
+            <li>
               <div class="share_btn"></div>
               <button type="button"></button><i>分享</i>
             </li>
-            <li class="is-dot"></li>
-            <li><a class="order_btn" href="#" onclick="Fa(62);">免費訂閱</a></li>
           </ul>
-          <div class="speed"><b>慢</b>
-            <input id="Speed_range" type="range" min="0.5" max="1.5" value="1" step="0.25"><b>快</b>
-          </div>
           <div class="share"><a class="line_btn share-line" href="#"></a><a class="fb_btn share-fb" href="#"></a><a class="link_btn copy-btn" href="#">
               <div class="copied">己拷貝連結</div></a></div>
         </nav>
@@ -232,17 +248,29 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <section>
           <aside>
             <div class="aside-above">
-              <div class="title for-type-a" id="title-a"><%=en_subject%></div>
-              <div class="sub for-type-a" id="subtitle-a"><%=ch_subject%></div>
+              <div class="aside-above-main">
+                <div class="title" id="title-a"> <%=en_subject%>
+                </div>
+                <div class="sub" id="subtitle-a"> <%=ch_subject%>
+                </div>
+              </div>
+              <div class="aside-above-sub">
+                <div class="aside-above-sub-en">Powerful winds blew the smoke to the city and darkened the sky.</div>
+                <div class="aside-above-sub-ch">強風將濃煙帶到城市，使天空變黑。</div>
+                <input class="play_btn" type="button">
+                <div class="speed"><b>慢</b>
+                  <input id="Speed_range" type="range" min="0.5" max="1.5" value="1" step="0.25"><b>快</b>
+                </div>
+              </div>
             </div>
             <div class="aside-below">
               <div class="ArticleInfo-box">
                 <div class="ArticleInfo1 type2">
-                  <div class="classification_btn"><span id="class_f">生活｜Culture/文化 CEFR:C1</span>
+                  <div class="classification_btn"><span id="class_f"> </span>
                     <div class="classification">
                       <ul>
                         <li>專業通則</li>
-                        <li class="activity">生活</li>
+                        <li>生活</li>
                         <li>社交</li>
                         <li>通識</li>
                         <li>自我意識</li>
@@ -251,7 +279,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     </div>
                   </div>
                 </div>
-                <div class="ArticleInfo2">文章序號:17976 Date:2019/05/16</div>
+                <div class="ArticleInfo2"> 
+                </div>
               </div>
               <div class="article-vbox">
                 <div class="Article_pic"><img src="./images/galxy.jpg"></div>
@@ -263,8 +292,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </aside>
           <article>
             <div class="mask">
-              <div class="english title for-type-b" id="title-b"><%=en_subject%></div>
-              <div class="Chinese sub for-type-b" id="subtitle-b"><%=ch_subject%></div>
               <!-- 內文區塊-->
               <div class="article" style="display:none;">
                 <%
@@ -275,18 +302,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                   i=i+1
                 Next
                 %>
-                <div class="annotation">episode (n.) 事件、一段經歷<br> trauma (n.) 精神創傷、心理創傷<br> confront (v.) 面對、直面、正視</div>
               </div>
               <div class="article2">
-                  <%
-                  i=0
-                  For each node in nodes
-                    Response.Write  "<div class='english'>" & replace(node.getAttribute("content"),"**","")& "<input type='button' class='read_btn'></div>" & vbCrLf
-                    Response.Write  "<div class='Chinese'>" & replace(nodes2(i).getAttribute("content"),"**","")& "</div><p></p>" & vbCrLf
-                    i=i+1
-                  Next
-                  %>
-                <div class="annotation">episode (n.) 事件、一段經歷<br> trauma (n.) 精神創傷、心理創傷<br> confront (v.) 面對、直面、正視</div>
+                <%
+                i=0
+                For each node in nodes
+                  Response.Write  "<div class='english'>" & replace(node.getAttribute("content"),"**","")& "<input type='button' class='read_btn'></div>" & vbCrLf
+                  Response.Write  "<div class='Chinese'>" & replace(nodes2(i).getAttribute("content"),"**","")& "</div><p></p>" & vbCrLf
+                  i=i+1
+                Next
+                %>
               </div>
             </div>
           </article>
@@ -294,7 +319,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="tranglationBody">
           <input class="close_btn" type="button">
           <div class="translation_Font">Vacabulary</div>
-          <div class="translation_list"></div>
+          <div class="translation_list">
+          </div>
         </div>
       </div>
     </div>
