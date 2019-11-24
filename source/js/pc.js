@@ -232,4 +232,60 @@ $(function () {
 			shareLeft();
 		});
 	});
+
+	// =============================
+	// == FLOAT LAB
+	// =============================
+	let zIndex = 15;
+	$('.movebox1, .movebox2 h3').mousedown(function (e) {
+		e.preventDefault();
+		let $selector = null;
+		let x, y;
+		const $this = $(this);
+		const $doc = $(document);
+		const dw = $doc.width();
+		const dh = $doc.height();
+
+
+		if ($this.hasClass('movebox')) {
+			$selector = $this;
+		} else {
+			$selector = $this.parents('.movebox');
+		}
+
+		$selector.addClass('moving').css({ 'zIndex': zIndex++ });
+
+		const offsets = $selector.offset();
+		x = offsets.left - e.pageX;
+		y = offsets.top - e.pageY;
+
+		const soft = 5;
+		const maxL = dw - $selector.width() - soft;
+		const maxT = dh - $selector.height() - soft;
+		$doc.on('mousemove.event', function (e) {
+			let tx = x + e.pageX,
+				ty = y + e.pageY,
+				dw = $doc.width();
+			if (tx >= maxL) {
+				tx = maxL;
+			} else if (tx <= soft) {
+				tx = soft;
+			}
+			if (ty >= maxT) {
+				ty = maxT;
+			} else if (ty <= soft) {
+				ty = soft;
+			}
+			$selector.css({
+				left: tx,
+				top: ty
+			});
+		}).on('mouseup.event', function () {
+			if ($selector != null) {
+				$doc.off('.event');
+				$selector.removeClass('moving');
+				$selector = null
+			};
+		});
+	});
 });
