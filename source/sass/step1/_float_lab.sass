@@ -1,30 +1,60 @@
 .movebox
 	width: 200px
-	height: 100px
-	background: #fff
-	padding: 1px
-	position: absolute
-	border-radius: 6px
-	box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3)
-	z-index: 15
+	height: 200px
 
+	position: absolute
+	// box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3)
+	z-index: 15
+	cursor: move
+	&:hover
+		.movebox-text,.movebox-box:before
+			background:
+				color: $c3
+		.movebox-box:after
+			border:
+				color: $c4 transparent transparent
+
+.movebox-text
+	padding: 8px
+	height: calc( 100% - 30px )
+	// margin: 8px 8px 0
+	// height: calc( 100% - 30px - 8px )
+	// width: calc( 100% - 16px )
+	background: $c3-t	
+	font:
+		size: 16px
+		family: '新細明體'
+	line-height: 1.2	
 	h3
-		border-radius: 5px 5px 0 0
-		background: #3092ca
-		text-align: center
-		color: #fff
-		font-family: Arial
 		padding: 5px
-		text-transform: capitalize
-		letter-spacing: 2px
+
+.movebox-box
+	overflow: hidden
+	&:before,&:after
+		content: ''
+		display: block
+		float: left
+	&:before
+		background:
+			color: $c3-t
+		height: 30px
+		width: calc( 100% - 30px)
+	&:after
+		width: 0
+		height: 0
+		border:
+			style: solid
+			width: 30px 30px 0 0
+			color: $c4-t transparent transparent
+
 
 .movebox1
-	left: 200px
-	top: 332px
+	left: 30px
+	top: 30px
 
 .movebox2
 	left: 111px
 	top: 122px
 
 .moving
-	border: solid 1px #3092ca
+	// border: solid 1px #3092ca

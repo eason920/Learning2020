@@ -95,6 +95,8 @@ input {
   font-size: 2.2rem;
   font-weight: bold;
   color: #f74769;
+  width: 180px;
+  padding-top: 10px;
 }
 .topbar-back-btn:hover {
   color: #f74769;
@@ -115,6 +117,7 @@ input {
 
 .topbar-step {
   width: calc( 100% - 130px);
+  padding-top: 10px;
 }
 
 .topbar-step-item {
@@ -197,17 +200,18 @@ aside .sub {
 
 .aside-above-sub {
   color: #ff859c;
-  font-size: 3rem;
   line-height: 1.2;
   text-align: right;
 }
 
 .aside-above-sub-en {
-  margin-bottom: 10px;
+  font-size: 2.6rem;
+  margin-bottom: 5px;
 }
 
 .aside-above-sub-ch {
-  margin-bottom: 25px;
+  font-size: 2.2rem;
+  margin-bottom: 15px;
 }
 
 .play_btn {
@@ -435,6 +439,7 @@ article .mask {
   margin-bottom: 10px;
   font-family: arial;
   font-weight: normal;
+  font-size: 2.2rem;
   letter-spacing: 1.2px;
   word-wrap: break-word;
 }
@@ -485,23 +490,23 @@ span.is-height-light {
   cursor: pointer;
 }
 
-#Nt0 {
+#Nt0, #t0 {
   color: #4a4a4a;
   font-size: 4rem;
   font-weight: bold;
   line-height: 1.1;
 }
-#Nt0 span {
+#Nt0 span, #t0 span {
   font-size: 4rem;
   font-weight: bold;
 }
 
-#Nct0 {
+#Nct0, #ct0 {
   color: #4a4a4a;
   font-size: 3rem;
   margin-bottom: 22px;
 }
-#Nct0 span {
+#Nct0 span, #ct0 span {
   font-size: 3rem;
 }
 
@@ -826,37 +831,59 @@ header .mask {
 }
 .movebox {
   width: 200px;
-  height: 100px;
-  background: #fff;
-  padding: 1px;
+  height: 200px;
   position: absolute;
-  border-radius: 6px;
-  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3);
   z-index: 15;
+  cursor: move;
 }
-.movebox h3 {
-  border-radius: 5px 5px 0 0;
-  background: #3092ca;
-  text-align: center;
-  color: #fff;
-  font-family: Arial;
+.movebox:hover .movebox-text, .movebox:hover .movebox-box:before {
+  background-color: #fffaa1;
+}
+.movebox:hover .movebox-box:after {
+  border-color: #d4c585 transparent transparent;
+}
+
+.movebox-text {
+  padding: 8px;
+  height: calc( 100% - 30px );
+  background: rgba(255, 250, 161, 0.85);
+  font-size: 16px;
+  font-family: "新細明體";
+  line-height: 1.2;
+}
+.movebox-text h3 {
   padding: 5px;
-  text-transform: capitalize;
-  letter-spacing: 2px;
+}
+
+.movebox-box {
+  overflow: hidden;
+}
+.movebox-box:before, .movebox-box:after {
+  content: "";
+  display: block;
+  float: left;
+}
+.movebox-box:before {
+  background-color: rgba(255, 250, 161, 0.85);
+  height: 30px;
+  width: calc( 100% - 30px);
+}
+.movebox-box:after {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 30px 30px 0 0;
+  border-color: rgba(212, 197, 133, 0.85) transparent transparent;
 }
 
 .movebox1 {
-  left: 200px;
-  top: 332px;
+  left: 30px;
+  top: 30px;
 }
 
 .movebox2 {
   left: 111px;
   top: 122px;
-}
-
-.moving {
-  border: solid 1px #3092ca;
 }
 
 /*# sourceMappingURL=step1.css.map */
