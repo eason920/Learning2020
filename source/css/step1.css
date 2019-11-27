@@ -232,24 +232,6 @@ aside .sub {
   background-position: 18px 18px;
 }
 
-.speed {
-  position: relative;
-  z-index: 1;
-  z-index: 10;
-  top: -50px;
-  background-color: #fff;
-  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3);
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 180px;
-  width: 44px;
-  padding-bottom: 10px;
-  padding-top: 20px;
-  transition: all 0.3s;
-  left: 40px;
-}
 .speed.show {
   display: flex !important;
   top: 60px;
@@ -829,46 +811,65 @@ header .mask {
     margin-left: calc( 100% - 995px);
   }
 }
-.movebox {
+.memobox:hover .memobox-text, .memobox:hover .memobox-box:before, .memobox:hover .memobox-box:after, .memobox-text, .memobox-box:before, .memobox-box:after {
+  transition: 0.3s;
+}
+
+.memobox {
+  font-size: 0;
   width: 200px;
   height: 200px;
   position: absolute;
+  box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 0 0 50px 0;
   z-index: 15;
-  cursor: move;
+  left: 30px;
+  top: 30px;
 }
-.movebox:hover .movebox-text, .movebox:hover .movebox-box:before {
+.memobox:hover .memobox-text, .memobox:hover .memobox-box:before {
   background-color: #fffaa1;
 }
-.movebox:hover .movebox-box:after {
+.memobox:hover .memobox-box:after {
   border-color: #d4c585 transparent transparent;
 }
 
-.movebox-text {
+.memobox-bar {
+  height: 5px;
+  background-color: #aaa;
+  cursor: move;
+}
+
+.memobox-text {
+  width: 100%;
   padding: 8px;
-  height: calc( 100% - 30px );
+  height: calc( 200px - 5px - 30px );
+  padding: 10px;
+  border: none;
   background: rgba(255, 250, 161, 0.85);
   font-size: 16px;
   font-family: "新細明體";
   line-height: 1.2;
+  resize: none;
 }
-.movebox-text h3 {
-  padding: 5px;
+.memobox-text:focus {
+  outline: none;
 }
 
-.movebox-box {
+.memobox-box {
   overflow: hidden;
+  position: relative;
 }
-.movebox-box:before, .movebox-box:after {
+.memobox-box:before, .memobox-box:after {
   content: "";
   display: block;
   float: left;
 }
-.movebox-box:before {
+.memobox-box:before {
   background-color: rgba(255, 250, 161, 0.85);
   height: 30px;
   width: calc( 100% - 30px);
 }
-.movebox-box:after {
+.memobox-box:after {
   width: 0;
   height: 0;
   border-style: solid;
@@ -876,14 +877,11 @@ header .mask {
   border-color: rgba(212, 197, 133, 0.85) transparent transparent;
 }
 
-.movebox1 {
-  left: 30px;
-  top: 30px;
-}
-
-.movebox2 {
-  left: 111px;
-  top: 122px;
+.memobox-btn {
+  position: absolute;
+  right: 35px;
+  top: 5px;
+  font-size: 1rem;
 }
 
 /*# sourceMappingURL=step1.css.map */

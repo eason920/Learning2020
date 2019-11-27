@@ -91,6 +91,7 @@ html(lang='zh')
 									b 慢
 									input#Speed_range(type='range', min='0.5', max='1.5', value='1', step='0.25')
 									b 快
+								.add-label +
 						.aside-below
 							.ArticleInfo-box
 								.ArticleInfo1.type2
@@ -139,16 +140,13 @@ html(lang='zh')
 						if (status === 'dev')
 							include partials/text_vacabulary
 						else
-		.movebox.movebox1
-			.movebox-text
-				|Earth
-				br
-				|科學
-
-			.movebox-box
-		//-.movebox.movebox2
-			h3 title
-
+		script. 
+			const memberJSON = JSON.parse('{"memo":["msg 1","msg 2","he ha ha ha 3"]}');
+			
+		//--.memobox
+			.memobox-bar title
+			textarea.memobox-text(placeholder='在此輸入您的筆記')
+			.memobox-box
 		// ^ HTML END ^
 
 //- NEW STUDY
@@ -156,3 +154,7 @@ html(lang='zh')
 //- if 跟 () 不用空隔隔開，只顯顥示 height light 有空隔才上色
 //- sass 的 extend 視作一 selector (有屬性&值)
 //- sass 的 extend 引用要有 @extend
+//- $('textarea').html('floor1\r\nfloor2'); 
+//-	1.用 html()
+//-	2.用 \n 或 \r 任一(或兩者一起用)
+//- 可產出 textarea 中文字換行結果

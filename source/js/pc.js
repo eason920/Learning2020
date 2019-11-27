@@ -236,9 +236,52 @@ $(function () {
 	// =============================
 	// == FLOAT LAB
 	// =============================
+	// ------------------------------------
+	// -- add
+	// ------------------------------------
+	// console.log(memberJSON);
+	// console.log(memberJSON.memo.length);
+
+	const addMemo = function(msg, top, left){
+		$('body').append(
+			$('<div>').attr('class', 'memobox').css({top, left}).append(
+				$('<div>').attr('class', 'memobox-bar'),
+				$('<textarea>').attr('class', 'memobox-text').attr('placeholder', '在此輸入您的筆記').html(msg),
+				$('<div>').attr('class', 'memobox-box').append(
+					$('<input>').attr('class', 'memobox-btn').attr('type', 'submit').attr('value', '儲存')
+				)
+			)
+		);	
+	};
+
+
+	if(memberJSON.memo.length > 0){
+		let i=1;
+		for(a in memberJSON.memo ){
+			addMemo(memberJSON.memo[a], i*30, i*30);
+			i++;
+		};
+	};
+	$('.add-label').click(function(){
+		const num = $('.memobox').length;
+		// console.log(num);
+		const left = (num + 1) * 30;
+		const top = left;
+		if(num <= 4){
+			addMemo('', top, left);
+		}else{
+			console.log('is max');
+			
+		}
+
+	});
+
+	// ------------------------------------
+	// -- move
+	// ------------------------------------
 	let zIndex = 15;
-	$('.movebox1, .movebox2 h3').mousedown(function (e) {
-		e.preventDefault();
+	$('body').on('mousedown', '.memobox-bar', function (e) {
+		// e.preventDefault();
 		let $selector = null;
 		let x, y;
 		const $this = $(this);
@@ -246,12 +289,7 @@ $(function () {
 		const dw = $doc.width();
 		const dh = $doc.height();
 
-
-		if ($this.hasClass('movebox')) {
-			$selector = $this;
-		} else {
-			$selector = $this.parents('.movebox');
-		}
+		$selector = $this.parents('.memobox');
 
 		$selector.addClass('moving').css({ 'zIndex': zIndex++ });
 
@@ -263,6 +301,7 @@ $(function () {
 		const maxL = dw - $selector.width() - soft;
 		const maxT = dh - $selector.height() - soft;
 		$doc.on('mousemove.event', function (e) {
+			$('body').css({'userSelect': 'none'});
 			let tx = x + e.pageX,
 				ty = y + e.pageY,
 				dw = $doc.width();
@@ -284,8 +323,16 @@ $(function () {
 			if ($selector != null) {
 				$doc.off('.event');
 				$selector.removeClass('moving');
-				$selector = null
+				$selector = null;
+				$('body').removeAttr('style');
 			};
 		});
 	});
+
+	// ------------------------------------
+	// -- level
+	// ------------------------------------
+	$('body').on('click', '.memobox', function(){
+		$(this).css({'zIndex': zIndex ++});
+	})
 });

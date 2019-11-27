@@ -1,22 +1,40 @@
-.movebox
-	width: 200px
-	height: 200px
-
+%transition
+	transition: .3s
+$wh: 200px
+$bar: 5px
+$bottom: 30px
+.memobox
+	font:
+		size: 0
+	width: $wh
+	height: $wh
 	position: absolute
-	// box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.3)
+	box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, 0.1)
+	border-radius: 0 0 50px 0
 	z-index: 15
-	cursor: move
+	left: 30px
+	top: 30px
 	&:hover
-		.movebox-text,.movebox-box:before
+		.memobox-text,.memobox-box:before
 			background:
 				color: $c3
-		.movebox-box:after
+			@extend %transition
+		.memobox-box:after
 			border:
 				color: $c4 transparent transparent
+			@extend %transition
+.memobox-bar
+	height: $bar
+	background:
+		color: #aaa
+	cursor: move
 
-.movebox-text
+.memobox-text
+	width: 100%
 	padding: 8px
-	height: calc( 100% - 30px )
+	height: calc( #{$wh} - #{$bar} - #{$bottom} )
+	padding: 10px
+	border: none
 	// margin: 8px 8px 0
 	// height: calc( 100% - 30px - 8px )
 	// width: calc( 100% - 16px )
@@ -24,37 +42,38 @@
 	font:
 		size: 16px
 		family: '新細明體'
-	line-height: 1.2	
-	h3
-		padding: 5px
+	line-height: 1.2
+	@extend %transition
+	resize: none
+	&:focus
+		outline: none
 
-.movebox-box
+.memobox-box
 	overflow: hidden
+	position: relative
 	&:before,&:after
 		content: ''
 		display: block
 		float: left
+		@extend %transition
 	&:before
 		background:
 			color: $c3-t
-		height: 30px
-		width: calc( 100% - 30px)
+		height: $bottom
+		width: calc( 100% - #{$bottom})
 	&:after
 		width: 0
 		height: 0
 		border:
 			style: solid
-			width: 30px 30px 0 0
+			width: #{$bottom} #{$bottom} 0 0
 			color: $c4-t transparent transparent
 
-
-.movebox1
-	left: 30px
-	top: 30px
-
-.movebox2
-	left: 111px
-	top: 122px
-
+.memobox-btn
+	position: absolute
+	right: 35px
+	top: 5px
+	font: 
+		size: 1rem
 .moving
 	// border: solid 1px #3092ca
