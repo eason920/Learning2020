@@ -1,7 +1,7 @@
 %transition
 	transition: .3s
 $wh: 200px
-$bar: 5px
+$bar: 10px
 $bottom: 30px
 .memobox
 	font:
@@ -26,7 +26,7 @@ $bottom: 30px
 .memobox-bar
 	height: $bar
 	background:
-		color: #aaa
+		color: $c3-bar
 	cursor: move
 
 .memobox-text
@@ -47,10 +47,13 @@ $bottom: 30px
 	resize: none
 	&:focus
 		outline: none
+	&:placeholder
+		color: red
 
 .memobox-box
 	overflow: hidden
 	position: relative
+	cursor: move
 	&:before,&:after
 		content: ''
 		display: block

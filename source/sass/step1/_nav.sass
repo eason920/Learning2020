@@ -1,6 +1,7 @@
 %block
 	display: flex
-	height: 65px
+	height: 50px
+$w-icon: 70px
 .topbar
 	position: fixed
 	top: 0
@@ -13,13 +14,8 @@
 	.wrapper
 		display: flex
 		max-width: 1770px
-		min-width: 1310px
-		margin: 0 auto
-
-.topbar-back
-	width: $w-aside
-	padding:
-		left: 50px
+		min-width: $min-width
+		margin: 10px auto 0
 
 .topbar-back-btn
 	@extend %block
@@ -29,8 +25,6 @@
 		weight: bold
 	color: $c1
 	width: 180px
-	padding:
-		top: 10px
 
 	&:hover
 		color: $c1
@@ -39,45 +33,50 @@
 
 // -----------------------------------
 .topbar-main-f1
-	padding: 0 2%
-	width: calc( 100% - #{$w-aside})
+	padding:
+		left: 2%
 	display: flex
 
 .topbar-main-f2
-	padding: 0 3%
+	padding:
+		left: 3%
 	width: 100%
 	display: flex
 
 // -----------------------------------
 .topbar-step
 	@extend %block
-	width: calc( 100% - 130px)
-	padding:
-		top: 10px
+	width: calc( 100% - #{$w-icon * 2} )
 
 .topbar-step-item
 	display: flex
 	align-items: center
-	width: 33.333%
+	width: 32%
+	border-right: solid 1px #e7e7e7
+	margin:
+		right: 1.5%
+	&:nth-child(1)
+		width: 27.5%
+	&:nth-child(2),
+	&:nth-child(3)
+		justify-content: center
+		width: 34%
+	&:nth-child(3)
+		position: relative
+
 .topbar-num
-	line-height: 50px
-	width: 50px
 	text-align: center
 	background:
 		color: #f74769
 	border-radius: 50%
 	color: #fff
 	font:
-		size: 4rem
 		weight: bold
 	font-family: serif
 
 .topbar-text
 	font:
-		size: 2.2rem
 		weight: bold
-	padding:
-		left: 10px
 	color: $c1
 
 .active
@@ -85,16 +84,90 @@
 		background-color: $c2
 	.topbar-text
 		color: $c2
+
+// -----------------------------------
+.topbar-scort
+	position: absolute
+	bottom: -245px
+	width: calc( 103% + 2px )
+	margin:
+		left: calc( -1.5% - 2px )
+	background:
+		color: #fff
+
+.topbar-scrot-item
+	height: 76px
+	display: flex
+	align-items: center
+	justify-content: center
+	position: relative
+	&:after
+		content: ''
+		display: block
+		height: 1px
+		width: 96%
+		background:
+			color: $c1
+		position: absolute
+		bottom: 0
+		left: 2%
+	&:last-child
+		&:after
+			display: none
+	.topbar-num
+		font:
+			size: 2rem
+			weight: normal
+		width: 30px
+		line-height: 30px
+	.topbar-text
+		font:
+			size: 1.8rem
+
 // -----------------------------------
 .topbar-icon
 	@extend %block
-	width: 130px
+	width: $w-icon * 2
 
 .topbar-icon-item
 	@extend %block
-	width: 65px
+	width: $w-icon
 	display: flex
 	justify-content: center
 	align-items: center
 	& > *
 		display: inline-block
+
+@media screen and (max-width: 1440px)
+	.topbar-num
+		line-height: 30px
+		width: 30px
+		font:
+			size: 3rem
+
+	.topbar-text
+		font:
+			size: 1.7rem
+		padding:
+			left: 5px
+
+@media screen and (min-width: 1441px)
+	.topbar-num
+		line-height: 50px
+		width: 50px
+		font:
+			size: 4rem
+
+	.topbar-text
+		font:
+			size: 2.2rem
+		padding:
+			left: 10px
+
+@media screen and (max-width: 1769px)
+	.topbar-back
+		margin-left: 12px
+
+@media screen and (min-width: 1800px)
+	.topbar-back
+		margin-left: -5px

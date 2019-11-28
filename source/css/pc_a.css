@@ -148,18 +148,7 @@ ul {
 
 /* if both the vertical and the horizontal bars appear, then perhaps the right bottom corner also needs to be styled */
 
-.main {
-	width: 100%;
-	min-width: 1310px;
-	padding: 0px;
-	overflow: hidden;
-	height: 100%;
-	position: relative;
-	margin-top: 0px;
-	margin-right: auto;
-	margin-bottom: 0px;
-	margin-left: auto;
-}
+
 
 /*********************
 *

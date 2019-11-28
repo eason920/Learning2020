@@ -1,0 +1,145 @@
+// ====================================
+// == START
+// ====================================
+aside
+	display: block
+	float: left
+	height: 100%
+	padding:
+		top: $gutter-top
+		left: 50px
+
+	.title
+		font-size: 6rem
+		font-family: "Times New Roman", Times, serif
+		color: #f74769
+		text-align: right
+		font-weight: 600
+		line-height: 1
+		margin:
+			bottom: 5px
+
+	.sub
+		font-size: 3.5rem
+		color: #f74769
+		text-align: right
+		line-height: 1
+		font-family: "微軟正黑體", PingFangSC-Regular, Times New Roman
+		font-weight: 600
+		letter-spacing: 1px
+		margin:
+			bottom: 25px
+
+// -----------------------------------
+
+
+.aside-above-sub
+	color: #ff859c
+	line-height: 1.2
+	text:
+		align: right	
+
+.aside-above-sub-en
+	font:
+		size: 2.6rem
+	margin:
+		bottom: 5px
+
+.aside-above-sub-ch
+	font:
+		size: 2.2rem
+	margin:
+		bottom: 15px
+
+// -----------------------------------
+// -- PLAY & SPEED CONTROL
+// -----------------------------------
+.aside-speedbox
+	position: relative
+	margin:
+		bottom: 30px
+
+.play_btn
+	position: relative
+	z-index: 1
+	background:
+		color: #fff
+		image: url(../images/pc_a/paly_btn.png)
+		repeat: no-repeat
+		size: 50% auto
+		position: 22px 18px
+	border: solid 2px #{$c1}
+	box-shadow: 0 2px 7px 0 rgba(0, 0, 0, 0.35)
+	height: 75px
+	width: 75px
+	border-radius: 50%
+	&.pause
+		background:
+			image: url(../images/pc_a/pause_btn.png)
+			position: 18px 18px
+
+.speed
+	background:
+		color: #f74769
+	border:
+		radius: 12px 0 0 12px
+	display: flex!important
+	align-items: center
+	width: 210px
+	padding: 0 5px
+	height: 36px
+	position: absolute
+	right: 0
+	top: 20px
+	opacity: 0
+	transition: .2s
+
+	&.show
+		opacity: 1
+		right: 48px
+		transition: .2s
+
+	b
+		user-select: none
+		color: #fff
+		display: inline-block
+		font:
+			size: 2rem
+			weight: normal
+		padding: 0 10px
+
+.speed-left
+	position: relative
+	&:before
+		position: absolute
+		content: ''
+		display: block
+		width: 88px
+		height: 2px
+		background:
+			color: #fff
+		top: 11px
+		left: 40px
+
+.speed-point
+	position: absolute
+	right: 2px
+	top: 4px
+	width: 16px
+	height: 16px
+	background:
+		color: $c5
+	border:
+		radius: 50%
+	z-index: 2
+	transition: .2s
+	animation: ani-point 5s linear infinite forwards
+	display: none
+
+@keyframes ani-point
+	70%
+		opacity: 1
+	85%
+		opacity: .5
+	100%
+		opacity: 1

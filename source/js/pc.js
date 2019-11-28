@@ -104,6 +104,7 @@ $(function () {
 	// 	$('.Chinese').toggleClass("show");
 	// })
 	$('.play_btn').click(function () {
+		$('.speed-point').fadeToggle();
 		$('.speed').toggleClass("show");
 		$('.play_btn').toggleClass("pause");
 		pauseplay()
@@ -116,14 +117,14 @@ $(function () {
 		$('.y-small').fadeOut();
 		$('.y-start').fadeIn();
 	})
-	$('.play_btn').hover(function(){
-		if($(".play_btn").hasClass("pause"))
-			$('.speed').addClass('show');
-	})
+	// $('.play_btn').hover(function(){
+	// 	if($(".play_btn").hasClass("pause"))
+	// 		$('.speed').addClass('show');
+	// })
 
-	$('.speed').hover(function(){},function(){
-		$('.speed').removeClass('show');
-	})
+	// $('.speed').hover(function(){},function(){
+	// 	$('.speed').removeClass('show');
+	// })
 
 	$('.share_btn').click(function () {
 		$('.share').toggleClass("show");
@@ -280,7 +281,7 @@ $(function () {
 	// -- move
 	// ------------------------------------
 	let zIndex = 15;
-	$('body').on('mousedown', '.memobox-bar', function (e) {
+	$('body').on('mousedown', '.memobox-bar, .memobox-box', function (e) {
 		// e.preventDefault();
 		let $selector = null;
 		let x, y;

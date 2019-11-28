@@ -197,7 +197,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	<script async defer crossorigin="anonymous" src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v4.0&appId=665673953932390&autoLogAppEvents=1"></script>
 	<input type="hidden" name="repeat" id="repeat" value="0" />
 	<!-- v HTML START v -->
-	<div class="topbar">
+    <div class="topbar">
       <div class="wrapper">
         <div class="topbar-back"><a class="topbar-back-btn" href="#">
             <div class="icon-arrowleft"></div>學習驗收</a></div>
@@ -261,6 +261,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <div class="speed"><b>慢</b>
                   <input id="Speed_range" type="range" min="0.5" max="1.5" value="1" step="0.25"><b>快</b>
                 </div>
+                <div class="add-label">+</div>
               </div>
             </div>
             <div class="aside-below">
@@ -324,10 +325,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
     </div>
-    <div class="movebox movebox1">
-      <div class="movebox-text">Earth<br>科學</div>
-      <div class="movebox-box"></div>
-    </div>
+    <script>const memberJSON = JSON.parse('{"memo":["msg 1","msg 2","he ha ha ha 3"]}');</script>
+
+  
   
   <!-- ^ HTML END ^ -->
 </body>

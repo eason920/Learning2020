@@ -1,120 +1,7 @@
-$gutter-top: 90px
-$h-youtube: 331px
-// ====================================
-// == START
-// ====================================
-aside
-	width: $w-aside
-	display: block
-	float: left
-	height: 100%
-	padding:
-		top: $gutter-top
-		left: 50px
-
-	.title
-		font-size: 6rem
-		font-family: "Times New Roman", Times, serif
-		color: #f74769
-		text-align: right
-		font-weight: 600
-		line-height: 1
-		margin:
-			bottom: 5px
-
-	.sub
-		font-size: 3.5rem
-		color: #f74769
-		text-align: right
-		line-height: 1
-		font-family: "微軟正黑體", PingFangSC-Regular, Times New Roman
-		font-weight: 600
-		letter-spacing: 1px
-		margin:
-			bottom: 25px
-
-.aside-above
-	height: calc( 100% - #{$gutter-top} - #{$h-youtube})
-
-.aside-above-sub
-	color: #ff859c
-	line-height: 1.2
-	text:
-		align: right	
-
-.aside-above-sub-en
-	font:
-		size: 2.6rem
-	margin:
-		bottom: 5px
-
-.aside-above-sub-ch
-	font:
-		size: 2.2rem
-	margin:
-		bottom: 15px
-
-.play_btn
-	background:
-		color: transparent
-		image: url(../images/pc_a/paly_btn.png)
-		repeat: no-repeat
-		size: 50% auto
-		position: 22px 18px
-	border: solid 2px #{$c1}
-	box-shadow: 0 2px 7px 0 rgba(0, 0, 0, 0.35)
-	height: 75px
-	width: 75px
-	border-radius: 50%
-	margin:
-		bottom: 30px
-	&.pause
-		background:
-			image: url(../images/pc_a/pause_btn.png)
-			position: 18px 18px
-
-// speed
-.speed
-	// position: absolute
-	// position: relative
-	// z-index: 1
-	// z-index: 10
-	// top: -50px
-	// background-color: #fff
-	// box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3)
-	// text-align: center
-	// display: flex
-	// flex-direction: column
-	// justify-content: space-between
-	// height: 180px
-	// width: 44px
-	// padding-bottom: 10px
-	// padding-top: 20px
-	// // opacity: 0
-	// transition: all .3s
-	// left: 40px
-
-	&.show
-		display: flex !important
-		top: 60px
-		opacity: 1
-
-	input[type=range]
-		transform: rotate(90deg) translateY(24px)
-
-	b
-		display: inline-block
-
-
-// -----------------------------------	
-.aside-below
-	// height: $h-youtube
-
 // ====================================
 // == ARTICLE INFO BOX
 // ====================================
 .ArticleInfo-box
-	display: flex
 	float: right
 	margin:
 		bottom: 10px
@@ -165,8 +52,8 @@ aside
 	width: 136px
 	height: 136px
 	position: absolute
-	top: -136px
-	left: -68px
+	top: -62px
+	left: -155px
 	box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3)
 	border-radius: 50%
 	transform: translateX(10%)
@@ -205,7 +92,6 @@ aside
 	clear: both
 	position: relative
 	width: 100%
-	height: $h-youtube
 	transform: translate3d(0, 0, 0)
 
 .Article_pic
@@ -223,7 +109,6 @@ aside
 
 #y-box
 	width: 100%
-	height: $h-youtube
 	transform-origin: 100% 100%
 	transform: scale(0.1)
 	opacity: 0

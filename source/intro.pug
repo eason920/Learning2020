@@ -39,6 +39,16 @@ html(lang='zh')
 							li.topbar-step-item
 								.topbar-num 3
 								.topbar-text 學習驗收
+								ul.topbar-scort
+									li.topbar-scrot-item
+										.topbar-num A
+										.topbar-text 理解力測驗
+									li.topbar-scrot-item
+										.topbar-num B
+										.topbar-text 聽力測驗　
+									li.topbar-scrot-item
+										.topbar-num C
+										.topbar-text 克漏字測驗
 						.topbar-icon
 							a.topbar-icon-item(href='#')
 								.icon-favorite
@@ -86,11 +96,13 @@ html(lang='zh')
 							.aside-above-sub
 								.aside-above-sub-en Powerful winds blew the smoke to the city and darkened the sky.
 								.aside-above-sub-ch 強風將濃煙帶到城市，使天空變黑。
-								input.play_btn(type='button')
-								.speed
-									b 慢
-									input#Speed_range(type='range', min='0.5', max='1.5', value='1', step='0.25')
-									b 快
+								.aside-speedbox
+									.speed-point
+									.speed
+										b.speed-left 快
+										input#Speed_range(type='range', min='0.5', max='1.5', value='1', step='0.25')
+										b 慢
+									input.play_btn(type='button')
 								.add-label +
 						.aside-below
 							.ArticleInfo-box
@@ -141,8 +153,7 @@ html(lang='zh')
 							include partials/text_vacabulary
 						else
 		script. 
-			const memberJSON = JSON.parse('{"memo":["msg 1","msg 2","he ha ha ha 3"]}');
-			
+			//const memberJSON = JSON.parse('{"memo":["msg 1"]}');
 		//--.memobox
 			.memobox-bar title
 			textarea.memobox-text(placeholder='在此輸入您的筆記')
@@ -158,3 +169,5 @@ html(lang='zh')
 //-	1.用 html()
 //-	2.用 \n 或 \r 任一(或兩者一起用)
 //- 可產出 textarea 中文字換行結果
+//- input(type='range')::-webkit-slider-thumb 編輯圓點 style
+//- pointer-events: none; 讓滑鼠可以點擊穿透偽元素，不然會點不到下面

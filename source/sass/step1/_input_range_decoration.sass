@@ -1,0 +1,87 @@
+$point: 13px
+
+input[type=range]
+	position: relative
+	-webkit-appearance: none
+	width: 90px
+	border-radius: 10px
+	display: inline-block
+	vertical-align: middle
+	background: none
+
+	// chrome bar
+	&::-webkit-slider-runnable-track
+		height: 2px
+		background: #fff
+
+	// chrome point
+	&::-webkit-slider-thumb
+		height: $point
+		width: $point
+		border-radius: 50%
+		cursor: pointer
+		-webkit-appearance: none
+		margin-top: -5px
+		background-color: #fff
+		transition: .1s
+
+	&:hover::-webkit-slider-thumb
+		width: 16px
+		height: 16px
+		margin-top: -7px
+		transition: .1s
+
+	// moz bar
+	&::-moz-range-progress
+		height: 2px
+		background: #fff
+	
+	// moz pointer ?? not work
+	&::-moz-slider-thumb,
+	&::-moz-thumb
+		height: $point
+		width: $point
+		border-radius: 50%
+		cursor: pointer
+		-webkit-appearance: none
+		margin-top: -4px
+		background-color: #fff
+
+	// edge bar
+	&::-ms-fill-lower, 
+	&::-ms-fill-upper
+	&:focus::-ms-fill-lower, 
+	&:focus::-ms-fill-upper
+		height: 2px
+		background: #fff
+		margin-top: 1
+
+	// edge pointer
+	&::-ms-thumb
+		height: $point
+		width: $point
+		border-radius: 50%
+		background: #fff
+		margin-top: 0
+		border: none
+
+	&:hover::-ms-thumb
+		width: 16px
+		height: 16px
+		margin-top: -2px
+
+	&:focus
+		outline: none
+		&::-ms-fill-lower, 
+		&::-ms-fill-upper
+			background: #d8d8d8
+
+
+	// ??
+	&::-ms-track
+		height: $point
+		margin: $point $point
+		border-radius: $point
+		background: transparent
+		border-color: transparent
+		color: transparent

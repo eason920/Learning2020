@@ -1,0 +1,58 @@
+.main
+	width: 100%
+	min-width: $min-width
+	padding: 0px
+	overflow: hidden
+	height: 100%
+	position: relative
+	margin: 0 auto
+
+@media screen and (max-width: 1440px)
+	$w-aside: 500px
+	$h-youtube: 258px
+	aside
+		width: $w-aside
+
+	article
+		width: calc(100% - #{$w-aside})
+
+	.topbar-back
+		width: $w-aside
+
+	.topbar-main-f1
+		width: calc( 100% - #{$w-aside})
+
+
+	.aside-above
+		height: calc( 100% - #{$gutter-top} - #{$h-youtube})
+
+	.article-vbox,
+	#y-box
+		height: $h-youtube
+
+@media screen and (min-width: 1441px)
+	$w-aside: 600px
+	$h-youtube: 311px
+	aside
+		width: $w-aside
+
+	article
+		width: calc(100% - #{$w-aside})
+
+	.topbar-back
+		width: $w-aside
+
+	.topbar-main-f1
+		width: calc( 100% - #{$w-aside})
+
+
+	.aside-above
+		height: calc( 100% - #{$gutter-top} - #{$h-youtube})
+
+	.article-vbox,
+	#y-box
+		height: $h-youtube
+
+	//-------------------------------------
+	.ArticleInfo-box
+		display: flex
