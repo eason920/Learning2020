@@ -7,45 +7,83 @@
 	position: relative
 	margin: 0 auto
 
+section
+	width: 100%
+	height: 100%
+	display: block
+	position: relative
+	z-index: 10
+	transition: all .6s
+
+	&.move
+		margin-left: -25%
+
+.wrapper
+	display: flex
+	max-width: 1770px
+	min-width: $min-width
+	margin: 10px auto 0
+
+.wrapper-right-f1
+	padding:
+		left: 2%
+	display: flex
+
+.wrapper-right-f2
+	padding:
+		left: 3%
+	width: 100%
+	display: flex
+
+// ====================================
+// == WRAPPER GROUP
+// == break for back icon
+// ====================================
+@media screen and (max-width: 1769px)
+	.wrapper-left
+		margin-left: 12px
+
+@media screen and (min-width: 1800px)
+	.wrapper-left
+		margin-left: -5px
+
+// ====================================
+// == ASIDE GROUP
+// ====================================
+// break for mac
 @media screen and (max-width: 1440px)
 	$w-aside: 500px
-	$h-youtube: 258px
 	aside
 		width: $w-aside
 
 	article
 		width: calc(100% - #{$w-aside})
 
-	.topbar-back
+	.wrapper-left
 		width: $w-aside
 
-	.topbar-main-f1
+	.wrapper-right-f1
 		width: calc( 100% - #{$w-aside})
-
-
-	.aside-above
-		height: calc( 100% - #{$gutter-top} - #{$h-youtube})
-
-	.article-vbox,
-	#y-box
-		height: $h-youtube
 
 @media screen and (min-width: 1441px)
 	$w-aside: 600px
-	$h-youtube: 311px
 	aside
 		width: $w-aside
 
 	article
 		width: calc(100% - #{$w-aside})
 
-	.topbar-back
+	.wrapper-left
 		width: $w-aside
 
-	.topbar-main-f1
+	.wrapper-right-f1
 		width: calc( 100% - #{$w-aside})
 
-
+// ====================================
+// == YOUTUBE GROUP
+// ====================================
+@media screen and (max-width: 1440px)
+	$h-youtube: 258px
 	.aside-above
 		height: calc( 100% - #{$gutter-top} - #{$h-youtube})
 
@@ -53,6 +91,32 @@
 	#y-box
 		height: $h-youtube
 
-	//-------------------------------------
+@media screen and (max-width: 1770px) and (min-width: 1441px)
+	$h-youtube: 311px
+	.aside-above
+		height: calc( 100% - #{$gutter-top} - #{$h-youtube})
+
+	.article-vbox,
+	#y-box
+		height: $h-youtube
+
+@media screen and (min-width: 1771px)
+	$h-youtube: 342px
+	.aside-above
+		height: calc( 100% - #{$gutter-top} - #{$h-youtube})
+
+	.article-vbox,
+	#y-box
+		height: $h-youtube
+
+// ====================================
+// == OUT GROUP SETTING
+// ====================================
+@media screen and (min-width: 1441px)
 	.ArticleInfo-box
 		display: flex
+
+@media screen and (max-width: 1770px)
+	aside
+		padding:
+			left: 25px

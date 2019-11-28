@@ -92,20 +92,23 @@ $(function () {
 		$explain.show();
 		$readOnly.hide();
 	});
+
 	$('#control-1 i').click(function(){
 		$control.removeClass("active");
 		$control.attr('data-value', '0');
 		$readOnly.show();
 		$explain.hide();
 	});
+
 	// 英 <--> 中英
 	// $('#control-2 .toggle').click(function () {
 	// 	$('#control-2').toggleClass("active");
 	// 	$('.Chinese').toggleClass("show");
 	// })
+	
 	$('.play_btn').click(function () {
-		$('.speed').toggleClass("show");
 		$('.speed-point').fadeToggle();
+		$('.speed').toggleClass("show");
 		$('.play_btn').toggleClass("pause");
 		pauseplay()
 		if($(".play_btn").hasClass("pause")==false){
@@ -116,8 +119,7 @@ $(function () {
 		$('#y-box').removeClass('action');
 		$('.y-small').fadeOut();
 		$('.y-start').fadeIn();
-	});
-
+	})
 
 	$('.word_btn').click(function () {
 		$('section').toggleClass("move");
@@ -127,9 +129,7 @@ $(function () {
 		$('section').removeClass('move');
 		$('.tranglationBody').removeClass("show");
 	})
-	
-	
-	
+		
 	$('#class_f').hover(function () {
 		const $cfc = $('.classification');
 		let cfcIndex = $cfc.find('.activity').index();
@@ -141,58 +141,49 @@ $(function () {
 	$('.message_btn').click(function () {
 		$(".mask").stop().animate({ 'scrollTop': $("#message").offset().top - 70 }, 1000, 'swing');
 	})
-
+	
 	// ====================================
 	// ==  READ_BTN CLICK STOP YOUTUBE
 	// ====================================
 	$('.article_mask').on('click', '.read_btn', function(){
-		$('.speed').addClass('show');
-		$('.speed-point').fadeIn();
 		player.pauseVideo();
 		$('#y-box').removeClass('action');
 		$('.y-small').fadeOut();
 		$('.y-start').fadeIn();
 	})
 
-
-	// =============================
-	// == FLOAT LAB
-	// =============================
-	// ------------------------------------
-	// -- add
-	// ------------------------------------
-	// console.log(memberJSON);
-	// console.log(memberJSON.memo.length);
-
 	const addMemo = function(msg, top, left){
 		$('body').append(
-			$('<div>', {class: 'memobox'}).css({top, left}).append(
-				$('<div>', {class: 'memobox-bar'}),
-				$('<textarea>', {class: 'memobox-text', placeholder: '在此輸入您的筆記'}).html(msg),
-				$('<div>', {class: 'memobox-box'}).append(
-					$('<input>', {class: 'memobox-btn', type: 'submit', value: '儲存'})
+			$('<div>').attr('class', 'memobox').css({top, left}).append(
+				$('<div>').attr('class', 'memobox-bar'),
+				$('<textarea>').attr('class', 'memobox-text').attr('placeholder', '在此輸入您的筆記').html(msg),
+				$('<div>').attr('class', 'memobox-box').append(
+					$('<input>').attr('class', 'memobox-btn').attr('type', 'submit').attr('value', '儲存')
 				)
 			)
 		);	
 	};
 
-	const defOffset = 76;
+
 	if(memberJSON.memo.length > 0){
-		let i=0;
+		let i=1;
 		for(a in memberJSON.memo ){
-			addMemo(memberJSON.memo[a], defOffset + i*30, defOffset + i*30);
+			addMemo(memberJSON.memo[a], i*30, i*30);
 			i++;
 		};
 	};
 	$('.add-label').click(function(){
 		const num = $('.memobox').length;
-		const left = defOffset + num * 30;
+		// console.log(num);
+		const left = (num + 1) * 30;
 		const top = left;
 		if(num <= 4){
 			addMemo('', top, left);
 		}else{
 			console.log('is max');
+			
 		}
+
 	});
 
 	// ------------------------------------
@@ -253,7 +244,7 @@ $(function () {
 	// ------------------------------------
 	$('body').on('click', '.memobox', function(){
 		$(this).css({'zIndex': zIndex ++});
-	});
+	})
 
 	// ====================================
 	// == TOPBAR-STEP

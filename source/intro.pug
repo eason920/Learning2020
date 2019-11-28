@@ -18,17 +18,16 @@ html(lang='zh')
 		script.
 			var videoId = 'h1I5JM16N0c';
 		script(src='js/pc.js', type='text/javascript')
-		script(src='./js/share.js')
 	body
 		// v HTML START v
 		.topbar
 			.wrapper
-				.topbar-back
+				.wrapper-left
 					a.topbar-back-btn(href='#')
 						.icon-arrowleft
 						|學習驗收
-				.topbar-main-f1
-					.topbar-main-f2
+				.wrapper-right-f1
+					.wrapper-right-f2
 						ul.topbar-step
 							li.topbar-step-item.active
 								.topbar-num 1
@@ -36,48 +35,38 @@ html(lang='zh')
 							li.topbar-step-item
 								.topbar-num 2
 								.topbar-text 加強記憶
-							li.topbar-step-item
+							li.topbar-step-item.is-step3
 								.topbar-num 3
 								.topbar-text 學習驗收
-								ul.topbar-scort
-									li.topbar-scrot-item
-										.topbar-num A
-										.topbar-text 理解力測驗
-									li.topbar-scrot-item
-										.topbar-num B
-										.topbar-text 聽力測驗　
-									li.topbar-scrot-item
-										.topbar-num C
-										.topbar-text 克漏字測驗
+								.icon-pink
+								.topbar-scort-outer
+									ul.topbar-scort
+										li.topbar-scrot-item
+											.topbar-num A
+											.topbar-text 理解力測驗
+										li.topbar-scrot-item
+											.topbar-num B
+											.topbar-text 聽力測驗　
+										li.topbar-scrot-item
+											.topbar-num C
+											.topbar-text 克漏字測驗
 						.topbar-icon
 							a.topbar-icon-item(href='#')
 								.icon-favorite
 							a.topbar-icon-item(href='#')
 								.icon-print
-		.main
-			header
-				input.copy-source(type='text')
-				nav
-					a.logo(href='#')
-					ul
-						li#control-1.control.active(data-value='1')
-							b 講解
-							a.toggle(href='#')
-							i 朗讀
-						li
+		.funbar-block
+			.wrapper
+				.wrapper-left
+				.wrapper-right-f1
+					.wrapper-right-f2
+						ul.funbar
+							li#control-1.control.active(data-value='1')
+								b 老師講解
+								i 英文朗讀
+							li
 							input.word_btn(type='button', value='重點單字')
-						li
-							.share_btn
-							button(type='button')
-							i 分享
-					
-					.share
-						a.line_btn.share-line(href='#')
-						a.fb_btn.share-fb(href='#')
-						a.link_btn.copy-btn(href='#')
-							.copied 己拷貝連結
-				.mask
-				.navbg
+		.main
 			.article_mask
 				section
 					aside
@@ -153,14 +142,14 @@ html(lang='zh')
 							include partials/text_vacabulary
 						else
 		script. 
-			//const memberJSON = JSON.parse('{"memo":["msg 1"]}');
+			const memberJSON = JSON.parse('{"memo":["msg 1"]}');
 		//--.memobox
 			.memobox-bar title
 			textarea.memobox-text(placeholder='在此輸入您的筆記')
 			.memobox-box
 		// ^ HTML END ^
 
-//- NEW STUDY
+//- NEW STUDY ####################################
 //- pug 的 if / else , 「要有 else」才能逹成非 dev 者為空值目的
 //- if 跟 () 不用空隔隔開，只顯顥示 height light 有空隔才上色
 //- sass 的 extend 視作一 selector (有屬性&值)
@@ -171,3 +160,5 @@ html(lang='zh')
 //- 可產出 textarea 中文字換行結果
 //- input(type='range')::-webkit-slider-thumb 編輯圓點 style
 //- pointer-events: none; 讓滑鼠可以點擊穿透偽元素，不然會點不到下面
+//- nua mac => /macintosh/i.test(nua)
+//- ##############################################

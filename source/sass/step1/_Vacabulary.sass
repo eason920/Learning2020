@@ -1,0 +1,72 @@
+.tranglationBody
+	width: 24%
+	display: block
+	height: 100%
+	color: #FFF
+	background-color: #f97e96
+	position: absolute
+	top: 0px
+	right: -26%
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3)
+	transition: all .6s
+	padding:
+		top: 80px
+		right: 30px
+		left: 30px
+
+	&.show
+		right: 0px
+
+	span
+		font-size: 24px
+		color: #00336b
+		display: block
+
+	p
+		margin:
+			top: 15px
+			bottom: 15px
+
+.close_btn
+	background:
+		image: url(../images/pc_a/close_btn.png)
+		repeat: no-repeat
+		size: 100% auto
+		color: transparent
+	height: 30px
+	width: 30px
+	position: absolute
+	top: 95px
+	right: 30px
+	border-style: none
+
+.translation_Font
+	font:
+		size: 4rem
+		family: "Times New Roman", Times, serif
+		weight: 500
+	line-height: 1.2
+	color: #FFF
+	border-bottom: 1px solid #fff
+	text-align: center
+	display: block
+	padding:
+		top: 20px
+		bottom: 10px
+
+.translation_list
+	font:
+		family: "Times New Roman", "微軟正黑體"
+		weight: 600
+		size: 18px
+	display: block
+	overflow: auto
+	margin-top: 10px
+	height: calc(100% - 110px)
+	width: 100%
+	padding-right: 20px
+	line-height: 1.3
+
+	&.is-chinese
+		font-size: 14px
+		margin-top: 7px

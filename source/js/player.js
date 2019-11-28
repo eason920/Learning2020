@@ -217,7 +217,7 @@ function playC(t)
 function pausetime(){
   document.getElementById("audio1").pause();
   document.getElementById("audio2").pause();
-  $('.speed').removeClass("show");
+  // $('.speed').removeClass("show");
   $('.play_btn').removeClass("pause");
 }
 
