@@ -45,6 +45,7 @@ const scaleUp = function(){
 
 $(function () {
 	$('.y-start').click(function(){
+		$('.speed').removeClass('show');
 		if( !$('#y-box').hasClass('is-first-start') ){
 			player.playVideo();
 			scaleUp();
@@ -170,7 +171,8 @@ $(function () {
 				$('<div>', {class: 'memobox-bar'}),
 				$('<textarea>', {class: 'memobox-text', placeholder: '在此輸入您的筆記'}).html(msg),
 				$('<div>', {class: 'memobox-box'}).append(
-					$('<input>', {class: 'memobox-btn', type: 'submit', value: '儲存'})
+					$('<input>', {class: 'memobox-del', type: 'button', value: '刪除筆記'}),
+					$('<input>', {class: 'memobox-save', type: 'submit', value: '儲存'})
 				)
 			)
 		);	
@@ -254,6 +256,16 @@ $(function () {
 	$('body').on('click', '.memobox', function(){
 		$(this).css({'zIndex': zIndex ++});
 	});
+
+	// ------------------------------------
+	// -- delete
+	// ------------------------------------
+	$('body').on('click', '.memobox-del', function(e){
+		e.preventDefault();
+		$(this).parent().parent().remove();
+		console.log('delete');
+		
+	})
 
 	// ====================================
 	// == TOPBAR-STEP

@@ -61,11 +61,20 @@ html(lang='zh')
 				.wrapper-right-f1
 					.wrapper-right-f2
 						ul.funbar
-							li#control-1.control.active(data-value='1')
+							li.funbar-item
+								b 中+EN
+								i EN
+							li.funbar-item#control-1.control.active(data-value='1')
 								b 老師講解
 								i 英文朗讀
-							li
-							input.word_btn(type='button', value='重點單字')
+							li.funbar-item
+								a.word_btn(href='#') 單字片語
+							li.funbar-item
+								a.funbar-word(href='#') 單字收錄
+							li.funbar-item
+								a.funbar-talk(href='#') 操作說明
+								.icon-bulb
+
 		.main
 			.article_mask
 				section

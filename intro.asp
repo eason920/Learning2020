@@ -197,7 +197,154 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	<script async defer crossorigin="anonymous" src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v4.0&appId=665673953932390&autoLogAppEvents=1"></script>
 	<input type="hidden" name="repeat" id="repeat" value="0" />
 	<!-- v HTML START v -->
-  
+  <div class="topbar">
+      <div class="wrapper">
+        <div class="wrapper-left"><a class="topbar-back-btn" href="#">
+            <div class="icon-arrowleft"></div>學習驗收</a></div>
+        <div class="wrapper-right-f1">
+          <div class="wrapper-right-f2">
+            <ul class="topbar-step">
+              <li class="topbar-step-item active">
+                <div class="topbar-num">1</div>
+                <div class="topbar-text">認識本文</div>
+              </li>
+              <li class="topbar-step-item">
+                <div class="topbar-num">2</div>
+                <div class="topbar-text">加強記憶</div>
+              </li>
+              <li class="topbar-step-item is-step3">
+                <div class="topbar-num">3</div>
+                <div class="topbar-text">學習驗收</div>
+                <div class="icon-pink"></div>
+                <div class="topbar-scort-outer">
+                  <ul class="topbar-scort">
+                    <li class="topbar-scrot-item">
+                      <div class="topbar-num">A</div>
+                      <div class="topbar-text">理解力測驗</div>
+                    </li>
+                    <li class="topbar-scrot-item">
+                      <div class="topbar-num">B</div>
+                      <div class="topbar-text">聽力測驗　</div>
+                    </li>
+                    <li class="topbar-scrot-item">
+                      <div class="topbar-num">C</div>
+                      <div class="topbar-text">克漏字測驗</div>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+            <div class="topbar-icon"><a class="topbar-icon-item" href="#">
+                <div class="icon-favorite"></div></a><a class="topbar-icon-item" href="#">
+                <div class="icon-print"></div></a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="funbar-block">
+      <div class="wrapper">
+        <div class="wrapper-left"></div>
+        <div class="wrapper-right-f1">
+          <div class="wrapper-right-f2">
+            <ul class="funbar">
+              <li class="funbar-item"><b>中+EN</b><i>EN</i></li>
+              <li class="funbar-item control active" id="control-1" data-value="1"><b>老師講解</b><i>英文朗讀</i></li>
+              <li class="funbar-item"><a class="word_btn" href="#">單字片語</a></li>
+              <li class="funbar-item"><a class="funbar-word" href="#">單字收錄</a></li>
+              <li class="funbar-item"><a class="funbar-talk" href="#">操作說明</a>
+                <div class="icon-bulb"></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="main">
+      <div class="article_mask">
+        <section>
+          <aside>
+            <div class="aside-above">
+              <div class="aside-above-main">
+                <div class="title" id="title-a"> <%=en_subject%>
+                </div>
+                <div class="sub" id="subtitle-a"> <%=ch_subject%>
+                </div>
+              </div>
+              <div class="aside-above-sub">
+                <div class="aside-above-sub-en">Powerful winds blew the smoke to the city and darkened the sky.</div>
+                <div class="aside-above-sub-ch">強風將濃煙帶到城市，使天空變黑。</div>
+                <div class="aside-speedbox">
+                  <div class="speed-point"></div>
+                  <div class="speed"><b class="speed-left">快</b>
+                    <input id="Speed_range" type="range" min="0.5" max="1.5" value="1" step="0.25"><b>慢</b>
+                  </div>
+                  <input class="play_btn" type="button">
+                </div>
+                <div class="add-label">+</div>
+              </div>
+            </div>
+            <div class="aside-below">
+              <div class="ArticleInfo-box">
+                <div class="ArticleInfo1 type2">
+                  <div class="classification_btn"><span id="class_f"> </span>
+                    <div class="classification">
+                      <ul>
+                        <li>專業通則</li>
+                        <li>生活</li>
+                        <li>社交</li>
+                        <li>通識</li>
+                        <li>自我意識</li>
+                        <li>基礎養成</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="ArticleInfo2"> 
+                </div>
+              </div>
+              <div class="article-vbox">
+                <div class="Article_pic"><img src="./images/galxy.jpg"></div>
+                <!-- img ^v video box-->
+                <div class="is-first-start" id="y-box"></div><img class="y-start" src="images/y_start.png">
+                <div class="y-small"></div>
+              </div>
+            </div>
+          </aside>
+          <article>
+            <div class="mask">
+              <!-- 內文區塊-->
+              <div class="article" style="display:none;">
+				  	<%
+					  i=0
+					  For each node in nodes
+						  Response.Write  "<div class='english'>" & replace(node.getAttribute("content"),"**","")& "<input type='button' class='read_btn'></div>" & vbCrLf
+						  Response.Write  "<div class='Chinese'>" & replace(nodes2(i).getAttribute("content"),"**","")& "</div><p></p>" & vbCrLf
+						  i=i+1
+					  Next
+					  %>
+              </div>
+              <div class="article2">
+				  	<%
+					  i=0
+					  For each node in nodes
+						  Response.Write  "<div class='english'>" & replace(node.getAttribute("content"),"**","")& "<input type='button' class='read_btn'></div>" & vbCrLf
+						  Response.Write  "<div class='Chinese'>" & replace(nodes2(i).getAttribute("content"),"**","")& "</div><p></p>" & vbCrLf
+						  i=i+1
+					  Next
+					  %>
+              </div>
+            </div>
+          </article>
+        </section>
+        <div class="tranglationBody">
+          <input class="close_btn" type="button">
+          <div class="translation_Font">Vacabulary</div>
+          <div class="translation_list">
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>const memberJSON = JSON.parse('{"memo":["msg 1"]}');</script>
   
   
   <!-- ^ HTML END ^ -->

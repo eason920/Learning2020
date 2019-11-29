@@ -61,7 +61,8 @@ section.move {
   display: flex;
   max-width: 1770px;
   min-width: 1280px;
-  margin: 10px auto 0;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .wrapper-right-f1 {
@@ -159,22 +160,22 @@ section.move {
     padding-left: 25px;
   }
 }
-.sprite-sprite, .icon-favorite, .icon-print, .icon-arrowleft, .icon-pink {
-  background-image: url('../images/sprite-sd73440ede8.png');
+.sprite-sprite, .icon-favorite, .icon-print, .icon-arrowleft, .icon-pink, .icon-bulb {
+  background-image: url('../images/sprite-sf49cd0a304.png');
   background-repeat: no-repeat;
 }
 
 .icon-favorite {
-  background-position: 0 -32px;
-  background-size: auto 120px;
+  background-position: 0 -57px;
+  background-size: auto 145px;
   background-repeat: no-repeat;
   width: 38px;
   height: 38px;
 }
 
 .icon-print {
-  background-position: 0 -82px;
-  background-size: auto 120px;
+  background-position: 0 -107px;
+  background-size: auto 145px;
   background-repeat: no-repeat;
   width: 38px;
   height: 38px;
@@ -182,18 +183,26 @@ section.move {
 
 .icon-arrowleft {
   background-position: 0 0;
-  background-size: auto 120px;
+  background-size: auto 145px;
   background-repeat: no-repeat;
   width: 32px;
   height: 32px;
 }
 
 .icon-pink {
-  background-position: 0 -70px;
-  background-size: auto 120px;
+  background-position: 0 -95px;
+  background-size: auto 145px;
   background-repeat: no-repeat;
   width: 19px;
   height: 12px;
+}
+
+.icon-bulb {
+  background-position: 0 -32px;
+  background-size: auto 145px;
+  background-repeat: no-repeat;
+  width: 23px;
+  height: 25px;
 }
 
 .topbar-back-btn, .topbar-step, .topbar-icon, .topbar-icon-item {
@@ -209,6 +218,9 @@ section.move {
   height: 76px;
   align-items: center;
   z-index: 11;
+}
+.topbar .wrapper {
+  margin-top: 10px;
 }
 .topbar:after {
   position: fixed;
@@ -874,7 +886,26 @@ span.is-height-light {
 }
 
 .funbar {
+  border-radius: 32px 32px 0 0;
+  padding: 15px 25px 13px;
+  display: flex;
   background-color: rgba(247, 71, 105, 0.2);
+  height: 60px;
+}
+
+.funbar-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-right: 25px;
+  padding-right: 25px;
+  border-right: solid 1px #aaa;
+}
+.funbar-item:last-child {
+  border: none;
+  padding: 0;
+  margin: 0;
 }
 
 .memobox:hover .memobox-text, .memobox:hover .memobox-box:before, .memobox:hover .memobox-box:after, .memobox-text, .memobox-box:before, .memobox-box:after {
@@ -947,7 +978,16 @@ span.is-height-light {
   border-color: rgba(212, 197, 133, 0.85) transparent transparent;
 }
 
-.memobox-btn {
+.memobox-del {
+  position: absolute;
+  right: 83px;
+  top: 5px;
+  font-size: 1rem;
+  display: block;
+  user-select: none;
+}
+
+.memobox-save {
   position: absolute;
   right: 35px;
   top: 5px;
