@@ -1,6 +1,6 @@
 @import 'compass'
 @import 'sprite/*.png'
-$height: sprite-sprite-height(favorite) + sprite-sprite-height(print) + sprite-sprite-height(arrow_left) + sprite-sprite-height(pink) + sprite-sprite-height(bulb)
+$height: sprite-sprite-height(favorite) + sprite-sprite-height(print) + sprite-sprite-height(arrow_left) + sprite-sprite-height(pink) + sprite-sprite-height(bulb) + sprite-sprite-height(refresh) + sprite-sprite-height(correct)
 @mixin BG($path)
 	@include sprite-sprite($path)
 	background:
@@ -8,6 +8,12 @@ $height: sprite-sprite-height(favorite) + sprite-sprite-height(print) + sprite-s
 		repeat: no-repeat
 	width: sprite-sprite-width($path)
 	height: sprite-sprite-height($path)
+
+.icon-correct
+	@include BG(correct)	
+	
+.icon-refresh
+	@include BG(refresh)
 
 .icon-favorite
 	@include BG(favorite)

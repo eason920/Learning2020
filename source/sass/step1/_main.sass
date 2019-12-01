@@ -41,20 +41,34 @@ article
 		padding-left: 3%
 		position: relative
 
+.icon-refresh
+	position: absolute
+	top: 0
+	right: 3%
+	transition: .3s
+	&:hover
+		transform: rotate(180deg)
+		transition: .3s
+
 .english
 	display: block
-	margin-bottom: 10px
+	margin:
+		top: 30px
+		bottom: 10px
 	font:
 		family: arial
 		weight: normal
-		size: 2.2rem
+		size: 1.375rem
 	letter-spacing: 1.2px
+	line-height: 1.4
 	word-wrap: break-word
+	color: #000
 
 	span
+		color: #000
 		display: inline-block
 		font:
-			size: 2.2rem
+			size: 1.375rem
 
 	&:hover
 		.read_btn
@@ -64,14 +78,14 @@ article
 .Chinese
 	display: none
 	display: block
-	color: #888
-	font-weight: normal
-	margin-top: 10px
-	margin-bottom: 40px
-
-	span
-		font:
-			size: 1rem
+	color: #555
+	margin:
+		top: 10px
+		bottom: 40px
+	line-height: 1.6
+	font:
+		size: .9375rem
+		weight: normal
 
 	&.show
 		display: block	
@@ -79,14 +93,16 @@ article
 // now reading
 .english.lightheight,
 .Chinese.lightheight
-	color: #000!important
+	color: #aa0102!important
+	span
+		color: #aa0102!important
 	.read_btn
 		opacity: 1
 
 // un reqding
 .english.lightheightBG,
 .Chinese.lightheightBG
-	color: #bbb!important
+	// color: #888!important
 
 .english span:hover,
 .Chinese span:hover
@@ -105,41 +121,50 @@ span.is-height-light
 #Nt0, #t0
 	color: #4a4a4a
 	font:
-		size: 4rem
+		size: 2.5rem
 		weight: bold
 	line-height: 1.1
+	margin:
+		top: 0
 	span
 		font:
-			size: 4rem
+			size: 2.5rem
 			weight: bold
 
 #Nct0, #ct0
 	color: #4a4a4a
 	font:
-		size: 3rem
+		size: 1.5rem
 	margin:
 		bottom: 22px
 	span
 		font:
-			size: 3rem
+			size: 1.5rem
 
 // -----------------------------------
 // -- ANNOTATION
 // -----------------------------------
 .annotation
 	display: block
-	color: #000
-	background-color: #fff5f7
+	color: rgba(0,87,175,1)
+	background-color: #f2f2f2
 	padding: 18px 20px
 	line-height: 1.3
+	border-radius: 6px
 	margin:
 		top: 20px
 		bottom: 20px
 	font:
-		size: 2rem
+		size: 1.4375rem
 		weight: bold
-		family: '微軟正黑體 Light'
+		family: 'Playfair Display', serif, 'PMingLiU'
 
 	&.bubblehighlightBG
-		color: rgba(107, 107, 107, 0.6)
-		background-color: #f6f6f6
+		color: rgba(0,87,175,.6)
+
+.buble-ch
+	font:
+		size: .875rem
+		family: "微軟正黑體", Arial
+	margin:
+		left: 5px

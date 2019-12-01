@@ -25,13 +25,13 @@ $h-nav: 76px
 		width: 100%
 		top: $h-nav
 		background:
-			image: linear-gradient(to bottom, rgba(0,0,0,.1), rgba(0,0,0, 0))
+			image: linear-gradient(to bottom, rgba(0,0,0,.05), rgba(0,0,0, 0))
 
 .topbar-back-btn
 	@extend %block
 	align-items: center
 	font:
-		size: 2.2rem
+		size: 1.375rem
 		weight: bold
 	color: $c1
 	width: 180px
@@ -61,15 +61,16 @@ $h-nav: 76px
 	&.is-step3
 		justify-content: center
 		width: 34%
-	&.is-step3
 		position: relative
-		cursor: pointer
 		user-select: none
+		cursor: pointer
 	.icon-pink
 		margin:
 			left: 8px
 		transition: .3s
 		transform: rotateX(0)
+	.icon-correct
+		margin-left: 5px
 
 .topbar-num
 	text-align: center
@@ -79,7 +80,7 @@ $h-nav: 76px
 	color: #fff
 	font:
 		weight: bold
-	font-family: serif
+		family: serif
 
 .topbar-text
 	font:
@@ -92,10 +93,11 @@ $h-nav: 76px
 	.topbar-text
 		color: $c2
 
+
 // -----------------------------------
 .topbar-scort-outer
 	position: absolute
-	top: 67px
+	top: 66px
 	width: calc( 103% + (1px + 12px) * 2 )
 	margin:
 		left: calc( -1.5% - 2px )
@@ -123,12 +125,29 @@ $h-nav: 76px
 		color: #fff
 	box-shadow: 0 0 12px rgba(0,0,0,.3)
 
+%transition
+	transition: .3s
 .topbar-scrot-item
 	height: $h-nav
 	display: flex
 	align-items: center
 	justify-content: center
 	position: relative
+	@extend %transition
+	// padding:
+		// left: 25%
+	&:hover
+		background:
+			color: #ff859c
+		@extend %transition
+		.topbar-num
+			background:
+				color: #fff
+			color: #f74769
+		@extend %transition
+		.topbar-text
+			color: #fff
+			@extend %transition
 	&:after
 		content: ''
 		display: block
@@ -144,13 +163,26 @@ $h-nav: 76px
 			display: none
 	.topbar-num
 		font:
-			size: 2rem
+			size: 1.25rem
 			weight: normal
+			family: 'Playfair Display', serif
 		width: 35px
 		line-height: 35px
+		@extend %transition
 	.topbar-text
 		font:
-			size: 1.8rem
+			size: 1rem
+		@extend %transition
+.topbar-s
+	margin:
+		left: 8px
+	font:
+		size: .9375rem
+	color: #aa0102
+	border-bottom: solid 1px #d8d8d8
+	span
+		font:
+			size: .75rem
 
 // -----------------------------------
 .topbar-icon
@@ -172,11 +204,11 @@ $h-nav: 76px
 		line-height: 35px
 		width: 35px
 		font:
-			size: 3rem
+			size: 1.875rem
 
 	.topbar-text
 		font:
-			size: 1.7rem
+			size: 1rem
 		padding:
 			left: 5px
 	
@@ -189,11 +221,11 @@ $h-nav: 76px
 		line-height: 50px
 		width: 50px
 		font:
-			size: 4rem
+			size: 2.5rem
 
 	.topbar-text
 		font:
-			size: 2.2rem
+			size: 1.375rem
 		padding:
 			left: 10px
 

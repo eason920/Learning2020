@@ -3,11 +3,11 @@
 	display: block
 	height: 100%
 	color: #FFF
-	background-color: #f97e96
+	background-color: #ff9eb1
 	position: absolute
 	top: 0px
 	right: -26%
-	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3)
+	box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.2)
 	transition: all .6s
 	padding:
 		top: 80px
@@ -16,16 +16,6 @@
 
 	&.show
 		right: 0px
-
-	span
-		font-size: 24px
-		color: #00336b
-		display: block
-
-	p
-		margin:
-			top: 15px
-			bottom: 15px
 
 .close_btn
 	background:
@@ -42,31 +32,61 @@
 
 .translation_Font
 	font:
-		size: 4rem
-		family: "Times New Roman", Times, serif
+		size: 2.5rem
+		family: 'Abril Fatface', cursive
 		weight: 500
 	line-height: 1.2
-	color: #FFF
-	border-bottom: 1px solid #fff
+	color: #4a4a4a
+	letter-spacing: 1px
+	border-bottom: 1px solid #e7e7e7
 	text-align: center
 	display: block
 	padding:
 		top: 20px
-		bottom: 10px
+		bottom: 20px
 
 .translation_list
-	font:
-		family: "Times New Roman", "微軟正黑體"
-		weight: 600
-		size: 18px
 	display: block
-	overflow: auto
+	overflow-y: auto
 	margin-top: 10px
 	height: calc(100% - 110px)
 	width: 100%
 	padding-right: 20px
-	line-height: 1.3
 
-	&.is-chinese
-		font-size: 14px
-		margin-top: 7px
+.vacbox
+	margin:
+		bottom: 38px
+// -----------------------------------
+.vacmain
+	color: #036
+	& > *
+		display: block
+	margin:
+		bottom: 10px
+.vacmain-en
+	font:
+		size: 1.4375rem
+		family: "Playfair Display", serif, "PMingLiU"
+		weight: bold
+	margin:
+		bottom: 8px
+.vacmain-ch
+	font:
+		size: 1rem
+		weight: bold
+
+// -----------------------------------
+.vacsub
+	color: #000
+	& > *
+		display: block
+.vacsub-en
+	font:
+		size: 1.375rem
+	line-height: 1.25
+	margin:
+		bottom: 5px
+.vacsub-ch
+	font:
+		size: .9375rem
+	line-height: 1.5

@@ -17,13 +17,16 @@ const youtube = function (videoId) {
 				loop: 1,
 				rel: 0,
 				controls: 0,
+				origin: 'https://test.funday.asia/'
 			},
 			events: {
 				'onReady': onPlayerReady,
 				'onStateChange': onPlayerStateChange
-			}
+			},
+			host: 'https://www.youtube.com'
 		});
 	}
+	
 	function onPlayerReady(event) {
 		// event.target.mute();
 		event.target.playVideo();
@@ -99,11 +102,7 @@ $(function () {
 		$readOnly.show();
 		$explain.hide();
 	});
-	// 英 <--> 中英
-	// $('#control-2 .toggle').click(function () {
-	// 	$('#control-2').toggleClass("active");
-	// 	$('.Chinese').toggleClass("show");
-	// })
+
 	$('.play_btn').click(function () {
 		$('.speed').toggleClass("show");
 		$('.speed-point').fadeToggle();
@@ -113,19 +112,44 @@ $(function () {
 			pausetime()
 		}
 		// youtube
-		player.pauseVideo();
-		$('#y-box').removeClass('action');
-		$('.y-small').fadeOut();
-		$('.y-start').fadeIn();
+		if( !$('#y-box').hasClass('is-first-start') ){
+			player.pauseVideo();
+			$('#y-box').removeClass('action');
+			$('.y-small').fadeOut();
+			$('.y-start').fadeIn();
+		}
+		$('.is-step3').removeClass('is-open');
 	});
 
+	let beforeClassName='';
+	$('.funbar-vacabulary, .funbar-collection').click(function (e) {
+		e.preventDefault;
+		// init class name
+		const className = $(this).attr('class');
+		// title text
+		let title;
+		/vacabulary/i.test(className)?title='Vacabulary':title='Collection';
+		$('.translation_Font').text(title);
+		// on vision
+		$('.funbar-btn').removeClass('active');
+		$(this).addClass('active');
+		if( !$('section').hasClass('move') ){
+			$('section, .funbar-block').addClass("move");
+			$('.tranglationBody').addClass("show");
+			$('.is-step3').removeClass('is-open');
+		}else{
+			if( beforeClassName.indexOf( title.toLowerCase() ) >= 0 ){
+				$(this).removeClass('active');
+				$('section, .funbar-block').toggleClass("move");
+				$('.tranglationBody').toggleClass("show");
+			}
+		};
+		beforeClassName = className;
+	});
 
-	$('.word_btn').click(function () {
-		$('section').toggleClass("move");
-		$('.tranglationBody').toggleClass("show");
-	})
 	$('.tranglationBody .close_btn').click(function () {
-		$('section').removeClass('move');
+		$('.funbar-btn').removeClass('active');
+		$('section, .funbar-block').removeClass('move');
 		$('.tranglationBody').removeClass("show");
 	})
 	
@@ -149,10 +173,13 @@ $(function () {
 	$('.article_mask').on('click', '.read_btn', function(){
 		$('.speed').addClass('show');
 		$('.speed-point').fadeIn();
-		player.pauseVideo();
-		$('#y-box').removeClass('action');
-		$('.y-small').fadeOut();
-		$('.y-start').fadeIn();
+		if( !$('#y-box').hasClass('is-first-start') ){
+			player.pauseVideo();
+			$('#y-box').removeClass('action');
+			$('.y-start').fadeIn();
+			$('.y-small').fadeOut();
+		};
+		$('.is-step3').removeClass('is-open');
 	})
 
 
@@ -263,14 +290,24 @@ $(function () {
 	$('body').on('click', '.memobox-del', function(e){
 		e.preventDefault();
 		$(this).parent().parent().remove();
-		console.log('delete');
-		
 	})
 
 	// ====================================
 	// == TOPBAR-STEP
 	// ====================================
-	$('.is-step3').click(function(){
-		$(this).toggleClass('is-open');
+	$('.open-btn').click(function(e){
+		$(this).parent().toggleClass('is-open');
+	});
+	setTimeout(function(){
+		$('.topbar-num.open-btn').click();
+	}, 800);
+	// $('.word_btn').click();
+	// =============================
+	// == CONTROL EN & CH
+	// =============================
+	$('.is-ench .controlbox-item').click(function(){
+		const $parent = $('.is-ench');
+		const $target = $('article').find('.Chinese')
+		$parent.toggleClass('active').hasClass('active') ? $target.show() : $target.hide();
 	});
 });

@@ -1,3 +1,5 @@
+$c-w: #4a4a4a
+$c-bg: #979797
 .funbar-block
 	position: fixed
 	z-index: 11
@@ -7,26 +9,120 @@
 	width: 100%
 	min-width: 1200px
 	text-align: center
-	height: 60px
+	height: 65px
+	transition: .6s
+	&.move
+		margin:
+			left: -25%
+		transition: .6s
 
 .funbar
 	border-radius: 32px 32px 0 0
-	padding: 15px 25px 13px
+	padding: 15px 20px 13px
 	display: flex
 	background:
 		color: rgba(247,71,105, .2)
-	height: 60px
+	height: 100%
 
 .funbar-item
 	display: flex
 	align-items: center
 	justify-content: center
-	position: relative
 	margin:
-		right: 25px
-	padding-right: 25px
+		right: 20px
+	padding:
+		right: 20px
 	border-right: solid 1px #aaa
 	&:last-child
 		border: none
 		padding: 0
 		margin: 0
+	&.is-item-group
+		border: none
+		padding:
+			right: 0
+		margin:
+			right: 0
+
+.funbar-btn
+	font:
+		size: 1.25rem
+		weight: bold
+	color: $c-w
+	&:focus,
+	&:hover
+		color: $c-w
+		text:
+			decoration: none
+.icon-bulb
+	margin:
+		top: -20px
+
+.funbar-vacabulary,
+.funbar-collection
+	display: flex
+	align-items: center
+	height: 100%
+	border-radius: 20px
+	padding: 0 15px
+	transition: .3s
+
+.funbar-vacabulary.active,
+.funbar-collection.active
+	background:
+		color: #fff
+	transition: .3s
+// -----------------------------------
+.controlbox
+	display: flex
+	align-items: center
+	justify-content: center
+	height: 40px
+	border:
+		radius: 20px
+	background:
+		color: $c-bg
+	position: relative
+	&:after
+		background:
+			color: #fff
+		content: ''
+		display: block
+		border-radius: 20px
+		height: 100%
+		width: 50%
+		position: absolute
+		transition: left .2s
+		left: 50%
+
+.active
+	.controlbox
+		&:after
+			left: 0
+			transition: left .2s
+	
+.controlbox-item
+	color: $c-w
+	font:
+		size: 1.25rem
+		weight: bold
+	font-style: normal
+	text-align: center
+	position: relative
+	z-index: 1
+	user-select: none
+	cursor: pointer
+	padding: 0 15px
+
+.is-ench
+	.controlbox-item
+		width: 93px
+
+@media screen and (max-width: 1440px)
+	.funbar-item
+		margin-right: 10px
+		padding-right: 10px
+	.controlbox-item,
+	.funbar-vacabulary,
+	.funbar-collection
+		padding: 0 10px

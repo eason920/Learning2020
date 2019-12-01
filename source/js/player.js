@@ -408,7 +408,8 @@ function bubble(){
       bubleStr=$(en).find("bubblelist:eq("+temp+")").attr("content"); 
       
 
-      bubleStr=bubleStr.replace(regEx,"<br>");	
+      bubleStr=bubleStr.replace(regEx,"<br>");
+      bubleStr=bubleStr.replace( /([\u4e00-\u9fa5][\u4e00-\u9fa5]*)/g, '<span class="buble-ch">$1</span>')
     
       if(bubleStr!=''){  
         $("#bubble"+temp).html(bubleStr);

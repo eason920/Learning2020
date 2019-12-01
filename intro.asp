@@ -93,13 +93,15 @@
 	<link href="css/bootstrap.min.css" rel='stylesheet' type='text/css' />
 	<link href="css/pc_a.css" rel='stylesheet' type='text/css' />
 	<link rel="stylesheet" href="css/step1.css">
+   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display&amp;display=swap">
+   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface&amp;display=swap">
+
 
 	<script src="js/jquery-1.11.1.min.js"></script>
 	<script type="text/javascript" src="../../../jquery/jquery-1.10.4.ui.min.js"></script>	
 	<script type="text/javascript" src="Dr.eye/Dre.js"></script>
 	<script src="../../library/js/lightBoxDIY-V2.js"></script>
 	<script src="../../js/Uinfo.js"></script>   		
-	<script src='./js/share.js'></script>
 	<script src='./js/player.js'></script>
 	<script src='./js/page.js'></script>
 	<script src='./js/main.js'></script>
@@ -109,7 +111,6 @@
 		var videoId = '<%=Youtube%>';
 	</script>		
 	<script src="js/pc.js" type="text/javascript"></script>	
-	<script src="./js/share.js"></script>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -197,7 +198,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	<script async defer crossorigin="anonymous" src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v4.0&appId=665673953932390&autoLogAppEvents=1"></script>
 	<input type="hidden" name="repeat" id="repeat" value="0" />
 	<!-- v HTML START v -->
-  <div class="topbar">
+     <div class="topbar">
       <div class="wrapper">
         <div class="wrapper-left"><a class="topbar-back-btn" href="#">
             <div class="icon-arrowleft"></div>學習驗收</a></div>
@@ -207,31 +208,37 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <li class="topbar-step-item active">
                 <div class="topbar-num">1</div>
                 <div class="topbar-text">認識本文</div>
+                <div class="icon-correct"></div>
               </li>
               <li class="topbar-step-item">
                 <div class="topbar-num">2</div>
                 <div class="topbar-text">加強記憶</div>
+                <div class="icon-correct"></div>
               </li>
               <li class="topbar-step-item is-step3">
-                <div class="topbar-num">3</div>
-                <div class="topbar-text">學習驗收</div>
-                <div class="icon-pink"></div>
+                <div class="topbar-num open-btn">3</div>
+                <div class="topbar-text open-btn">學習驗收</div>
+                <div class="icon-pink open-btn"></div>
                 <div class="topbar-scort-outer">
                   <ul class="topbar-scort">
                     <li class="topbar-scrot-item">
                       <div class="topbar-num">A</div>
                       <div class="topbar-text">理解力測驗</div>
+                      <div class="topbar-s">100<span>分</span></div>
                     </li>
                     <li class="topbar-scrot-item">
-                      <div class="topbar-num">B</div>
-                      <div class="topbar-text">聽力測驗　</div>
+                      <div class="topbar-num" style="margin-left: -22px">B</div>
+                      <div class="topbar-text">聽力測驗</div>
+                      <div class="topbar-s">89<span>分</span></div>
                     </li>
                     <li class="topbar-scrot-item">
                       <div class="topbar-num">C</div>
                       <div class="topbar-text">克漏字測驗</div>
+                      <div class="topbar-s">77<span>分</span></div>
                     </li>
                   </ul>
                 </div>
+                <div class="icon-correct"></div>
               </li>
             </ul>
             <div class="topbar-icon"><a class="topbar-icon-item" href="#">
@@ -247,11 +254,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="wrapper-right-f1">
           <div class="wrapper-right-f2">
             <ul class="funbar">
-              <li class="funbar-item"><b>中+EN</b><i>EN</i></li>
-              <li class="funbar-item control active" id="control-1" data-value="1"><b>老師講解</b><i>英文朗讀</i></li>
-              <li class="funbar-item"><a class="word_btn" href="#">單字片語</a></li>
-              <li class="funbar-item"><a class="funbar-word" href="#">單字收錄</a></li>
-              <li class="funbar-item"><a class="funbar-talk" href="#">操作說明</a>
+              <li class="funbar-item active is-ench">
+                <div class="controlbox"><b class="controlbox-item">中+EN</b><i class="controlbox-item">EN</i></div>
+              </li>
+              <li class="funbar-item active" id="control-1" data-value="1">
+                <div class="controlbox"><b class="controlbox-item">老師講解</b><i class="controlbox-item">英文朗讀</i></div>
+              </li>
+              <li class="funbar-item is-item-group"><a class="funbar-btn funbar-vacabulary" href="#">單字片語</a></li>
+              <li class="funbar-item"><a class="funbar-btn funbar-collection" href="#">單字收錄</a></li>
+              <li class="funbar-item"><a class="funbar-btn funbar-how" href="#">操作說明</a>
                 <div class="icon-bulb"></div>
               </li>
             </ul>
@@ -311,7 +322,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
           </aside>
           <article>
-            <div class="mask">
+            <div class="mask"><a class="icon-refresh" href="#"></a>
               <!-- 內文區塊-->
               <div class="article" style="display:none;">
 				  	<%
@@ -338,14 +349,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </section>
         <div class="tranglationBody">
           <input class="close_btn" type="button">
-          <div class="translation_Font">Vacabulary</div>
+          <div class="translation_Font"></div>
           <div class="translation_list">
           </div>
         </div>
       </div>
     </div>
     <script>const memberJSON = JSON.parse('{"memo":["msg 1"]}');</script>
-  
+
   
   <!-- ^ HTML END ^ -->
 </body>

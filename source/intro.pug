@@ -14,6 +14,8 @@ html(lang='zh')
 		link(href='css/bootstrap.min.css', rel='stylesheet', type='text/css')
 		link(href='css/pc_a.css', rel='stylesheet', type='text/css')
 		link(rel="stylesheet", href="css/step1.css")
+		link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Playfair+Display&display=swap')
+		link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Abril+Fatface&display=swap')
 		script(src='js/jquery-1.11.1.min.js')
 		script.
 			var videoId = 'h1I5JM16N0c';
@@ -32,24 +34,33 @@ html(lang='zh')
 							li.topbar-step-item.active
 								.topbar-num 1
 								.topbar-text 認識本文
+								.icon-correct
 							li.topbar-step-item
 								.topbar-num 2
 								.topbar-text 加強記憶
+								.icon-correct
 							li.topbar-step-item.is-step3
-								.topbar-num 3
-								.topbar-text 學習驗收
-								.icon-pink
+								.topbar-num.open-btn 3
+								.topbar-text.open-btn 學習驗收
+								.icon-pink.open-btn
 								.topbar-scort-outer
 									ul.topbar-scort
 										li.topbar-scrot-item
 											.topbar-num A
 											.topbar-text 理解力測驗
+											.topbar-s 100
+												span 分
 										li.topbar-scrot-item
-											.topbar-num B
-											.topbar-text 聽力測驗　
+											.topbar-num(style='margin-left: -22px') B
+											.topbar-text 聽力測驗
+											.topbar-s 89
+												span 分
 										li.topbar-scrot-item
 											.topbar-num C
 											.topbar-text 克漏字測驗
+											.topbar-s 77
+												span 分
+								.icon-correct
 						.topbar-icon
 							a.topbar-icon-item(href='#')
 								.icon-favorite
@@ -61,18 +72,20 @@ html(lang='zh')
 				.wrapper-right-f1
 					.wrapper-right-f2
 						ul.funbar
+							li.funbar-item.active.is-ench
+								.controlbox
+									b.controlbox-item 中+EN
+									i.controlbox-item EN
+							li.funbar-item#control-1.active(data-value='1')
+								.controlbox
+									b.controlbox-item 老師講解
+									i.controlbox-item 英文朗讀
+							li.funbar-item.is-item-group
+								a.funbar-btn.funbar-vacabulary(href='#') 單字片語
 							li.funbar-item
-								b 中+EN
-								i EN
-							li.funbar-item#control-1.control.active(data-value='1')
-								b 老師講解
-								i 英文朗讀
+								a.funbar-btn.funbar-collection(href='#') 單字收錄
 							li.funbar-item
-								a.word_btn(href='#') 單字片語
-							li.funbar-item
-								a.funbar-word(href='#') 單字收錄
-							li.funbar-item
-								a.funbar-talk(href='#') 操作說明
+								a.funbar-btn.funbar-how(href='#') 操作說明
 								.icon-bulb
 
 		.main
@@ -131,6 +144,7 @@ html(lang='zh')
 								.y-small
 					article
 						.mask
+							a.icon-refresh(href='#')
 							// 內文區塊
 							.article(style='display:none;')
 								if (status === 'dev')
@@ -145,7 +159,7 @@ html(lang='zh')
 									|>>l-2020
 				.tranglationBody
 					input.close_btn(type='button')
-					.translation_Font Vacabulary
+					.translation_Font
 					.translation_list
 						if (status === 'dev')
 							include partials/text_vacabulary
@@ -170,4 +184,22 @@ html(lang='zh')
 //- input(type='range')::-webkit-slider-thumb 編輯圓點 style
 //- pointer-events: none; 讓滑鼠可以點擊穿透偽元素，不然會點不到下面
 //- nua mac => /macintosh/i.test(nua)
+//- ################################################
+//- 正規表逹式：
+//-   1. // 中「()」表示群組起來規則內string，在 replace 時可給方法的後欄「慾改作區」以「$1」引用
+//-   2-1. // 中「[]」為設定一起頭字元(包含它)，開始向順向(右)取碼
+//-   2-2. // 「[]」中有「^」時，即取到該字元「之前」，即不包含該字
+//-   2-3 「*」為「[]」的形容詞，使取值方向成為「反序」 
+//-   2-4. 故 2-1~3 即生成以「第一組[]為起頭」至「第二組「[]」為結尾」為區間，取出 string 的功能
+//-   3. 特殊符號要在字元左方加反鈄線「\」
+//-   5. // 之後方的 g ，如同 jq 的 each 方法，作用於所有「有//正規式中規則(2-1~4)」的string 多次
+//- 冒泡 e.stopPropagation()
+//- rem 根劇 selector 下在 html
+//- $('here').find('here') => 兩 here 中有多個 selector，都用「逗號」分隔
+//- 承上，只有預先綁定中，多個 selector 用「空白」來分隔
 //- ##############################################
+//- str.toUpperCase()：將字符串str中的字符都轉換為大寫。
+//- str.toLowerCase()：將字符串str中的字符都轉換為小寫。
+//- ##############################################
+//- rem 確實是有幫助的，請延用，並在 padding & margin 上也使用
+//- 並在 line-height 保持用倍數
