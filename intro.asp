@@ -91,10 +91,9 @@
 	<title>FUNDAY數位英語學堂</title>
 
 	<link href="css/bootstrap.min.css" rel='stylesheet' type='text/css' />
-	<link href="css/pc_a.css" rel='stylesheet' type='text/css' />
 	<link rel="stylesheet" href="css/step1.css">
-   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display&amp;display=swap">
-   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface&amp;display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display&amp;display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface&amp;display=swap">
 
 
 	<script src="js/jquery-1.11.1.min.js"></script>

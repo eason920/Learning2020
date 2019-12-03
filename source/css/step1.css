@@ -35,6 +35,205 @@ input {
   -webkit-appearance: none;
 }
 
+#Dr_layer {
+  background-color: #fff1ef !important;
+  opacity: 0;
+}
+#Dr_layer.is-ready {
+  opacity: 1;
+  transition: opacity 0.5s 0.2s;
+}
+
+.video-cover {
+  padding-top: 56.2%;
+  position: relative;
+}
+
+#message iframe {
+  width: 100% !important;
+}
+
+.video-cover iframe {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+html, body {
+  font-family: "微軟正黑體", Arial;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  overflow-Y: hidden;
+  height: 100%;
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
+input:focus, button:focus {
+  outline: none;
+}
+
+::-webkit-input-placeholder, :-ms-input-placeholder {
+  color: #000;
+}
+
+::placeholder {
+  color: #999;
+}
+
+ul {
+  margin: 0px;
+  padding: 0px;
+  list-style-type: none;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #d8d8d8;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-button {
+  display: none;
+}
+
+::-webkit-scrollbar-corner {
+  background-color: black;
+}
+
+.article_mask {
+  width: 100%;
+  height: 100%;
+  max-width: 1770px;
+  margin-right: auto;
+  margin-left: auto;
+  overflow: hidden;
+  position: relative;
+  text-align: left;
+}
+
+@media screen and (max-width: 1770px) {
+  section article {
+    padding-right: 2%;
+  }
+}
+article .mask .ad {
+  width: 60%;
+  margin-top: 40px;
+  margin-bottom: 30px;
+}
+article .mask .ad img {
+  width: 100%;
+}
+article .mask #message {
+  padding: 20px 20px 0;
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-top-color: #979797;
+  display: block;
+}
+article .mask #message b {
+  color: #f74769;
+  font-size: 2rem;
+  margin-bottom: 15px;
+  display: block;
+}
+article .mask #message .message_box {
+  width: 100%;
+  height: 60px;
+  background-color: rgba(216, 216, 216, 0.2);
+  border-radius: 10px;
+  overflow: hidden;
+}
+article .mask #message input[type="text"] {
+  width: calc(100% - 100px);
+  height: 60px;
+  background-color: transparent;
+  border-top-style: none;
+  border-right-style: none;
+  border-bottom-style: none;
+  border-left-style: none;
+  padding: 5px 20px;
+}
+article .mask #message input[type="submit"] {
+  width: 100px;
+  height: 60px;
+  color: #FFF;
+  background-color: #f74769;
+  border-radius: 0 10px 10px 0;
+  border: none;
+}
+article .mask #message ul {
+  margin-top: 20px;
+}
+article .mask #message ul li {
+  display: table;
+  border-bottom: 1px solid #d8d8d8;
+  width: 100%;
+  padding-top: 10px;
+  padding-right: 0;
+  padding-bottom: 10px;
+  padding-left: 0;
+}
+article .mask #message ul li .user-photo {
+  display: table-cell;
+  height: 50px;
+  width: 50px;
+  overflow: hidden;
+  border-radius: 50%;
+  float: left;
+}
+article .mask #message ul li .user-photo img {
+  width: 100%;
+}
+article .mask #message ul li .user-box {
+  font-size: 1.5rem;
+  display: table-cell;
+  width: calc(100% - 50px);
+  float: left;
+  padding-top: 5px;
+  padding-right: 20px;
+  padding-bottom: 5px;
+  padding-left: 20px;
+}
+article .mask #message ul li .user-box .user-info {
+  display: block;
+  margin-bottom: 10px;
+  margin-top: 8px;
+}
+article .mask #message ul li .user-box .user-info .name {
+  display: inline-block;
+  margin-right: 20px;
+}
+article .mask #message ul li .user-box .user-info .time {
+  font-size: 1.4rem;
+  display: inline-block;
+  color: #9b9b9b;
+}
+article .mask #message ul li .user-box .user-message {
+  display: block;
+}
+article .mask #message .showall {
+  display: inline-block;
+  float: right;
+  margin-top: 10px;
+  color: #000;
+  text-decoration: underline;
+  margin-bottom: 10px;
+}
+
 html {
   font-size: 16px;
 }
@@ -585,6 +784,11 @@ aside .sub {
     opacity: 1;
   }
 }
+@media screen and (max-width: 1440px) {
+  .speed-left:before {
+    top: 9px;
+  }
+}
 input[type=range] {
   transform: rotate(180deg);
   position: relative;
@@ -831,7 +1035,7 @@ article .mask {
 
 .icon-refresh {
   position: absolute;
-  top: 0;
+  top: 8px;
   right: 3%;
   transition: 0.3s;
 }
