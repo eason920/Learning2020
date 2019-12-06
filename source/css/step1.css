@@ -489,7 +489,6 @@ section.move {
   width: 34%;
   position: relative;
   user-select: none;
-  cursor: pointer;
 }
 .topbar-step-item .icon-pink {
   margin-left: 8px;
@@ -498,6 +497,10 @@ section.move {
 }
 .topbar-step-item .icon-correct {
   margin-left: 5px;
+}
+
+.is-step3 {
+  cursor: pointer;
 }
 
 .topbar-num {
@@ -549,8 +552,11 @@ section.move {
   background-color: #fff;
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
 }
+.topbar-scort .icon-correct {
+  margin-left: 15px;
+}
 
-.topbar-scrot-item, .topbar-scrot-item:hover, .topbar-scrot-item:hover .topbar-text, .topbar-scrot-item .topbar-num, .topbar-scrot-item .topbar-text, .memobox:hover .memobox-text, .memobox:hover .memobox-box:before, .memobox:hover .memobox-box:after, .memobox-text, .memobox-box:before, .memobox-box:after {
+.topbar-scrot-item, .topbar-scrot-item:hover, .topbar-scrot-item .topbar-num, .topbar-scrot-item .topbar-text, .memobox:hover .memobox-text, .memobox:hover .memobox-box:before, .memobox:hover .memobox-box:after, .memobox-text, .memobox-box:before, .memobox-box:after {
   transition: 0.3s;
 }
 
@@ -562,14 +568,11 @@ section.move {
   position: relative;
 }
 .topbar-scrot-item:hover {
-  background-color: #ff859c;
+  background-color: #d8d8d8;
 }
 .topbar-scrot-item:hover .topbar-num {
   background-color: #fff;
   color: #f74769;
-}
-.topbar-scrot-item:hover .topbar-text {
-  color: #fff;
 }
 .topbar-scrot-item:after {
   content: "";
@@ -593,16 +596,17 @@ section.move {
 }
 .topbar-scrot-item .topbar-text {
   font-size: 1rem;
+  color: #4a4a4a;
 }
 
 .topbar-s {
   margin-left: 8px;
-  font-size: 0.9375rem;
+  font-size: 1.125rem;
+  font-weight: bold;
   color: #aa0102;
-  border-bottom: solid 1px #d8d8d8;
 }
 .topbar-s span {
-  font-size: 0.75rem;
+  font-size: 1rem;
 }
 
 .topbar-icon {
@@ -790,7 +794,6 @@ aside .sub {
   }
 }
 input[type=range] {
-  transform: rotate(180deg);
   position: relative;
   -webkit-appearance: none;
   width: 90px;
@@ -1279,14 +1282,14 @@ span.is-height-light {
     padding: 0 10px;
   }
 }
-.topbar-scrot-item, .topbar-scrot-item:hover, .topbar-scrot-item:hover .topbar-text, .topbar-scrot-item .topbar-num, .topbar-scrot-item .topbar-text, .memobox:hover .memobox-text, .memobox:hover .memobox-box:before, .memobox:hover .memobox-box:after, .memobox-text, .memobox-box:before, .memobox-box:after {
+.topbar-scrot-item, .topbar-scrot-item:hover, .topbar-scrot-item .topbar-num, .topbar-scrot-item .topbar-text, .memobox:hover .memobox-text, .memobox:hover .memobox-box:before, .memobox:hover .memobox-box:after, .memobox-text, .memobox-box:before, .memobox-box:after {
   transition: 0.3s;
 }
 
 .memobox {
   font-size: 0;
-  width: 200px;
-  height: 200px;
+  width: 180px;
+  height: 160px;
   position: absolute;
   box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, 0.1);
   border-radius: 0 0 50px 0;
@@ -1310,7 +1313,7 @@ span.is-height-light {
 .memobox-text {
   width: 100%;
   padding: 8px;
-  height: calc( 200px - 10px - 30px );
+  height: calc( 160px - 10px - 30px );
   padding: 10px;
   border: none;
   background: rgba(255, 250, 161, 0.85);

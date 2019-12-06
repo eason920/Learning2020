@@ -63,7 +63,6 @@ $h-nav: 76px
 		width: 34%
 		position: relative
 		user-select: none
-		cursor: pointer
 	.icon-pink
 		margin:
 			left: 8px
@@ -72,6 +71,8 @@ $h-nav: 76px
 	.icon-correct
 		margin-left: 5px
 
+.is-step3
+	cursor: pointer
 .topbar-num
 	text-align: center
 	background:
@@ -124,6 +125,8 @@ $h-nav: 76px
 	background:
 		color: #fff
 	box-shadow: 0 0 12px rgba(0,0,0,.3)
+	.icon-correct
+		margin-left: 15px
 
 %transition
 	transition: .3s
@@ -138,16 +141,14 @@ $h-nav: 76px
 		// left: 25%
 	&:hover
 		background:
-			color: #ff859c
+			color: #d8d8d8
 		@extend %transition
 		.topbar-num
 			background:
 				color: #fff
 			color: #f74769
 		@extend %transition
-		.topbar-text
-			color: #fff
-			@extend %transition
+
 	&:after
 		content: ''
 		display: block
@@ -172,17 +173,18 @@ $h-nav: 76px
 	.topbar-text
 		font:
 			size: 1rem
+		color: #4a4a4a
 		@extend %transition
 .topbar-s
 	margin:
 		left: 8px
 	font:
-		size: .9375rem
+		size: 1.125rem
+		weight: bold
 	color: #aa0102
-	border-bottom: solid 1px #d8d8d8
 	span
 		font:
-			size: .75rem
+			size: 1rem
 
 // -----------------------------------
 .topbar-icon

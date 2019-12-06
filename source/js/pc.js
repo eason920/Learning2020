@@ -193,7 +193,7 @@ $(function () {
 	// console.log(memberJSON.memo.length);
 
 	const addMemo = function(msg, top, left){
-		$('body').append(
+		$('article .mask').append(
 			$('<div>', {class: 'memobox'}).css({top, left}).append(
 				$('<div>', {class: 'memobox-bar'}),
 				$('<textarea>', {class: 'memobox-text', placeholder: '在此輸入您的筆記'}).html(msg),
@@ -217,7 +217,7 @@ $(function () {
 		const num = $('.memobox').length;
 		const left = defOffset + num * 30;
 		const top = left;
-		if(num <= 4){
+		if(num <= 14){
 			addMemo('', top, left);
 		}else{
 			console.log('is max');
@@ -228,7 +228,7 @@ $(function () {
 	// -- move
 	// ------------------------------------
 	let zIndex = 15;
-	$('body').on('mousedown', '.memobox-bar, .memobox-box', function (e) {
+	$('article .mask').on('mousedown', '.memobox-bar, .memobox-box', function (e) {
 		// e.preventDefault();
 		let $selector = null;
 		let x, y;
@@ -301,6 +301,18 @@ $(function () {
 	setTimeout(function(){
 		$('.topbar-num.open-btn').click();
 	}, 800);
+	const closeScort = function(){
+		if( $('.is-step3').hasClass('is-open') ){
+			$('.is-step3').removeClass('is-open')
+		}		
+	}
+	let sid = setTimeout(closeScort, 2800);
+	$('.is-step3').hover(function(){
+		clearTimeout(sid);
+	}, function(){
+		// console.log('got');
+		sid = setTimeout(closeScort, 2800);
+	});
 	// $('.word_btn').click();
 	// =============================
 	// == CONTROL EN & CH
