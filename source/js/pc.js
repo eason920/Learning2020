@@ -71,6 +71,12 @@ $(function () {
 		$(this).fadeOut();
 		$('.y-start').fadeIn();
 	});
+
+	$('.y-start').hover(function(){
+		$(this).attr('src', 'images/y_start_over.png');
+	}, function(){
+		$(this).attr('src', 'images/y_start.png');
+	});
 	// youtube end
 
 	// 講解 <--> 朗讀
@@ -184,7 +190,7 @@ $(function () {
 
 
 	// =============================
-	// == FLOAT LAB
+	// == MEMO BOX
 	// =============================
 	// ------------------------------------
 	// -- add
@@ -206,13 +212,14 @@ $(function () {
 	};
 
 	const defOffset = 76;
-	if(memberJSON.memo.length > 0){
-		let i=0;
-		for(a in memberJSON.memo ){
-			addMemo(memberJSON.memo[a], defOffset + i*30, defOffset + i*30);
-			i++;
-		};
-	};
+	console.log(memoboxJSON != null);
+	
+	// if(memberJSON.length > 0){
+	// 	for(a in memberJSON.memo ){
+	// 		addMemo(memberJSON.memo[a], , );
+	// 		i++;
+	// 	};
+	// };
 	$('.add-label').click(function(){
 		const num = $('.memobox').length;
 		const left = defOffset + num * 30;
@@ -227,56 +234,85 @@ $(function () {
 	// ------------------------------------
 	// -- move
 	// ------------------------------------
+	let $artTarget;
+	let maxY;
+
 	let zIndex = 15;
-	$('article .mask').on('mousedown', '.memobox-bar, .memobox-box', function (e) {
-		// e.preventDefault();
+	$('article .mask').on('mousedown', '.memobox-bar, .memobox-box', function(e){
 		let $selector = null;
 		let x, y;
 		const $this = $(this);
 		const $doc = $(document);
+		const $mask = $('article .mask');
+		const $side = $('aside');
+		const $art = $('article');
 		const dw = $doc.width();
-		const dh = $doc.height();
 
 		$selector = $this.parents('.memobox');
-
 		$selector.addClass('moving').css({ 'zIndex': zIndex++ });
-
+		
+		// offset init
 		const offsets = $selector.offset();
-		x = offsets.left - e.pageX;
-		y = offsets.top - e.pageY;
+		
+		// for x
+		const distanceXOuter = ( $('.main').width() - $('.article_mask').width() ) / 2;
+		const distanceXCounter = Math.floor( $side.innerWidth() + $art.innerWidth() - $art.width() );
+		const distanceX = dw > 1770? distanceXCounter : distanceXCounter - 25;// 25 = $art.padding-right when max-width = 1770
+		x = offsets.left - e.pageX - distanceXOuter - distanceX;
+		// for x max
+		const maxX = Math.floor( $mask.width() - $selector.width() );
 
-		const soft = 5;
-		const maxL = dw - $selector.width() - soft;
-		const maxT = dh - $selector.height() - soft;
+		// for y
+		const distanceY =  100;// $art.padding-top
+		const distanceScrolltop = $mask.scrollTop();
+		y = offsets.top - e.pageY - distanceY + distanceScrolltop;
+		// for y max
+		$('.article').is(':visible')? $artTarget = $('.article') : $artTarget = $('.article2');
+		maxY = $artTarget.height() - $selector.height();
+		
+		// moving
 		$doc.on('mousemove.event', function (e) {
 			$('body').css({'userSelect': 'none'});
 			let tx = x + e.pageX,
-				ty = y + e.pageY,
-				dw = $doc.width();
-			if (tx >= maxL) {
-				tx = maxL;
-			} else if (tx <= soft) {
-				tx = soft;
+				ty = y + e.pageY;
+			if (tx >= maxX) {
+				tx = maxX;
+			} else if (tx <= 0) {
+				tx = 0;
 			}
-			if (ty >= maxT) {
-				ty = maxT;
-			} else if (ty <= soft) {
-				ty = soft;
+			if (ty >= maxY) {
+				ty = maxY;
+			} else if (ty <= 0) {
+				ty = 0;
 			}
-			$selector.css({
-				left: tx,
-				top: ty
-			});
+			$selector.css({left: tx, top: ty});
 		}).on('mouseup.event', function () {
 			if ($selector != null) {
 				$doc.off('.event');
 				$selector.removeClass('moving');
-				$selector = null;
 				$('body').removeAttr('style');
+				$selector = null;
 			};
 		});
 	});
 
+	// ------------------------------------
+	// -- switch
+	// ------------------------------------
+	$('.controlbox-item').click(function(){
+		$('.article').is(':visible')? $artTarget = $('.article') : $artTarget = $('.article2');
+		maxY = $artTarget.height() - $('.memobox').height();
+		console.log('=============================');
+		console.log( $('.memobox').height() );
+		console.log(maxY);
+		
+		$('.memobox').each(function(){
+			if( $(this).offset().top > maxY ){
+				$('.memobox').css({top: maxY})
+			};
+		});
+	});
+	
 	// ------------------------------------
 	// -- level
 	// ------------------------------------
@@ -311,7 +347,11 @@ $(function () {
 		clearTimeout(sid);
 	}, function(){
 		// console.log('got');
-		sid = setTimeout(closeScort, 2800);
+		sid = setTimeout(closeScort, 1500);
+	});
+
+	$('.topbar-scort-item').mouseout(function(){
+		// closeScort();
 	});
 	// $('.word_btn').click();
 	// =============================

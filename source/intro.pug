@@ -12,7 +12,7 @@ html(lang='zh')
 		link(rel='icon', href='./images/favicon.ico', type='image/ico')
 		title FUNDAY教學中心
 		link(href='css/bootstrap.min.css', rel='stylesheet', type='text/css')
-		link(href='css/pc_a.css', rel='stylesheet', type='text/css')
+		//- link(href='css/pc_a.css', rel='stylesheet', type='text/css')
 		link(rel="stylesheet", href="css/step1.css")
 		link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Playfair+Display&display=swap')
 		link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Abril+Fatface&display=swap')
@@ -27,7 +27,7 @@ html(lang='zh')
 				.wrapper-left
 					a.topbar-back-btn(href='#')
 						.icon-arrowleft
-						|學習驗收
+						|返回
 				.wrapper-right-f1
 					.wrapper-right-f2
 						ul.topbar-step
@@ -168,7 +168,19 @@ html(lang='zh')
 							include partials/text_vacabulary
 						else
 		script. 
-			const memberJSON = JSON.parse('{"memo":["msg 1"]}');
+			//- const memberJSON = JSON.parse('here');
+			const memoboxJSON = {
+				"memo1": {
+					"text": "msg 1",
+					"left": "0",
+					"top": "2200"
+				},
+				"memo2": {
+					"text": "msg 2",
+					"left": "300",
+					"top": "50"
+				}
+			};
 		//--.memobox
 			.memobox-bar title
 			textarea.memobox-text(placeholder='在此輸入您的筆記')
