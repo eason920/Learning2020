@@ -107,9 +107,12 @@
 	<script src='../../../../Funfa/Fa.js'></script>
 	<script>
 		var tamplate='<%=tamplate%>';
-		var videoId = '<%=Youtube%>';
+    var videoId = '<%=Youtube%>';
+    let memoJSON = JSON.parse('[{"id":"memo1","text":"msg 1","top":"2200","left":"0"},{"id":"memo2","text":"msg 2","top":"500","left":"300"}]');
+
 	</script>		
-	<script src="js/pc.js" type="text/javascript"></script>	
+	<script src="js/pc.js" type="text/javascript"></script>
+  <script src="js/memobox.js"></script>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -197,10 +200,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	<script async defer crossorigin="anonymous" src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v4.0&appId=665673953932390&autoLogAppEvents=1"></script>
 	<input type="hidden" name="repeat" id="repeat" value="0" />
 	<!-- v HTML START v -->
-     <div class="topbar">
+      <div class="topbar">
       <div class="wrapper">
         <div class="wrapper-left"><a class="topbar-back-btn" href="#">
-            <div class="icon-arrowleft"></div>學習驗收</a></div>
+            <div class="icon-arrowleft"></div>返回</a></div>
         <div class="wrapper-right-f1">
           <div class="wrapper-right-f2">
             <ul class="topbar-step">
@@ -221,19 +224,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <div class="topbar-scort-outer">
                   <ul class="topbar-scort">
                     <li class="topbar-scrot-item">
-                      <div class="topbar-num">A</div>
                       <div class="topbar-text">理解力測驗</div>
                       <div class="topbar-s">100<span>分</span></div>
+                      <div class="icon-correct"></div>
                     </li>
                     <li class="topbar-scrot-item">
-                      <div class="topbar-num" style="margin-left: -22px">B</div>
                       <div class="topbar-text">聽力測驗</div>
                       <div class="topbar-s">89<span>分</span></div>
+                      <div class="icon-correct"></div>
                     </li>
                     <li class="topbar-scrot-item">
-                      <div class="topbar-num">C</div>
                       <div class="topbar-text">克漏字測驗</div>
                       <div class="topbar-s">77<span>分</span></div>
+                      <div class="icon-correct"></div>
                     </li>
                   </ul>
                 </div>
@@ -259,11 +262,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <li class="funbar-item active" id="control-1" data-value="1">
                 <div class="controlbox"><b class="controlbox-item">老師講解</b><i class="controlbox-item">英文朗讀</i></div>
               </li>
-              <li class="funbar-item is-item-group"><a class="funbar-btn funbar-vacabulary" href="#">單字片語</a></li>
+              <li class="funbar-item is-item-memo"><a class="funbar-btn funbar-memobox active" href="#">便利貼</a></li>
+              <li class="funbar-item is-item-group"><a class="funbar-btn funbar-phrase" href="#">單字片語</a></li>
               <li class="funbar-item"><a class="funbar-btn funbar-collection" href="#">單字收錄</a></li>
-              <li class="funbar-item"><a class="funbar-btn funbar-how" href="#">操作說明</a>
-                <div class="icon-bulb"></div>
-              </li>
             </ul>
           </div>
         </div>
@@ -285,12 +286,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <div class="aside-above-sub-ch">強風將濃煙帶到城市，使天空變黑。</div>
                 <div class="aside-speedbox">
                   <div class="speed-point"></div>
-                  <div class="speed"><b class="speed-left">快</b>
-                    <input id="Speed_range" type="range" min="0.5" max="1.5" value="1" step="0.25"><b>慢</b>
+                  <div class="speed"><b class="speed-left">慢</b>
+                    <input id="Speed_range" type="range" min="0.5" max="1.5" value="1" step="0.25"><b>快</b>
                   </div>
                   <input class="play_btn" type="button">
                 </div>
-                <div class="add-label">+</div>
               </div>
             </div>
             <div class="aside-below">
@@ -324,24 +324,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div class="mask"><a class="icon-refresh" href="#"></a>
               <!-- 內文區塊-->
               <div class="article" style="display:none;">
-				  	<%
-					  i=0
-					  For each node in nodes
-						  Response.Write  "<div class='english'>" & replace(node.getAttribute("content"),"**","")& "<input type='button' class='read_btn'></div>" & vbCrLf
-						  Response.Write  "<div class='Chinese'>" & replace(nodes2(i).getAttribute("content"),"**","")& "</div><p></p>" & vbCrLf
-						  i=i+1
-					  Next
-					  %>
+                <%
+                i=0
+                For each node in nodes
+                  Response.Write  "<div class='english'>" & replace(node.getAttribute("content"),"**","")& "<input type='button' class='read_btn'></div>" & vbCrLf
+                  Response.Write  "<div class='Chinese'>" & replace(nodes2(i).getAttribute("content"),"**","")& "</div><p></p>" & vbCrLf
+                  i=i+1
+                Next
+                %>
               </div>
               <div class="article2">
-				  	<%
-					  i=0
-					  For each node in nodes
-						  Response.Write  "<div class='english'>" & replace(node.getAttribute("content"),"**","")& "<input type='button' class='read_btn'></div>" & vbCrLf
-						  Response.Write  "<div class='Chinese'>" & replace(nodes2(i).getAttribute("content"),"**","")& "</div><p></p>" & vbCrLf
-						  i=i+1
-					  Next
-					  %>
+                <%
+                i=0
+                For each node in nodes
+                  Response.Write  "<div class='english'>" & replace(node.getAttribute("content"),"**","")& "<input type='button' class='read_btn'></div>" & vbCrLf
+                  Response.Write  "<div class='Chinese'>" & replace(nodes2(i).getAttribute("content"),"**","")& "</div><p></p>" & vbCrLf
+                  i=i+1
+                Next
+                %>
               </div>
             </div>
           </article>
@@ -351,11 +351,266 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="translation_Font"></div>
           <div class="translation_list">
           </div>
+          <div class="translation_list2">
+            <!-- 兩個展開-->
+            <div class="colbox">
+              <div class="colbox-item">
+                <div class="colbox-prefix"><span>L</span></div>
+                <div class="colbox-textbox">
+                  <div class="colbox-text">transparent</div><a class="colbox-del" href="#">x</a>
+                </div>
+                <div class="colbox-memobox">
+                  <div class="colbox-memo"></div>
+                  <div class="colbox-iptbox">
+                    <div class="colbox-placeholder">輸入中文解釋</div>
+                    <input class="colbox-input" type="text">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- 有寫筆記時-->
+            <div class="colbox">
+              <div class="colbox-item">
+                <div class="colbox-prefix"><span>L</span></div>
+                <div class="colbox-textbox"></div>
+                <div class="colbox-memobox">
+                  <div class="colbox-memo"></div>
+                  <div class="colbox-iptbox">
+                    <div class="colbox-placeholder">輸入中文解釋</div>
+                    <input class="colbox-input" type="text">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- 沒寫筆記時-->
+            <div class="colbox">
+              <div class="colbox-item">
+                <div class="colbox-prefix"><span>L</span></div>
+                <div class="colbox-textbox">
+                  <div class="colbox-text">transparent</div><a class="colbox-del" href="#">x</a>
+                </div>
+                <div class="colbox-memobox"></div>
+              </div>
+            </div>
+            <!-- 沒大圓標時-->
+            <div class="colbox">
+              <div class="colbox-item">
+                <div class="colbox-prefix"></div>
+                <div class="colbox-textbox">
+                  <div class="colbox-text">transparent</div><a class="colbox-del" href="#">x</a>
+                </div>
+                <div class="colbox-memobox"></div>
+              </div>
+            </div>
+            <!-- repeat v-->
+            <!-- 兩個展開-->
+            <div class="colbox">
+              <div class="colbox-item">
+                <div class="colbox-prefix"><span>L</span></div>
+                <div class="colbox-textbox">
+                  <div class="colbox-text">transparent</div><a class="colbox-del" href="#">x</a>
+                </div>
+                <div class="colbox-memobox">
+                  <div class="colbox-memo"></div>
+                  <div class="colbox-iptbox">
+                    <div class="colbox-placeholder">輸入中文解釋</div>
+                    <input class="colbox-input" type="text">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- 有寫筆記時-->
+            <div class="colbox">
+              <div class="colbox-item">
+                <div class="colbox-prefix"><span>L</span></div>
+                <div class="colbox-textbox"></div>
+                <div class="colbox-memobox">
+                  <div class="colbox-memo"></div>
+                  <div class="colbox-iptbox">
+                    <div class="colbox-placeholder">輸入中文解釋</div>
+                    <input class="colbox-input" type="text">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- 沒寫筆記時-->
+            <div class="colbox">
+              <div class="colbox-item">
+                <div class="colbox-prefix"><span>L</span></div>
+                <div class="colbox-textbox">
+                  <div class="colbox-text">transparent</div><a class="colbox-del" href="#">x</a>
+                </div>
+                <div class="colbox-memobox"></div>
+              </div>
+            </div>
+            <!-- 沒大圓標時-->
+            <div class="colbox">
+              <div class="colbox-item">
+                <div class="colbox-prefix"></div>
+                <div class="colbox-textbox">
+                  <div class="colbox-text">transparent</div><a class="colbox-del" href="#">x</a>
+                </div>
+                <div class="colbox-memobox"></div>
+              </div>
+            </div>
+            <!-- repeat v-->
+            <!-- 兩個展開-->
+            <div class="colbox">
+              <div class="colbox-item">
+                <div class="colbox-prefix"><span>L</span></div>
+                <div class="colbox-textbox">
+                  <div class="colbox-text">transparent</div><a class="colbox-del" href="#">x</a>
+                </div>
+                <div class="colbox-memobox">
+                  <div class="colbox-memo"></div>
+                  <div class="colbox-iptbox">
+                    <div class="colbox-placeholder">輸入中文解釋</div>
+                    <input class="colbox-input" type="text">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- 有寫筆記時-->
+            <div class="colbox">
+              <div class="colbox-item">
+                <div class="colbox-prefix"><span>L</span></div>
+                <div class="colbox-textbox"></div>
+                <div class="colbox-memobox">
+                  <div class="colbox-memo"></div>
+                  <div class="colbox-iptbox">
+                    <div class="colbox-placeholder">輸入中文解釋</div>
+                    <input class="colbox-input" type="text">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- 沒寫筆記時-->
+            <div class="colbox">
+              <div class="colbox-item">
+                <div class="colbox-prefix"><span>L</span></div>
+                <div class="colbox-textbox">
+                  <div class="colbox-text">transparent</div><a class="colbox-del" href="#">x</a>
+                </div>
+                <div class="colbox-memobox"></div>
+              </div>
+            </div>
+            <!-- 沒大圓標時-->
+            <div class="colbox">
+              <div class="colbox-item">
+                <div class="colbox-prefix"></div>
+                <div class="colbox-textbox">
+                  <div class="colbox-text">transparent</div><a class="colbox-del" href="#">x</a>
+                </div>
+                <div class="colbox-memobox"></div>
+              </div>
+            </div>
+            <!-- repeat v-->
+            <!-- 兩個展開-->
+            <div class="colbox">
+              <div class="colbox-item">
+                <div class="colbox-prefix"><span>L</span></div>
+                <div class="colbox-textbox">
+                  <div class="colbox-text">transparent</div><a class="colbox-del" href="#">x</a>
+                </div>
+                <div class="colbox-memobox">
+                  <div class="colbox-memo"></div>
+                  <div class="colbox-iptbox">
+                    <div class="colbox-placeholder">輸入中文解釋</div>
+                    <input class="colbox-input" type="text">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- 有寫筆記時-->
+            <div class="colbox">
+              <div class="colbox-item">
+                <div class="colbox-prefix"><span>L</span></div>
+                <div class="colbox-textbox"></div>
+                <div class="colbox-memobox">
+                  <div class="colbox-memo"></div>
+                  <div class="colbox-iptbox">
+                    <div class="colbox-placeholder">輸入中文解釋</div>
+                    <input class="colbox-input" type="text">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- 沒寫筆記時-->
+            <div class="colbox">
+              <div class="colbox-item">
+                <div class="colbox-prefix"><span>L</span></div>
+                <div class="colbox-textbox">
+                  <div class="colbox-text">transparent</div><a class="colbox-del" href="#">x</a>
+                </div>
+                <div class="colbox-memobox"></div>
+              </div>
+            </div>
+            <!-- 沒大圓標時-->
+            <div class="colbox">
+              <div class="colbox-item">
+                <div class="colbox-prefix"></div>
+                <div class="colbox-textbox">
+                  <div class="colbox-text">transparent</div><a class="colbox-del" href="#">x</a>
+                </div>
+                <div class="colbox-memobox"></div>
+              </div>
+            </div>
+            <!-- repeat v-->
+            <!-- 兩個展開-->
+            <div class="colbox">
+              <div class="colbox-item">
+                <div class="colbox-prefix"><span>L</span></div>
+                <div class="colbox-textbox">
+                  <div class="colbox-text">transparent</div><a class="colbox-del" href="#">x</a>
+                </div>
+                <div class="colbox-memobox">
+                  <div class="colbox-memo"></div>
+                  <div class="colbox-iptbox">
+                    <div class="colbox-placeholder">輸入中文解釋</div>
+                    <input class="colbox-input" type="text">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- 有寫筆記時-->
+            <div class="colbox">
+              <div class="colbox-item">
+                <div class="colbox-prefix"><span>L</span></div>
+                <div class="colbox-textbox"></div>
+                <div class="colbox-memobox">
+                  <div class="colbox-memo"></div>
+                  <div class="colbox-iptbox">
+                    <div class="colbox-placeholder">輸入中文解釋</div>
+                    <input class="colbox-input" type="text">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- 沒寫筆記時-->
+            <div class="colbox">
+              <div class="colbox-item">
+                <div class="colbox-prefix"><span>L</span></div>
+                <div class="colbox-textbox">
+                  <div class="colbox-text">transparent</div><a class="colbox-del" href="#">x</a>
+                </div>
+                <div class="colbox-memobox"></div>
+              </div>
+            </div>
+            <!-- 沒大圓標時-->
+            <div class="colbox">
+              <div class="colbox-item">
+                <div class="colbox-prefix"></div>
+                <div class="colbox-textbox">
+                  <div class="colbox-text">transparent</div><a class="colbox-del" href="#">x</a>
+                </div>
+                <div class="colbox-memobox"></div>
+              </div>
+            </div>
+            <!-- repeat v-->
+          </div>
         </div>
       </div>
-    </div>
-    <script>const memberJSON = JSON.parse('{"memo":["msg 1"]}');</script>
-
+    </div><a class="icon-how" href="#"></a>
   
   <!-- ^ HTML END ^ -->
 </body>

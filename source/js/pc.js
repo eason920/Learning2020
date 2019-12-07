@@ -128,23 +128,34 @@ $(function () {
 	});
 
 	let beforeClassName='';
-	$('.funbar-vacabulary, .funbar-collection').click(function (e) {
+	$('.funbar-phrase, .funbar-collection').click(function (e) {
 		e.preventDefault;
 		// init class name
 		const className = $(this).attr('class');
 		// title text
 		let title;
-		/vacabulary/i.test(className)?title='Vacabulary':title='Collection';
+		let canIclose;
+		if(/phrase/i.test(className)){
+			title='Phrase'
+			canIclose = 'phrase';
+			$('.translation_list').show();
+			$('.translation_list2').hide();
+		}else{
+			title='單字收錄';
+			canIclose = 'collection';
+			$('.translation_list').hide();
+			$('.translation_list2').show();
+		}
 		$('.translation_Font').text(title);
 		// on vision
-		$('.funbar-btn').removeClass('active');
+		$('.funbar-phrase, .funbar-collection').removeClass('active');
 		$(this).addClass('active');
 		if( !$('section').hasClass('move') ){
 			$('section, .funbar-block').addClass("move");
 			$('.tranglationBody').addClass("show");
 			$('.is-step3').removeClass('is-open');
 		}else{
-			if( beforeClassName.indexOf( title.toLowerCase() ) >= 0 ){
+			if( beforeClassName.indexOf( canIclose ) >= 0 ){
 				$(this).removeClass('active');
 				$('section, .funbar-block').toggleClass("move");
 				$('.tranglationBody').toggleClass("show");
@@ -153,14 +164,25 @@ $(function () {
 		beforeClassName = className;
 	});
 
+	// for coding
+	// $('.funbar-collection').click();
+	// $('.topbar-scort-outer').hide();
+
 	$('.tranglationBody .close_btn').click(function () {
 		$('.funbar-btn').removeClass('active');
 		$('section, .funbar-block').removeClass('move');
 		$('.tranglationBody').removeClass("show");
 	})
 	
+	// ------------------------------------
+	$('.colbox-placeholder').click(function(){
+		$(this).hide();
+		$(this).siblings('.colbox-input').show().focus();
+	});
 	
-	
+	// ====================================
+	// == ARTICLE SORT CIRCLE
+	// ====================================
 	$('#class_f').hover(function () {
 		const $cfc = $('.classification');
 		let cfcIndex = $cfc.find('.activity').index();
@@ -188,160 +210,6 @@ $(function () {
 		$('.is-step3').removeClass('is-open');
 	})
 
-
-	// =============================
-	// == MEMO BOX
-	// =============================
-	// ------------------------------------
-	// -- add
-	// ------------------------------------
-	// console.log(memberJSON);
-	// console.log(memberJSON.memo.length);
-
-	const addMemo = function(name, text, top, left){
-		console.log('active', top, left)
-		$('article .mask').append(
-			$('<div>', {class: 'memobox ', id: name, style: 'left: ' + left +'px; top: ' + top + 'px'}).css({top}).append(
-				$('<div>', {class: 'memobox-bar'}),
-				$('<textarea>', {class: 'memobox-text', placeholder: '在此輸入您的筆記'}).html(text),
-				$('<div>', {class: 'memobox-box'}).append(
-					$('<input>', {class: 'memobox-del', type: 'button', value: '刪除筆記'}),
-					$('<input>', {class: 'memobox-save', type: 'submit', value: '儲存'})
-				)
-			)
-		);	
-	};
-
-	console.log(memoJSON.length);
-	
-	if(memoJSON.length > 0){
-		console.log('got')
-		for(a in memoJSON ){
-			const data = memoJSON[a];
-			console.log(data.name, data.text, data.top, data.left )
-			addMemo(data.name, data.text, data.top, data.left );
-		};
-	};
-	$('.add-label').click(function(){
-		const num = $('.memobox').length;
-		const left = defOffset + num * 30;
-		const top = left;
-		if(num <= 14){
-			addMemo('', top, left);
-		}else{
-			console.log('is max');
-		}
-	});
-
-	// ------------------------------------
-	// -- move
-	// ------------------------------------
-	let $artTarget;
-	let maxY;
-
-	const xy = function(e, selector){
-		const $doc = $(document);
-		const $mask = $('article .mask');
-		const $side = $('aside');
-		const $art = $('article');
-		const dw = $doc.width();
-		// offset init
-		const offsets = selector.offset();
-		
-		// for x
-		const distanceXOuter = ( $('.main').width() - $('.article_mask').width() ) / 2;
-		const distanceXCounter = Math.floor( $side.innerWidth() + $art.innerWidth() - $art.width() );
-		const distanceX = dw > 1770? distanceXCounter : distanceXCounter - 25;// 25 = $art.padding-right when max-width = 1770
-		x = offsets.left - e.pageX - distanceXOuter - distanceX;
-		// for x max
-		const maxX = Math.floor( $mask.width() - selector.width() );
-
-		// for y
-		const distanceY =  100;// $art.padding-top
-		const distanceScrolltop = $mask.scrollTop();
-		y = offsets.top - e.pageY - distanceY + distanceScrolltop;
-		// for y max
-		$('.article').is(':visible')? $artTarget = $('.article') : $artTarget = $('.article2');
-		const maxY = $artTarget.height() - selector.height();
-
-		return maxX , maxY
-	}
-
-	const xySet = function(){
-
-	}
-
-	let zIndex = 15;
-	$('article .mask').on('mousedown', '.memobox-bar, .memobox-box', function(e){
-		let $selector = null;
-		let x, y;
-		let maxX, maxY;
-		const $this = $(this);
-		const $doc = $(document);
-		
-		
-		$selector = $this.parents('.memobox');
-		$selector.addClass('moving').css({ 'zIndex': zIndex++ });
-		
-		xy(e, $selector);
-		console.log(maxX, maxY)
-		// moving
-		$doc.on('mousemove.event', function (e) {
-			$('body').css({'userSelect': 'none'});
-			let tx = x + e.pageX,
-				ty = y + e.pageY;
-			if (tx >= maxX) {
-				tx = maxX;
-			} else if (tx <= 0) {
-				tx = 0;
-			}
-			if (ty >= maxY) {
-				ty = maxY;
-			} else if (ty <= 0) {
-				ty = 0;
-			}
-			$selector.css({left: tx, top: ty});
-		}).on('mouseup.event', function () {
-			if ($selector != null) {
-				$doc.off('.event');
-				$selector.removeClass('moving');
-				$('body').removeAttr('style');
-				$selector = null;
-			};
-		});
-	});
-
-	// ------------------------------------
-	// -- switch
-	// ------------------------------------
-	$('.controlbox-item').click(function(){
-		$('.article').is(':visible')? $artTarget = $('.article') : $artTarget = $('.article2');
-		maxY = $artTarget.height() - $('.memobox').height();
-		console.log('=============================');
-		console.log( $('.memobox').height() );
-		console.log(maxY);
-		
-		$('.memobox').each(function(){
-			if( $(this).offset().top > maxY ){
-				$('.memobox').css({top: maxY})
-			};
-		});
-	});
-	
-	// ------------------------------------
-	// -- level
-	// ------------------------------------
-	$('body').on('click', '.memobox', function(){
-		$(this).css({'zIndex': zIndex ++});
-	});
-
-	// ------------------------------------
-	// -- delete
-	// ------------------------------------
-	$('body').on('click', '.memobox-del', function(e){
-		e.preventDefault();
-		$(this).parent().parent().remove();
-	})
 
 	// ====================================
 	// == TOPBAR-STEP

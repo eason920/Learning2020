@@ -1,0 +1,45 @@
+// 兩個展開
+.colbox
+	.colbox-item
+		.colbox-prefix
+			span L
+		.colbox-textbox
+			.colbox-text transparent
+			a.colbox-del(href='#') x
+		.colbox-memobox
+			.colbox-memo
+			.colbox-iptbox
+				.colbox-placeholder 輸入中文解釋
+				input.colbox-input(type='text')
+
+// 有寫筆記時
+.colbox
+	.colbox-item
+		.colbox-prefix
+			span L
+		.colbox-textbox
+		.colbox-memobox
+			.colbox-memo
+			.colbox-iptbox
+				.colbox-placeholder 輸入中文解釋
+				input.colbox-input(type='text')
+
+// 沒寫筆記時
+.colbox
+	.colbox-item
+		.colbox-prefix
+			span L
+		.colbox-textbox
+			.colbox-text transparent
+			a.colbox-del(href='#') x
+		.colbox-memobox
+
+// 沒大圓標時
+.colbox
+	.colbox-item
+		.colbox-prefix
+		.colbox-textbox
+			.colbox-text transparent
+			a.colbox-del(href='#') x
+		.colbox-memobox
+// repeat v
