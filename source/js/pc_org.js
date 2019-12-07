@@ -239,14 +239,22 @@ $(function () {
 	let $artTarget;
 	let maxY;
 
-	const xy = function(e, selector){
+	let zIndex = 15;
+	$('article .mask').on('mousedown', '.memobox-bar, .memobox-box', function(e){
+		let $selector = null;
+		let x, y;
+		const $this = $(this);
 		const $doc = $(document);
 		const $mask = $('article .mask');
 		const $side = $('aside');
 		const $art = $('article');
 		const dw = $doc.width();
+
+		$selector = $this.parents('.memobox');
+		$selector.addClass('moving').css({ 'zIndex': zIndex++ });
+		
 		// offset init
-		const offsets = selector.offset();
+		const offsets = $selector.offset();
 		
 		// for x
 		const distanceXOuter = ( $('.main').width() - $('.article_mask').width() ) / 2;
@@ -254,7 +262,7 @@ $(function () {
 		const distanceX = dw > 1770? distanceXCounter : distanceXCounter - 25;// 25 = $art.padding-right when max-width = 1770
 		x = offsets.left - e.pageX - distanceXOuter - distanceX;
 		// for x max
-		const maxX = Math.floor( $mask.width() - selector.width() );
+		const maxX = Math.floor( $mask.width() - $selector.width() );
 
 		// for y
 		const distanceY =  100;// $art.padding-top
@@ -262,29 +270,8 @@ $(function () {
 		y = offsets.top - e.pageY - distanceY + distanceScrolltop;
 		// for y max
 		$('.article').is(':visible')? $artTarget = $('.article') : $artTarget = $('.article2');
-		const maxY = $artTarget.height() - selector.height();
-
-		return maxX , maxY
-	}
-
-	const xySet = function(){
-
-	}
-
-	let zIndex = 15;
-	$('article .mask').on('mousedown', '.memobox-bar, .memobox-box', function(e){
-		let $selector = null;
-		let x, y;
-		let maxX, maxY;
-		const $this = $(this);
-		const $doc = $(document);
+		maxY = $artTarget.height() - $selector.height();
 		
-		
-		$selector = $this.parents('.memobox');
-		$selector.addClass('moving').css({ 'zIndex': zIndex++ });
-		
-		xy(e, $selector);
-		console.log(maxX, maxY)
 		// moving
 		$doc.on('mousemove.event', function (e) {
 			$('body').css({'userSelect': 'none'});
