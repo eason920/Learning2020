@@ -15,6 +15,10 @@ $c-bg: #979797
 		margin:
 			left: -25%
 		transition: .6s
+	.wrapper-right-f1
+		padding-right: 90px 
+		// ^ icon-how.width()
+		
 
 .funbar
 	border-radius: 32px 32px 0 0
@@ -23,6 +27,7 @@ $c-bg: #979797
 	background:
 		color: rgba(247,71,105, .2)
 	height: 100%
+	margin: 0 auto
 
 .funbar-item
 	display: flex
@@ -43,10 +48,15 @@ $c-bg: #979797
 			right: 0
 		margin:
 			right: 0
+	&.is-item-memo
+		border: none
+		margin: 0
+		padding:
+			right: 10px
 
 .funbar-btn
 	font:
-		size: 1.25rem
+		size: 1.0626rem
 		weight: bold
 	color: $c-w
 	&:focus,
@@ -58,7 +68,8 @@ $c-bg: #979797
 	margin:
 		top: -20px
 
-.funbar-vacabulary,
+.funbar-memobox,
+.funbar-phrase,
 .funbar-collection
 	display: flex
 	align-items: center
@@ -67,7 +78,8 @@ $c-bg: #979797
 	padding: 0 15px
 	transition: .3s
 
-.funbar-vacabulary.active,
+.funbar-memobox.active,
+.funbar-phrase.active,
 .funbar-collection.active
 	background:
 		color: #fff
@@ -104,7 +116,7 @@ $c-bg: #979797
 .controlbox-item
 	color: $c-w
 	font:
-		size: 1.25rem
+		size: 1.0625rem
 		weight: bold
 	font-style: normal
 	text-align: center
@@ -118,11 +130,26 @@ $c-bg: #979797
 	.controlbox-item
 		width: 93px
 
+.icon-how
+	position: fixed
+	bottom: 0
+	right: 0
+	z-index: 100
+
+
+
 @media screen and (max-width: 1440px)
 	.funbar-item
 		margin-right: 10px
 		padding-right: 10px
 	.controlbox-item,
-	.funbar-vacabulary,
+	.funbar-phrase,
 	.funbar-collection
 		padding: 0 10px
+
+	.funbar
+		width: 673px
+
+@media screen and (min-width: 1441px)
+	funbar
+		width: 793px

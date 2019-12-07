@@ -233,38 +233,54 @@ section.move {
     padding-right: 25px;
   }
 }
-.sprite-sprite, .icon-correct, .icon-refresh, .icon-favorite, .icon-print, .icon-arrowleft, .icon-pink, .icon-bulb {
-  background-image: url('../images/sprite-s7084b58528.png');
+.sprite-sprite, .icon-how, .icon-del, .icon-correct, .icon-refresh, .icon-favorite, .icon-print, .icon-arrowleft, .icon-pink, .icon-bulb {
+  background-image: url('../images/sprite-sc51504fe89.png');
   background-repeat: no-repeat;
+}
+
+.icon-how {
+  background-position: 0 -129px;
+  background-size: auto 321px;
+  background-repeat: no-repeat;
+  width: 110px;
+  height: 110px;
+}
+
+.icon-del {
+  background-position: 0 -79px;
+  background-size: auto 321px;
+  background-repeat: no-repeat;
+  width: 12px;
+  height: 12px;
 }
 
 .icon-correct {
   background-position: 0 -57px;
-  background-size: auto 199px;
+  background-size: auto 321px;
   background-repeat: no-repeat;
   width: 26px;
   height: 22px;
 }
 
 .icon-refresh {
-  background-position: 0 -167px;
-  background-size: auto 199px;
+  background-position: 0 -289px;
+  background-size: auto 321px;
   background-repeat: no-repeat;
   width: 32px;
   height: 32px;
 }
 
 .icon-favorite {
-  background-position: 0 -79px;
-  background-size: auto 199px;
+  background-position: 0 -91px;
+  background-size: auto 321px;
   background-repeat: no-repeat;
   width: 38px;
   height: 38px;
 }
 
 .icon-print {
-  background-position: 0 -129px;
-  background-size: auto 199px;
+  background-position: 0 -251px;
+  background-size: auto 321px;
   background-repeat: no-repeat;
   width: 38px;
   height: 38px;
@@ -272,15 +288,15 @@ section.move {
 
 .icon-arrowleft {
   background-position: 0 0;
-  background-size: auto 199px;
+  background-size: auto 321px;
   background-repeat: no-repeat;
   width: 32px;
   height: 32px;
 }
 
 .icon-pink {
-  background-position: 0 -117px;
-  background-size: auto 199px;
+  background-position: 0 -239px;
+  background-size: auto 321px;
   background-repeat: no-repeat;
   width: 19px;
   height: 12px;
@@ -288,7 +304,7 @@ section.move {
 
 .icon-bulb {
   background-position: 0 -32px;
-  background-size: auto 199px;
+  background-size: auto 321px;
   background-repeat: no-repeat;
   width: 23px;
   height: 25px;
@@ -907,6 +923,7 @@ article .mask {
   overflow-y: auto;
   padding-right: 3%;
   position: relative;
+  user-select: none;
 }
 
 .icon-refresh {
@@ -988,6 +1005,7 @@ span.is-height-light {
   font-weight: bold;
   line-height: 1.1;
   margin-top: 0;
+  padding-right: 38px;
 }
 #Nt0 span, #t0 span {
   font-size: 2.5rem;
@@ -1042,6 +1060,9 @@ span.is-height-light {
   margin-left: -25%;
   transition: 0.6s;
 }
+.funbar-block .wrapper-right-f1 {
+  padding-right: 90px;
+}
 
 .funbar {
   border-radius: 32px 32px 0 0;
@@ -1049,6 +1070,7 @@ span.is-height-light {
   display: flex;
   background-color: rgba(247, 71, 105, 0.2);
   height: 100%;
+  margin: 0 auto;
 }
 
 .funbar-item {
@@ -1069,9 +1091,14 @@ span.is-height-light {
   padding-right: 0;
   margin-right: 0;
 }
+.funbar-item.is-item-memo {
+  border: none;
+  margin: 0;
+  padding-right: 10px;
+}
 
 .funbar-btn {
-  font-size: 1.25rem;
+  font-size: 1.0626rem;
   font-weight: bold;
   color: #4a4a4a;
 }
@@ -1084,7 +1111,8 @@ span.is-height-light {
   margin-top: -20px;
 }
 
-.funbar-vacabulary,
+.funbar-memobox,
+.funbar-phrase,
 .funbar-collection {
   display: flex;
   align-items: center;
@@ -1094,7 +1122,8 @@ span.is-height-light {
   transition: 0.3s;
 }
 
-.funbar-vacabulary.active,
+.funbar-memobox.active,
+.funbar-phrase.active,
 .funbar-collection.active {
   background-color: #fff;
   transition: 0.3s;
@@ -1128,7 +1157,7 @@ span.is-height-light {
 
 .controlbox-item {
   color: #4a4a4a;
-  font-size: 1.25rem;
+  font-size: 1.0625rem;
   font-weight: bold;
   font-style: normal;
   text-align: center;
@@ -1143,6 +1172,13 @@ span.is-height-light {
   width: 93px;
 }
 
+.icon-how {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index: 100;
+}
+
 @media screen and (max-width: 1440px) {
   .funbar-item {
     margin-right: 10px;
@@ -1150,9 +1186,18 @@ span.is-height-light {
   }
 
   .controlbox-item,
-  .funbar-vacabulary,
+  .funbar-phrase,
   .funbar-collection {
     padding: 0 10px;
+  }
+
+  .funbar {
+    width: 673px;
+  }
+}
+@media screen and (min-width: 1441px) {
+  funbar {
+    width: 793px;
   }
 }
 .topbar-scrot-item, .topbar-scrot-item:hover, .topbar-scrot-item .topbar-num, .topbar-scrot-item .topbar-text, .memobox:hover .memobox-text, .memobox:hover .memobox-box:before, .memobox:hover .memobox-box:after, .memobox-text, .memobox-box:before, .memobox-box:after {
@@ -1165,10 +1210,10 @@ span.is-height-light {
   height: 160px;
   position: absolute;
   box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, 0.1);
-  border-radius: 0 0 50px 0;
+  border-radius: 0 0 26px 0;
   z-index: 15;
-  left: 30px;
-  top: 30px;
+  top: 0;
+  left: 0;
 }
 .memobox:hover .memobox-text, .memobox:hover .memobox-box:before {
   background-color: #fffaa1;
@@ -1179,15 +1224,15 @@ span.is-height-light {
 
 .memobox-bar {
   height: 10px;
-  background-color: #efeba1;
+  background-color: #fffaa1;
   cursor: move;
+  position: relative;
 }
 
 .memobox-text {
   width: 100%;
-  padding: 8px;
-  height: calc( 160px - 10px - 30px );
-  padding: 10px;
+  height: calc( 160px - 10px - 15px );
+  padding: 5px 10px 0;
   border: none;
   background: rgba(255, 250, 161, 0.85);
   font-size: 16px;
@@ -1204,7 +1249,6 @@ span.is-height-light {
 
 .memobox-box {
   overflow: hidden;
-  position: relative;
   cursor: move;
 }
 .memobox-box:before, .memobox-box:after {
@@ -1214,31 +1258,26 @@ span.is-height-light {
 }
 .memobox-box:before {
   background-color: rgba(255, 250, 161, 0.85);
-  height: 30px;
-  width: calc( 100% - 30px);
+  height: 15px;
+  width: calc( 100% - 15px);
 }
 .memobox-box:after {
   width: 0;
   height: 0;
   border-style: solid;
-  border-width: 30px 30px 0 0;
+  border-width: 15px 15px 0 0;
   border-color: rgba(212, 197, 133, 0.85) transparent transparent;
 }
 
 .memobox-del {
   position: absolute;
-  right: 83px;
+  right: 5px;
   top: 5px;
-  font-size: 0.75rem;
+  font-size: 0;
   display: block;
   user-select: none;
-}
-
-.memobox-save {
-  position: absolute;
-  right: 35px;
-  top: 5px;
-  font-size: 0.75rem;
+  background-color: transparent;
+  border: none;
 }
 
 .tranglationBody {
@@ -1275,7 +1314,7 @@ span.is-height-light {
 
 .translation_Font {
   font-size: 2.5rem;
-  font-family: "Abril Fatface", cursive;
+  font-family: "Abril Fatface", PingFangTC-Regular, Microsoft JhengHei, sans-serif;
   font-weight: 500;
   line-height: 1.2;
   color: #4a4a4a;
@@ -1287,13 +1326,18 @@ span.is-height-light {
   padding-bottom: 20px;
 }
 
-.translation_list {
+.translation_list,
+.translation_list2 {
   display: block;
   overflow-y: auto;
   margin-top: 10px;
   height: calc(100% - 110px);
   width: 100%;
   padding-right: 20px;
+}
+
+.translation_list2 {
+  display: none;
 }
 
 .vacbox {
@@ -1308,10 +1352,12 @@ span.is-height-light {
   display: block;
 }
 
-.vacmain-en {
+.vacmain-en,
+.colbox-text {
   font-size: 1.4375rem;
   font-family: "Playfair Display", serif, "PMingLiU";
   font-weight: bold;
+  letter-spacing: 1px;
   margin-bottom: 8px;
 }
 
@@ -1336,6 +1382,76 @@ span.is-height-light {
 .vacsub-ch {
   font-size: 0.9375rem;
   line-height: 1.5;
+}
+
+.colbox {
+  margin-bottom: 30px;
+}
+
+.colbox-prefix span {
+  display: inline-block;
+  font-size: 1.125rem;
+  font-family: "Playfair Display", serif, "PMingLiU";
+  font-weight: bold;
+  color: #036;
+  padding: 4px 8px 6px;
+  text-align: center;
+  min-width: 50px;
+  line-height: 1;
+  border-radius: 18px;
+  background-color: #fff;
+  margin-bottom: 8px;
+}
+
+.colbox-textbox {
+  position: relative;
+}
+
+.colbox-text {
+  color: #036;
+}
+
+.colbox-del {
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #d0021b;
+}
+.colbox-del:hover {
+  color: #d0021b;
+  text-decoration: none;
+}
+
+.colbox-memobox {
+  position: relative;
+  height: 23px;
+}
+
+.colbox-memo {
+  font-size: 1rem;
+}
+
+.colbox-iptbox {
+  height: 100%;
+}
+.colbox-iptbox > * {
+  font-size: 1rem;
+}
+
+.colbox-placeholder {
+  color: #e7e7e7;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.colbox-input {
+  padding: 5px;
+  border: none;
+  color: #000;
+  width: 320px;
+  display: none;
 }
 
 /*# sourceMappingURL=step1.css.map */

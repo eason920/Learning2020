@@ -33,7 +33,7 @@
 .translation_Font
 	font:
 		size: 2.5rem
-		family: 'Abril Fatface', cursive
+		family: 'Abril Fatface', PingFangTC-Regular, Microsoft JhengHei, sans-serif
 		weight: 500
 	line-height: 1.2
 	color: #4a4a4a
@@ -45,13 +45,17 @@
 		top: 20px
 		bottom: 20px
 
-.translation_list
+.translation_list,
+.translation_list2
 	display: block
 	overflow-y: auto
 	margin-top: 10px
 	height: calc(100% - 110px)
 	width: 100%
 	padding-right: 20px
+
+.translation_list2
+	display: none
 
 .vacbox
 	margin:
@@ -63,11 +67,13 @@
 		display: block
 	margin:
 		bottom: 10px
-.vacmain-en
+.vacmain-en,
+.colbox-text
 	font:
 		size: 1.4375rem
 		family: "Playfair Display", serif, "PMingLiU"
 		weight: bold
+	letter-spacing: 1px
 	margin:
 		bottom: 8px
 .vacmain-ch
@@ -90,3 +96,76 @@
 	font:
 		size: .9375rem
 	line-height: 1.5
+
+// -----------------------------------
+// -- collect
+// -----------------------------------
+.colbox
+	margin:
+		bottom: 30px
+
+.colbox-prefix
+	span
+		display: inline-block
+		font:
+			size: 1.125rem
+			family: "Playfair Display", serif, "PMingLiU"
+			weight: bold
+		color: #036
+		padding: 4px 8px 6px
+		text-align: center
+		min-width: 50px
+		line-height: 1
+		border-radius: 18px
+		background:
+			color: #fff
+		margin:
+			bottom: 8px
+//
+.colbox-textbox
+	position: relative
+
+.colbox-text
+	color: #036
+
+.colbox-del
+	position: absolute
+	right: 0
+	top: 0
+	font:
+		size: 1.5rem
+		weight: bold
+	color: #d0021b
+	&:hover
+		color: #d0021b
+		text-decoration: none
+
+
+//
+.colbox-memobox
+	position: relative
+	height: 23px
+
+.colbox-memo
+	font:
+		size: 1rem
+
+.colbox-iptbox
+	height: 100%
+	& > *
+		font:
+			size: 1rem
+//
+.colbox-placeholder
+	color: #e7e7e7
+	text-decoration: underline
+	cursor: pointer
+
+.colbox-input
+	padding: 5px
+	border: none
+	color: #000
+	width: 320px
+	display: none
+
+//

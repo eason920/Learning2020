@@ -2,7 +2,7 @@
 	transition: .3s
 $wh: 160px
 $bar: 10px
-$bottom: 30px
+$bottom: 15px
 .memobox
 	font:
 		size: 0
@@ -10,10 +10,10 @@ $bottom: 30px
 	height: $wh
 	position: absolute
 	box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, 0.1)
-	border-radius: 0 0 50px 0
+	border-radius: 0 0 26px 0
 	z-index: 15
-	left: 30px
-	top: 30px
+	top: 0
+	left: 0
 	&:hover
 		.memobox-text,.memobox-box:before
 			background:
@@ -26,14 +26,14 @@ $bottom: 30px
 .memobox-bar
 	height: $bar
 	background:
-		color: $c3-bar
+		color: $c3
 	cursor: move
+	position: relative
 
 .memobox-text
 	width: 100%
-	padding: 8px
 	height: calc( #{$wh} - #{$bar} - #{$bottom} )
-	padding: 10px
+	padding: 5px 10px 0
 	border: none
 	// margin: 8px 8px 0
 	// height: calc( 100% - 30px - 8px )
@@ -52,7 +52,6 @@ $bottom: 30px
 
 .memobox-box
 	overflow: hidden
-	position: relative
 	cursor: move
 	&:before,&:after
 		content: ''
@@ -74,18 +73,15 @@ $bottom: 30px
 
 .memobox-del
 	position: absolute
-	right: 83px
+	right: 5px
 	top: 5px
 	font:
-		size: .75rem
+		size: 0
 	display: block
 	user-select: none
+	background:
+		color: transparent
+	border: none
 
-.memobox-save
-	position: absolute
-	right: 35px
-	top: 5px
-	font: 
-		size: .75rem
 .moving
 	// border: solid 1px #3092ca
