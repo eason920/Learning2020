@@ -89,18 +89,25 @@ function spanWord( strText ){
 	strText=strText.replace("[r3]","") 
 	strText=strText.replace("[/r3]","") 	  
 
-
 	strText=escape(strText);
 	chstr=strText.split("%20");
 
-	for(w=0;w<chstr.length;w++){
-		if(unescape(chstr[w]).indexOf('.')!=-1 || unescape(chstr[w]).indexOf(',')!=-1 || unescape(chstr[w]).indexOf('[r1]')!=-1 || unescape(chstr[w]).indexOf('[/r1]')!=-1 || unescape(chstr[w]).indexOf('[r3]')!=-1 || unescape(chstr[w]).indexOf('[/r3]')!=-1){
-			chstr2=chstr2+'<span   onClick=DrDate("'+RemoveTag(unescape(chstr[w]))+'");> '+unescape(chstr[w])+'</span>'
-		}else{
-			chstr2=chstr2+'<span   onClick=DrDate("'+RemoveTag(unescape(chstr[w]))+'");> '+unescape(chstr[w])+'</span>'
+	// setTimeout(function(){
+		// console.log(phraseAry);
+		
+		for(w=0;w<chstr.length;w++){
+			// for(a in phraseAry){
+			// 	if( phraseAry[a] == unescape(chstr[w]) ){
+			// 		console.log( unescape(chstr[w]) );
+			// 	}
+			// }
+			if(unescape(chstr[w]).indexOf('.')!=-1 || unescape(chstr[w]).indexOf(',')!=-1 || unescape(chstr[w]).indexOf('[r1]')!=-1 || unescape(chstr[w]).indexOf('[/r1]')!=-1 || unescape(chstr[w]).indexOf('[r3]')!=-1 || unescape(chstr[w]).indexOf('[/r3]')!=-1){
+				chstr2=chstr2+'<span   onClick=DrDate("'+RemoveTag(unescape(chstr[w]))+'");> '+unescape(chstr[w])+'</span>'
+			}else{
+				chstr2=chstr2+'<span   onClick=DrDate("'+RemoveTag(unescape(chstr[w]))+'");> '+unescape(chstr[w])+'</span>'
+			}
 		}
-	//console.log(unescape(chstr[w]))
-	}
+	// });
 
 	return chstr2; 
 } 

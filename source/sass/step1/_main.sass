@@ -57,10 +57,21 @@ article
 .icon-refresh
 	position: absolute
 	top: 8px
-	right: 3%
+	opacity: .85
 	transition: .3s
 	&:hover
 		transform: rotate(180deg)
+		opacity: 1
+		transition: .3s
+
+.icon-like
+	position: absolute
+	top: 6px
+	opacity: .85
+	transform: scale(.8)
+	transition: .3s
+	&:hover
+		opacity: 1
 		transition: .3s
 
 .english
@@ -75,10 +86,10 @@ article
 	letter-spacing: 1.2px
 	line-height: 1.4
 	word-wrap: break-word
-	color: #000
+	color: #4a4a4a
 
 	span
-		color: #000
+		color: #4a4a4a
 		display: inline-block
 		font:
 			size: 1.375rem
@@ -140,7 +151,7 @@ span.is-height-light
 	margin:
 		top: 0
 	padding:
-		right: 38px
+		right: 90px
 	span
 		font:
 			size: 2.5rem
@@ -183,3 +194,18 @@ span.is-height-light
 		family: "微軟正黑體", Arial
 	margin:
 		left: 5px
+
+
+@media screen and (max-width: 1440px)
+	.icon-refresh
+		right: calc( 3% - 10px )
+
+	.icon-like
+		right: calc( 3% + 54px )
+
+@media screen and (min-width: 1441px)
+	.icon-refresh
+		right: calc( 3% - 20px )
+
+	.icon-like
+		right: calc( 3% + 47px)

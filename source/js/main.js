@@ -149,6 +149,9 @@ function main(){
 	Step1()
 	Step2()
 	Vocabulary()
+	console.log(phraseAry);
+	
+	
 }
 
 const replaceCode = function(target, Str){
@@ -246,7 +249,7 @@ function Step2(){
 	replaceCode($('.article2') , Str);
 
 }
-
+let phraseAry = [];
 function Vocabulary(){
 	if($(en).find("wordslist:last").index()>0){
 		eu='';
@@ -256,6 +259,7 @@ function Vocabulary(){
 				var work=$(en).find("wordslist:eq("+i+")").attr("content").split(';');
 				var words_sen=$(en).find("wordslist:eq("+i+")").attr("words_sen")
 					
+				phraseAry.push(work[0]);
 				
 				if(words_sen!=undefined){
 					words_sen=words_sen.split('||')

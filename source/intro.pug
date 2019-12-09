@@ -1,4 +1,4 @@
--var status = 'devv'
+-var status = 'dev'
 doctype html
 html(lang='zh')
 	head
@@ -145,6 +145,7 @@ html(lang='zh')
 								.y-small
 					article
 						.mask
+							a.icon-like(href='#')
 							a.icon-refresh(href='#')
 							// 內文區塊
 							.article(style='display:none;')
@@ -212,3 +213,7 @@ html(lang='zh')
 //- 以上同 f2n 課程中某堂中有遇過
 //- 給值時，用 selector.attr('data-name', '新的值')，而沒有「select.data('name', '新的值') 是相同道理
 //-#######################################################
+
+//- NEW STUDY ####################################
+//- 在正則表達式中，使用變數 => /string/g 改以 「new RegExp('string', 'g')」定義之
+//- ##############################################
