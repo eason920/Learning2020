@@ -28,7 +28,6 @@ function  trim(str){
 
 function dateDiff(interval, date1, date2)
 {
-	var objInterval = {'D' : 1000 * 60 * 60 * 24, 'H' : 1000 * 60 * 60, 'M' : 1000 * 60, 'S' : 1000, 'T' : 1};
 	interval = interval.toUpperCase();
 	var dt1 = Date.parse(date1.replace(/-/g, '/'));
 	var dt2 = Date.parse(date2.replace(/-/g, '/'));
@@ -71,16 +70,11 @@ function RemoveSPACE( strText ){
 function RemoveTag( strText ){ 
 	var regEx = /[\ |\~|\`|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\-|\_|\+|\=|\||\\|\[|\]|\{|\}|\;|\:|\"|\'|\,|\<|\.|\>|\/|\?|\“|\”|\‘|\’|\〝|\〞]/g; 	
 	var regx=strText.replace(regEx, "");
-    /*regx=regx.replace("1","");*/
 	return regx; 
 } 
 
 
-
-
-function spanWord( strText ){ 
-	//var regEx = /\s/g; 
-	var regEx = /\b/g; 
+function spanWord( strText , ary){ 
 	var chstr='';
 	var chstr2='';
 
@@ -91,30 +85,25 @@ function spanWord( strText ){
 
 	strText=escape(strText);
 	chstr=strText.split("%20");
-
-	// setTimeout(function(){
-		// console.log(phraseAry);
 		
-		for(w=0;w<chstr.length;w++){
-			// for(a in phraseAry){
-			// 	if( phraseAry[a] == unescape(chstr[w]) ){
-			// 		console.log( unescape(chstr[w]) );
-			// 	}
-			// }
-			if(unescape(chstr[w]).indexOf('.')!=-1 || unescape(chstr[w]).indexOf(',')!=-1 || unescape(chstr[w]).indexOf('[r1]')!=-1 || unescape(chstr[w]).indexOf('[/r1]')!=-1 || unescape(chstr[w]).indexOf('[r3]')!=-1 || unescape(chstr[w]).indexOf('[/r3]')!=-1){
-				chstr2=chstr2+'<span   onClick=DrDate("'+RemoveTag(unescape(chstr[w]))+'");> '+unescape(chstr[w])+'</span>'
-			}else{
-				chstr2=chstr2+'<span   onClick=DrDate("'+RemoveTag(unescape(chstr[w]))+'");> '+unescape(chstr[w])+'</span>'
+	for(w=0;w<chstr.length;w++){
+		chstr2 += '<span '
+		for( a in ary ){
+			const re = new RegExp(ary[a], 'g');
+			if( re.test(chstr[w]) ){
+				chstr2 += 'class="is-phrase" '
 			}
 		}
-	// });
-
+		chstr2 += 'onClick=DrDate("';
+		chstr2 += RemoveTag(unescape(chstr[w])) + '");>'
+		chstr2 += unescape(chstr[w])
+		chstr2 += '</span>'
+		
+	}
 	return chstr2; 
 } 
 
 function spanWordTitle( strText ){
-	//var regEx = /\s/g; 
-	var regEx = /\b/g; 
 	var chstr='';
 	var chstr2='';
 
@@ -128,12 +117,11 @@ function spanWordTitle( strText ){
 	chstr=strText.split("%20");
 	
 	for(w=0;w<chstr.length;w++){
-	if(unescape(chstr[w]).indexOf('.')!=-1 || unescape(chstr[w]).indexOf(',')!=-1 || unescape(chstr[w]).indexOf('[r1]')!=-1 || unescape(chstr[w]).indexOf('[/r1]')!=-1 || unescape(chstr[w]).indexOf('[r3]')!=-1 || unescape(chstr[w]).indexOf('[/r3]')!=-1){
-		chstr2=chstr2+'<span  onClick=DrDate("'+RemoveTag(unescape(chstr[w]))+'"); > '+unescape(chstr[w])+'</span>'
-	}else{
-		chstr2=chstr2+'<span  onClick=DrDate("'+RemoveTag(unescape(chstr[w]))+'"); > '+unescape(chstr[w])+'</span>'
-	}
-	console.log(unescape(chstr[w]))
+		if(unescape(chstr[w]).indexOf('.')!=-1 || unescape(chstr[w]).indexOf(',')!=-1 || unescape(chstr[w]).indexOf('[r1]')!=-1 || unescape(chstr[w]).indexOf('[/r1]')!=-1 || unescape(chstr[w]).indexOf('[r3]')!=-1 || unescape(chstr[w]).indexOf('[/r3]')!=-1){
+			chstr2=chstr2+'<span  onClick=DrDate("'+RemoveTag(unescape(chstr[w]))+'"); > '+unescape(chstr[w])+'</span>'
+		}else{
+			chstr2=chstr2+'<span  onClick=DrDate("'+RemoveTag(unescape(chstr[w]))+'"); > '+unescape(chstr[w])+'</span>'
+		}
 	}
 
 	return chstr2; 
@@ -141,8 +129,6 @@ function spanWordTitle( strText ){
 
 
 function spanWord2( strText ){ 
- //var regEx = /\s/g; 
-	var regEx = /\b/g; 
 	var chstr='';
 	var chstr2='';
 	strText=escape(strText);
@@ -150,9 +136,9 @@ function spanWord2( strText ){
  
 	for(w=0;w<chstr.length;w++){
 		if(unescape(chstr[w]).indexOf('.')!=-1 || unescape(chstr[w]).indexOf(',')!=-1 || unescape(chstr[w]).indexOf('[r1]')!=-1 || unescape(chstr[w]).indexOf('[/r1]')!=-1 || unescape(chstr[w]).indexOf('[r3]')!=-1 || unescape(chstr[w]).indexOf('[/r3]')!=-1){
-		chstr2=chstr2+'<span onDblClick=word_get("'+unescape(chstr[w])+'","'+w+'");> '+unescape(chstr[w])+'</span>'
+			chstr2=chstr2+'<span onDblClick=word_get("'+unescape(chstr[w])+'","'+w+'");> '+unescape(chstr[w])+'</span>'
 		}else{
-		chstr2=chstr2+'<span onDblClick=word_get("'+unescape(chstr[w])+'","'+w+'");> '+unescape(chstr[w])+'</span>'
+			chstr2=chstr2+'<span onDblClick=word_get("'+unescape(chstr[w])+'","'+w+'");> '+unescape(chstr[w])+'</span>'
 		}
 	}
 

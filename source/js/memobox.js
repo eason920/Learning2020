@@ -96,10 +96,8 @@ $(function(){
 		const distanceXCounter = Math.floor( $side.innerWidth() + $art.innerWidth() - $art.width() );
 		const distanceX = dw > 1770? distanceXCounter : distanceXCounter - 25;// 25 = $art.padding-right when max-width = 1770
 		if( !$section.hasClass('move') ){
-			console.log('no move');
 			x = Math.floor( offsets.left - e.pageX - distanceXOuter - distanceX );
 		}else{
-			console.log('has move');
 			x = Math.floor( offsets.left - e.pageX - distanceXOuter - distanceX + $section.width() * .25 );
 		}
 		
