@@ -108,7 +108,7 @@
 	<script>
 		var tamplate='<%=tamplate%>';
     var videoId = '<%=Youtube%>';
-    let memoJSON = JSON.parse('[{"id":"memo1","text":"msg 1","top":"2200","left":"0"},{"id":"memo2","text":"msg 2","top":"500","left":"300"}]');
+		let memoJSON = JSON.parse('[{"id":"memo1","text":"msg 1","top":"1850","left":"0"},{"id":"memo2","text":"msg 2","top":"500","left":"300"}]');
 
 	</script>		
 	<script src="js/pc.js" type="text/javascript"></script>
@@ -321,7 +321,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
           </aside>
           <article>
-            <div class="mask"><a class="icon-refresh" href="#"></a>
+            <div class="mask">
+              <a class="icon-like" href="#"></a>
+              <a class="icon-refresh" href="#"></a>
               <!-- 內文區塊-->
               <div class="article" style="display:none;">
                 <%

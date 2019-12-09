@@ -48,6 +48,7 @@ const scaleUp = function(){
 
 $(function () {
 	$('.y-start').click(function(){
+		$('.speed-point').fadeOut();
 		$('.speed').removeClass('show');
 		if( !$('#y-box').hasClass('is-first-start') ){
 			player.playVideo();
@@ -245,4 +246,36 @@ $(function () {
 		const $target = $('article').find('.Chinese')
 		$parent.toggleClass('active').hasClass('active') ? $target.slideDown(150) : $target.slideUp(150);
 	});
+
+	// ====================================
+	// == PHRASE HIGHT LIGHT
+	// ====================================
+	$('.vacmain-en').each(function(){
+		const end = $(this).text().indexOf('(');
+		const string = $(this).text().slice(0, end).trim();
+		console.log( string );
+
+		const re = new RegExp(string, 'g');
+		console.log(re);
+
+		string.replace(re, 'eason');
+		
+		
+		
+	});
+
+	//========================================================
+	//========================================================
+	const tryString ='have a good time';
+	const tryNew = tryString.replace(/a/g, '>>>');
+	console.log(tryNew);
+
+	// $target.html(html)
+	// $target.html(function(index, html) {
+	// 	return html.replace(/([\[][^\]]*)/g, "<span>$1</span>");
+	// });
+	// $target.html(function(index, html) {
+	// 	return html.replace(/([\[][\]]*)/g, "<i>$1</i>");
+	// });
+	
 });

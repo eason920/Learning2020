@@ -28,6 +28,7 @@ $(function(){
 	// -- CREATE
 	// ------------------------------------
 	$('article .mask').dblclick(function(e){
+		const $section = $('section');
 		const $side = $('aside');
 		const $art = $('article');
 		const dw = $(document).width();
@@ -36,7 +37,12 @@ $(function(){
 		const distanceXOuter = ( $('.main').width() - $('.article_mask').width() ) / 2;
 		const distanceXCounter = Math.floor( $side.innerWidth() + $art.innerWidth() - $art.width() );
 		const distanceX = dw > 1770? distanceXCounter : distanceXCounter - 25;// 25 = $art.padding-right when max-width = 1770
-		x = Math.floor( e.pageX - distanceXOuter - distanceX );
+		if( !$section.hasClass('move') ){
+			x = Math.floor( e.pageX - distanceXOuter - distanceX );
+		}else{
+			x = Math.floor( e.pageX - distanceXOuter - distanceX + $section.width() * .25 );
+		}
+
 		// for x max
 		const maxX = Math.floor( $(this).width() - $('.memobox').width() );
 
@@ -73,6 +79,7 @@ $(function(){
 		let x, y;
 		const $this = $(this);
 		const $doc = $(document);
+		const $section = $('section');
 		const $mask = $('article .mask');
 		const $side = $('aside');
 		const $art = $('article');
@@ -88,7 +95,14 @@ $(function(){
 		const distanceXOuter = ( $('.main').width() - $('.article_mask').width() ) / 2;
 		const distanceXCounter = Math.floor( $side.innerWidth() + $art.innerWidth() - $art.width() );
 		const distanceX = dw > 1770? distanceXCounter : distanceXCounter - 25;// 25 = $art.padding-right when max-width = 1770
-		x = Math.floor( offsets.left - e.pageX - distanceXOuter - distanceX );
+		if( !$section.hasClass('move') ){
+			console.log('no move');
+			x = Math.floor( offsets.left - e.pageX - distanceXOuter - distanceX );
+		}else{
+			console.log('has move');
+			x = Math.floor( offsets.left - e.pageX - distanceXOuter - distanceX + $section.width() * .25 );
+		}
+		
 		// for x max
 		const maxX = Math.floor( $mask.width() - $selector.width() );
 

@@ -233,14 +233,22 @@ section.move {
     padding-right: 25px;
   }
 }
-.sprite-sprite, .icon-how, .icon-del, .icon-correct, .icon-refresh, .icon-favorite, .icon-print, .icon-arrowleft, .icon-pink, .icon-bulb {
-  background-image: url('../images/sprite-sc51504fe89.png');
+.sprite-sprite, .icon-like, .icon-how, .icon-del, .icon-correct, .icon-refresh, .icon-favorite, .icon-print, .icon-arrowleft, .icon-pink, .icon-bulb {
+  background-image: url('../images/sprite-scfc58f2556.png');
   background-repeat: no-repeat;
+}
+
+.icon-like {
+  background-position: 0 -239px;
+  background-size: auto 359px;
+  background-repeat: no-repeat;
+  width: 38px;
+  height: 38px;
 }
 
 .icon-how {
   background-position: 0 -129px;
-  background-size: auto 321px;
+  background-size: auto 359px;
   background-repeat: no-repeat;
   width: 110px;
   height: 110px;
@@ -248,7 +256,7 @@ section.move {
 
 .icon-del {
   background-position: 0 -79px;
-  background-size: auto 321px;
+  background-size: auto 359px;
   background-repeat: no-repeat;
   width: 12px;
   height: 12px;
@@ -256,15 +264,15 @@ section.move {
 
 .icon-correct {
   background-position: 0 -57px;
-  background-size: auto 321px;
+  background-size: auto 359px;
   background-repeat: no-repeat;
   width: 26px;
   height: 22px;
 }
 
 .icon-refresh {
-  background-position: 0 -289px;
-  background-size: auto 321px;
+  background-position: 0 -327px;
+  background-size: auto 359px;
   background-repeat: no-repeat;
   width: 32px;
   height: 32px;
@@ -272,15 +280,15 @@ section.move {
 
 .icon-favorite {
   background-position: 0 -91px;
-  background-size: auto 321px;
+  background-size: auto 359px;
   background-repeat: no-repeat;
   width: 38px;
   height: 38px;
 }
 
 .icon-print {
-  background-position: 0 -251px;
-  background-size: auto 321px;
+  background-position: 0 -289px;
+  background-size: auto 359px;
   background-repeat: no-repeat;
   width: 38px;
   height: 38px;
@@ -288,15 +296,15 @@ section.move {
 
 .icon-arrowleft {
   background-position: 0 0;
-  background-size: auto 321px;
+  background-size: auto 359px;
   background-repeat: no-repeat;
   width: 32px;
   height: 32px;
 }
 
 .icon-pink {
-  background-position: 0 -239px;
-  background-size: auto 321px;
+  background-position: 0 -277px;
+  background-size: auto 359px;
   background-repeat: no-repeat;
   width: 19px;
   height: 12px;
@@ -304,7 +312,7 @@ section.move {
 
 .icon-bulb {
   background-position: 0 -32px;
-  background-size: auto 321px;
+  background-size: auto 359px;
   background-repeat: no-repeat;
   width: 23px;
   height: 25px;
@@ -546,8 +554,8 @@ aside .title {
   color: #f74769;
   text-align: right;
   font-weight: 600;
-  line-height: 1;
-  margin-bottom: 5px;
+  line-height: 0.85;
+  margin-bottom: 17px;
 }
 aside .sub {
   font-size: 2rem;
@@ -568,12 +576,16 @@ aside .sub {
 
 .aside-above-sub-en {
   font-size: 1.625rem;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
+  color: #9b9b9b;
+  line-height: 1.3;
+  letter-spacing: 0.5px;
 }
 
 .aside-above-sub-ch {
   font-size: 1.375rem;
-  margin-bottom: 15px;
+  margin-bottom: 25px;
+  color: #9b9b9b;
 }
 
 .aside-speedbox {
@@ -760,7 +772,7 @@ input[type=range]::-ms-track {
   font-weight: bold;
   position: relative;
   letter-spacing: 1px;
-  color: #ff2c55;
+  color: #9b9b9b;
 }
 
 .classification_btn {
@@ -929,11 +941,24 @@ article .mask {
 .icon-refresh {
   position: absolute;
   top: 8px;
-  right: 3%;
+  opacity: 0.85;
   transition: 0.3s;
 }
 .icon-refresh:hover {
   transform: rotate(180deg);
+  opacity: 1;
+  transition: 0.3s;
+}
+
+.icon-like {
+  position: absolute;
+  top: 6px;
+  opacity: 0.85;
+  transform: scale(0.8);
+  transition: 0.3s;
+}
+.icon-like:hover {
+  opacity: 1;
   transition: 0.3s;
 }
 
@@ -947,10 +972,10 @@ article .mask {
   letter-spacing: 1.2px;
   line-height: 1.4;
   word-wrap: break-word;
-  color: #000;
+  color: #4a4a4a;
 }
 .english span {
-  color: #000;
+  color: #4a4a4a;
   display: inline-block;
   font-size: 1.375rem;
 }
@@ -1005,7 +1030,7 @@ span.is-height-light {
   font-weight: bold;
   line-height: 1.1;
   margin-top: 0;
-  padding-right: 38px;
+  padding-right: 90px;
 }
 #Nt0 span, #t0 span {
   font-size: 2.5rem;
@@ -1044,6 +1069,24 @@ span.is-height-light {
   margin-left: 5px;
 }
 
+@media screen and (max-width: 1440px) {
+  .icon-refresh {
+    right: calc( 3% - 10px );
+  }
+
+  .icon-like {
+    right: calc( 3% + 54px );
+  }
+}
+@media screen and (min-width: 1441px) {
+  .icon-refresh {
+    right: calc( 3% - 20px );
+  }
+
+  .icon-like {
+    right: calc( 3% + 47px);
+  }
+}
 .funbar-block {
   position: fixed;
   z-index: 11;
@@ -1168,15 +1211,13 @@ span.is-height-light {
   padding: 0 15px;
 }
 
-.is-ench .controlbox-item {
-  width: 93px;
-}
-
 .icon-how {
   position: fixed;
   bottom: 0;
   right: 0;
   z-index: 100;
+  transform-origin: 100% 100%;
+  transform: scale(0.85);
 }
 
 @media screen and (max-width: 1440px) {
@@ -1191,13 +1232,13 @@ span.is-height-light {
     padding: 0 10px;
   }
 
-  .funbar {
-    width: 673px;
+  .is-ench .controlbox-item {
+    width: 85px;
   }
 }
 @media screen and (min-width: 1441px) {
-  funbar {
-    width: 793px;
+  .is-ench .controlbox-item {
+    width: 93px;
   }
 }
 .topbar-scrot-item, .topbar-scrot-item:hover, .topbar-scrot-item .topbar-num, .topbar-scrot-item .topbar-text, .memobox:hover .memobox-text, .memobox:hover .memobox-box:before, .memobox:hover .memobox-box:after, .memobox-text, .memobox-box:before, .memobox-box:after {
@@ -1450,8 +1491,8 @@ span.is-height-light {
   padding: 5px;
   border: none;
   color: #000;
-  width: 320px;
   display: none;
+  width: calc( 100% - 25px);
 }
 
 /*# sourceMappingURL=step1.css.map */
