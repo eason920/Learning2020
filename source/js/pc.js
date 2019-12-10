@@ -165,7 +165,7 @@ $(function () {
 		beforeClassName = className;
 	});
 
-	// for coding
+	// for coding demo
 	// $('.funbar-collection').click();
 	// $('.topbar-scort-outer').hide();
 
@@ -175,11 +175,42 @@ $(function () {
 		$('.tranglationBody').removeClass("show");
 	})
 	
-	// ------------------------------------
-	$('.colbox-placeholder').click(function(){
-		$(this).hide();
-		$(this).siblings('.colbox-input').show().focus();
+	// ====================================
+	// == COLLECT EDIT
+	// ====================================
+	const checkColbox = function(target){
+		if( target.find('.colbox-underbox-memo').text().trim() != '' ){
+			target.find('.colbox-underbox-placeholder').hide();
+			target.find('.colbox-underbox-memo').show();
+		}else{
+			target.find('.colbox-underbox-memo').hide();
+			target.find('.colbox-underbox-placeholder').show();
+		}
+	}
+	$('.colbox-item').each(function(){
+		checkColbox($(this));
 	});
+
+	$('.colbox-underbox-memo, .colbox-underbox-placeholder').click(function(e){
+		e.preventDefault;
+		const $this = $(this);
+		const text = $this.parent().find('.colbox-underbox-memo').text();
+		$this.hide();
+		$this.siblings('.colbox-underbox-editbox').show().find('.colbox-underbox-input').focus();
+		setTimeout(function(){
+			$this.siblings('.colbox-underbox-editbox').find('.colbox-underbox-input').attr('value', text);
+		});
+	});
+
+	$('.colbox-underbox-ok').click(function(){
+		const $this = $(this);
+		$this.parent().hide();
+		const text = $this.siblings().val();
+		$this.parent().siblings('.colbox-underbox-memo').text(text);
+		checkColbox( $this.parent().parent().parent() );
+	});
+
+
 	
 	// ====================================
 	// == ARTICLE SORT CIRCLE
@@ -215,9 +246,16 @@ $(function () {
 	// ====================================
 	// == TOPBAR-STEP
 	// ====================================
-	$('.open-btn').click(function(e){
+	$('.open-btn').on('click', function(e){
 		$(this).parent().toggleClass('is-open');
 	});
+
+	$('.is-step3').hover(function(){
+		$(this).addClass('is-open');
+	},function(){
+		$(this).removeClass('is-open');
+	});
+
 	setTimeout(function(){
 		$('.topbar-num.open-btn').click();
 	}, 800);
@@ -227,11 +265,11 @@ $(function () {
 		}		
 	}
 	let sid = setTimeout(closeScort, 2800);
-	$('.is-step3').hover(function(){
+	$('.topbar-scort-outer').hover(function(){
 		clearTimeout(sid);
 	}, function(){
 		// console.log('got');
-		sid = setTimeout(closeScort, 1500);
+		closeScort();
 	});
 
 	$('.topbar-scort-item').mouseout(function(){
@@ -247,4 +285,26 @@ $(function () {
 		$parent.toggleClass('active').hasClass('active') ? $target.slideDown(150) : $target.slideUp(150);
 	});
 	
+
+	// ====================================
+	// == LIGHT BOX
+	// ====================================
+	$('.icon-how').click(function(e){
+		e.preventDefault;
+		$('body').append(
+			$('<div>', {class: 'lb-mask'}),
+			$('<div>', {class: 'lb'}).append(
+				$('<div>', {class: 'lb-box'}).append(
+					$('<iframe>', {src: lbUrl})
+				)
+			)
+		);
+	});
+
+	$('body').on('click', '.lb-mask', function(){
+		$('.lb-mask, .lb').fadeOut(100);
+		setTimeout(function(){
+			$('.lb-mask, .lb').remove();
+		}, 150);
+	})
 });

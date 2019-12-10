@@ -1,5 +1,16 @@
 .is-phrase
-	border-bottom: solid 1px #036
+	position: relative
+	&:after
+		content: ''
+		display: block
+		position: absolute
+		height: 1px
+		width: 100%
+		bottom: 3px
+		background:
+			color: #0d86ff
+	&:hover:after
+		display: none
 	
 .article_mask
 	width: 100%
@@ -69,13 +80,26 @@ article
 
 .icon-like
 	position: absolute
+	display: flex
+	align-items: center
 	top: 6px
 	opacity: .85
 	transform: scale(.8)
 	transition: .3s
+	font:
+		size: 1.7rem
+	padding:
+		left: 41px
+		top: 5px
+	letter-spacing: 0px
+	width: auto
+	color: #f74769
 	&:hover
 		opacity: 1
 		transition: .3s
+		text:
+			decoration: none
+		color: #cf3b57
 
 .english
 	display: block
@@ -154,7 +178,7 @@ span.is-height-light
 	margin:
 		top: 0
 	padding:
-		right: 90px
+		right: 135px
 	span
 		font:
 			size: 2.5rem

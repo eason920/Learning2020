@@ -68,7 +68,7 @@
 	margin:
 		bottom: 10px
 .vacmain-en,
-.colbox-text
+.colbox-abovebox-text
 	font:
 		size: 1.4375rem
 		family: "Playfair Display", serif, "PMingLiU"
@@ -100,35 +100,48 @@
 // -----------------------------------
 // -- collect
 // -----------------------------------
+$h: 23px
 .colbox
 	margin:
-		bottom: 30px
+		bottom: 48px
 
 .colbox-prefix
-	span
-		display: inline-block
-		font:
-			size: 1.125rem
-			family: "Playfair Display", serif, "PMingLiU"
-			weight: bold
-		color: #036
-		padding: 4px 8px 6px
-		text-align: center
-		min-width: 50px
-		line-height: 1
-		border-radius: 18px
-		background:
-			color: #fff
-		margin:
-			bottom: 8px
-//
-.colbox-textbox
+	display: inline-block
+	font:
+		size: 1.125rem
+		family: "Playfair Display", serif, "PMingLiU"
+		weight: bold
+	color: #036
+	padding: 4px 8px 6px
+	text-align: center
+	min-width: 50px
+	line-height: 1
+	border-radius: 18px
+	background:
+		color: #fff
+	margin:
+		bottom: 8px
+
+.colbox-item
+	display: block
+	clear: both
+	margin:
+		bottom: 18px
+
+// -----------------------------------
+// -- ABOVE BOX
+// -----------------------------------
+.colbox-abovebox
 	position: relative
 
-.colbox-text
+.colbox-abovebox-text
+	margin:
+		bottom: 5px
 	color: #036
 
-.colbox-del
+.colbox-abovebox-del
+	margin:
+		right: 5px
 	position: absolute
 	right: 0
 	top: 0
@@ -141,32 +154,61 @@
 		text-decoration: none
 
 
-//
-.colbox-memobox
+// -----------------------------------
+// -- UNDER BOX
+// -----------------------------------
+.colbox-underbox
 	position: relative
-	height: 23px
 
-.colbox-memo
+// -----------------------------------
+.colbox-underbox-memo
+	color: #4a4a4a
+	line-height: $h
 	font:
 		size: 1rem
+	cursor: pointer
 
-.colbox-iptbox
-	height: 100%
-	& > *
-		font:
-			size: 1rem
-//
-.colbox-placeholder
+// -----------------------------------
+.colbox-underbox-placeholder
+	line-height: $h
 	color: #e7e7e7
 	text-decoration: underline
 	cursor: pointer
+	font:
+		size: 1rem
 
-.colbox-input
+// -----------------------------------
+.colbox-underbox-editbox
+	display: none
+	position: relative
+
+.colbox-underbox-input
+	height: $h
 	padding: 5px
 	border: none
 	color: #000
-	display: none
-	width: calc( 100% - 25px)
+	// display: none
+	width: calc( 100% - 60px)
+
+.colbox-underbox-ok
+	width: 50px
+	line-height: $h - 2px
+	border: solid 1px #cf3b57
+	border-radius: $h / 2
+	color: #cf3b57
+	padding: 0 10px
+	position: absolute
+	display: block
+	right: 0
+	top: 0
+	&:focuse
+		outlien: none
+	&:hover
+		background:
+			color: #cf3b57
+		color: #fff
+		text-decoration: none
+	
 
 //
 @media screen and (max-width: 1440px)

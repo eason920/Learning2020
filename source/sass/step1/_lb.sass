@@ -1,0 +1,22 @@
+.lb-mask,
+.lb
+	position: fixed
+	margin: auto
+	top: 0
+	right: 0
+	bottom: 0
+	left: 0
+	z-index: 9999
+
+.lb-mask
+	@extend %row2
+	background:
+		color: rgba(0,0,0,.8)
+
+.lb
+	width: 60%
+
+.lb-box
+	top: 50%
+	transform: translateY(-50%)
+	@include video

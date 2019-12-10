@@ -108,6 +108,7 @@
 	<script>
 		var tamplate='<%=tamplate%>';
     var videoId = '<%=Youtube%>';
+    var lbUrl = 'https://www.youtube.com/embed/h1I5JM16N0c';
 		let memoJSON = JSON.parse('[{"id":"memo1","text":"msg 1","top":"1850","left":"0"},{"id":"memo2","text":"msg 2","top":"500","left":"300"}]');
 
 	</script>		
@@ -200,7 +201,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	<script async defer crossorigin="anonymous" src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v4.0&appId=665673953932390&autoLogAppEvents=1"></script>
 	<input type="hidden" name="repeat" id="repeat" value="0" />
 	<!-- v HTML START v -->
-      <div class="topbar">
+  <div class="topbar">
       <div class="wrapper">
         <div class="wrapper-left"><a class="topbar-back-btn" href="#">
             <div class="icon-arrowleft"></div>返回</a></div>
@@ -321,29 +322,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
           </aside>
           <article>
-            <div class="mask">
-              <a class="icon-like" href="#"></a>
-              <a class="icon-refresh" href="#"></a>
+            <div class="mask"><a class="icon-like" href="#">889</a><a class="icon-refresh" href="#"></a>
               <!-- 內文區塊-->
               <div class="article" style="display:none;">
-                <%
-                i=0
-                For each node in nodes
-                  Response.Write  "<div class='english'>" & replace(node.getAttribute("content"),"**","")& "<input type='button' class='read_btn'></div>" & vbCrLf
-                  Response.Write  "<div class='Chinese'>" & replace(nodes2(i).getAttribute("content"),"**","")& "</div><p></p>" & vbCrLf
-                  i=i+1
-                Next
-                %>
+              <%
+              i=0
+              For each node in nodes
+                Response.Write  "<div class='english'>" & replace(node.getAttribute("content"),"**","")& "<input type='button' class='read_btn'></div>" & vbCrLf
+                Response.Write  "<div class='Chinese'>" & replace(nodes2(i).getAttribute("content"),"**","")& "</div><p></p>" & vbCrLf
+                i=i+1
+              Next
+              %>
               </div>
               <div class="article2">
-                <%
-                i=0
-                For each node in nodes
-                  Response.Write  "<div class='english'>" & replace(node.getAttribute("content"),"**","")& "<input type='button' class='read_btn'></div>" & vbCrLf
-                  Response.Write  "<div class='Chinese'>" & replace(nodes2(i).getAttribute("content"),"**","")& "</div><p></p>" & vbCrLf
-                  i=i+1
-                Next
-                %>
+              <%
+              i=0
+              For each node in nodes
+                Response.Write  "<div class='english'>" & replace(node.getAttribute("content"),"**","")& "<input type='button' class='read_btn'></div>" & vbCrLf
+                Response.Write  "<div class='Chinese'>" & replace(nodes2(i).getAttribute("content"),"**","")& "</div><p></p>" & vbCrLf
+                i=i+1
+              Next
+              %>
               </div>
             </div>
           </article>
@@ -354,266 +353,49 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="translation_list">
           </div>
           <div class="translation_list2">
-            <!-- 兩個展開-->
             <div class="colbox">
+              <div class="colbox-prefix">T</div>
               <div class="colbox-item">
-                <div class="colbox-prefix"><span>L</span></div>
-                <div class="colbox-textbox">
-                  <div class="colbox-text">transparent</div><a class="colbox-del" href="#">x</a>
+                <div class="colbox-abovebox">
+                  <div class="colbox-abovebox-text">transparent</div><a class="colbox-abovebox-del icon-del-c" href="#"></a>
                 </div>
-                <div class="colbox-memobox">
-                  <div class="colbox-memo"></div>
-                  <div class="colbox-iptbox">
-                    <div class="colbox-placeholder">輸入中文解釋</div>
-                    <input class="colbox-input" type="text">
+                <div class="colbox-underbox">
+                  <div class="colbox-underbox-memo">學員的筆記寫在這</div>
+                  <div class="colbox-underbox-placeholder">輸入中文解釋</div>
+                  <div class="colbox-underbox-editbox">
+                    <input class="colbox-underbox-input" type="text"><a class="colbox-underbox-ok" href="#">確定</a>
+                  </div>
+                </div>
+              </div>
+              <div class="colbox-item">
+                <div class="colbox-abovebox">
+                  <div class="colbox-abovebox-text">teacher</div><a class="colbox-abovebox-del icon-del-c" href="#"></a>
+                </div>
+                <div class="colbox-underbox">
+                  <div class="colbox-underbox-memo"> </div>
+                  <div class="colbox-underbox-placeholder">輸入中文解釋</div>
+                  <div class="colbox-underbox-editbox">
+                    <input class="colbox-underbox-input" type="text"><a class="colbox-underbox-ok" href="#">確定</a>
+                  </div>
+                </div>
+              </div>
+              <div class="colbox-item">
+                <div class="colbox-abovebox">
+                  <div class="colbox-abovebox-text">ticket</div><a class="colbox-abovebox-del icon-del-c" href="#"></a>
+                </div>
+                <div class="colbox-underbox">
+                  <div class="colbox-underbox-memo">學員的 ticket 筆記寫在這</div>
+                  <div class="colbox-underbox-placeholder">輸入中文解釋</div>
+                  <div class="colbox-underbox-editbox">
+                    <input class="colbox-underbox-input" type="text"><a class="colbox-underbox-ok" href="#">確定</a>
                   </div>
                 </div>
               </div>
             </div>
-            <!-- 有寫筆記時-->
-            <div class="colbox">
-              <div class="colbox-item">
-                <div class="colbox-prefix"><span>L</span></div>
-                <div class="colbox-textbox"></div>
-                <div class="colbox-memobox">
-                  <div class="colbox-memo"></div>
-                  <div class="colbox-iptbox">
-                    <div class="colbox-placeholder">輸入中文解釋</div>
-                    <input class="colbox-input" type="text">
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- 沒寫筆記時-->
-            <div class="colbox">
-              <div class="colbox-item">
-                <div class="colbox-prefix"><span>L</span></div>
-                <div class="colbox-textbox">
-                  <div class="colbox-text">transparent</div><a class="colbox-del" href="#">x</a>
-                </div>
-                <div class="colbox-memobox"></div>
-              </div>
-            </div>
-            <!-- 沒大圓標時-->
-            <div class="colbox">
-              <div class="colbox-item">
-                <div class="colbox-prefix"></div>
-                <div class="colbox-textbox">
-                  <div class="colbox-text">transparent</div><a class="colbox-del" href="#">x</a>
-                </div>
-                <div class="colbox-memobox"></div>
-              </div>
-            </div>
-            <!-- repeat v-->
-            <!-- 兩個展開-->
-            <div class="colbox">
-              <div class="colbox-item">
-                <div class="colbox-prefix"><span>L</span></div>
-                <div class="colbox-textbox">
-                  <div class="colbox-text">transparent</div><a class="colbox-del" href="#">x</a>
-                </div>
-                <div class="colbox-memobox">
-                  <div class="colbox-memo"></div>
-                  <div class="colbox-iptbox">
-                    <div class="colbox-placeholder">輸入中文解釋</div>
-                    <input class="colbox-input" type="text">
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- 有寫筆記時-->
-            <div class="colbox">
-              <div class="colbox-item">
-                <div class="colbox-prefix"><span>L</span></div>
-                <div class="colbox-textbox"></div>
-                <div class="colbox-memobox">
-                  <div class="colbox-memo"></div>
-                  <div class="colbox-iptbox">
-                    <div class="colbox-placeholder">輸入中文解釋</div>
-                    <input class="colbox-input" type="text">
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- 沒寫筆記時-->
-            <div class="colbox">
-              <div class="colbox-item">
-                <div class="colbox-prefix"><span>L</span></div>
-                <div class="colbox-textbox">
-                  <div class="colbox-text">transparent</div><a class="colbox-del" href="#">x</a>
-                </div>
-                <div class="colbox-memobox"></div>
-              </div>
-            </div>
-            <!-- 沒大圓標時-->
-            <div class="colbox">
-              <div class="colbox-item">
-                <div class="colbox-prefix"></div>
-                <div class="colbox-textbox">
-                  <div class="colbox-text">transparent</div><a class="colbox-del" href="#">x</a>
-                </div>
-                <div class="colbox-memobox"></div>
-              </div>
-            </div>
-            <!-- repeat v-->
-            <!-- 兩個展開-->
-            <div class="colbox">
-              <div class="colbox-item">
-                <div class="colbox-prefix"><span>L</span></div>
-                <div class="colbox-textbox">
-                  <div class="colbox-text">transparent</div><a class="colbox-del" href="#">x</a>
-                </div>
-                <div class="colbox-memobox">
-                  <div class="colbox-memo"></div>
-                  <div class="colbox-iptbox">
-                    <div class="colbox-placeholder">輸入中文解釋</div>
-                    <input class="colbox-input" type="text">
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- 有寫筆記時-->
-            <div class="colbox">
-              <div class="colbox-item">
-                <div class="colbox-prefix"><span>L</span></div>
-                <div class="colbox-textbox"></div>
-                <div class="colbox-memobox">
-                  <div class="colbox-memo"></div>
-                  <div class="colbox-iptbox">
-                    <div class="colbox-placeholder">輸入中文解釋</div>
-                    <input class="colbox-input" type="text">
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- 沒寫筆記時-->
-            <div class="colbox">
-              <div class="colbox-item">
-                <div class="colbox-prefix"><span>L</span></div>
-                <div class="colbox-textbox">
-                  <div class="colbox-text">transparent</div><a class="colbox-del" href="#">x</a>
-                </div>
-                <div class="colbox-memobox"></div>
-              </div>
-            </div>
-            <!-- 沒大圓標時-->
-            <div class="colbox">
-              <div class="colbox-item">
-                <div class="colbox-prefix"></div>
-                <div class="colbox-textbox">
-                  <div class="colbox-text">transparent</div><a class="colbox-del" href="#">x</a>
-                </div>
-                <div class="colbox-memobox"></div>
-              </div>
-            </div>
-            <!-- repeat v-->
-            <!-- 兩個展開-->
-            <div class="colbox">
-              <div class="colbox-item">
-                <div class="colbox-prefix"><span>L</span></div>
-                <div class="colbox-textbox">
-                  <div class="colbox-text">transparent</div><a class="colbox-del" href="#">x</a>
-                </div>
-                <div class="colbox-memobox">
-                  <div class="colbox-memo"></div>
-                  <div class="colbox-iptbox">
-                    <div class="colbox-placeholder">輸入中文解釋</div>
-                    <input class="colbox-input" type="text">
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- 有寫筆記時-->
-            <div class="colbox">
-              <div class="colbox-item">
-                <div class="colbox-prefix"><span>L</span></div>
-                <div class="colbox-textbox"></div>
-                <div class="colbox-memobox">
-                  <div class="colbox-memo"></div>
-                  <div class="colbox-iptbox">
-                    <div class="colbox-placeholder">輸入中文解釋</div>
-                    <input class="colbox-input" type="text">
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- 沒寫筆記時-->
-            <div class="colbox">
-              <div class="colbox-item">
-                <div class="colbox-prefix"><span>L</span></div>
-                <div class="colbox-textbox">
-                  <div class="colbox-text">transparent</div><a class="colbox-del" href="#">x</a>
-                </div>
-                <div class="colbox-memobox"></div>
-              </div>
-            </div>
-            <!-- 沒大圓標時-->
-            <div class="colbox">
-              <div class="colbox-item">
-                <div class="colbox-prefix"></div>
-                <div class="colbox-textbox">
-                  <div class="colbox-text">transparent</div><a class="colbox-del" href="#">x</a>
-                </div>
-                <div class="colbox-memobox"></div>
-              </div>
-            </div>
-            <!-- repeat v-->
-            <!-- 兩個展開-->
-            <div class="colbox">
-              <div class="colbox-item">
-                <div class="colbox-prefix"><span>L</span></div>
-                <div class="colbox-textbox">
-                  <div class="colbox-text">transparent</div><a class="colbox-del" href="#">x</a>
-                </div>
-                <div class="colbox-memobox">
-                  <div class="colbox-memo"></div>
-                  <div class="colbox-iptbox">
-                    <div class="colbox-placeholder">輸入中文解釋</div>
-                    <input class="colbox-input" type="text">
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- 有寫筆記時-->
-            <div class="colbox">
-              <div class="colbox-item">
-                <div class="colbox-prefix"><span>L</span></div>
-                <div class="colbox-textbox"></div>
-                <div class="colbox-memobox">
-                  <div class="colbox-memo"></div>
-                  <div class="colbox-iptbox">
-                    <div class="colbox-placeholder">輸入中文解釋</div>
-                    <input class="colbox-input" type="text">
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- 沒寫筆記時-->
-            <div class="colbox">
-              <div class="colbox-item">
-                <div class="colbox-prefix"><span>L</span></div>
-                <div class="colbox-textbox">
-                  <div class="colbox-text">transparent</div><a class="colbox-del" href="#">x</a>
-                </div>
-                <div class="colbox-memobox"></div>
-              </div>
-            </div>
-            <!-- 沒大圓標時-->
-            <div class="colbox">
-              <div class="colbox-item">
-                <div class="colbox-prefix"></div>
-                <div class="colbox-textbox">
-                  <div class="colbox-text">transparent</div><a class="colbox-del" href="#">x</a>
-                </div>
-                <div class="colbox-memobox"></div>
-              </div>
-            </div>
-            <!-- repeat v-->
           </div>
         </div>
       </div>
     </div><a class="icon-how" href="#"></a>
-  
   <!-- ^ HTML END ^ -->
 </body>
 

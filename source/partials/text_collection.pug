@@ -1,45 +1,36 @@
-// 兩個展開
 .colbox
+	.colbox-prefix T
 	.colbox-item
-		.colbox-prefix
-			span L
-		.colbox-textbox
-			.colbox-text transparent
-			a.colbox-del(href='#') x
-		.colbox-memobox
-			.colbox-memo
-			.colbox-iptbox
-				.colbox-placeholder 輸入中文解釋
-				input.colbox-input(type='text')
+		.colbox-abovebox
+			.colbox-abovebox-text transparent
+			a.colbox-abovebox-del.icon-del-c(href='#')
+		.colbox-underbox
+			.colbox-underbox-memo 學員的筆記寫在這
+			.colbox-underbox-placeholder 輸入中文解釋
+			.colbox-underbox-editbox
+				input.colbox-underbox-input(type='text')
+				a.colbox-underbox-ok(href='#') 確定
 
-// 有寫筆記時
-.colbox
-	.colbox-item
-		.colbox-prefix
-			span L
-		.colbox-textbox
-		.colbox-memobox
-			.colbox-memo
-			.colbox-iptbox
-				.colbox-placeholder 輸入中文解釋
-				input.colbox-input(type='text')
 
-// 沒寫筆記時
-.colbox
 	.colbox-item
-		.colbox-prefix
-			span L
-		.colbox-textbox
-			.colbox-text transparent
-			a.colbox-del(href='#') x
-		.colbox-memobox
+		.colbox-abovebox
+			.colbox-abovebox-text teacher
+			a.colbox-abovebox-del.icon-del-c(href='#')
+		.colbox-underbox
+			.colbox-underbox-memo 
+			.colbox-underbox-placeholder 輸入中文解釋
+			.colbox-underbox-editbox
+				input.colbox-underbox-input(type='text')
+				a.colbox-underbox-ok(href='#') 確定
 
-// 沒大圓標時
-.colbox
 	.colbox-item
-		.colbox-prefix
-		.colbox-textbox
-			.colbox-text transparent
-			a.colbox-del(href='#') x
-		.colbox-memobox
-// repeat v
+		.colbox-abovebox
+			.colbox-abovebox-text ticket
+			a.colbox-abovebox-del.icon-del-c(href='#')
+		.colbox-underbox
+			.colbox-underbox-memo 學員的 ticket 筆記寫在這
+			.colbox-underbox-placeholder 輸入中文解釋
+			.colbox-underbox-editbox
+				input.colbox-underbox-input(type='text')
+				a.colbox-underbox-ok(href='#') 確定
+	

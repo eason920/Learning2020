@@ -17,7 +17,8 @@ html(lang='zh')
 		link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Abril+Fatface&display=swap')
 		script(src='js/jquery-1.11.1.min.js')
 		script.
-			var videoId = 'h1I5JM16N0c';
+			let videoId = 'h1I5JM16N0c';
+			let lbUrl = 'https://www.youtube.com/embed/h1I5JM16N0c';
 			let memoJSON = JSON.parse('[{"id":"memo1","text":"msg 1","top":"2200","left":"0"},{"id":"memo2","text":"msg 2","top":"500","left":"300"}]');
 		script(src='js/pc.js', type='text/javascript')
 		script(src='js/memobox.js')
@@ -145,7 +146,7 @@ html(lang='zh')
 								.y-small
 					article
 						.mask
-							a.icon-like(href='#')
+							a.icon-like(href='#') 883
 							a.icon-refresh(href='#')
 							// 內文區塊
 							.article(style='display:none;')
@@ -167,12 +168,18 @@ html(lang='zh')
 							include partials/text_phrase
 						else
 					.translation_list2
-						include partials/text_collection
-						include partials/text_collection
-						include partials/text_collection
-						include partials/text_collection
-						include partials/text_collection
+						if(status === 'dev')
+							include partials/text_collection
+							include partials/text_collection
+							include partials/text_collection
+							include partials/text_collection
+						else
+							include partials/text_collection
 		a.icon-how(href='#')
+		//-.lb-mask
+		//-.lb
+			.lb-box
+				iframe(src='https://www.youtube.com/embed/h1I5JM16N0c')
 		// ^ HTML END ^
 
 //- NEW STUDY ####################################
@@ -213,6 +220,11 @@ html(lang='zh')
 //- 以上同 f2n 課程中某堂中有遇過
 //- 給值時，用 selector.attr('data-name', '新的值')，而沒有「select.data('name', '新的值') 是相同道理
 //-#######################################################
+
+//- input.attr('value', text)
+//- div.text(text)
+//- input.val() 取得修改「後」的 value 屬性值
+//- focus input 時 keydown enter 事件?
 
 //- NEW STUDY ####################################
 //- 在正則表達式中，使用變數 => /string/g 改以 「new RegExp('string', 'g')」定義之
