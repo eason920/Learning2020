@@ -11,6 +11,8 @@ $(function(){
 	const $doc = $(document);
 	const $body = $('body');
 	const $main = $('.main');
+	let mw = 175;
+	let mh = 155;
  	//
 	const distanceY =  100;// $art.padding-top
 	//
@@ -27,58 +29,13 @@ $(function(){
 		return $('.article').is(':visible')? $('.article') : $('.article2');
 	}
 
-	// ====================================
-	// == SPAN ADD ID
-	// ====================================
-	const checkArt = function(){
-		if( $('body').html().indexOf('Chinese') >= 0 ){
-			// english
-			$('body').find('.english').each(function(){
-				$this = $(this);
-				const pId = $this.attr('id');
-				let i = 1;
-				$this.find('span').each(function(){
-					$(this).attr('id', pId + '_' + i);
-					i ++;
-				});
-			});
-			
-			// chinese
-			$('body').find('.Chinese').each(function(){
-				const parentId = $(this).attr('id');
-				let html = '';
-				let ary = $(this).text().split('');
-				for(a in ary){
-					html += '<span id="' + parentId + '-' + a + '">' + ary[a] + '</span>'
-				}
-				$(this).html(html);
-			});
-			
-			// memo init
-			if(memoJSON.length > 0){
-				// for x
-				const distanceX = fnDistanceX();
+	const fnMaxXY = function () {
+		const x = Math.floor($mask.width() - mw);
+		const $target = $('.article').is(':visible') ? $('.article') : $('.article2');
+		const y = $target.height() - mh;
+		return [x, y];
+	}
 
-				for(a in memoJSON ){
-					const data = memoJSON[a];
-					const basicid = data.basicid;
-					const target = $body.find('#' + basicid);
-					const offsets = target.offset();
-					const top = Math.floor( offsets.top ) - distanceY + target.height();
-					const left = Math.floor( offsets.left ) - distanceX;
-					target.css({color: 'red'})
-					addMemo( Number(a)+1 , data.text, left, top, basicid );
-				};
-			};
-
-			clearInterval(sid);
-		}
-	};
-	const sid = setInterval(checkArt, 200);
-
-	// =============================
-	// == ELEMENT
-	// =============================
 	const addMemo = function(id, text, left, top, basicid){
 		$('article .mask').append(
 			$('<div>', {class: 'memobox is-static', id: 'memo' + id, style: 'left: ' + left +'px; top: ' + top + 'px'}).attr('data-basicid', basicid).attr('data-left', left).attr('data-top', top).append(
@@ -93,82 +50,122 @@ $(function(){
 	};
 
 	// ====================================
+	// == SPAN ADD ID & INIT
+	// ====================================
+	const checkArt = function(){
+		if( $('body').html().indexOf('Chinese') >= 0 ){
+			// ENGLISH
+			$('body').find('.english').each(function(){
+				$this = $(this);
+				const pId = $this.attr('id');
+				let i = 1;
+				$this.find('span').each(function(){
+					$(this).attr('id', pId + '_' + i);
+					i ++;
+				});
+			});
+			
+			// CHINESE
+			$('body').find('.Chinese').each(function(){
+				const parentId = $(this).attr('id');
+				let html = '';
+				let ary = $(this).text().split('');
+				for(a in ary){
+					html += '<span id="' + parentId + '-' + a + '">' + ary[a] + '</span>'
+				}
+				$(this).html(html);
+			});
+			
+			// INIT MEMO CREATE
+			if(memoJSON.length > 0){
+				const distanceX = fnDistanceX();
+				const maxX = fnMaxXY()[0];
+				const maxY = fnMaxXY()[1];
+
+				for(a in memoJSON ){
+					const data = memoJSON[a];
+					const basicid = data.basicid;
+					const target = $body.find('#' + basicid);
+
+					// xy
+					const offsets = target.offset();
+					let left = Math.floor( offsets.left ) - distanceX;
+					left >= maxX ? left = maxX : left;
+					let top = Math.floor( offsets.top ) - distanceY + target.height();
+					top >= maxY ? top = maxY : top;
+					target.css({color: 'red'})
+					addMemo( Number(a)+1 , data.text, left, top, basicid );
+				};
+			};
+
+			clearInterval(sid);
+		}
+	};
+	const sid = setInterval(checkArt, 200);
+
+	// ====================================
 	// == CREATE
 	// ====================================
-	$('article .mask').dblclick(function(e){
-		// for x
+	$('.english, .Chinese, .annotation').dblclick(function(e){
+		$('.memobox').is(':visible') ? null : $('.funbar-memobox').click();
+		const maxX = fnMaxXY()[0];
+		const maxY = fnMaxXY()[1];
+		const distanceScrolltop = $(this).scrollTop();
+
+		// x
 		const distanceX = fnDistanceX();
 		x = Math.floor( e.pageX - distanceX );
-		if( $section.hasClass('move') ){
-			x = x + $section.width() * .25 ;
-		}
+		$section.hasClass('move') ? x = x + $section.width() * .25 : null;
+		x >= maxX ? x= maxX : null;
 
-		// for x max
-		const maxX = Math.floor( $(this).width() - $('.memobox').width() );
-
-		// for y
-		const distanceY =  100;// $art.padding-top
-		const distanceScrolltop = $(this).scrollTop();
+		// y
 		y = e.pageY - distanceY + distanceScrolltop;
-		// for y max
-		const  $artTarget = fnArtTarget();
-		const maxY = $artTarget.height() - $('.memobox').height();
+		y >= maxY ? y = maxY : null;
 
-		if (x >= maxX) {
-			x= maxX;
-		}
-		if (y >= maxY) {
-			y = maxY;
-		}
 
 		const id = $('.memobox').length + 1;
-		if( id >= 16 ){
-			alert('便利貼數量己逹上限 !')
-		}else{
+		if( id < 16 ){
 			addMemo(id, '', y, x );
+		}else{
+			alert('便利貼數量己逹上限 !')
 		}
 	})
+
+
+
 
 	// ====================================
 	// == MOVE
 	// ====================================
 	let zIndex = 15;
 	$('article .mask').on('mousedown', '.memobox-movearea', function(e){
-		let $selector = null;
-		let x, y;
 		const $this = $(this);
+		const $selector = $this.parents('.memobox');
+		let x, y;
+		const distanceScrolltop = $mask.scrollTop();
+		const maxX = fnMaxXY()[0];
+		const maxY = fnMaxXY()[1];
 
-		$selector = $this.parents('.memobox');
 		$selector.css({ 'zIndex': zIndex++ });
 		
-		// offset init
+		// xy
 		const offsets = $selector.offset();
 		
-		// for x
 		const distanceX = fnDistanceX();
 		x = Math.floor( offsets.left - e.pageX - distanceX );
-		if( $section.hasClass('move') ){
-			x = x + Math.floor( $section.width() * .25 );
-		};
+		$section.hasClass('move') ? x = x + Math.floor( $section.width() * .25 ) : null;
 		
-		// for x max
-		const maxX = Math.floor( $mask.width() - $selector.width() );
-
-		// for y
-		const distanceScrolltop = $mask.scrollTop();
 		y = offsets.top - e.pageY - distanceY + distanceScrolltop;
-		// for y max
-		const $artTarget = fnArtTarget();
-		const maxY = $artTarget.height() - $selector.height();
-		
-		// padding for mousedown
+
+		//** BEFORE MOVE
 		const padding= 20;
 		let moveX = x + e.pageX  + padding;
+		moveX >= maxX? moveX = maxX: null;
 		let moveY = y + e.pageY + padding;
 		$selector.css({left: moveX, top: moveY});
 
-		// moving
-		let endOffsets;
+		//** MOVING
+		let finalOffsets;
 		let finalY;
 		let finalX;
 		let basicid;
@@ -177,56 +174,46 @@ $(function(){
 			$selector.removeClass('is-static');
 			moveX = x + e.pageX  + padding;
 			moveY = y + e.pageY + padding;
-			$('body').addClass('is-memo-moving')
-			if (moveX >= maxX) {
-				moveX = maxX;
-			} else if (moveX <= 0) {
-				moveX = 0;
-			}
-			if (moveY >= maxY) {
-				moveY = maxY;
-			} else if (moveY <= 0) {
-				moveY = 0;
-			}
+			$body.addClass('is-memo-moving')
+			moveX >= maxX?	moveX = maxX: null;
+			moveX <= 0 ? moveX = 0 : null;
+			moveY >= maxY ? moveY = maxY: null;
+			moveY <= 0 ? moveY = 0 : null;
 			$selector.css({left: moveX, top: moveY}).attr('data-left', moveX).attr('data-top', moveY);
 
-			// get final offsets
+			//** FOR HAVE LOCK TARGET
 			$body.on('mouseover.getOffsets', '.english span, .Chinese span', function () {
 				basicid = $(this).attr('id');
-				endOffsets = $(this).offset()
+				finalOffsets = $(this).offset()
 
 				// x
-				finalX = Math.floor( endOffsets.left - distanceX );
-				if( $section.hasClass('move') ){
-					finalX = finalX + Math.floor( $section.width() * .25 );
-				};
-				if (finalX >= maxX) {
-					finalX = maxX;
-				};
-
+				finalX = Math.floor( finalOffsets.left - distanceX );
+				$section.hasClass('move') ? finalX = finalX + Math.floor( $section.width() * .25 ) : null;
+				finalX >= maxX ? finalX = maxX : null;
+	
 				// y
-				finalY = Math.floor(endOffsets.top) + $(this).height() - distanceY + distanceScrolltop;
-				if (finalY >= maxY) {
-					finalY = maxY;
-				};
+				finalY = Math.floor(finalOffsets.top) + $(this).height() - distanceY + distanceScrolltop;
+				finalY >= maxY ? finalY = maxY : null;
 			});
 		}).on('mouseup.event', function () {
-			if ($selector != null) {
-				$selector.addClass('is-static');
-				if( basicid === undefined ){
-					const target = $selector.attr('data-basicid');
-					const offsets = $('#'+target).offset();
-					const left = Math.floor(offsets.left - distanceX );
-					const top = Math.floor(offsets.top - distanceY + $('#'+target).height() );
-					$selector.css({left, top}).attr('data-left', left).attr('data-top', top);
-				}else{
-					$selector.css({ left: finalX, top: finalY }).attr('data-left', finalX).attr('data-top', finalY);
-					$selector.attr('data-basicid', basicid)
-				}
-				$doc.off('.event');
-				$body.off('.getOffsets').removeClass('is-memo-moving');
-				$selector = null;
-			};
+			$selector.addClass('is-static');
+			if( basicid === undefined ){
+				//** NOT LOCK TARGET
+				const target = $selector.attr('data-basicid');
+				const offsets = $('#'+target).offset();
+				let left = Math.floor(offsets.left - distanceX );
+				let top = Math.floor(offsets.top - distanceY + $('#' + target).height() + distanceScrolltop );
+				$section.hasClass('move') ? left = left + Math.floor( $section.width() * .25 ) : null;
+				left >= maxX ? left = maxX : null;
+				top >= maxY ? top = maxY : null;
+				$selector.css({left, top}).attr('data-left', left).attr('data-top', top);
+			}else{
+				//** HAVE LOCK TARGET
+				$selector.css({ left: finalX, top: finalY }).attr('data-left', finalX).attr('data-top', finalY);
+				$selector.attr('data-basicid', basicid)
+			}
+			$doc.off('.event');
+			$body.off('.getOffsets').removeClass('is-memo-moving');
 		});
 	});
 
