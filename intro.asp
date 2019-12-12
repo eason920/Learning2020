@@ -109,11 +109,11 @@
 		var tamplate='<%=tamplate%>';
     var videoId = '<%=Youtube%>';
     var lbUrl = 'https://www.youtube.com/embed/h1I5JM16N0c';
-		let memoJSON = JSON.parse('[{"id":"memo1","text":"msg 1","top":"1850","left":"0"},{"id":"memo2","text":"msg 2","top":"500","left":"300"}]');
+    let memoJSON = JSON.parse('[{"id":"memo1","text":"msg 1","top":"2200","left":"0","basicid":"Nct1-52"},{"id":"memo2","text":"msg 2","top":"500","left":"300","basicid":"Nt13_2"}]');
 
 	</script>		
 	<script src="js/pc.js" type="text/javascript"></script>
-  <script src="js/memobox.js"></script>
+  <script src="js/memobox_methods2.js"></script>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -322,7 +322,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
           </aside>
           <article>
-            <div class="mask"><a class="icon-like" href="#">889</a><a class="icon-refresh" href="#"></a>
+            <div class="mask"><a class="icon-like" href="#">883</a><a class="icon-refresh" href="#"></a>
               <!-- 內文區塊-->
               <div class="article" style="display:none;">
               <%
@@ -396,6 +396,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
     </div><a class="icon-how" href="#"></a>
+
   <!-- ^ HTML END ^ -->
 </body>
 

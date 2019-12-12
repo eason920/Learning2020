@@ -1,7 +1,7 @@
 %transition
 	transition: .3s
-$wh: 160px
-$bar: 10px
+$wh: 155px
+$bar: 15px
 $bottom: 15px
 .memobox
 	font:
@@ -23,12 +23,45 @@ $bottom: 15px
 			border:
 				color: $c4 transparent transparent
 			@extend %transition
+	&.is-static
+		transition: .1s
+		
+
+body.is-memo-moving
+	user-select: none
+	.annotation
+		cursor: not-allowed
+	.Chinese
+		// &:hover
+		// 	border-color: $c1
+		span:hover
+			color: #003368
+			background-color: #fa7e96
+			cursor: pointer
+
 .memobox-bar
+	display: flex
 	height: $bar
 	background:
 		color: $c3
-	cursor: move
 	position: relative
+	z-index: 1
+
+.memobox-movearea
+	cursor: move
+	width: calc( 100% - 12px - 10px)
+
+.memobox-del
+	margin: 5px
+	right: 0
+	top: 0
+	font:
+		size: 0
+	display: block
+	user-select: none
+	background:
+		color: transparent
+	border: none
 
 .memobox-text
 	width: 100%
@@ -71,17 +104,4 @@ $bottom: 15px
 			width: #{$bottom} #{$bottom} 0 0
 			color: $c4-t transparent transparent
 
-.memobox-del
-	position: absolute
-	right: 5px
-	top: 5px
-	font:
-		size: 0
-	display: block
-	user-select: none
-	background:
-		color: transparent
-	border: none
 
-.moving
-	// border: solid 1px #3092ca

@@ -1020,12 +1020,20 @@ article .mask {
   display: inline-block;
   font-size: 1.375rem;
 }
+.english span:hover {
+  color: #003368;
+  background-color: #fa7e96;
+  cursor: pointer;
+}
 .english:hover .read_btn {
   opacity: 1;
   transition: opacity 0.3s;
 }
 
 .Chinese {
+  border-radius: 15px;
+  border: solid 1px transparent;
+  padding: 0 10px;
   display: none;
   display: block;
   color: #555;
@@ -1050,13 +1058,6 @@ article .mask {
 .english.lightheight .read_btn,
 .Chinese.lightheight .read_btn {
   opacity: 1;
-}
-
-.english span:hover,
-.Chinese span:hover {
-  color: #003368;
-  background-color: #fa7e96;
-  cursor: pointer;
 }
 
 span.is-height-light {
@@ -1288,8 +1289,8 @@ span.is-height-light {
 
 .memobox {
   font-size: 0;
-  width: 180px;
-  height: 160px;
+  width: 175px;
+  height: 155px;
   position: absolute;
   box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, 0.1);
   border-radius: 0 0 26px 0;
@@ -1303,17 +1304,49 @@ span.is-height-light {
 .memobox:hover .memobox-box:after {
   border-color: #d4c585 transparent transparent;
 }
+.memobox.is-static {
+  transition: 0.1s;
+}
+
+body.is-memo-moving {
+  user-select: none;
+}
+body.is-memo-moving .annotation {
+  cursor: not-allowed;
+}
+body.is-memo-moving .Chinese span:hover {
+  color: #003368;
+  background-color: #fa7e96;
+  cursor: pointer;
+}
 
 .memobox-bar {
-  height: 10px;
+  display: flex;
+  height: 15px;
   background-color: #fffaa1;
-  cursor: move;
   position: relative;
+  z-index: 1;
+}
+
+.memobox-movearea {
+  cursor: move;
+  width: calc( 100% - 12px - 10px);
+}
+
+.memobox-del {
+  margin: 5px;
+  right: 0;
+  top: 0;
+  font-size: 0;
+  display: block;
+  user-select: none;
+  background-color: transparent;
+  border: none;
 }
 
 .memobox-text {
   width: 100%;
-  height: calc( 160px - 10px - 15px );
+  height: calc( 155px - 15px - 15px );
   padding: 5px 10px 0;
   border: none;
   background: rgba(255, 250, 161, 0.85);
@@ -1349,17 +1382,6 @@ span.is-height-light {
   border-style: solid;
   border-width: 15px 15px 0 0;
   border-color: rgba(212, 197, 133, 0.85) transparent transparent;
-}
-
-.memobox-del {
-  position: absolute;
-  right: 5px;
-  top: 5px;
-  font-size: 0;
-  display: block;
-  user-select: none;
-  background-color: transparent;
-  border: none;
 }
 
 .tranglationBody {

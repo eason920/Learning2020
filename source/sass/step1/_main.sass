@@ -120,6 +120,10 @@ article
 		display: inline-block
 		font:
 			size: 1.375rem
+		&:hover
+			color: #003368
+			background-color: #fa7e96
+			cursor: pointer
 
 	&:hover
 		.read_btn
@@ -127,6 +131,9 @@ article
 			transition: opacity .3s
 
 .Chinese
+	border-radius: 15px
+	border: solid 1px transparent
+	padding: 0 10px
 	display: none
 	display: block
 	color: #555
@@ -154,12 +161,6 @@ article
 .english.lightheightBG,
 .Chinese.lightheightBG
 	// color: #888!important
-
-.english span:hover,
-.Chinese span:hover
-	color: #003368
-	background-color: #fa7e96
-	cursor: pointer
 
 span.is-height-light
 	color: #003368
