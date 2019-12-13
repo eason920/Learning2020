@@ -280,9 +280,8 @@ $(function () {
 	// == CONTROL EN & CH
 	// =============================
 	$('.is-ench .controlbox-item').click(function(){
-		const $parent = $('.is-ench');
-		const $target = $('article').find('.Chinese')
-		$parent.toggleClass('active').hasClass('active') ? $target.slideDown(150) : $target.slideUp(150);
+		$('.is-ench').toggleClass('active');
+		$('article').find('.Chinese').toggleClass('is-hide');
 	});
 	
 

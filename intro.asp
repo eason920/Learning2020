@@ -109,7 +109,7 @@
 		var tamplate='<%=tamplate%>';
     var videoId = '<%=Youtube%>';
     var lbUrl = 'https://www.youtube.com/embed/h1I5JM16N0c';
-    let memoJSON = JSON.parse('[{"id":"memo1","text":"msg 1","top":"2200","left":"0","basicid":"Nct1-52"},{"id":"memo2","text":"msg 2","top":"500","left":"300","basicid":"Nt13_2"}]');
+    let memoJSON = JSON.parse('[{"id":"memo1","text":"msg 1","top":"2200","left":"0","basicid2":"Nct1-52", "basicid1": "ct1-52"},{"id":"memo2","text":"msg 2","top":"500","left":"300","basicid2":"Nt15-19","basicid1":"t15-19"}]');
 
 	</script>		
 	<script src="js/pc.js" type="text/javascript"></script>
@@ -396,7 +396,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
     </div><a class="icon-how" href="#"></a>
-
   <!-- ^ HTML END ^ -->
 </body>
 

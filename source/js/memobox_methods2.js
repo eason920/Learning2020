@@ -13,32 +13,11 @@ $(function(){
 	const $main = $('.main');
 	let mw = 175;
 	let mh = 155;
- 	//
 	const distanceY =  100;// $art.padding-top
 	//
-	const fnDistanceX = function(){
-		const outer = ( $main.width() - $artMask.width() ) / 2;
-		let inner = Math.floor( $side.innerWidth() + $art.innerWidth() - $art.width() ); // aside + article
-		if( dw <= 1770 ){
-			inner = inner - 25; // 25 = $art.padding-right when max-width = 1770;
-		}
-		return outer + inner;
-	};
-
-	const fnArtTarget = function(){
-		return $('.article').is(':visible')? $('.article') : $('.article2');
-	}
-
-	const fnMaxXY = function () {
-		const x = Math.floor($mask.width() - mw);
-		const $target = $('.article').is(':visible') ? $('.article') : $('.article2');
-		const y = $target.height() - mh;
-		return [x, y];
-	}
-
-	const addMemo = function(id, text, left, top, basicid){
+	const addMemo = function(id, text, left, top, basicid2, basicid1){
 		$('article .mask').append(
-			$('<div>', {class: 'memobox is-static', id: 'memo' + id, style: 'left: ' + left +'px; top: ' + top + 'px'}).attr('data-basicid', basicid).attr('data-left', left).attr('data-top', top).append(
+			$('<div>', {class: 'memobox is-static', id: 'memo' + id, style: 'left: ' + left +'px; top: ' + top + 'px'}).attr('data-basicid2', basicid2).attr('data-basicid1', basicid1).attr('data-left', left).attr('data-top', top).append(
 				$('<div>', {class: 'memobox-bar'}).append(
 					$('<div>', {class: 'memobox-movearea'}),
 					$('<input>', {class: 'memobox-del icon-del', type: 'submit'})
@@ -48,6 +27,49 @@ $(function(){
 			)
 		);	
 	};
+
+	const fnDistanceX = function(){
+		const outer = ( $main.width() - $artMask.width() ) / 2;
+		let inner = Math.floor( $side.innerWidth() + $art.innerWidth() - $art.width() ); // aside + article
+		if( dw <= 1770 ){
+			inner = inner - 25; // 25 = $art.padding-right when max-width = 1770;
+		}
+		return outer + inner;
+	};
+
+	const fnMaxXY = function () {
+		const x = Math.floor($mask.width() - mw);
+		const $target = $('.article2').is(':visible') ? $('.article2') : $('.article');
+		const y = $target.height() - mh;
+		return [x, y];
+	}
+
+	const fnXY = function(selector, maxX, maxY, distanceX, scrolltop){
+		let target;
+		$('.article2').is(':visible') ? target = selector.attr('data-basicid2') : target = selector.attr('data-basicid1');
+		// if( $('.article2').is(':visible') ){
+		// 	target = selector.attr('data-basicid2');
+		// }else{
+		// 	target = selector.attr('data-basicid1');
+		// }
+		const offsets = $('#'+target).offset();
+		let left = Math.floor(offsets.left - distanceX );
+		let top = Math.floor(offsets.top - distanceY + $('#' + target).height() + scrolltop );
+		$section.hasClass('move') ? left = left + Math.floor( $section.width() * .25 ) : null;
+		left >= maxX ? left = maxX : null;
+		top >= maxY ? top = maxY : null;
+		selector.css({left, top}).attr('data-left', left).attr('data-top', top);
+	}
+
+	const lockTarget = function(){
+		const maxX = fnMaxXY()[0];
+		const maxY = fnMaxXY()[1];
+		const distanceX = fnDistanceX();
+		const distanceScrolltop = $mask.scrollTop();
+		$('body').find('.memobox').each(function(){
+			fnXY( $(this), maxX, maxY, distanceX, distanceScrolltop );
+		});
+	}
 
 	// ====================================
 	// == SPAN ADD ID & INIT
@@ -60,7 +82,7 @@ $(function(){
 				const pId = $this.attr('id');
 				let i = 1;
 				$this.find('span').each(function(){
-					$(this).attr('id', pId + '_' + i);
+					$(this).attr('id', pId + '-' + i);
 					i ++;
 				});
 			});
@@ -84,17 +106,18 @@ $(function(){
 
 				for(a in memoJSON ){
 					const data = memoJSON[a];
-					const basicid = data.basicid;
-					const target = $body.find('#' + basicid);
+					const basicid2 = data.basicid2;
+					const basicid1 = data.basicid1;
+					const target = $body.find('#' + basicid2);
 
 					// xy
 					const offsets = target.offset();
 					let left = Math.floor( offsets.left ) - distanceX;
-					left >= maxX ? left = maxX : left;
+					left >= maxX ? left = maxX : null;
 					let top = Math.floor( offsets.top ) - distanceY + target.height();
-					top >= maxY ? top = maxY : top;
+					top >= maxY ? top = maxY : null;
 					target.css({color: 'red'})
-					addMemo( Number(a)+1 , data.text, left, top, basicid );
+					addMemo( Number(a)+1 , data.text, left, top, basicid2, basicid1);
 				};
 			};
 
@@ -132,8 +155,6 @@ $(function(){
 	})
 
 
-
-
 	// ====================================
 	// == MOVE
 	// ====================================
@@ -169,7 +190,7 @@ $(function(){
 		let finalY;
 		let finalX;
 		let basicid;
-		
+		let lastid;
 		$doc.on('mousemove.event', function (e) {
 			$selector.removeClass('is-static');
 			moveX = x + e.pageX  + padding;
@@ -195,22 +216,32 @@ $(function(){
 				finalY = Math.floor(finalOffsets.top) + $(this).height() - distanceY + distanceScrolltop;
 				finalY >= maxY ? finalY = maxY : null;
 			});
+
+
+			$body.on('mouseup.getOffsets', '.english span, .Chinese span', function(){
+				lastid = $(this).attr('id');
+			});
 		}).on('mouseup.event', function () {
 			$selector.addClass('is-static');
-			if( basicid === undefined ){
-				//** NOT LOCK TARGET
-				const target = $selector.attr('data-basicid');
-				const offsets = $('#'+target).offset();
-				let left = Math.floor(offsets.left - distanceX );
-				let top = Math.floor(offsets.top - distanceY + $('#' + target).height() + distanceScrolltop );
-				$section.hasClass('move') ? left = left + Math.floor( $section.width() * .25 ) : null;
-				left >= maxX ? left = maxX : null;
-				top >= maxY ? top = maxY : null;
-				$selector.css({left, top}).attr('data-left', left).attr('data-top', top);
-			}else{
+
+			if( basicid != undefined && basicid == lastid ){
 				//** HAVE LOCK TARGET
+				let otherid;
 				$selector.css({ left: finalX, top: finalY }).attr('data-left', finalX).attr('data-top', finalY);
-				$selector.attr('data-basicid', basicid)
+				if( $('.article2').is(':visible') ){
+					// .article2
+					otherid = basicid.substr(1);
+					$selector.attr('data-basicid2', basicid).attr('data-basicid1', otherid);
+				}else{
+					// .article
+					otherid = 'N' + basicid;
+					$selector.attr('data-basicid2', otherid).attr('data-basicid1', basicid);
+				}
+			}else{
+				//** NO LOCK TARGET : 
+				// 1. mousedown without move then mouse up.
+				// 2. mousemove but mouseup on cant lock area, ex: bublle or no element area or outside.
+				fnXY($selector, maxX, maxY, distanceX, distanceScrolltop);
 			}
 			$doc.off('.event');
 			$body.off('.getOffsets').removeClass('is-memo-moving');
@@ -218,48 +249,14 @@ $(function(){
 	});
 
 	// ------------------------------------
-	// -- switch & resize
-	// ------------------------------------
-	const xy = function(){
-		$('.memobox').each(function(){
-
-			// top
-			let top = $(this).attr('data-top');
-			const maxX = Math.floor( $mask.width() - $(this).width() );
-			
-			//left
-			let left = $(this).attr('data-left');
-			const $artTarget = fnArtTarget();
-			const maxY = $artTarget.height() - $(this).height();
-
-			if (left >= maxX) {
-				left = maxX;
-			}
-			if (top >= maxY) {
-				top = maxY;
-			}
-			
-			$(this).css({left, top}).attr('data-left', left).attr('data-top', top);
-		});
-	};
-
-	$(window).resize(function(){
-		xy();
-	});
-
-	$('.controlbox-item').click(function(){
-		xy();
-	});
-
-	// ------------------------------------
-	// -- level
+	// -- ADD Z-INDEX
 	// ------------------------------------
 	$('body').on('click', '.memobox', function(){
 		$(this).css({'zIndex': zIndex ++});
 	});
 
 	// ------------------------------------
-	// -- delete
+	// -- DELETE
 	// ------------------------------------
 	$('body').on('click', '.memobox-del', function(e){
 		e.preventDefault();
@@ -267,7 +264,20 @@ $(function(){
 	});
 
 	// ------------------------------------
-	// -- switch
+	// -- RESIZE & SWITCH DETIAL
+	// ------------------------------------
+	$(window).resize(function(){
+		lockTarget();
+	});
+
+	$('.controlbox-item').click(function(){
+		setTimeout(function(){
+			lockTarget();
+		});
+	});
+
+	// ------------------------------------
+	// -- SHOW & HIDDEN
 	// ------------------------------------
 	$('.funbar-memobox').click(function(){
 		$(this).toggleClass('active');

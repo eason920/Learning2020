@@ -395,6 +395,42 @@ function highlight(id){
   $("#Nct"+id).addClass('lightheight')
 }
 
+const lockTarget = function(){
+	const $section = $('section');
+	const $side = $('aside');
+	const $art = $('article');
+	const $mask = $('article .mask');
+	const $artMask = $('.article_mask');
+	const dw = $(document).width();
+	const $main = $('.main');
+	let mw = 175;
+	let mh = 155;
+  const distanceY =  100;
+  const distanceScrolltop = $mask.scrollTop();
+  ////////////////////////////////////////////////////////////////////////
+
+  // fnMaxXY
+  const maxX = Math.floor($mask.width() - mw);
+  const maxY = $('.article2').height() - mh;
+
+  // fnDistanceX
+  const outer = ( $main.width() - $artMask.width() ) / 2;
+  let inner = Math.floor( $side.innerWidth() + $art.innerWidth() - $art.width() );
+  dw <= 1770 ? inner = inner - 25 : null;
+  distanceX = outer + inner;
+  
+  $('body').find('.memobox').each(function(){
+    const target = $(this).attr('data-basicid2')
+    const offsets = $('#'+target).offset();
+    let left = Math.floor(offsets.left - distanceX );
+    let top = Math.floor(offsets.top - distanceY + $('#' + target).height() + distanceScrolltop );
+    $section.hasClass('move') ? left = left + Math.floor( $section.width() * .25 ) : null;
+    left >= maxX ? left = maxX : null;
+    top >= maxY ? top = maxY : null;
+    $(this).css({left, top}).attr('data-left', left).attr('data-top', top);
+  });
+}
+
 //氣泡框
 function bubble(){
 	var flag=0;
@@ -415,7 +451,9 @@ function bubble(){
         $("#bubble"+temp).html(bubleStr);
         $('.annotation').addClass('bubblehighlightBG');
         $("#bubble"+temp).removeClass('bubblehighlightBG');
-        $("#bubble"+temp).show();		  
+        $("#bubble"+temp).show();		
+        
+        lockTarget();
       }
       
       flag=1;	

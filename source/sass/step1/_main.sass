@@ -143,9 +143,16 @@ article
 	font:
 		size: .9375rem
 		weight: normal
-
+	span
+		overflow: hidden
+		display: inline-block
 	&.show
-		display: block	
+		display: block
+	&.is-hide
+		padding: 0
+		height: 0
+		span
+			height: 0
 
 // now reading
 .english.lightheight,

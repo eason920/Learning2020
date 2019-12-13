@@ -1044,8 +1044,19 @@ article .mask {
   font-size: 0.9375rem;
   font-weight: normal;
 }
+.Chinese span {
+  overflow: hidden;
+  display: inline-block;
+}
 .Chinese.show {
   display: block;
+}
+.Chinese.is-hide {
+  padding: 0;
+  height: 0;
+}
+.Chinese.is-hide span {
+  height: 0;
 }
 
 .english.lightheight,
@@ -1312,6 +1323,9 @@ body.is-memo-moving {
   user-select: none;
 }
 body.is-memo-moving .annotation {
+  cursor: not-allowed;
+}
+body.is-memo-moving .english, body.is-memo-moving .Chinese {
   cursor: not-allowed;
 }
 body.is-memo-moving .english span:hover, body.is-memo-moving .Chinese span:hover {
