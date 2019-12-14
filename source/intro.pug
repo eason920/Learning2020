@@ -267,3 +267,6 @@ html(lang='zh')
 //- (O)寫作 .get('partials「.html」') ，內容仍有 asp 語法可以  << 仍可正常運作
 //- (X)寫作 .get("partials「.asp」 ") 無法作用
 //- >> 應是用 asp 語法直接嵌人，非 jq .get <<< 留給 kai 改
+
+//- ＊＊>> 使用 .get 讀入html 片段，基本不用特別用 iframe 呼叫六父層方式去對待( .parent.fn() )
+//- ＊＊>> 但要強烈分清楚「原本就存在 html 中」或「js 非同步加載」，後者要用 .find 或預先戴入
