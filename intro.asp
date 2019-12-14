@@ -109,8 +109,11 @@
 		var tamplate='<%=tamplate%>';
     var videoId = '<%=Youtube%>';
     var lbUrl = 'https://www.youtube.com/embed/h1I5JM16N0c';
-    let memoJSON = JSON.parse('[{"id":"memo1","text":"msg 1","top":"2200","left":"0","basicid2":"Nct1-52", "basicid1": "ct1-52"},{"id":"memo2","text":"msg 2","top":"500","left":"300","basicid2":"Nt15-19","basicid1":"t15-19"}]');
-
+    let memoJSON = JSON.parse('[{"id":"memo1","text":"msg%201%0Afloor2%0Afloor3%0AASDFIASJEFIASE%0A","basicid2":"Nct1-52","basicid1":"ct1-52"},{"id":"memo2","text":"msg%202","basicid2":"Nt15-19","basicid1":"t15-19"},{"id":"memo3","text":"eason%20success%0Aya%7E%7E","basicid2":"Nct1-76","basicid1":"ct1-76"}]');
+    let memoUpdate = '';
+    $.get('step1.html', function(html){
+      $('article .mask').html(html);
+    });
 	</script>		
 	<script src="js/pc.js" type="text/javascript"></script>
   <script src="js/memobox_methods2.js"></script>
@@ -322,28 +325,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
           </aside>
           <article>
-            <div class="mask"><a class="icon-like" href="#">883</a><a class="icon-refresh" href="#"></a>
-              <!-- 內文區塊-->
-              <div class="article" style="display:none;">
-              <%
-              i=0
-              For each node in nodes
-                Response.Write  "<div class='english'>" & replace(node.getAttribute("content"),"**","")& "<input type='button' class='read_btn'></div>" & vbCrLf
-                Response.Write  "<div class='Chinese'>" & replace(nodes2(i).getAttribute("content"),"**","")& "</div><p></p>" & vbCrLf
-                i=i+1
-              Next
-              %>
-              </div>
-              <div class="article2">
-              <%
-              i=0
-              For each node in nodes
-                Response.Write  "<div class='english'>" & replace(node.getAttribute("content"),"**","")& "<input type='button' class='read_btn'></div>" & vbCrLf
-                Response.Write  "<div class='Chinese'>" & replace(nodes2(i).getAttribute("content"),"**","")& "</div><p></p>" & vbCrLf
-                i=i+1
-              Next
-              %>
-              </div>
+            <div class="mask">
+              
             </div>
           </article>
         </section>

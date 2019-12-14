@@ -20,7 +20,11 @@ html(lang='zh')
 			let videoId = 'h1I5JM16N0c';
 			let lbUrl = 'https://www.youtube.com/embed/h1I5JM16N0c';
 			//- let memoJSON = JSON.parse('[{"id":"memo1","text":"msg 1","top":"2200","left":"0"},{"id":"memo2","text":"msg 2","top":"500","left":"300"}]');
-			let memoJSON = JSON.parse('[{"id":"memo1","text":"msg 1","top":"2200","left":"0","basicid2":"Nct1-52", "basicid1": "ct1-52"},{"id":"memo2","text":"msg 2","top":"500","left":"300","basicid2":"Nt15-19","basicid1":"t15-19"}]');
+			let memoJSON = JSON.parse('[{"id":"memo1","text":"msg%201%0Afloor2%0Afloor3%0AASDFIASJEFIASE%0A","basicid2":"Nct1-52","basicid1":"ct1-52"},{"id":"memo2","text":"msg%202","basicid2":"Nt15-19","basicid1":"t15-19"},{"id":"memo3","text":"eason%20success%0Aya%7E%7E","basicid2":"Nct1-76","basicid1":"ct1-76"}]');
+			let memoUpdate = '';
+			$.get('step1.html', function(html){
+				$('article .mask').html(html);
+			});
 		script(src='js/pc.js', type='text/javascript')
 		script(src='js/memobox_methods2.js')
 	body
@@ -147,19 +151,7 @@ html(lang='zh')
 								.y-small
 					article
 						.mask
-							a.icon-like(href='#') 883
-							a.icon-refresh(href='#')
-							// 內文區塊
-							.article(style='display:none;')
-								if (status === 'dev')
-									include partials/text_article
-								else
-									|>>l-2020
-							.article2
-								if (status === 'dev')
-									include partials/text_article2
-								else
-									|>>l-2020
+							
 				.tranglationBody
 					input.close_btn(type='button')
 					.translation_Font
@@ -234,3 +226,44 @@ html(lang='zh')
 
 //- string.substr(起始包函字字序, 開始取 n 個)
 //- 開始取 n 個不寫就往右全取
+
+//- hover 方法不能用「預先綁定」，要分成 mouseover、mouserout 兩次執行
+
+//- 週遊 .next() 取比鄰下一個 element
+
+//- .blur 行為事件 => 失焦
+
+//- NEW STUDY ####################################
+//- STRING TO OBJECT TO TEXTAREA
+//- 0. textarea 預設有字的視覺，在 html 中是 <ta>文字</ta>，不是 ta(val='文字')
+//- 	textarea 不是 self-close 元素
+
+//- A. textarea 給入換行的方法為
+//- 	1. str = 'aa\nbb\ncc'; => 換行為「\n」寫在 string 中
+//- 	2. textarea.html(str) 
+
+//- B. ary 中的值可以直接寫入「\n」，可以 textarea.html( ary[0].text ) 在 textarea 中正確取得換行結果，如
+//- 	1. ary = [ {text: 'aa\nbb\ncc'}, {text: '11\n22\n33'}]
+//- 	2. textarea.html( ary[0].text )
+
+//- C. sting 經過 JSON.parse() 會除去「\n」使引用在 textarea 時不會換行
+//- 	1. 先將 str 中的「\n」.replace 作「\\n」，多一個「\」就可讓 json.parse 轉型成功
+//- 	2. replace 寫法如右：aryStr.replace(/\n/g, '\\n'); 左正規為的是抓出「所有」目標，右為結果「字串」，當然是用引號包，不再是正規式 RegExp
+
+//- ＊＊>> 要 JSON.parse(str) 的 str ，必定連 key 都要加好引號 <<＊＊
+//- ================================================
+//- TEXTAREA TO STRING
+//- 1. textarea 用 .text() 或 .html() 或 .val 都會取出一樣的值，但可能用 .val() 比較合適，或說 .text() 取出的結果一樣是很怪的事情
+//- 2. 承上取出的值，若 textarea 有換行會看到值也是換好行的
+//- 3. 承上，看不到的是換行者其實在尾巴有「\n」字串是看不到的
+//- 4. 承上，「\n」看不到，卻可以 replace !!!!
+//- ##############################################
+
+//- es6 解析 fn(val1,val2){} 中的帶值「 val1、val2 」是以「let」定義的
+//- ==> 帶值可以再加工
+
+
+//- asp 拆檔用 .get() 方式讀入，檔名要
+//- (O)寫作 .get('partials「.html」') ，內容仍有 asp 語法可以  << 仍可正常運作
+//- (X)寫作 .get("partials「.asp」 ") 無法作用
+//- >> 應是用 asp 語法直接嵌人，非 jq .get <<< 留給 kai 改

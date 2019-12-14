@@ -1,0 +1,14 @@
+-var status = 'dev'
+a.icon-like(href='#') 883
+a.icon-refresh(href='#')
+// 內文區塊
+.article(style='display:none;')
+	if (status === 'dev')
+		include partials/text_article
+	else
+		|>>l-2020
+.article2
+	if (status === 'dev')
+		include partials/text_article2
+	else
+		|>>l-2020

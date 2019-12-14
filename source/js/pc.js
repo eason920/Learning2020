@@ -281,7 +281,8 @@ $(function () {
 	// =============================
 	$('.is-ench .controlbox-item').click(function(){
 		$('.is-ench').toggleClass('active');
-		$('article').find('.Chinese').toggleClass('is-hide');
+		$('body').find('article').find('.Chinese').toggleClass('is-hide');
+		// $('article').find('.Chinese').toggleClass('is-hide');
 	});
 	
 
@@ -305,5 +306,5 @@ $(function () {
 		setTimeout(function(){
 			$('.lb-mask, .lb').remove();
 		}, 150);
-	})
+	});
 });

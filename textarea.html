@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>textarea vs JSON.parse( '\n' )</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</head>
+<body>
+	<br>
+	<br>
+	<textarea name="" id="" cols="30" rows="10">haha</textarea>
+	<!-- <textarea name="" id="" cols="30" rows="10"> -->
+</body>
+</html>
+<script>
+	const $ta = $('textarea');
+	//
+	const str = 'aa\nbb\ncc';
+	$ta.html(str);
+	//
+	const ary = [{"text":"11\n22\n33"},{"text":"xx\nyy\nzz"}];
+	$ta.html( ary[1].text );
+	//
+	let aryStr = '[{"text":"11\n22\n33"},{"text":"xx\nyy\nzz"}]';
+	aryStr = aryStr.replace(/\n/g, "\\n");
+	const jpAryStr = JSON.parse(aryStr);
+	console.log(aryStr);
+	console.log(jpAryStr);
+	$ta.html(jpAryStr[1].text);
+	//================================
+	console.log( $ta.text() );
+	console.log( $ta.html() );
+	console.log( $ta.val() );
+	let newStr = $ta.text().replace(/\n/g, '\\n');
+	console.log(newStr);
+
+</script>
+<!--
+STRING TO OBJECT TO TEXTAREA
+0. textarea 預設有字的視覺，在 html 中是 <ta>文字</ta>，不是 ta(val='文字')
+	textarea 不是 self-close 元素
+
+A. textarea 給入換行的方法為
+	1. str = 'aa\nbb\ncc'; => 換行為「\n」寫在 string 中
+	2. textarea.html(str) 
+
+B. ary 中的值可以直接寫入「\n」，可以 textarea.html( ary[0].text ) 在 textarea 中正確取得換行結果，如
+	1. ary = [ {text: 'aa\nbb\ncc'}, {text: '11\n22\n33'}]
+	2. textarea.html( ary[0].text )
+
+C. sting 經過 JSON.parse() 會除去「\n」使引用在 textarea 時不會換行
+	1. 先將 str 中的「\n」.replace 作「\\n」，多一個「\」就可讓 json.parse 轉型成功
+	2. replace 寫法如右：aryStr.replace(/\n/g, '\\n'); 左正規為的是抓出「所有」目標，右為結果「字串」，當然是用引號包，不再是正規式 RegExp
+
+＊＊>> 要 JSON.parse(str) 的 str ，必定連 key 都要加好引號 <<＊＊
+================================================
+TEXTAREA TO STRING
+1. textarea 用 .text() 或 .html() 或 .val 都會取出一樣的值，但可能用 .val() 比較合適，或說 .text() 取出的結果一樣是很怪的事情
+2. 承上取出的值，若 textarea 有換行會看到值也是換好行的
+3. 承上，看不到的是換行者其實在尾巴有「\n」字串是看不到的
+4. 承上，「\n」看不到，卻可以 replace !!!!
+
+-->

@@ -1054,9 +1054,11 @@ article .mask {
 .Chinese.is-hide {
   padding: 0;
   height: 0;
+  line-height: 0;
 }
 .Chinese.is-hide span {
   height: 0;
+  line-height: 0;
 }
 
 .english.lightheight,
