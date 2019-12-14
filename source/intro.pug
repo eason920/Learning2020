@@ -251,12 +251,21 @@ html(lang='zh')
 //- 	2. replace 寫法如右：aryStr.replace(/\n/g, '\\n'); 左正規為的是抓出「所有」目標，右為結果「字串」，當然是用引號包，不再是正規式 RegExp
 
 //- ＊＊>> 要 JSON.parse(str) 的 str ，必定連 key 都要加好引號 <<＊＊
+
 //- ================================================
 //- TEXTAREA TO STRING
 //- 1. textarea 用 .text() 或 .html() 或 .val 都會取出一樣的值，但可能用 .val() 比較合適，或說 .text() 取出的結果一樣是很怪的事情
 //- 2. 承上取出的值，若 textarea 有換行會看到值也是換好行的
 //- 3. 承上，看不到的是換行者其實在尾巴有「\n」字串是看不到的
 //- 4. 承上，「\n」看不到，卻可以 replace !!!!
+//- check 「f2e2 / 0a-26_textarea_vs_JSONparse_n」
+
+//- ================================================
+//- STRING TO OBJECT TO TEXTAREA 2
+//- 若源 string 記載作有 escape(string) 格式
+//- 當引用 escape string 前必定要做的 unescape( string ) 就會自動做掉 replace(/\n/g, '\\n') 的動作
+//- => 用 escape 根本不需要處理 \n 換行字元問題了
+
 //- ##############################################
 
 //- es6 解析 fn(val1,val2){} 中的帶值「 val1、val2 」是以「let」定義的
