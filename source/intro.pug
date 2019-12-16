@@ -22,11 +22,14 @@ html(lang='zh')
 			//- let memoJSON = JSON.parse('[{"id":"memo1","text":"msg 1","top":"2200","left":"0"},{"id":"memo2","text":"msg 2","top":"500","left":"300"}]');
 			let memoJSON = JSON.parse('[{"id":"memo1","text":"msg%201%0Afloor2%0Afloor3%0AASDFIASJEFIASE%0A","basicid2":"Nct1-52","basicid1":"ct1-52"},{"id":"memo2","text":"msg%202","basicid2":"Nt15-19","basicid1":"t15-19"},{"id":"memo3","text":"eason%20success%0Aya%7E%7E","basicid2":"Nct1-76","basicid1":"ct1-76"}]');
 			let memoUpdate = '';
-			$.get('step1.html', function(html){
-				$('article .mask').html(html);
-			});
-		script(src='js/pc.js', type='text/javascript')
-		script(src='js/memobox_methods2.js')
+			for(let i = 1; i<=3; i++){
+				$.get('step' + i + '.html', function(html){
+					$('.stepblock' + i ).html(html);
+				});
+			};
+		script(src='js/ui_all.js')
+		script(src='js/ui_step1.js')
+		script(src='js/memobox.js')
 	body
 		// v HTML START v
 		.topbar
@@ -38,18 +41,18 @@ html(lang='zh')
 				.wrapper-right-f1
 					.wrapper-right-f2
 						ul.topbar-step
-							li.topbar-step-item.active
+							li.topbar-step-item.nav-to-step1.active
 								.topbar-num 1
 								.topbar-text 認識本文
 								.icon-correct
-							li.topbar-step-item
+							li.topbar-step-item.nav-to-step2
 								.topbar-num 2
 								.topbar-text 加強記憶
 								.icon-correct
-							li.topbar-step-item.is-step3
-								.topbar-num.open-btn 3
-								.topbar-text.open-btn 學習驗收
-								.icon-pink.open-btn
+							li.topbar-step-item.nav-to-step3.is-open
+								.topbar-num 3
+								.topbar-text 學習驗收
+								.icon-pink
 								.topbar-scort-outer
 									ul.topbar-scort
 										li.topbar-scrot-item
@@ -150,7 +153,12 @@ html(lang='zh')
 								img.y-start(src='images/y_start.png')
 								.y-small
 					article
-						.mask
+						.blockbox-outer
+							.blockbox
+								.stepblock1
+								.stepblock2
+								.stepblock3
+						//- .stepblock1
 							
 				.tranglationBody
 					input.close_btn(type='button')

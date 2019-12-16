@@ -383,10 +383,24 @@ section.move {
   border-right: solid 1px #e7e7e7;
   margin-right: 1.5%;
 }
-.topbar-step-item:nth-child(1) {
+.topbar-step-item:hover, .topbar-step-item.active {
+  opacity: 1;
+}
+.topbar-step-item:hover .topbar-num, .topbar-step-item.active .topbar-num {
+  background-color: #cf3b57;
+  transtion: 0.3s;
+}
+.topbar-step-item:hover .topbar-text, .topbar-step-item.active .topbar-text {
+  color: #cf3b57;
+  transtion: 0.3s;
+}
+.topbar-step-item:hover .icon-correct, .topbar-step-item.active .icon-correct {
+  opacity: 1;
+}
+.topbar-step-item.nav-to-step1 {
   width: 27.5%;
 }
-.topbar-step-item:nth-child(2), .topbar-step-item.is-step3 {
+.topbar-step-item.nav-to-step2, .topbar-step-item.nav-to-step3 {
   justify-content: center;
   width: 34%;
   position: relative;
@@ -401,29 +415,22 @@ section.move {
   margin-left: 5px;
 }
 
-.is-step3 {
-  cursor: pointer;
-}
-
 .topbar-num {
   text-align: center;
-  background-color: #f74769;
+  background-color: #fa91a5;
   border-radius: 50%;
   color: #fff;
   font-weight: bold;
   font-family: serif;
+  font-transtion: 0.3s;
+  cursor: pointer;
 }
 
 .topbar-text {
   font-weight: bold;
-  color: #f74769;
-}
-
-.active .topbar-num {
-  background-color: #cf3b57;
-}
-.active .topbar-text {
-  color: #cf3b57;
+  color: #fa91a5;
+  transtion: 0.3s;
+  cursor: pointer;
 }
 
 .topbar-scort-outer {
@@ -959,7 +966,7 @@ article {
   transition: opacity 0.3s;
 }
 
-article .mask {
+.stepblock1 {
   width: 100%;
   display: block;
   height: calc( 100% - 55px );
@@ -1637,6 +1644,42 @@ body.is-memo-moving .english span:hover, body.is-memo-moving .Chinese span:hover
   left: 0;
   width: 100%;
   height: 100%;
+}
+
+.blockbox-outer {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.blockbox {
+  width: 300%;
+  display: flex;
+  position: relative;
+  transition: left 0.5s;
+  left: 0;
+}
+.blockbox.is-step2 {
+  left: -100%;
+}
+.blockbox.is-step3 {
+  left: -200%;
+}
+
+.stepblock2 {
+  background: green;
+}
+
+.stepblock3 {
+  background: yellow;
+}
+
+.stepblock1, .stepblock2, .stepblock3 {
+  display: inline-block;
+  overflow-y: auto;
+  width: 33.333%;
+  padding-right: 1%;
+  height: calc( 100vh - 55px - 100px - 20px );
 }
 
 /*# sourceMappingURL=step1.css.map */

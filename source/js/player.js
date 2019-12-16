@@ -317,11 +317,11 @@ function updatetime(){
     if(parseInt($("#repeat").val())<=parseInt(count)){
     
       if($('#control-1').attr('data-value')=='0'){
-        //$('.mask').scrollTop(document.getElementById(temp+1).offsetTop);
-        $('.mask').stop().animate({ 'scrollTop': document.getElementById(temp+1).offsetTop }, 1000, 'swing');	
+        //$('.stepblock1').scrollTop(document.getElementById(temp+1).offsetTop);
+        $('.stepblock1').stop().animate({ 'scrollTop': document.getElementById(temp+1).offsetTop }, 1000, 'swing');	
       }else{
-        //$('.mask').scrollTop(document.getElementById('N'+(temp+1)).offsetTop);
-        $('.mask').stop().animate({ 'scrollTop': document.getElementById('N'+(temp+1)).offsetTop }, 1000, 'swing');	
+        //$('.stepblock1').scrollTop(document.getElementById('N'+(temp+1)).offsetTop);
+        $('.stepblock1').stop().animate({ 'scrollTop': document.getElementById('N'+(temp+1)).offsetTop }, 1000, 'swing');	
       }
 
       temp=temp+1 
@@ -399,18 +399,18 @@ const lockTarget = function(){
 	const $section = $('section');
 	const $side = $('aside');
 	const $art = $('article');
-	const $mask = $('article .mask');
+	const $step1block = $('.stepblock1');
 	const $artMask = $('.article_mask');
 	const dw = $(document).width();
 	const $main = $('.main');
 	let mw = 175;
 	let mh = 155;
   const distanceY =  100;
-  const distanceScrolltop = $mask.scrollTop();
+  const distanceScrolltop = $step1block.scrollTop();
   ////////////////////////////////////////////////////////////////////////
 
   // fnMaxXY
-  const maxX = Math.floor($mask.width() - mw);
+  const maxX = Math.floor($step1block.width() - mw);
   const maxY = $('.article2').height() - mh;
 
   // fnDistanceX

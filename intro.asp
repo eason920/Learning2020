@@ -111,12 +111,15 @@
     var lbUrl = 'https://www.youtube.com/embed/h1I5JM16N0c';
     let memoJSON = JSON.parse('[{"id":"memo1","text":"msg%201%0Afloor2%0Afloor3%0AASDFIASJEFIASE%0A","basicid2":"Nct1-52","basicid1":"ct1-52"},{"id":"memo2","text":"msg%202","basicid2":"Nt15-19","basicid1":"t15-19"},{"id":"memo3","text":"eason%20success%0Aya%7E%7E","basicid2":"Nct1-76","basicid1":"ct1-76"}]');
     let memoUpdate = '';
-    $.get('step1.html', function(html){
-      $('article .mask').html(html);
-    });
+    for(let i = 1; i<=3; i++){
+      $.get('step' + i + '.html', function(html){
+        $('.stepblock' + i ).html(html);
+      });
+    };
 	</script>		
-	<script src="js/pc.js" type="text/javascript"></script>
-  <script src="js/memobox_methods2.js"></script>
+	<script src="js/ui_all.js"></script>
+  <script src='js/ui_step1.js'></script>
+  <script src="js/memobox.js"></script>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -211,20 +214,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="wrapper-right-f1">
           <div class="wrapper-right-f2">
             <ul class="topbar-step">
-              <li class="topbar-step-item active">
+              <li class="topbar-step-item nav-to-step1 active">
                 <div class="topbar-num">1</div>
                 <div class="topbar-text">認識本文</div>
                 <div class="icon-correct"></div>
               </li>
-              <li class="topbar-step-item">
+              <li class="topbar-step-item nav-to-step2">
                 <div class="topbar-num">2</div>
                 <div class="topbar-text">加強記憶</div>
                 <div class="icon-correct"></div>
               </li>
-              <li class="topbar-step-item is-step3">
-                <div class="topbar-num open-btn">3</div>
-                <div class="topbar-text open-btn">學習驗收</div>
-                <div class="icon-pink open-btn"></div>
+              <li class="topbar-step-item nav-to-step3">
+                <div class="topbar-num">3</div>
+                <div class="topbar-text">學習驗收</div>
+                <div class="icon-pink"></div>
                 <div class="topbar-scort-outer">
                   <ul class="topbar-scort">
                     <li class="topbar-scrot-item">
@@ -325,8 +328,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
           </aside>
           <article>
-            <div class="mask">
-              
+            <div class="blockbox-outer">
+              <div class="blockbox">
+                <div class="stepblock1"></div>
+                <div class="stepblock2"></div>
+                <div class="stepblock3"></div>
+              </div>
             </div>
           </article>
         </section>

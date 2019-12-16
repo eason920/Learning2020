@@ -5,7 +5,7 @@ $(function(){
 	const $section = $('section');
 	const $side = $('aside');
 	const $art = $('article');
-	const $mask = $('article .mask');
+	const $stepblock = $('.stepblock1');
 	const $artMask = $('.article_mask');
 	const dw = $(document).width();
 	const $doc = $(document);
@@ -17,7 +17,7 @@ $(function(){
 	//
 	const addMemo = function(id, text, left, top, basicid2, basicid1){
 		text = unescape(text);
-		$('article .mask').append(
+		$stepblock.append(
 			$('<div>', {class: 'memobox is-static', id: 'memo' + id, style: 'left: ' + left +'px; top: ' + top + 'px'}).attr('data-basicid2', basicid2).attr('data-basicid1', basicid1).append(
 				$('<div>', {class: 'memobox-bar'}).append(
 					$('<div>', {class: 'memobox-movearea'}),
@@ -39,7 +39,7 @@ $(function(){
 	};
 
 	const fnMaxXY = function () {
-		const x = Math.floor($mask.width() - mw);
+		const x = Math.floor($stepblock.width() - mw);
 		const $target = $('.article2').is(':visible') ? $('.article2') : $('.article');
 		const y = $target.height() - mh;
 		return [x, y];
@@ -61,7 +61,7 @@ $(function(){
 		const maxX = fnMaxXY()[0];
 		const maxY = fnMaxXY()[1];
 		const distanceX = fnDistanceX();
-		const distanceScrolltop = $mask.scrollTop();
+		const distanceScrolltop = $stepblock.scrollTop();
 		
 		$('body').find('.memobox').each(function(){
 			fnXY( $(this), maxX, maxY, distanceX, distanceScrolltop );
@@ -154,7 +154,7 @@ $(function(){
 			const $this = $(this);
 			const className = $this.attr('class');
 			const distanceX = fnDistanceX();
-			const distanceScrolltop = $mask.scrollTop();
+			const distanceScrolltop = $stepblock.scrollTop();
 			let thisid;
 			let basicid1;
 			let basicid2;
@@ -199,11 +199,11 @@ $(function(){
 	// == MOVE
 	// ====================================
 	let zIndex = 15;
-	$('article .mask').on('mousedown', '.memobox-movearea', function(e){
+	$stepblock.on('mousedown', '.memobox-movearea', function(e){
 		const $this = $(this);
 		const $selector = $this.parents('.memobox');
 		let x, y;
-		const distanceScrolltop = $mask.scrollTop();
+		const distanceScrolltop = $stepblock.scrollTop();
 		const maxX = fnMaxXY()[0];
 		const maxY = fnMaxXY()[1];
 

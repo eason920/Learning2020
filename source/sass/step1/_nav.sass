@@ -55,44 +55,57 @@ $h-nav: 76px
 	border-right: solid 1px #e7e7e7
 	margin:
 		right: 1.5%
-	&:nth-child(1)
+
+	&:hover, &.active
+		opacity: 1
+		.topbar-num
+			background-color: $c2
+			transtion: .3s
+		.topbar-text
+			color: $c2
+			transtion: .3s
+		.icon-correct
+			opacity: 1
+
+	&.nav-to-step1
 		width: 27.5%
-	&:nth-child(2),
-	&.is-step3
+
+	&.nav-to-step2,
+	&.nav-to-step3
 		justify-content: center
 		width: 34%
 		position: relative
 		user-select: none
+
 	.icon-pink
 		margin:
 			left: 8px
 		transition: .3s
 		transform: rotateX(0)
+
 	.icon-correct
 		margin-left: 5px
 
-.is-step3
-	cursor: pointer
 .topbar-num
 	text-align: center
 	background:
-		color: #f74769
+		color: $c1-l
 	border-radius: 50%
 	color: #fff
 	font:
 		weight: bold
 		family: serif
+		transtion: .3s
+	cursor: pointer		
 
 .topbar-text
 	font:
 		weight: bold
-	color: $c1
+	color: $c1-l
+	transtion: .3s
+	cursor: pointer	
 
-.active
-	.topbar-num
-		background-color: $c2
-	.topbar-text
-		color: $c2
+
 
 
 // -----------------------------------
