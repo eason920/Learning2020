@@ -1,0 +1,55 @@
+@import 'share/reset'
+@import 'share/mixin_extend'
+
+// ALL
+@import 'all/reset'
+@import 'all/hack'
+@import 'all/var'
+@import 'all/global'
+@import 'all/icon'
+@import 'all/nav'
+@import 'all/aside_above'
+@import 'all/input_range_decoration'
+@import 'all/aside_below'
+@import 'all/translation_box'
+@import 'all/fun_bar'
+@import 'all/lb'
+
+// STEP 1
+@import 'step1/main'
+@import 'step1/fun_bar'
+@import 'step1/memobox'
+
+// STEP 2
+
+
+// block2 & block3
+.stepblock-outer
+	width: 100%
+	height: 100%
+	overflow: hidden
+
+.stepblock-box
+	width: 300%
+	display: flex
+	position: relative
+	transition: left .5s
+	left: 0
+	&.is-step2
+		left: -100%
+	&.is-step3
+		left: -200%
+
+.stepblock2
+	background: green
+
+.stepblock3
+	background: yellow
+
+.stepblock1, .stepblock2, .stepblock3
+	display: inline-block
+	overflow-y: auto
+	width: 33.333%
+	padding:
+		right: 1%
+	height: calc( 100vh - 55px - 100px - 20px )

@@ -12,7 +12,7 @@ html(lang='zh')
 		link(rel='icon', href='./images/favicon.ico', type='image/ico')
 		title FUNDAY
 		link(href='css/bootstrap.min.css', rel='stylesheet', type='text/css')
-		link(rel="stylesheet", href="css/step1.css")
+		link(rel="stylesheet", href="css/all.css")
 		link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Playfair+Display&display=swap')
 		link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Abril+Fatface&display=swap')
 		script(src='js/jquery-1.11.1.min.js')
@@ -94,7 +94,7 @@ html(lang='zh')
 									b.controlbox-item 老師講解
 									i.controlbox-item 英文朗讀
 							li.funbar-item.is-item-memo
-								a.funbar-btn(href='#').funbar-memobox.active 便利貼
+								a.funbar-btn.funbar-memobox.active(href='#') 便利貼
 							li.funbar-item.is-item-group
 								a.funbar-btn.funbar-phrase(href='#') 單字片語
 							li.funbar-item
@@ -153,12 +153,11 @@ html(lang='zh')
 								img.y-start(src='images/y_start.png')
 								.y-small
 					article
-						.blockbox-outer
-							.blockbox
+						.stepblock-outer
+							.stepblock-box
 								.stepblock1
 								.stepblock2
 								.stepblock3
-						//- .stepblock1
 							
 				.tranglationBody
 					input.close_btn(type='button')

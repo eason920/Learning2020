@@ -1,0 +1,133 @@
+$c-w: #4a4a4a
+.funbar-block
+	position: fixed
+	z-index: 11
+	left: 0px
+	bottom: 0px
+	display: block
+	width: 100%
+	min-width: 1200px
+	text-align: center
+	height: 65px
+	transition: .6s
+	&.move
+		margin:
+			left: -25%
+		transition: .6s
+	.wrapper-right-f1
+		padding-right: 90px 
+		// ^ icon-how.width()
+		
+
+.funbar
+	border-radius: 32px 32px 0 0
+	padding: 15px 20px 13px
+	display: flex
+	background:
+		color: rgba(247,71,105, .2)
+	height: 100%
+	margin: 0 auto
+
+.funbar-item
+	display: flex
+	align-items: center
+	justify-content: center
+	margin:
+		right: 20px
+	padding:
+		right: 20px
+	border-right: solid 1px #aaa
+	&:last-child
+		border: none
+		padding: 0
+		margin: 0
+	&.is-item-group
+		border: none
+		padding:
+			right: 0
+		margin:
+			right: 0
+	&.is-item-memo
+		border: none
+		margin: 0
+		padding:
+			right: 10px
+
+.funbar-btn
+	font:
+		size: 1.0626rem
+		weight: bold
+	color: $c-w
+	&:focus,
+	&:hover
+		color: $c-w
+		text:
+			decoration: none
+	.funbar-block
+		position: fixed
+		z-index: 11
+		left: 0px
+		bottom: 0px
+		display: block
+		width: 100%
+		min-width: 1200px
+		text-align: center
+		height: 65px
+		transition: .6s
+		&.move
+			margin:
+				left: -25%
+			transition: .6s
+		.wrapper-right-f1
+			padding-right: 90px 
+			// ^ icon-how.width()
+
+.funbar
+	border-radius: 32px 32px 0 0
+	padding: 15px 20px 13px
+	display: flex
+	background:
+		color: rgba(247,71,105, .2)
+	height: 100%
+	margin: 0 auto
+
+.funbar-item
+	display: flex
+	align-items: center
+	justify-content: center
+	margin:
+		right: 20px
+	padding:
+		right: 20px
+	border-right: solid 1px #aaa
+	&:last-child
+		border: none
+		padding: 0
+		margin: 0
+	&.is-item-group
+		border: none
+		padding:
+			right: 0
+		margin:
+			right: 0
+	&.is-item-memo
+		border: none
+		margin: 0
+		padding:
+			right: 10px
+
+.funbar-btn
+	font:
+		size: 1.0626rem
+		weight: bold
+	color: $c-w
+	&:focus,
+	&:hover
+		color: $c-w
+		text:
+			decoration: none
+
+@media screen and (max-width: 1440px)
+	.funbar-item
+		margin-right: 10px
+		padding-right: 10px
