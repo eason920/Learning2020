@@ -126,7 +126,7 @@ $(function () {
 				break;
 			default:
 		}
-		$('.blockbox').removeClass('is-step2 is-step3').addClass(className)
+		$('.stepblock-box').removeClass('is-step2 is-step3').addClass(className)
 	});
 
 
@@ -175,5 +175,19 @@ $(function () {
 		setTimeout(function(){
 			$('.lb-mask, .lb').remove();
 		}, 150);
+		
+	});
+	
+	// ====================================
+	// == COVER
+	// ====================================
+	$('body').on('click', '.cover-btn', function(){
+		const $cover = $(this).parent().parent();
+		const $block = $(this).parents().find('.is-lock');
+		$cover.fadeOut(200);
+		setTimeout(function(){
+			$cover.remove();
+			$block.removeClass('is-lock');
+		}, 200);
 	});
 });

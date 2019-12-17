@@ -1,6 +1,6 @@
 @import 'compass'
 @import 'sprite/*.png'
-$height: sprite-sprite-height(favorite) + sprite-sprite-height(print) + sprite-sprite-height(arrow_left) + sprite-sprite-height(pink) + sprite-sprite-height(bulb) + sprite-sprite-height(refresh) + sprite-sprite-height(correct) + sprite-sprite-height(del) + sprite-sprite-height(how) + sprite-sprite-height(like) + sprite-sprite-height(del_c)
+$height: sprite-sprite-height(favorite) + sprite-sprite-height(print) + sprite-sprite-height(arrow_left) + sprite-sprite-height(pink) + sprite-sprite-height(bulb) + sprite-sprite-height(refresh) + sprite-sprite-height(correct) + sprite-sprite-height(del) + sprite-sprite-height(like) + sprite-sprite-height(del_c)
 @mixin BG($path)
 	@include sprite-sprite($path)
 	background:
@@ -14,10 +14,7 @@ $height: sprite-sprite-height(favorite) + sprite-sprite-height(print) + sprite-s
 
 .icon-like
 	@include BG(like)
-	
-.icon-how
-	@include BG(how)
-	
+		
 .icon-del
 	@include BG(del)
 

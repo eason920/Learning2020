@@ -30,6 +30,7 @@ html(lang='zh')
 		script(src='js/ui_all.js')
 		script(src='js/ui_step1.js')
 		script(src='js/memobox.js')
+		script(src='js/ui_step2.js')
 	body
 		// v HTML START v
 		.topbar
@@ -84,7 +85,7 @@ html(lang='zh')
 				.wrapper-left
 				.wrapper-right-f1
 					.wrapper-right-f2
-						ul.funbar
+						ul.funbar.step-fnbar1(style='display: none;')
 							li.funbar-item.active.is-ench
 								.controlbox
 									b.controlbox-item 中+EN
@@ -99,6 +100,17 @@ html(lang='zh')
 								a.funbar-btn.funbar-phrase(href='#') 單字片語
 							li.funbar-item
 								a.funbar-btn.funbar-collection(href='#') 單字收錄
+						ul.funbar.step-fnbar2
+							li.funbar-item
+								.controlbox2.is-play-part
+									.controlbox2-on on
+									.controlbox2-off off
+									.controlbox2-text 全文錄音播放
+							li.funbar-item
+								.controlbox2.is-play-repeat
+									.controlbox2-on on
+									.controlbox2-off off
+									.controlbox2-text 錄音重複
 		.main
 			.article_mask
 				section
@@ -154,9 +166,9 @@ html(lang='zh')
 								.y-small
 					article
 						.stepblock-outer
-							.stepblock-box
+							.stepblock-box.is-step2
 								.stepblock1
-								.stepblock2
+								.stepblock2.is-lock
 								.stepblock3
 							
 				.tranglationBody
@@ -175,6 +187,8 @@ html(lang='zh')
 						else
 							include partials/text_collection
 		a.icon-how(href='#')
+			.icon-bulb
+			.icon-how-text Tips
 		//-.lb-mask
 		//-.lb
 			.lb-box
@@ -286,3 +300,12 @@ html(lang='zh')
 
 //- ＊＊>> 使用 .get 讀入html 片段，基本不用特別用 iframe 呼叫六父層方式去對待( .parent.fn() )
 //- ＊＊>> 但要強烈分清楚「原本就存在 html 中」或「js 非同步加載」，後者要用 .find 或預先戴入
+
+//- ipt(tp='checkbox' id='aa') 
+//- lab(for='aa')
+//- label 的 for，input 用 id 接
+
+
+//- $('body').find('.cover-btn').click(function(){  (X)
+//- ^ 不等於 v
+//- $('body').on('click', '.cover-btn', function(){ (O)

@@ -310,10 +310,16 @@ $(function(){
 		lockTarget();
 	});
 
-	$('.controlbox-item').click(function(){
+	$('.controlbox-item, .nav-to-step1').click(function(){
 		setTimeout(function(){
 			lockTarget();
 		});
+	});
+
+	$('.nav-to-step1').click(function(){
+		setTimeout(function(){
+			lockTarget();
+		}, 500);
 	});
 
 	// ------------------------------------
@@ -322,6 +328,7 @@ $(function(){
 	$('.funbar-memobox').click(function(){
 		$(this).toggleClass('active');
 		$('.memobox').toggle(0);
+		lockTarget();
 	});
 
 	// =============================

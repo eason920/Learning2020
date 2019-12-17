@@ -14,20 +14,6 @@ $(function(){
 	const $control = $('#control-1');
 	const $explain = $('.article2');
 	const $readOnly = $('.article');
-	
-	$('#control-1 .toggle').click(function () {
-		$control.toggleClass("active");
-		if($control.attr('data-value')=='0'){
-			$control.attr('data-value','1');
-			$explain.show()
-			$readOnly.hide();
-		}else{
-			$control.attr('data-value','0');
-			$readOnly.show();
-			$explain.hide();			
-		}
-	})
-
 	$('#control-1 b').click(function(){
 		$control.addClass("active");
 		$control.attr('data-value', '1');
@@ -38,8 +24,8 @@ $(function(){
 	$('#control-1 i').click(function(){
 		$control.removeClass("active");
 		$control.attr('data-value', '0');
-		$readOnly.show();
 		$explain.hide();
+		$readOnly.show();
 	});
 
 	let beforeClassName='';

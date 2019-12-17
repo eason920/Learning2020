@@ -1,0 +1,97 @@
+.controlbox2
+	user-select: none
+	cursor: pointer
+	border-radius: 20px
+	overflow: hidden
+	position: relative
+	display: flex
+	& > *
+		line-height: 40px
+		font-size: 1.0625rem
+		text-transform: uppercase
+
+.controlbox2-on
+	border-radius: 20px 0 0 20px
+	background:
+		color: $c1
+	padding:
+		left: 15px
+	color: #fff
+
+.controlbox2-off
+	border-radius: 0 20px 20px 0
+	background:
+		color: #979797
+	padding:
+		right: 15px
+
+.controlbox2-text
+	border-radius: 20px
+	background:
+		color: #fff
+	position: absolute
+	left: 0
+	top: 0
+	padding: 0 15px
+	transition: .3s
+
+.active
+	.controlbox2-text
+		// left: auto
+		// right: 0
+		transition: .3s
+
+@media screen and (max-width: 1440px)
+	.is-play-part
+		.controlbox2-on
+			padding:
+				right: 28px
+
+		.controlbox2-off
+			padding:
+				left: 60px
+
+	.is-play-repeat
+		.controlbox2-on
+			padding:
+				right: 28px
+
+		.controlbox2-off
+			padding:
+				left: 32px
+
+	.active
+		.is-play-part
+			.controlbox2-text
+				left: 50px
+		.is-play-repeat
+			.controlbox2-text
+				left: 52.58px
+
+@media screen and (min-width: 1441px)
+	.is-play-part
+		.controlbox2-on
+			padding:
+				right: 45px
+
+		.controlbox2-off
+			padding:
+				left: 55px
+
+	.is-play-repeat
+		.controlbox2-on
+			padding:
+				right: 39px
+
+		.controlbox2-off
+			padding:
+				left: 27px
+
+	.active
+		.is-play-part
+			.controlbox2-text
+				left: 57.5px
+		.is-play-repeat
+			.controlbox2-text
+				left: 57.5px
+	

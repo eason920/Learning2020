@@ -65,8 +65,38 @@ $c-bg: #979797
 	bottom: 0
 	right: 0
 	z-index: 100
-	transform-origin: 100% 100%
-	transform: scale(.85)
+	width: 100px
+	height: 100px
+	padding: 47px 0 0 54px
+	&:hover
+		text-decoration: none
+		.icon-how-text
+			text-decoration: none
+	&:after
+		z-index: -1
+		content: ''
+		display: block
+		position: fixed
+		bottom: 0
+		right: 0
+		border:
+			style: solid
+			width: 0  0 100px 100px
+			color: transparent transparent #{$c1} transparent
+
+.icon-bulb
+	margin:
+		left: 6px
+		bottom: 6px
+
+.icon-how-text
+	font:
+		size: 1rem
+	color: #fff
+	text:
+		decoration: none
+	letter-spacing: 1px
+
 
 @media screen and (max-width: 1440px)
 	.controlbox-item,

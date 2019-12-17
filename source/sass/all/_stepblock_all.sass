@@ -1,0 +1,33 @@
+.stepblock-outer
+	width: 100%
+	height: 100%
+	overflow: hidden
+
+.stepblock-box
+	width: 300%
+	display: flex
+	position: relative
+	transition: left .5s
+	left: 0
+	&.is-step2
+		left: -100%
+	&.is-step3
+		left: -200%
+
+.stepblock1, .stepblock2, .stepblock3
+	position: relative
+	user-select: none
+	display: inline-block
+	overflow-y: auto
+	width: 33.333%
+	padding:
+		right: 1%
+	height: calc( 100vh - 55px - 100px - 20px )
+	&.is-lock
+		overflow: hidden
+
+.stepblock2
+	background: green
+
+.stepblock3
+	background: yellow
