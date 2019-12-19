@@ -33,162 +33,163 @@ html(lang='zh')
 		script(src='js/ui_step2.js')
 	body
 		// v HTML START v
-		.topbar
-			.wrapper
-				.wrapper-left
-					a.topbar-back-btn(href='#')
-						.icon-arrowleft
-						|返回
-				.wrapper-right-f1
-					.wrapper-right-f2
-						ul.topbar-step
-							li.topbar-step-item.nav-to-step1.active
-								.topbar-num 1
-								.topbar-text 認識本文
-								.icon-correct
-							li.topbar-step-item.nav-to-step2
-								.topbar-num 2
-								.topbar-text 加強記憶
-								.icon-correct
-							li.topbar-step-item.nav-to-step3.is-open
-								.topbar-num 3
-								.topbar-text 學習驗收
-								.icon-pink
-								.topbar-scort-outer
-									ul.topbar-scort
-										li.topbar-scrot-item
-											//- .topbar-num A
-											.topbar-text 理解力測驗
-											.topbar-s 100
-												span 分
-											.icon-correct
-										li.topbar-scrot-item
-											//- .topbar-num(style='margin-left: -22px') B
-											.topbar-text 聽力測驗
-											.topbar-s 89
-												span 分
-											.icon-correct
-										li.topbar-scrot-item
-											//- .topbar-num C
-											.topbar-text 克漏字測驗
-											.topbar-s 77
-												span 分
-											.icon-correct
-								.icon-correct
-						.topbar-icon
-							a.topbar-icon-item(href='#')
-								.icon-favorite
-							a.topbar-icon-item(href='#')
-								.icon-print
-		.funbar-block
-			.wrapper
-				.wrapper-left
-				.wrapper-right-f1
-					.wrapper-right-f2
-						ul.funbar.step-fnbar1(style='display: none;')
-							li.funbar-item.active.is-ench
-								.controlbox
-									b.controlbox-item 中+EN
-									i.controlbox-item EN
-							li.funbar-item#control-1.active(data-value='1')
-								.controlbox
-									b.controlbox-item 老師講解
-									i.controlbox-item 英文朗讀
-							li.funbar-item.is-item-memo
-								a.funbar-btn.funbar-memobox.active(href='#') 便利貼
-							li.funbar-item.is-item-group
-								a.funbar-btn.funbar-phrase(href='#') 單字片語
-							li.funbar-item
-								a.funbar-btn.funbar-collection(href='#') 單字收錄
-						ul.funbar.step-fnbar2
-							li.funbar-item
-								.controlbox2.is-play-part
-									.controlbox2-on on
-									.controlbox2-off off
-									.controlbox2-text 全文錄音播放
-							li.funbar-item
-								.controlbox2.is-play-repeat
-									.controlbox2-on on
-									.controlbox2-off off
-									.controlbox2-text 錄音重複
-		.main
-			.article_mask
-				section
-					aside
-						.aside-above
-							.aside-above-main
-								.title#title-a 
-									if (status === 'dev')
-										|Amazon Rainforest on Fire
-									else
-										|<%=en_subject%>
-								.sub#subtitle-a 
-									if (status === 'dev')
-										|亞馬遜雨林大火
-									else
-										|<%=ch_subject%>
-							.aside-above-sub
-								.aside-above-sub-en Powerful winds blew the smoke to the city and darkened the sky.
-								.aside-above-sub-ch 強風將濃煙帶到城市，使天空變黑。
-								.aside-speedbox
-									.speed-point
-									.speed
-										b.speed-left 慢
-										input#Speed_range(type='range', min='0.5', max='1.5', value='1', step='0.25')
-										b 快
-									input.play_btn(type='button')
-						.aside-below
-							.ArticleInfo-box
-								.ArticleInfo1.type2
-									.classification_btn
-										span#class_f 
-											if (status === 'dev')
-												|生活｜Culture/文化 CEFR:C1
-											else
-										.classification
-											ul
-												li 專業通則
-												li 生活
-												li 社交
-												li 通識
-												li 自我意識
-												li 基礎養成
-								.ArticleInfo2 
-									if (status === 'dev')
-										|文章序號:17976 Date:2019/05/16
-									else
-							.article-vbox
-								.Article_pic
-									img(src='./images/galxy.jpg')
-								// img ^v video box
-								#y-box.is-first-start
-								img.y-start(src='images/y_start.png')
-								.y-small
-					article
-						.stepblock-outer
-							.stepblock-box.is-step2
-								.stepblock1
-								.stepblock2.is-lock
-								.stepblock3
-							
-				.tranglationBody
-					input.close_btn(type='button')
-					.translation_Font
-					.translation_list
-						if (status === 'dev')
-							include partials/text_phrase
-						else
-					.translation_list2
-						if(status === 'dev')
-							include partials/text_collection
-							include partials/text_collection
-							include partials/text_collection
-							include partials/text_collection
-						else
-							include partials/text_collection
-		a.icon-how(href='#')
-			.icon-bulb
-			.icon-how-text Tips
+		#stepBox.is-step2
+			.topbar
+				.wrapper
+					.wrapper-left
+						a.topbar-back-btn(href='#')
+							.icon-arrowleft
+							|返回
+					.wrapper-right-f1
+						.wrapper-right-f2
+							ul.topbar-step
+								li.topbar-step-item.is-step-switch1
+									.topbar-num 1
+									.topbar-text 認識本文
+									.icon-correct
+								li.topbar-step-item.is-step-switch2
+									.topbar-num 2
+									.topbar-text 加強記憶
+									.icon-correct
+								li.topbar-step-item.is-step-switch3.is-open
+									.topbar-num 3
+									.topbar-text 學習驗收
+									.icon-pink
+									.topbar-scort-outer
+										ul.topbar-scort
+											li.topbar-scrot-item
+												//- .topbar-num A
+												.topbar-text 理解力測驗
+												.topbar-s 100
+													span 分
+												.icon-correct
+											li.topbar-scrot-item
+												//- .topbar-num(style='margin-left: -22px') B
+												.topbar-text 聽力測驗
+												.topbar-s 89
+													span 分
+												.icon-correct
+											li.topbar-scrot-item
+												//- .topbar-num C
+												.topbar-text 克漏字測驗
+												.topbar-s 77
+													span 分
+												.icon-correct
+									.icon-correct
+							.topbar-icon
+								a.topbar-icon-item(href='#')
+									.icon-favorite
+								a.topbar-icon-item(href='#')
+									.icon-print
+			.main
+				.article_mask
+					section
+						aside
+							.aside-above
+								.aside-above-main
+									.title#title-a 
+										if (status === 'dev')
+											|Amazon Rainforest on Fire
+										else
+											|<%=en_subject%>
+									.sub#subtitle-a 
+										if (status === 'dev')
+											|亞馬遜雨林大火
+										else
+											|<%=ch_subject%>
+								.aside-above-sub
+									.aside-above-sub-en Powerful winds blew the smoke to the city and darkened the sky.
+									.aside-above-sub-ch 強風將濃煙帶到城市，使天空變黑。
+									.aside-speedbox
+										.speed-point
+										.speed
+											b.speed-left 慢
+											input#Speed_range(type='range', min='0.5', max='1.5', value='1', step='0.25')
+											b 快
+										input.play_btn(type='button')
+							.aside-below
+								.ArticleInfo-box
+									.ArticleInfo1.type2
+										.classification_btn
+											span#class_f 
+												if (status === 'dev')
+													|生活｜Culture/文化 CEFR:C1
+												else
+											.classification
+												ul
+													li 專業通則
+													li 生活
+													li 社交
+													li 通識
+													li 自我意識
+													li 基礎養成
+									.ArticleInfo2 
+										if (status === 'dev')
+											|文章序號:17976 Date:2019/05/16
+										else
+								.article-vbox
+									.Article_pic
+										img(src='./images/galxy.jpg')
+									// img ^v video box
+									#y-box.is-first-start
+									img.y-start(src='images/y_start.png')
+									.y-small
+						article
+							.stepblock-outer
+								.stepblock-box
+									.stepblock1
+									.stepblock2.is-lock
+									.stepblock3
+								
+					.tranglationBody
+						input.close_btn(type='button')
+						.translation_Font
+						.translation_list
+							if (status === 'dev')
+								include partials/text_phrase
+							else
+						.translation_list2
+							if(status === 'dev')
+								include partials/text_collection
+								include partials/text_collection
+								include partials/text_collection
+								include partials/text_collection
+							else
+								include partials/text_collection
+			.funbar-box
+				.wrapper
+					.wrapper-left
+					.wrapper-right-f1
+						.wrapper-right-f2
+							ul.funbar.step-fnbar1
+								li.funbar-item.active.is-ench
+									.controlbox
+										b.controlbox-item 中+EN
+										i.controlbox-item EN
+								li.funbar-item#control-1.active(data-value='1')
+									.controlbox
+										b.controlbox-item 老師講解
+										i.controlbox-item 英文朗讀
+								li.funbar-item.is-item-memo
+									a.funbar-btn.funbar-memobox.active(href='#') 便利貼
+								li.funbar-item.is-item-group
+									a.funbar-btn.funbar-phrase(href='#') 單字片語
+								li.funbar-item
+									a.funbar-btn.funbar-collection(href='#') 單字收錄
+							ul.funbar.step-fnbar2
+								li.funbar-item
+									.controlbox2.is-play-part
+										.controlbox2-on on
+										.controlbox2-off off
+										.controlbox2-text 全文錄音播放
+								li.funbar-item
+									.controlbox2.is-play-repeat
+										.controlbox2-on on
+										.controlbox2-off off
+										.controlbox2-text 錄音重複
+			a.icon-how(href='#')
+				.icon-bulb
+				.icon-how-text Tips
 		//-.lb-mask
 		//-.lb
 			.lb-box

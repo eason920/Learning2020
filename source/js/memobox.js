@@ -310,13 +310,13 @@ $(function(){
 		lockTarget();
 	});
 
-	$('.controlbox-item, .nav-to-step1').click(function(){
+	$('.controlbox-item, .is-step-switch1').click(function(){
 		setTimeout(function(){
 			lockTarget();
 		});
 	});
 
-	$('.nav-to-step1').click(function(){
+	$('.is-step-switch1').click(function(){
 		setTimeout(function(){
 			lockTarget();
 		}, 500);

@@ -1,5 +1,25 @@
 $c-w: #4a4a4a
-.funbar-block
+#stepBox
+	&.is-step1
+		.step-fnbar1
+			display: flex
+
+		.step-fnbar2
+			display: none
+
+	&.is-step2
+		.step-fnbar1
+			display: none
+
+		.step-fnbar2
+			display: flex
+
+	&.is-step3
+		.step-fnbar1,
+		.step-fnbar2
+			display: none
+
+.funbar-box
 	position: fixed
 	z-index: 11
 	left: 0px
@@ -63,24 +83,25 @@ $c-w: #4a4a4a
 		color: $c-w
 		text:
 			decoration: none
-	.funbar-block
-		position: fixed
-		z-index: 11
-		left: 0px
-		bottom: 0px
-		display: block
-		width: 100%
-		min-width: 1200px
-		text-align: center
-		height: 65px
+
+.funbar-box
+	position: fixed
+	z-index: 11
+	left: 0px
+	bottom: 0px
+	display: block
+	width: 100%
+	min-width: 1200px
+	text-align: center
+	height: 65px
+	transition: .6s
+	&.move
+		margin:
+			left: -25%
 		transition: .6s
-		&.move
-			margin:
-				left: -25%
-			transition: .6s
-		.wrapper-right-f1
-			padding-right: 90px 
-			// ^ icon-how.width()
+	.wrapper-right-f1
+		padding-right: 90px 
+		// ^ icon-how.width()
 
 .funbar
 	border-radius: 32px 32px 0 0

@@ -92,7 +92,7 @@ $(function () {
 			$('.y-small').fadeOut();
 			$('.y-start').fadeIn();
 		}
-		$('.is-step3').removeClass('is-open');
+		$('.is-step-main3').removeClass('is-open');
 	});
 		
 	// ====================================
@@ -107,9 +107,9 @@ $(function () {
 	})
 
 	// ====================================
-	// == TOPBAR
+	// == TOP BAR & FUNCTION BAR
 	// ====================================
-	$('.nav-to-step1, .nav-to-step2, .nav-to-step3').click(function(){
+	$('.is-step-switch1, .is-step-switch2, .is-step-switch3').click(function(){
 		const $this = $(this);
 		const check = $this.attr('class');
 		let className = '';
@@ -118,15 +118,18 @@ $(function () {
 		$(this).addClass('active');
 
 		switch(true){
-			case /step2/.test( check ):
+			case /switch1/.test( check ):
+				className = 'is-step1';
+				break;
+			case /switch2/.test( check ):
 				className = 'is-step2';
 				break;
-			case /step3/.test( check ):
+			case /switch3/.test( check ):
 				className = 'is-step3';
 				break;
 			default:
 		}
-		$('.stepblock-box').removeClass('is-step2 is-step3').addClass(className)
+		$('#stepBox').removeClass().addClass(className);
 	});
 
 
@@ -134,7 +137,7 @@ $(function () {
 	// -- step 3
 	// ------------------------------------
 	$pink = $('.icon-pink');
-	$step3 = $('.nav-to-step3');
+	$step3 = $('.is-step-switch3');
 
 	$pink.mouseover(function(){
 		$step3.addClass('is-open');
@@ -151,7 +154,7 @@ $(function () {
 		closeScort();
 	});
 
-	$('.nav-to-step2, .topbar-icon').mouseover(function(){
+	$('.is-step-switch2, .topbar-icon').mouseover(function(){
 		closeScort();
 	});
 

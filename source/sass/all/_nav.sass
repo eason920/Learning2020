@@ -3,6 +3,24 @@
 	height: 50px
 $w-icon: 70px
 $h-nav: 76px
+@mixin nav-active
+	opacity: 1
+	.topbar-num
+		background-color: $c2
+		transtion: .3s
+	.topbar-text
+		color: $c2
+		transtion: .3s
+	.icon-correct
+		opacity: 1
+
+// -----------------------------------
+#stepBox
+	&.is-step1 .is-step-switch1,
+	&.is-step2 .is-step-switch2,
+	&.is-step3 .is-step-switch3
+		@include nav-active
+
 .topbar
 	background:
 		color: #fff
@@ -42,7 +60,6 @@ $h-nav: 76px
 			decoration: none		
 
 // -----------------------------------
-
 // -----------------------------------
 .topbar-step
 	@extend %block
@@ -56,22 +73,14 @@ $h-nav: 76px
 	margin:
 		right: 1.5%
 
-	&:hover, &.active
-		opacity: 1
-		.topbar-num
-			background-color: $c2
-			transtion: .3s
-		.topbar-text
-			color: $c2
-			transtion: .3s
-		.icon-correct
-			opacity: 1
+	&:hover
+		@include nav-active
 
-	&.nav-to-step1
+	&.is-step-switch1
 		width: 27.5%
 
-	&.nav-to-step2,
-	&.nav-to-step3
+	&.is-step-switch2,
+	&.is-step-switch3
 		justify-content: center
 		width: 34%
 		position: relative
