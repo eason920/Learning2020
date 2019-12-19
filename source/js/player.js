@@ -156,7 +156,7 @@ function play(t){
   }
 
   //$('.speed').addClass("show");
-  $('.play_btn').addClass("pause");  
+  $('#playBtn1').addClass("pause");  
 
   if(playmode==1){
     document.getElementById('audio1').currentTime = clock_num[t];
@@ -196,7 +196,7 @@ function playC(t)
   }
 
   //$('.speed').toggleClass("show");
-  $('.play_btn').toggleClass("pause");
+  $('#playBtn1').toggleClass("pause");
 
   if(playmode==1 || playmode==3){
     document.getElementById('audio1').currentTime = clock_num[t];
@@ -217,7 +217,6 @@ function playC(t)
 function pausetime(){
   document.getElementById("audio1").pause();
   document.getElementById("audio2").pause();
-  // $('.speed').removeClass("show");
   $('.play_btn').removeClass("pause");
 }
 

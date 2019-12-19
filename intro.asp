@@ -207,8 +207,220 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	<script async defer crossorigin="anonymous" src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v4.0&appId=665673953932390&autoLogAppEvents=1"></script>
 	<input type="hidden" name="repeat" id="repeat" value="0" />
 	<!-- v HTML START v -->
-  
-  <!-- ^ HTML END ^ -->
+	<div class="is-step2" id="stepBox">
+      <div class="topbar">
+        <div class="wrapper">
+          <div class="wrapper-left"><a class="topbar-back-btn" href="#">
+              <div class="icon-arrowleft"></div>返回</a></div>
+          <div class="wrapper-right-f1">
+            <div class="wrapper-right-f2">
+              <ul class="topbar-step">
+                <li class="topbar-step-item is-step-switch1">
+                  <div class="topbar-num">1</div>
+                  <div class="topbar-text">認識本文</div>
+                  <div class="icon-correct"></div>
+                </li>
+                <li class="topbar-step-item is-step-switch2">
+                  <div class="topbar-num">2</div>
+                  <div class="topbar-text">加強記憶</div>
+                  <div class="icon-correct"></div>
+                </li>
+                <li class="topbar-step-item is-step-switch3 is-open">
+                  <div class="topbar-num">3</div>
+                  <div class="topbar-text">學習驗收</div>
+                  <div class="icon-pink"></div>
+                  <div class="topbar-scort-outer">
+                    <ul class="topbar-scort">
+                      <li class="topbar-scrot-item">
+                        <div class="topbar-text">理解力測驗</div>
+                        <div class="topbar-s">100<span>分</span></div>
+                        <div class="icon-correct"></div>
+                      </li>
+                      <li class="topbar-scrot-item">
+                        <div class="topbar-text">聽力測驗</div>
+                        <div class="topbar-s">89<span>分</span></div>
+                        <div class="icon-correct"></div>
+                      </li>
+                      <li class="topbar-scrot-item">
+                        <div class="topbar-text">克漏字測驗</div>
+                        <div class="topbar-s">77<span>分</span></div>
+                        <div class="icon-correct"></div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="icon-correct"></div>
+                </li>
+              </ul>
+              <div class="topbar-icon"><a class="topbar-icon-item" href="#">
+                  <div class="icon-favorite"></div></a><a class="topbar-icon-item" href="#">
+                  <div class="icon-print"></div></a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="main">
+        <div class="article_mask">
+          <section>
+            <aside>
+              <div class="aside-above">
+                <div class="aside-above-main">
+                  <div class="title" id="title-a"> <%=en_subject%>
+                  </div>
+                  <div class="sub" id="subtitle-a"> <%=ch_subject%>
+                  </div>
+                </div>
+                <div class="aside-above-sub">
+                  <div class="aside-above-sub-en">Powerful winds blew the smoke to the city and darkened the sky.</div>
+                  <div class="aside-above-sub-ch">強風將濃煙帶到城市，使天空變黑。</div>
+                  <div class="aside-speedbox is-play1">
+                    <div class="speed-point"></div>
+                    <div class="speed"><b class="speed-left">慢</b>
+                      <input id="Speed_range" type="range" min="0.5" max="1.5" value="1" step="0.25"><b>快</b>
+                    </div>
+                    <input class="play_btn" id="playBtn1" type="button">
+                  </div>
+                  <div class="aside-speedbox is-play2">
+                    <div class="speed-point"></div>
+                    <div class="speed"><b class="speed-left">慢</b>
+                      <input type="range" min="0.5" max="1.5" value="1" step="0.25"><b>快</b>
+                    </div>
+                    <input class="play_btn" id="playBtn2" type="button">
+                  </div>
+                  <div class="aside-speedbox is-play3">
+                    <div class="speed-point"></div>
+                    <div class="speed"><b class="speed-left">慢</b>
+                      <input type="range" min="0.5" max="1.5" value="1" step="0.25"><b>快</b>
+                    </div>
+                    <input class="play_btn" id="playBtn3" type="button">
+                  </div>
+                </div>
+              </div>
+              <div class="aside-below">
+                <div class="ArticleInfo-box">
+                  <div class="ArticleInfo1 type2">
+                    <div class="classification_btn"><span id="class_f"> </span>
+                      <div class="classification">
+                        <ul>
+                          <li>專業通則</li>
+                          <li>生活</li>
+                          <li>社交</li>
+                          <li>通識</li>
+                          <li>自我意識</li>
+                          <li>基礎養成</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="ArticleInfo2"> 
+                  </div>
+                </div>
+                <div class="article-vbox">
+                  <div class="Article_pic"><img src="./images/galxy.jpg"></div>
+                  <!-- img ^v video box-->
+                  <div class="is-first-start" id="y-box"></div><img class="y-start" src="images/y_start.png">
+                  <div class="y-small"></div>
+                </div>
+              </div>
+            </aside>
+            <article>
+              <div class="stepblock-outer">
+                <div class="stepblock-box">
+                  <div class="stepblock1"></div>
+                  <div class="stepblock2 is-lock"></div>
+                  <div class="stepblock3"></div>
+                </div>
+              </div>
+            </article>
+          </section>
+          <div class="tranglationBody">
+            <input class="close_btn" type="button">
+            <div class="translation_Font"></div>
+            <div class="translation_list">
+            </div>
+            <div class="translation_list2">
+              <div class="colbox">
+                <div class="colbox-prefix">T</div>
+                <div class="colbox-item">
+                  <div class="colbox-abovebox">
+                    <div class="colbox-abovebox-text">transparent</div><a class="colbox-abovebox-del icon-del-c" href="#"></a>
+                  </div>
+                  <div class="colbox-underbox">
+                    <div class="colbox-underbox-memo">學員的筆記寫在這</div>
+                    <div class="colbox-underbox-placeholder">輸入中文解釋</div>
+                    <div class="colbox-underbox-editbox">
+                      <input class="colbox-underbox-input" type="text"><a class="colbox-underbox-ok" href="#">確定</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="colbox-item">
+                  <div class="colbox-abovebox">
+                    <div class="colbox-abovebox-text">teacher</div><a class="colbox-abovebox-del icon-del-c" href="#"></a>
+                  </div>
+                  <div class="colbox-underbox">
+                    <div class="colbox-underbox-memo"> </div>
+                    <div class="colbox-underbox-placeholder">輸入中文解釋</div>
+                    <div class="colbox-underbox-editbox">
+                      <input class="colbox-underbox-input" type="text"><a class="colbox-underbox-ok" href="#">確定</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="colbox-item">
+                  <div class="colbox-abovebox">
+                    <div class="colbox-abovebox-text">ticket</div><a class="colbox-abovebox-del icon-del-c" href="#"></a>
+                  </div>
+                  <div class="colbox-underbox">
+                    <div class="colbox-underbox-memo">學員的 ticket 筆記寫在這</div>
+                    <div class="colbox-underbox-placeholder">輸入中文解釋</div>
+                    <div class="colbox-underbox-editbox">
+                      <input class="colbox-underbox-input" type="text"><a class="colbox-underbox-ok" href="#">確定</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="funbar-box">
+        <div class="wrapper">
+          <div class="wrapper-left"></div>
+          <div class="wrapper-right-f1">
+            <div class="wrapper-right-f2">
+              <ul class="funbar step-fnbar1">
+                <li class="funbar-item active is-ench">
+                  <div class="controlbox"><b class="controlbox-item">中+EN</b><i class="controlbox-item">EN</i></div>
+                </li>
+                <li class="funbar-item active" id="control-1" data-value="1">
+                  <div class="controlbox"><b class="controlbox-item">老師講解</b><i class="controlbox-item">英文朗讀</i></div>
+                </li>
+                <li class="funbar-item is-item-memo"><a class="funbar-btn funbar-memobox active" href="#">便利貼</a></li>
+                <li class="funbar-item is-item-group"><a class="funbar-btn funbar-phrase" href="#">單字片語</a></li>
+                <li class="funbar-item"><a class="funbar-btn funbar-collection" href="#">單字收錄</a></li>
+              </ul>
+              <ul class="funbar step-fnbar2">
+                <li class="funbar-item">
+                  <div class="controlbox2 is-play-part">
+                    <div class="controlbox2-on">on</div>
+                    <div class="controlbox2-off">off</div>
+                    <div class="controlbox2-text">全文錄音播放</div>
+                  </div>
+                </li>
+                <li class="funbar-item">
+                  <div class="controlbox2 is-play-repeat">
+                    <div class="controlbox2-on">on</div>
+                    <div class="controlbox2-off">off</div>
+                    <div class="controlbox2-text">錄音重複</div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div><a class="icon-how" href="#">
+        <div class="icon-bulb"></div>
+        <div class="icon-how-text">Tips</div></a>
+    </div>
+  	<!-- ^ HTML END ^ -->
 </body>
 
 </html>

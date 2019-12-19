@@ -197,7 +197,7 @@ section.move {
 }
 @media screen and (max-width: 1440px) {
   .aside-above {
-    height: calc( 100% - 90px - 258px);
+    height: calc( 100% - 90px - 258px - 20px);
   }
 
   .article-vbox,
@@ -571,6 +571,25 @@ section.move {
     margin-right: 10px;
   }
 }
+#stepBox.is-step1 .is-play1 {
+  display: block;
+}
+#stepBox.is-step1 .is-play2, #stepBox.is-step1 .is-play3 {
+  display: none;
+}
+#stepBox.is-step2 .is-play2 {
+  display: block;
+}
+#stepBox.is-step2 .is-play1, #stepBox.is-step2 .is-play3 {
+  display: none;
+}
+#stepBox.is-step3 .is-play3 {
+  display: block;
+}
+#stepBox.is-step3 .is-play1, #stepBox.is-step3 .is-play2 {
+  display: none;
+}
+
 aside {
   display: block;
   float: left;
@@ -619,7 +638,7 @@ aside .sub {
 
 .aside-speedbox {
   position: relative;
-  margin-bottom: 30px;
+  padding-bottom: 30px;
 }
 
 .play_btn {
@@ -941,12 +960,19 @@ input[type=range]::-ms-track {
   position: relative;
   user-select: none;
   display: inline-block;
-  overflow-y: auto;
   width: 33.333%;
   padding-right: 1%;
   height: calc( 100vh - 55px - 100px - 20px );
 }
 .stepblock1.is-lock, .stepblock2.is-lock, .stepblock3.is-lock {
+  overflow: hidden;
+}
+
+.stepblock1 {
+  overflow-y: auto;
+}
+
+.stepblock2, .stepblock3 {
   overflow: hidden;
 }
 
@@ -1421,6 +1447,10 @@ input[type=range]::-ms-track {
   margin: 0 auto;
   color: #fff;
   cursor: pointer;
+}
+
+#stepBox {
+  height: 100vh;
 }
 
 .is-phrase {

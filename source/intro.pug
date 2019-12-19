@@ -100,13 +100,27 @@ html(lang='zh')
 								.aside-above-sub
 									.aside-above-sub-en Powerful winds blew the smoke to the city and darkened the sky.
 									.aside-above-sub-ch 強風將濃煙帶到城市，使天空變黑。
-									.aside-speedbox
+									.aside-speedbox.is-play1
 										.speed-point
 										.speed
 											b.speed-left 慢
 											input#Speed_range(type='range', min='0.5', max='1.5', value='1', step='0.25')
 											b 快
-										input.play_btn(type='button')
+										input#playBtn1.play_btn(type='button')
+									.aside-speedbox.is-play2
+										.speed-point
+										.speed
+											b.speed-left 慢
+											input(type='range', min='0.5', max='1.5', value='1', step='0.25')
+											b 快
+										input#playBtn2.play_btn(type='button')
+									.aside-speedbox.is-play3
+										.speed-point
+										.speed
+											b.speed-left 慢
+											input(type='range', min='0.5', max='1.5', value='1', step='0.25')
+											b 快
+										input#playBtn3.play_btn(type='button')
 							.aside-below
 								.ArticleInfo-box
 									.ArticleInfo1.type2

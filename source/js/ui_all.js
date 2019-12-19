@@ -61,7 +61,7 @@ $(function () {
 		// talk
 		if( $(".play_btn").hasClass("pause") ) {
 			$(".play_btn").removeClass('pause');
-			pausetime()
+			pausetime();
 		}
 	});
 	$('.y-small').click(function () {
@@ -78,13 +78,20 @@ $(function () {
 	});
 
 	$('.play_btn').click(function () {
-		$('.speed').toggleClass("show");
-		$('.speed-point').fadeToggle();
-		$('.play_btn').toggleClass("pause");
-		pauseplay()
-		if($(".play_btn").hasClass("pause")==false){
-			pausetime()
+		if( $('.play_btn').hasClass('pause') ){
+			// when playing
+			$('.speed').removeClass("show");
+			$('.speed-point').fadeOut();
+			$('.play_btn').removeClass("pause");
+			pausetime();
+		}else{
+			// when stoping
+			$('.speed').addClass("show");
+			$('.speed-point').fadeIn();
+			$('.play_btn').addClass("pause");
+			/playBtn1/.test($(this).attr('id')) ? pauseplay() : null;
 		}
+
 		// youtube
 		if( !$('#y-box').hasClass('is-first-start') ){
 			player.pauseVideo();
@@ -92,6 +99,8 @@ $(function () {
 			$('.y-small').fadeOut();
 			$('.y-start').fadeIn();
 		}
+
+		// nav bar ui control
 		$('.is-step-main3').removeClass('is-open');
 	});
 		
@@ -110,6 +119,13 @@ $(function () {
 	// == TOP BAR & FUNCTION BAR
 	// ====================================
 	$('.is-step-switch1, .is-step-switch2, .is-step-switch3').click(function(){
+		// init video
+		pausetime();
+		$('.speed').removeClass("show");
+		$('.speed-point').fadeOut();
+		$('.play_btn').removeClass("pause");
+
+		// v start v
 		const $this = $(this);
 		const check = $this.attr('class');
 		let className = '';

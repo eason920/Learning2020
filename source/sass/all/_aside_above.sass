@@ -1,3 +1,20 @@
+#stepBox
+	&.is-step1
+		.is-play1
+			display: block
+		.is-play2,.is-play3
+			display: none
+	&.is-step2
+		.is-play2
+			display: block
+		.is-play1,.is-play3
+			display: none
+	&.is-step3
+		.is-play3
+			display: block
+		.is-play1,.is-play2
+			display: none
+	
 aside
 	display: block
 	float: left
@@ -57,7 +74,7 @@ aside
 // -----------------------------------
 .aside-speedbox
 	position: relative
-	margin:
+	padding:
 		bottom: 30px
 
 .play_btn
