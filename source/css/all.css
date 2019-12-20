@@ -968,16 +968,12 @@ input[type=range]::-ms-track {
   overflow: hidden;
 }
 
-.stepblock1 {
+.stepblock1, .stepblock3 {
   overflow-y: auto;
 }
 
-.stepblock2, .stepblock3 {
+.stepblock2 {
   overflow: hidden;
-}
-
-.stepblock3 {
-  background: yellow;
 }
 
 .tranglationBody {
