@@ -2006,5 +2006,76 @@ body.is-memo-moving .english span:hover, body.is-memo-moving .Chinese span:hover
     left: 57.5px;
   }
 }
+.s2-title {
+  height: 88px;
+  border-bottom: solid 3px #e7e7e7;
+  margin-bottom: 20px;
+  background-color: #fff;
+  position: relative;
+  z-index: 1;
+}
+
+.s2-title-text {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #f74769;
+  text-align: center;
+  line-height: 1;
+  padding-top: 20px;
+  padding-bottom: 8px;
+}
+
+.s2-title-percent {
+  font-size: 1.5rem;
+  color: #4a4a4a;
+  text-align: center;
+  line-height: 1;
+}
+
+.s2-main {
+  height: calc( 100% - 88px - 20px );
+  position: relative;
+}
+
+.s2-main-box {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.s2-main-item {
+  height: 100%;
+  text-align: center;
+}
+
+.s2-main-flex {
+  display: flex;
+  height: calc( 100% - 50px);
+  align-items: center;
+  justify-content: center;
+}
+
+.s2-main-next {
+  height: 50px;
+}
+
+.s2-en {
+  line-height: 1.4;
+  padding-bottom: 14px;
+}
+.s2-en span {
+  font-size: 1.375rem;
+  color: #4a4a4a;
+  letter-spacing: 1.2px;
+}
+
+.s2-ch {
+  font-size: 0.9375rem;
+  color: #555;
+}
+
+.s2-record {
+  margin-top: 60px;
+}
 
 /*# sourceMappingURL=all.css.map */

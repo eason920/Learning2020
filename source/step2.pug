@@ -3,177 +3,184 @@
 	.s2-title-percent 88%
 
 .s2-main
-	// F1 : TITLE
-	div
-		a#Tt0(name='Tt0')
-		.svg55
-			div
-				//- EN
-				span#Step2t0.ArticleP3.ArticleP3En.link
-					span(ondblclick='word_get("Shopee","0");')  Shopee
-					span(ondblclick='word_get("in","1");')  in
-					span(ondblclick='word_get("Legal","2");')  Legal
-					span(ondblclick='word_get("Battle","3");')  Battle
-					span(ondblclick='word_get("with","4");')  with
-					span(ondblclick='word_get("PChome","5");')  PChome
-				//- CH
-				p
-					font#Tct0.ArticleP3 &#x8766;&#x76AE;&#x8207;PChome&#x5B98;&#x53F8;&#x7E8F;&#x9B25;
-		//- NEXT BTN
-		div(onclick='play_vo(1)')
-			.NextEX.link 開始
-
-	// FLOOR2 : ART STR
-	div
-		a#Tt1(name='Tt1')
-		//- MAIN BOX
-		.svg55
-			div
-				//- EN
-				span#Step2t1.ArticleP3.ArticleP3En.link
-					span(ondblclick='word_get("Competition","0");')  Competition
-					span(ondblclick='word_get("in","1");')  in
-					span(ondblclick='word_get("Taiwan’s","2");')  Taiwan&rsquo;s
-					span(ondblclick='word_get("e-commerce","3");')  e-commerce
-					span(ondblclick='word_get("industry","4");')  industry
-					span(ondblclick='word_get("is","5");')  is
-					span(ondblclick='word_get("heating","6");')  heating
-					span(ondblclick='word_get("up,","7");')  up,
-					span(ondblclick='word_get("with","8");')  with
-					span(ondblclick='word_get("major","9");')  major
-					span(ondblclick='word_get("shopping","10");')  shopping
-					span(ondblclick='word_get("platforms","11");')  platforms
-					span(ondblclick='word_get("trying","12");')  trying
-					span(ondblclick='word_get("to","13");')  to
-					span(ondblclick='word_get("attract","14");')  attract
-					span(ondblclick='word_get("customers","15");')  customers
-					span(ondblclick='word_get("from","16");')  from
-					span(ondblclick='word_get("each","17");')  each
-					span(ondblclick='word_get("other.","18");')  other.
-					span(ondblclick='word_get("","19");') 
-				//- CH
-				p
-					font#Tct1.ArticleP3 隨著台灣的電商競爭越演越烈，大型平台相互較勁搶客，
-				//- RADIO RECODER
+	.s2-main-box
+		// F1 : TITLE
+		.s2-main-item
+			a#Tt0(name='Tt0')
+			.s2-main-flex
 				div
-					table.TDtable(width='50%' align='center' cellpadding='0' cellspacing='0' border='0' style='width: 50%;')
-						tbody
-							tr
-							td.TDSpeaker(align='center' width='45%')
-								span.RecordSpeakerTitle &#x539F;&#x97F3;&#x64AD;&#x653E;
-							td.TDplayerLine(width='10%' style='display: table-cell;')
-							td.TDplayer(align='center' width='45%' style='display: table-cell;')
-								span.Step2playerTitle &#x9304;&#x97F3;
-							tr(height='40px;')
-							td(align='center')
-								#Ste2Play1.ST2Player.link(onclick='play_vo(1);return false;' title='原文播放' style='display: block;')
-								#Ste2Pause1.ST2Pause.link(onclick='pausetime();return false;' title='播放暫停' style='display: none;')
-								#Ste2Play21.ST2Player2.link(onclick='pauseplay2();return false;' title='原文播放' style='display: none;')
-								.ST2Repet.link(style='margin-left:10px;' onclick='StepRepet()' data-value='0' title='反覆播放')
-							td.TDplayerLine(align='center' style='display: table-cell;') |
-							td.TDplayer2(style='display: table-cell;')
-								#Ste2ReSpeaker1.RecordSpeaker.link(title='錄音' onclick='recordNow();' style='display: block;')
-								#Ste2RecordStop1.RecordStop.link(title='錄音中' onclick='recordStop();')
-								#Ste2RePlay1.RecordPlay.link(title='錄音播放' onclick='recordPlay();' style='display: block;')
-				//- v MUST BE OTHER UNIT
-				//- div(style='position:relative;text-align:center;overflow:hidden; margin-top:10px;')
-				//- #ActivateHeart1.AddQuote.link(data-value='0' onclick='Step2Chang("Heart",1)' title='將學到的重點筆記起來存到佳句收錄' style='display: none;')
-				//- textarea#ans_info1.ans_textarea(name='ans_info1' onkeyup='autogrow(1)' style='display: none;')
-				//- #ans_infodelete1.Step2Submit.link(onclick='delegoP_Sentences("18562",1);' style='display: none;') &#x522A;&#x9664;
-				//- #ans_infoSubmit1.Step2Submit.link(onclick='goP_sentences("18562","Competition%20in%20Taiwan%u2019s%20e-commerce%20industry%20is%20heating%20up%2C%20with%20major%20shopping%20platforms%20trying%20to%20attract%20customers%20from%20each%20other.%20","%u96A8%u8457%u53F0%u7063%u7684%u96FB%u5546%u7AF6%u722D%u8D8A%u6F14%u8D8A%u70C8%uFF0C%u5927%u578B%u5E73%u53F0%u76F8%u4E92%u8F03%u52C1%u6436%u5BA2%uFF0C",1)' style='display: none;') &#x5132;&#x5B58;
-				//- #ans_infoDV1.ans_textareaDV(name='ans_infoDV1' style='display: none;')
-				//- #BulbDV1.BulbDV(style='display: none;')
-				//- textarea#skey1.ans_textarea2(name='skey1' onkeyup='autogrow2(1)' style='display: none;')
-				//- input#skey21(type='hidden' name='skey21' value='Competition in Taiwan’s e-commerce industry is heating up, with major shopping platforms trying to attract customers from each other. ')
-				//- #Step2Submit21.Step2Submit2.link(onclick='schk(1)') &#x9001;&#x51FA;
-		//- NEXT BTN
-		div(onclick='play_vo(2)')
-			.NextEX.link 下一句
-			.Arrow_icon2.Rota270.link
+					//- EN
+					#Step2t0.s2-en
+						span(ondblclick='word_get("Shopee","0");')  Shopee
+						span(ondblclick='word_get("in","1");')  in
+						span(ondblclick='word_get("Legal","2");')  Legal
+						span(ondblclick='word_get("Battle","3");')  Battle
+						span(ondblclick='word_get("with","4");')  with
+						span(ondblclick='word_get("PChome","5");')  PChome
+					//- CH
+					div
+						#Tct0.s2-ch &#x8766;&#x76AE;&#x8207;PChome&#x5B98;&#x53F8;&#x7E8F;&#x9B25;
+			//- NEXT BTN
+			//- div(onclick='play_vo(1)')
+			.s2-main-next
+				.NextEX 開始
 
-	// FLOOR3 : ART 2
-	div
-		a#Tt2(name='Tt2')
-		.svg55
-			div
-				//- EN
-				span#Step2t2.ArticleP3.ArticleP3En.link
-					span(ondblclick='word_get("Now,","0");')  Now,
-					span(ondblclick='word_get("a","1");')  a
-					span(ondblclick='word_get("new","2");')  new
-					span(ondblclick='word_get("front","3");')  front
-					span(ondblclick='word_get("has","4");')  has
-					span(ondblclick='word_get("opened","5");')  opened
-					span(ondblclick='word_get("in","6");')  in
-					span(ondblclick='word_get("this","7");')  this
-					span(ondblclick='word_get("war:","8");')  war:
-					span(ondblclick='word_get("online","9");')  online
-					span(ondblclick='word_get("shopping","10");')  shopping
-					span(ondblclick='word_get("giant","11");')  giant
-					span(ondblclick='word_get("PChome","12");')  PChome
-					span(ondblclick='word_get("filed","13");')  filed
-					span(ondblclick='word_get("a","14");')  a
-					span(ondblclick='word_get("defamation","15");')  defamation
-					span(ondblclick='word_get("charge","16");')  charge
-					span(ondblclick='word_get("against","17");')  against
-					span(ondblclick='word_get("its","18");')  its
-					span(ondblclick='word_get("Singapore-based","19");')  Singapore-based
-					span(ondblclick='word_get("rival,","20");')  rival,
-					span(ondblclick='word_get("Shopee,","21");')  Shopee,
-					span(ondblclick='word_get("claiming","22");')  claiming
-					span(ondblclick='word_get("its","23");')  its
-					span(ondblclick='word_get("reputation","24");')  reputation
-					span(ondblclick='word_get("has","25");')  has
-					span(ondblclick='word_get("been","26");')  been
-					span(ondblclick='word_get("tarnished","27");')  tarnished
-					span(ondblclick='word_get("by","28");')  by
-					span(ondblclick='word_get("the","29");')  the
-					span(ondblclick='word_get("latter’s","30");')  latter&rsquo;s
-					span(ondblclick='word_get("comparative","31");')  comparative
-					span(ondblclick='word_get("advertising","32");')  advertising
-					span(ondblclick='word_get("campaign.","33");')  campaign.
-					span(ondblclick='word_get("","34");')  
-				//- CH
-				p
-					font#Tct2.ArticleP3 而現在更延燒出新的戰場：網購龍頭PChome控告新加坡電商蝦皮妨害名譽，指出蝦皮針鋒相對的宣傳廣告讓PChome商譽受損。
-				//- RADIO RECODER
+		// FLOOR2 : ART STR
+		.s2-main-item
+			a#Tt1(name='Tt1')
+			//- MAIN BOX
+			.s2-main-flex
 				div
-					table.TDtable(width='50%' align='center' cellpadding='0' cellspacing='0' border='0' style='width: 50%;')
-						tbody
-							tr
-							td.TDSpeaker(align='center' width='45%')
-								span.RecordSpeakerTitle &#x539F;&#x97F3;&#x64AD;&#x653E;
-							td.TDplayerLine(width='10%' style='display: table-cell;')
-							td.TDplayer(align='center' width='45%' style='display: table-cell;')
-								span.Step2playerTitle &#x9304;&#x97F3;
-							tr(height='40px;')
-							td(align='center')
-								#Ste2Play2.ST2Player.link(onclick='play_vo(2);return false;' title='原文播放' style='display: block;')
-								#Ste2Pause2.ST2Pause.link(onclick='pausetime();return false;' title='播放暫停' style='display: none;')
-								#Ste2Play22.ST2Player2.link(onclick='pauseplay2();return false;' title='原文播放' style='display: none;')
-								.ST2Repet.link(style='margin-left:10px;' onclick='StepRepet()' data-value='0' title='反覆播放')
-							td.TDplayerLine(align='center' style='display: table-cell;') |
-							td.TDplayer2(style='display: table-cell;')
-								#Ste2ReSpeaker2.RecordSpeaker.link(title='錄音' onclick='recordNow();' style='display: block;')
-								#Ste2RecordStop2.RecordStop.link(title='錄音中' onclick='recordStop();')
-								#Ste2RePlay2.RecordPlay.link(title='錄音播放' onclick='recordPlay();' style='display: block;')
-				//- v MUST BE OTHER UNIT
-				//- div(style='position:relative;text-align:center;overflow:hidden; margin-top:10px;')
-				//- #ActivateHeart2.AddQuote.link(data-value='0' onclick='Step2Chang("Heart",2)' title='將學到的重點筆記起來存到佳句收錄' style='display: none;')
-				//- textarea#ans_info2.ans_textarea(name='ans_info2' onkeyup='autogrow(2)' style='display: none;')
-				//- #ans_infodelete2.Step2Submit.link(onclick='delegoP_Sentences("18562",2);' style='display: none;') &#x522A;&#x9664;
-				//- #ans_infoSubmit2.Step2Submit.link(onclick='goP_sentences("18562","Now%2C%20a%20new%20front%20has%20opened%20in%20this%20war%3A%20online%20shopping%20giant%20PChome%20filed%20a%20defamation%20charge%20against%20its%20Singapore-based%20rival%2C%20Shopee%2C%20claiming%20its%20reputation%20has%20been%20tarnished%20by%20the%20latter%u2019s%20comparative%20advertising%20campaign.%20","%u800C%u73FE%u5728%u66F4%u5EF6%u71D2%u51FA%u65B0%u7684%u6230%u5834%uFF1A%u7DB2%u8CFC%u9F8D%u982DPChome%u63A7%u544A%u65B0%u52A0%u5761%u96FB%u5546%u8766%u76AE%u59A8%u5BB3%u540D%u8B7D%uFF0C%u6307%u51FA%u8766%u76AE%u91DD%u92D2%u76F8%u5C0D%u7684%u5BA3%u50B3%u5EE3%u544A%u8B93PChome%u5546%u8B7D%u53D7%u640D%u3002",2)' style='display: none;') &#x5132;&#x5B58;
-				//- #ans_infoDV2.ans_textareaDV(name='ans_infoDV2' style='display: none;')
-				//- #BulbDV2.BulbDV(style='display: none;')
-				//- textarea#skey2.ans_textarea2(name='skey2' onkeyup='autogrow2(2)' style='display: none;')
-				//- input#skey22(type='hidden' name='skey22' value='Now, a new front has opened in this war: online shopping giant PChome filed a defamation charge against its Singapore-based rival, Shopee, claiming its reputation has been tarnished by the latter’s comparative advertising campaign. ')
-				//- #Step2Submit22.Step2Submit2.link(onclick='schk(2)') &#x9001;&#x51FA;
-		//- NEXT BTN
-		div(onclick='play_vo(3)')
-			.NextEX.link 下一句
-			.Arrow_icon2.Rota270.link
+					//- EN
+					#Step2t1.s2-en
+						span(ondblclick='word_get("Competition","0");')  Competition
+						span(ondblclick='word_get("in","1");')  in
+						span(ondblclick='word_get("Taiwan’s","2");')  Taiwan&rsquo;s
+						span(ondblclick='word_get("e-commerce","3");')  e-commerce
+						span(ondblclick='word_get("industry","4");')  industry
+						span(ondblclick='word_get("is","5");')  is
+						span(ondblclick='word_get("heating","6");')  heating
+						span(ondblclick='word_get("up,","7");')  up,
+						span(ondblclick='word_get("with","8");')  with
+						span(ondblclick='word_get("major","9");')  major
+						span(ondblclick='word_get("shopping","10");')  shopping
+						span(ondblclick='word_get("platforms","11");')  platforms
+						span(ondblclick='word_get("trying","12");')  trying
+						span(ondblclick='word_get("to","13");')  to
+						span(ondblclick='word_get("attract","14");')  attract
+						span(ondblclick='word_get("customers","15");')  customers
+						span(ondblclick='word_get("from","16");')  from
+						span(ondblclick='word_get("each","17");')  each
+						span(ondblclick='word_get("other.","18");')  other.
+						span(ondblclick='word_get("","19");') 
+					//- CH
+					div
+						#Tct1.s2-ch 隨著台灣的電商競爭越演越烈，大型平台相互較勁搶客，
+					//- RADIO RECODER
+					div
+						.s2-record
+							|here
+						//- orange table
+						//- table.TDtable(width='50%' align='center' cellpadding='0' cellspacing='0' border='0' style='width: 50%;')
+						//- 	tbody
+						//- 		tr
+						//- 		td.TDSpeaker(align='center' width='45%')
+						//- 			span.RecordSpeakerTitle &#x539F;&#x97F3;&#x64AD;&#x653E;
+						//- 		td.TDplayerLine(width='10%' style='display: table-cell;')
+						//- 		td.TDplayer(align='center' width='45%' style='display: table-cell;')
+						//- 			span.Step2playerTitle &#x9304;&#x97F3;
+						//- 		tr(height='40px;')
+						//- 		td(align='center')
+						//- 			#Ste2Play1.ST2Player(onclick='play_vo(1);return false;' title='原文播放' style='display: block;')
+						//- 			#Ste2Pause1.ST2Pause(onclick='pausetime();return false;' title='播放暫停' style='display: none;')
+						//- 			#Ste2Play21.ST2Player2(onclick='pauseplay2();return false;' title='原文播放' style='display: none;')
+						//- 			.ST2Repet(style='margin-left:10px;' onclick='StepRepet()' data-value='0' title='反覆播放')
+						//- 		td.TDplayerLine(align='center' style='display: table-cell;') |
+						//- 		td.TDplayer2(style='display: table-cell;')
+						//- 			#Ste2ReSpeaker1.RecordSpeaker(title='錄音' onclick='recordNow();' style='display: block;')
+						//- 			#Ste2RecordStop1.RecordStop(title='錄音中' onclick='recordStop();')
+						//- 			#Ste2RePlay1.RecordPlay(title='錄音播放' onclick='recordPlay();' style='display: block;')
+					//- v MUST BE OTHER UNIT
+					//- div(style='position:relative;text-align:center;overflow:hidden; margin-top:10px;')
+					//- #ActivateHeart1.AddQuote(data-value='0' onclick='Step2Chang("Heart",1)' title='將學到的重點筆記起來存到佳句收錄' style='display: none;')
+					//- textarea#ans_info1.ans_textarea(name='ans_info1' onkeyup='autogrow(1)' style='display: none;')
+					//- #ans_infodelete1.Step2Submit(onclick='delegoP_Sentences("18562",1);' style='display: none;') &#x522A;&#x9664;
+					//- #ans_infoSubmit1.Step2Submit(onclick='goP_sentences("18562","Competition%20in%20Taiwan%u2019s%20e-commerce%20industry%20is%20heating%20up%2C%20with%20major%20shopping%20platforms%20trying%20to%20attract%20customers%20from%20each%20other.%20","%u96A8%u8457%u53F0%u7063%u7684%u96FB%u5546%u7AF6%u722D%u8D8A%u6F14%u8D8A%u70C8%uFF0C%u5927%u578B%u5E73%u53F0%u76F8%u4E92%u8F03%u52C1%u6436%u5BA2%uFF0C",1)' style='display: none;') &#x5132;&#x5B58;
+					//- #ans_infoDV1.ans_textareaDV(name='ans_infoDV1' style='display: none;')
+					//- #BulbDV1.BulbDV(style='display: none;')
+					//- textarea#skey1.ans_textarea2(name='skey1' onkeyup='autogrow2(1)' style='display: none;')
+					//- input#skey21(type='hidden' name='skey21' value='Competition in Taiwan’s e-commerce industry is heating up, with major shopping platforms trying to attract customers from each other. ')
+					//- #Step2Submit21.Step2Submit2(onclick='schk(1)') &#x9001;&#x51FA;
+			//- NEXT BTN
+			//- div(onclick='play_vo(2)')
+			.s2-main-next
+				.NextEX 下一句
+				.Arrow_icon2.Rota270
 
-.cover
+		// FLOOR3 : ART 2
+		.s2-main-item
+			a#Tt2(name='Tt2')
+			.s2-main-flex
+				div
+					//- EN
+					span#Step2t2.s2-en
+						span(ondblclick='word_get("Now,","0");')  Now,
+						span(ondblclick='word_get("a","1");')  a
+						span(ondblclick='word_get("new","2");')  new
+						span(ondblclick='word_get("front","3");')  front
+						span(ondblclick='word_get("has","4");')  has
+						span(ondblclick='word_get("opened","5");')  opened
+						span(ondblclick='word_get("in","6");')  in
+						span(ondblclick='word_get("this","7");')  this
+						span(ondblclick='word_get("war:","8");')  war:
+						span(ondblclick='word_get("online","9");')  online
+						span(ondblclick='word_get("shopping","10");')  shopping
+						span(ondblclick='word_get("giant","11");')  giant
+						span(ondblclick='word_get("PChome","12");')  PChome
+						span(ondblclick='word_get("filed","13");')  filed
+						span(ondblclick='word_get("a","14");')  a
+						span(ondblclick='word_get("defamation","15");')  defamation
+						span(ondblclick='word_get("charge","16");')  charge
+						span(ondblclick='word_get("against","17");')  against
+						span(ondblclick='word_get("its","18");')  its
+						span(ondblclick='word_get("Singapore-based","19");')  Singapore-based
+						span(ondblclick='word_get("rival,","20");')  rival,
+						span(ondblclick='word_get("Shopee,","21");')  Shopee,
+						span(ondblclick='word_get("claiming","22");')  claiming
+						span(ondblclick='word_get("its","23");')  its
+						span(ondblclick='word_get("reputation","24");')  reputation
+						span(ondblclick='word_get("has","25");')  has
+						span(ondblclick='word_get("been","26");')  been
+						span(ondblclick='word_get("tarnished","27");')  tarnished
+						span(ondblclick='word_get("by","28");')  by
+						span(ondblclick='word_get("the","29");')  the
+						span(ondblclick='word_get("latter’s","30");')  latter&rsquo;s
+						span(ondblclick='word_get("comparative","31");')  comparative
+						span(ondblclick='word_get("advertising","32");')  advertising
+						span(ondblclick='word_get("campaign.","33");')  campaign.
+						span(ondblclick='word_get("","34");')  
+					//- CH
+					div
+						#Tct2.s2-ch 而現在更延燒出新的戰場：網購龍頭PChome控告新加坡電商蝦皮妨害名譽，指出蝦皮針鋒相對的宣傳廣告讓PChome商譽受損。
+					//- RADIO RECODER
+					div
+						table.TDtable(width='50%' align='center' cellpadding='0' cellspacing='0' border='0' style='width: 50%;')
+							tbody
+								tr
+								td.TDSpeaker(align='center' width='45%')
+									span.RecordSpeakerTitle &#x539F;&#x97F3;&#x64AD;&#x653E;
+								td.TDplayerLine(width='10%' style='display: table-cell;')
+								td.TDplayer(align='center' width='45%' style='display: table-cell;')
+									span.Step2playerTitle &#x9304;&#x97F3;
+								tr(height='40px;')
+								td(align='center')
+									#Ste2Play2.ST2Player(onclick='play_vo(2);return false;' title='原文播放' style='display: block;')
+									#Ste2Pause2.ST2Pause(onclick='pausetime();return false;' title='播放暫停' style='display: none;')
+									#Ste2Play22.ST2Player2(onclick='pauseplay2();return false;' title='原文播放' style='display: none;')
+									.ST2Repet(style='margin-left:10px;' onclick='StepRepet()' data-value='0' title='反覆播放')
+								td.TDplayerLine(align='center' style='display: table-cell;') |
+								td.TDplayer2(style='display: table-cell;')
+									#Ste2ReSpeaker2.RecordSpeaker(title='錄音' onclick='recordNow();' style='display: block;')
+									#Ste2RecordStop2.RecordStop(title='錄音中' onclick='recordStop();')
+									#Ste2RePlay2.RecordPlay(title='錄音播放' onclick='recordPlay();' style='display: block;')
+					//- v MUST BE OTHER UNIT
+					//- div(style='position:relative;text-align:center;overflow:hidden; margin-top:10px;')
+					//- #ActivateHeart2.AddQuote(data-value='0' onclick='Step2Chang("Heart",2)' title='將學到的重點筆記起來存到佳句收錄' style='display: none;')
+					//- textarea#ans_info2.ans_textarea(name='ans_info2' onkeyup='autogrow(2)' style='display: none;')
+					//- #ans_infodelete2.Step2Submit(onclick='delegoP_Sentences("18562",2);' style='display: none;') &#x522A;&#x9664;
+					//- #ans_infoSubmit2.Step2Submit(onclick='goP_sentences("18562","Now%2C%20a%20new%20front%20has%20opened%20in%20this%20war%3A%20online%20shopping%20giant%20PChome%20filed%20a%20defamation%20charge%20against%20its%20Singapore-based%20rival%2C%20Shopee%2C%20claiming%20its%20reputation%20has%20been%20tarnished%20by%20the%20latter%u2019s%20comparative%20advertising%20campaign.%20","%u800C%u73FE%u5728%u66F4%u5EF6%u71D2%u51FA%u65B0%u7684%u6230%u5834%uFF1A%u7DB2%u8CFC%u9F8D%u982DPChome%u63A7%u544A%u65B0%u52A0%u5761%u96FB%u5546%u8766%u76AE%u59A8%u5BB3%u540D%u8B7D%uFF0C%u6307%u51FA%u8766%u76AE%u91DD%u92D2%u76F8%u5C0D%u7684%u5BA3%u50B3%u5EE3%u544A%u8B93PChome%u5546%u8B7D%u53D7%u640D%u3002",2)' style='display: none;') &#x5132;&#x5B58;
+					//- #ans_infoDV2.ans_textareaDV(name='ans_infoDV2' style='display: none;')
+					//- #BulbDV2.BulbDV(style='display: none;')
+					//- textarea#skey2.ans_textarea2(name='skey2' onkeyup='autogrow2(2)' style='display: none;')
+					//- input#skey22(type='hidden' name='skey22' value='Now, a new front has opened in this war: online shopping giant PChome filed a defamation charge against its Singapore-based rival, Shopee, claiming its reputation has been tarnished by the latter’s comparative advertising campaign. ')
+					//- #Step2Submit22.Step2Submit2(onclick='schk(2)') &#x9001;&#x51FA;
+			//- NEXT BTN
+			//- div(onclick='play_vo(3)')
+			.s2-main-next
+				.NextEX 下一句
+				.Arrow_icon2.Rota270
+
+//.cover
 	.cover-msg
 		h3.cover-title 加強記憶
 		.cover-box
@@ -189,5 +196,5 @@
 				.cover-box-right 抄完之後試著點選錄音建，將你所聽到的句子再錄一次，撥放給自己聽，增強自己的跟讀能力。
 		.cover-check
 			input.cover-check-ipt(type='checkbox' id='readied2')
-			label.cover-check-lab(for='readied2') 知道了
+			label.cover-check-lab(for='readied2') 知道了，30 日內不再顯示訊息
 		.cover-btn start
