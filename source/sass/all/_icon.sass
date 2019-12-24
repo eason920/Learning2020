@@ -1,6 +1,6 @@
 @import 'compass'
 @import 'sprite/*.png'
-$height: sprite-sprite-height(favorite) + sprite-sprite-height(print) + sprite-sprite-height(arrow_left) + sprite-sprite-height(pink) + sprite-sprite-height(bulb) + sprite-sprite-height(refresh) + sprite-sprite-height(correct) + sprite-sprite-height(del) + sprite-sprite-height(like) + sprite-sprite-height(del_c)
+$height: sprite-sprite-height(favorite) + sprite-sprite-height(print) + sprite-sprite-height(arrow_left) + sprite-sprite-height(pink) + sprite-sprite-height(bulb) + sprite-sprite-height(refresh) + sprite-sprite-height(correct) + sprite-sprite-height(del) + sprite-sprite-height(like) + sprite-sprite-height(del_c) + sprite-sprite-height(recording) + sprite-sprite-height(record_play) + sprite-sprite-height(record_start) + sprite-sprite-height(record_re)
 @mixin BG($path)
 	@include sprite-sprite($path)
 	background:
@@ -8,7 +8,28 @@ $height: sprite-sprite-height(favorite) + sprite-sprite-height(print) + sprite-s
 		repeat: no-repeat
 	width: sprite-sprite-width($path)
 	height: sprite-sprite-height($path)
-	
+
+%record
+	transform: scale(.8)
+	transform-origin: 50% 50%
+	margin:
+		bottom: -7px
+.icon-record-re
+	@include BG(record_re)
+	@extend %record
+
+.icon-recording
+	@include BG(recording)
+	@extend %record
+
+.icon-record-play
+	@include BG(record_play)
+	@extend %record
+
+.icon-record-start
+	@include BG(record_start)
+	@extend %record
+
 .icon-del-c
 	@include BG(del_c)
 

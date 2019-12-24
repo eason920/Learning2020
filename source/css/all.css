@@ -240,14 +240,52 @@ section.move {
     padding-right: 25px;
   }
 }
-.sprite-sprite, .icon-del-c, .icon-like, .icon-del, .icon-correct, .icon-refresh, .icon-favorite, .icon-print, .icon-arrowleft, .icon-pink, .icon-bulb {
-  background-image: url('../images/sprite-s16dad765d8.png');
+.sprite-sprite, .icon-record-re, .icon-recording, .icon-record-play, .icon-record-start, .icon-del-c, .icon-like, .icon-del, .icon-correct, .icon-refresh, .icon-favorite, .icon-print, .icon-arrowleft, .icon-pink, .icon-bulb {
+  background-image: url('../images/sprite-seca14e849d.png');
   background-repeat: no-repeat;
+}
+
+.icon-record-re, .icon-recording, .icon-record-play, .icon-record-start {
+  transform: scale(0.8);
+  transform-origin: 50% 50%;
+  margin-bottom: -7px;
+}
+
+.icon-record-re {
+  background-position: 0 -307px;
+  background-size: auto 556px;
+  background-repeat: no-repeat;
+  width: 71px;
+  height: 71px;
+}
+
+.icon-recording {
+  background-position: 0 -451px;
+  background-size: auto 556px;
+  background-repeat: no-repeat;
+  width: 73px;
+  height: 73px;
+}
+
+.icon-record-play {
+  background-position: 0 -236px;
+  background-size: auto 556px;
+  background-repeat: no-repeat;
+  width: 71px;
+  height: 71px;
+}
+
+.icon-record-start {
+  background-position: 0 -378px;
+  background-size: auto 556px;
+  background-repeat: no-repeat;
+  width: 73px;
+  height: 73px;
 }
 
 .icon-del-c {
   background-position: 0 -90px;
-  background-size: auto 268px;
+  background-size: auto 556px;
   background-repeat: no-repeat;
   width: 17px;
   height: 20px;
@@ -255,7 +293,7 @@ section.move {
 
 .icon-like {
   background-position: 0 -148px;
-  background-size: auto 268px;
+  background-size: auto 556px;
   background-repeat: no-repeat;
   width: 38px;
   height: 38px;
@@ -263,7 +301,7 @@ section.move {
 
 .icon-del {
   background-position: 0 -78px;
-  background-size: auto 268px;
+  background-size: auto 556px;
   background-repeat: no-repeat;
   width: 12px;
   height: 12px;
@@ -271,15 +309,15 @@ section.move {
 
 .icon-correct {
   background-position: 0 -56px;
-  background-size: auto 268px;
+  background-size: auto 556px;
   background-repeat: no-repeat;
   width: 26px;
   height: 22px;
 }
 
 .icon-refresh {
-  background-position: 0 -236px;
-  background-size: auto 268px;
+  background-position: 0 -524px;
+  background-size: auto 556px;
   background-repeat: no-repeat;
   width: 32px;
   height: 32px;
@@ -287,7 +325,7 @@ section.move {
 
 .icon-favorite {
   background-position: 0 -110px;
-  background-size: auto 268px;
+  background-size: auto 556px;
   background-repeat: no-repeat;
   width: 38px;
   height: 38px;
@@ -295,7 +333,7 @@ section.move {
 
 .icon-print {
   background-position: 0 -198px;
-  background-size: auto 268px;
+  background-size: auto 556px;
   background-repeat: no-repeat;
   width: 38px;
   height: 38px;
@@ -303,7 +341,7 @@ section.move {
 
 .icon-arrowleft {
   background-position: 0 0;
-  background-size: auto 268px;
+  background-size: auto 556px;
   background-repeat: no-repeat;
   width: 32px;
   height: 32px;
@@ -311,7 +349,7 @@ section.move {
 
 .icon-pink {
   background-position: 0 -186px;
-  background-size: auto 268px;
+  background-size: auto 556px;
   background-repeat: no-repeat;
   width: 19px;
   height: 12px;
@@ -319,7 +357,7 @@ section.move {
 
 .icon-bulb {
   background-position: 0 -32px;
-  background-size: auto 268px;
+  background-size: auto 556px;
   background-repeat: no-repeat;
   width: 23px;
   height: 24px;
@@ -2033,7 +2071,7 @@ body.is-memo-moving .english span:hover, body.is-memo-moving .Chinese span:hover
 }
 
 .s2-main {
-  height: calc( 100% - 88px - 20px );
+  height: calc( 100% - 88px );
   position: relative;
 }
 
@@ -2056,7 +2094,21 @@ body.is-memo-moving .english span:hover, body.is-memo-moving .Chinese span:hover
 }
 
 .s2-main-next {
-  height: 50px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  font-size: 1rem;
+  color: #f74769;
+  letter-spacing: 2px;
+  cursor: pointer;
+}
+.s2-main-next .icon-arrowleft {
+  margin-top: 5px;
+  margin-left: -1px;
+  display: inline-block;
+  transform: rotate(-90deg) scale(0.8);
+  width: 22px;
+  background-position: -4px 0;
 }
 
 .s2-en {
@@ -2072,10 +2124,24 @@ body.is-memo-moving .english span:hover, body.is-memo-moving .Chinese span:hover
 .s2-ch {
   font-size: 0.9375rem;
   color: #555;
+  margin-bottom: 50px;
 }
 
 .s2-record {
   margin-top: 60px;
+  margin-bottom: 100px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.s2-record-item {
+  cursor: pointer;
+  flex-direction: column;
+  color: #f74769;
+  font-size: 1rem;
+  margin-right: 10px;
+  margin-left: 10px;
 }
 
 /*# sourceMappingURL=all.css.map */

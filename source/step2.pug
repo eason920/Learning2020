@@ -20,10 +20,13 @@
 					//- CH
 					div
 						#Tct0.s2-ch &#x8766;&#x76AE;&#x8207;PChome&#x5B98;&#x53F8;&#x7E8F;&#x9B25;
-			//- NEXT BTN
-			//- div(onclick='play_vo(1)')
-			.s2-main-next
-				.NextEX 開始
+					div
+						include partials/record
+					//- NEXT BTN
+					//- div(onclick='play_vo(1)')
+					.s2-main-next
+						|開始
+						.icon-arrowleft
 
 		// FLOOR2 : ART STR
 		.s2-main-item
@@ -58,8 +61,7 @@
 						#Tct1.s2-ch 隨著台灣的電商競爭越演越烈，大型平台相互較勁搶客，
 					//- RADIO RECODER
 					div
-						.s2-record
-							|here
+						include partials/record
 						//- orange table
 						//- table.TDtable(width='50%' align='center' cellpadding='0' cellspacing='0' border='0' style='width: 50%;')
 						//- 	tbody
@@ -91,11 +93,11 @@
 					//- textarea#skey1.ans_textarea2(name='skey1' onkeyup='autogrow2(1)' style='display: none;')
 					//- input#skey21(type='hidden' name='skey21' value='Competition in Taiwan’s e-commerce industry is heating up, with major shopping platforms trying to attract customers from each other. ')
 					//- #Step2Submit21.Step2Submit2(onclick='schk(1)') &#x9001;&#x51FA;
-			//- NEXT BTN
-			//- div(onclick='play_vo(2)')
-			.s2-main-next
-				.NextEX 下一句
-				.Arrow_icon2.Rota270
+					//- NEXT BTN
+					//- div(onclick='play_vo(2)')
+					.s2-main-next
+						|下一句
+						.icon-arrowleft
 
 		// FLOOR3 : ART 2
 		.s2-main-item
@@ -144,25 +146,26 @@
 						#Tct2.s2-ch 而現在更延燒出新的戰場：網購龍頭PChome控告新加坡電商蝦皮妨害名譽，指出蝦皮針鋒相對的宣傳廣告讓PChome商譽受損。
 					//- RADIO RECODER
 					div
-						table.TDtable(width='50%' align='center' cellpadding='0' cellspacing='0' border='0' style='width: 50%;')
-							tbody
-								tr
-								td.TDSpeaker(align='center' width='45%')
-									span.RecordSpeakerTitle &#x539F;&#x97F3;&#x64AD;&#x653E;
-								td.TDplayerLine(width='10%' style='display: table-cell;')
-								td.TDplayer(align='center' width='45%' style='display: table-cell;')
-									span.Step2playerTitle &#x9304;&#x97F3;
-								tr(height='40px;')
-								td(align='center')
-									#Ste2Play2.ST2Player(onclick='play_vo(2);return false;' title='原文播放' style='display: block;')
-									#Ste2Pause2.ST2Pause(onclick='pausetime();return false;' title='播放暫停' style='display: none;')
-									#Ste2Play22.ST2Player2(onclick='pauseplay2();return false;' title='原文播放' style='display: none;')
-									.ST2Repet(style='margin-left:10px;' onclick='StepRepet()' data-value='0' title='反覆播放')
-								td.TDplayerLine(align='center' style='display: table-cell;') |
-								td.TDplayer2(style='display: table-cell;')
-									#Ste2ReSpeaker2.RecordSpeaker(title='錄音' onclick='recordNow();' style='display: block;')
-									#Ste2RecordStop2.RecordStop(title='錄音中' onclick='recordStop();')
-									#Ste2RePlay2.RecordPlay(title='錄音播放' onclick='recordPlay();' style='display: block;')
+						include partials/record
+						//- table.TDtable(width='50%' align='center' cellpadding='0' cellspacing='0' border='0' style='width: 50%;')
+						//- 	tbody
+						//- 		tr
+						//- 		td.TDSpeaker(align='center' width='45%')
+						//- 			span.RecordSpeakerTitle &#x539F;&#x97F3;&#x64AD;&#x653E;
+						//- 		td.TDplayerLine(width='10%' style='display: table-cell;')
+						//- 		td.TDplayer(align='center' width='45%' style='display: table-cell;')
+						//- 			span.Step2playerTitle &#x9304;&#x97F3;
+						//- 		tr(height='40px;')
+						//- 		td(align='center')
+						//- 			#Ste2Play2.ST2Player(onclick='play_vo(2);return false;' title='原文播放' style='display: block;')
+						//- 			#Ste2Pause2.ST2Pause(onclick='pausetime();return false;' title='播放暫停' style='display: none;')
+						//- 			#Ste2Play22.ST2Player2(onclick='pauseplay2();return false;' title='原文播放' style='display: none;')
+						//- 			.ST2Repet(style='margin-left:10px;' onclick='StepRepet()' data-value='0' title='反覆播放')
+						//- 		td.TDplayerLine(align='center' style='display: table-cell;') |
+						//- 		td.TDplayer2(style='display: table-cell;')
+						//- 			#Ste2ReSpeaker2.RecordSpeaker(title='錄音' onclick='recordNow();' style='display: block;')
+						//- 			#Ste2RecordStop2.RecordStop(title='錄音中' onclick='recordStop();')
+						//- 			#Ste2RePlay2.RecordPlay(title='錄音播放' onclick='recordPlay();' style='display: block;')
 					//- v MUST BE OTHER UNIT
 					//- div(style='position:relative;text-align:center;overflow:hidden; margin-top:10px;')
 					//- #ActivateHeart2.AddQuote(data-value='0' onclick='Step2Chang("Heart",2)' title='將學到的重點筆記起來存到佳句收錄' style='display: none;')
@@ -174,13 +177,13 @@
 					//- textarea#skey2.ans_textarea2(name='skey2' onkeyup='autogrow2(2)' style='display: none;')
 					//- input#skey22(type='hidden' name='skey22' value='Now, a new front has opened in this war: online shopping giant PChome filed a defamation charge against its Singapore-based rival, Shopee, claiming its reputation has been tarnished by the latter’s comparative advertising campaign. ')
 					//- #Step2Submit22.Step2Submit2(onclick='schk(2)') &#x9001;&#x51FA;
-			//- NEXT BTN
-			//- div(onclick='play_vo(3)')
-			.s2-main-next
-				.NextEX 下一句
-				.Arrow_icon2.Rota270
+					//- NEXT BTN
+					//- div(onclick='play_vo(3)')
+					.s2-main-next
+						| 前往理解力測驗
+						.icon-arrowleft
 
-//.cover
+.cover
 	.cover-msg
 		h3.cover-title 加強記憶
 		.cover-box
