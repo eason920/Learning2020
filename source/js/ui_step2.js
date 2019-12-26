@@ -35,14 +35,6 @@ $(function(){
 		}
 	}
 	let sid = setInterval(ready, 50)
-
-
-
-
-
-
-
-	
 	
 	// ====================================
 	// == FUNCTION BAR

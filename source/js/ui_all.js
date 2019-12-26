@@ -209,4 +209,13 @@ $(function () {
 			$block.removeClass('is-lock');
 		}, 200);
 	});
+
+
+	// ====================================
+	// == START SWITCH
+	// ====================================
+	$('.stepblock2').on('click', '.icon-star', function(){
+		$(this).toggleClass('active');
+	});
+
 });

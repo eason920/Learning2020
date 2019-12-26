@@ -1,0 +1,73 @@
+.s3-box
+	margin:
+		bottom: 50px
+
+.s3-item
+	display: flex
+	margin:
+		bottom: 22px
+
+.s3-item-l,
+.s3-item-m
+	display: flex
+	justify-content: center
+
+.s3-item-l
+	width: 25px
+	color: #000
+
+.s3-item-m
+	width: 25px
+	font-size: 1.375rem
+	line-height: 23px
+
+.s3-item-r
+	padding:
+		left: 5px
+
+// -----------------------------------
+.s3-item-en
+	color: #000
+	font:
+		size: 1.1875rem
+	letter-spacing: 1.2px
+	line-height: 1.4
+	margin:
+		bottom: 10px
+
+.s3-item-ch
+	color: #777
+	font:
+		size: .9375rem
+	padding-left: 27px
+
+.is-title
+	.s3-item-ch
+		padding: 0
+
+// -----------------------------------
+.s3-ex1-check
+	cursor: pointer
+	width: 20px
+	height: 20px
+	border: solid 1px #4a4a4a
+	position: relative
+	border-radius: 50%
+
+input:checked + label
+	.s3-ex1-check
+		&:after
+			content: ''
+			display: block
+			width: 12px
+			height: 12px
+			top: 3px
+			left: 3px
+			position: absolute
+			background:
+				color: #20a0a0
+			border-radius: 50%
+
+input[type='radio']
+	// -webkit-appearance: radio
+	

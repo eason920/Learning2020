@@ -240,7 +240,7 @@ section.move {
     padding-right: 25px;
   }
 }
-.sprite-sprite, .icon-start-off, .icon-start-on, .icon-record-re, .icon-recording, .icon-record-play, .icon-record-start, .icon-del-c, .icon-like, .icon-del, .icon-correct, .icon-refresh, .icon-favorite, .icon-print, .icon-arrowleft, .icon-pink, .icon-bulb {
+.sprite-sprite, .icon-star, .icon-star.active, .icon-record-re, .icon-recording, .icon-record-play, .icon-record-start, .icon-del-c, .icon-like, .icon-del, .icon-correct, .icon-refresh, .icon-favorite, .icon-print, .icon-arrowleft, .icon-pink, .icon-bulb {
   background-image: url('../images/sprite-s19d9889976.png');
   background-repeat: no-repeat;
 }
@@ -251,15 +251,16 @@ section.move {
   margin-bottom: -7px;
 }
 
-.icon-start-off {
+.icon-star {
   background-position: 0 -556px;
   background-size: auto 588px;
   background-repeat: no-repeat;
   width: 18px;
   height: 16px;
+  cursor: pointer;
 }
 
-.icon-start-on {
+.icon-star.active {
   background-position: 0 -572px;
   background-size: auto 588px;
   background-repeat: no-repeat;
@@ -1028,6 +1029,41 @@ input[type=range]::-ms-track {
 
 .stepblock2 {
   overflow: hidden;
+}
+
+.share-title {
+  height: 88px;
+  border-bottom: solid 3px #e7e7e7;
+  margin-bottom: 20px;
+  background-color: #fff;
+  position: relative;
+  z-index: 1;
+}
+
+.share-title-text {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #f74769;
+  text-align: center;
+  line-height: 1;
+  padding-top: 20px;
+  padding-bottom: 8px;
+}
+
+.share-title-percent,
+.share-title-sub {
+  color: #4a4a4a;
+  text-align: center;
+  line-height: 1;
+}
+
+.share-title-percent {
+  font-size: 1.5rem;
+}
+
+.share-title-sub {
+  font-size: 1.125rem;
+  letter-spacing: 2px;
 }
 
 .tranglationBody {
@@ -2061,32 +2097,6 @@ body.is-memo-moving .english span:hover, body.is-memo-moving .Chinese span:hover
     left: 57.5px;
   }
 }
-.s2-title {
-  height: 88px;
-  border-bottom: solid 3px #e7e7e7;
-  margin-bottom: 20px;
-  background-color: #fff;
-  position: relative;
-  z-index: 1;
-}
-
-.s2-title-text {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #f74769;
-  text-align: center;
-  line-height: 1;
-  padding-top: 20px;
-  padding-bottom: 8px;
-}
-
-.s2-title-percent {
-  font-size: 1.5rem;
-  color: #4a4a4a;
-  text-align: center;
-  line-height: 1;
-}
-
 .s2-main {
   height: calc( 100% - 88px - 20px );
   position: relative;
@@ -2111,6 +2121,16 @@ body.is-memo-moving .english span:hover, body.is-memo-moving .Chinese span:hover
 
 .s2-main-wrapper {
   width: 95%;
+}
+
+.s2-main-textbox {
+  display: flex;
+  justify-content: center;
+}
+
+.s2-main-textbox-left .icon-star {
+  margin-top: 4px;
+  margin-right: 10px;
 }
 
 .s2-main-pre,
@@ -2163,6 +2183,10 @@ body.is-memo-moving .english span:hover, body.is-memo-moving .Chinese span:hover
 #Step2t0, #Tct0 {
   text-align: center;
 }
+#Step2t0 .icon-star, #Tct0 .icon-star {
+  display: inline-block;
+  vertical-align: -1px;
+}
 
 .s2-record {
   margin-top: 60px;
@@ -2180,6 +2204,75 @@ body.is-memo-moving .english span:hover, body.is-memo-moving .Chinese span:hover
   font-size: 1rem;
   margin-right: 10px;
   margin-left: 10px;
+}
+
+.s3-box {
+  margin-bottom: 50px;
+}
+
+.s3-item {
+  display: flex;
+  margin-bottom: 22px;
+}
+
+.s3-item-l,
+.s3-item-m {
+  display: flex;
+  justify-content: center;
+}
+
+.s3-item-l {
+  width: 25px;
+  color: #000;
+}
+
+.s3-item-m {
+  width: 25px;
+  font-size: 1.375rem;
+  line-height: 23px;
+}
+
+.s3-item-r {
+  padding-left: 5px;
+}
+
+.s3-item-en {
+  color: #000;
+  font-size: 1.1875rem;
+  letter-spacing: 1.2px;
+  line-height: 1.4;
+  margin-bottom: 10px;
+}
+
+.s3-item-ch {
+  color: #777;
+  font-size: 0.9375rem;
+  padding-left: 27px;
+}
+
+.is-title .s3-item-ch {
+  padding: 0;
+}
+
+.s3-ex1-check {
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  border: solid 1px #4a4a4a;
+  position: relative;
+  border-radius: 50%;
+}
+
+input:checked + label .s3-ex1-check:after {
+  content: "";
+  display: block;
+  width: 12px;
+  height: 12px;
+  top: 3px;
+  left: 3px;
+  position: absolute;
+  background-color: #20a0a0;
+  border-radius: 50%;
 }
 
 /*# sourceMappingURL=all.css.map */

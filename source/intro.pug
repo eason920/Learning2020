@@ -33,7 +33,7 @@ html(lang='zh')
 		script(src='js/ui_step2.js')
 	body
 		// v HTML START v
-		#stepBox.is-step2
+		#stepBox.is-step3
 			.topbar
 				.wrapper
 					.wrapper-left
@@ -321,6 +321,26 @@ html(lang='zh')
 //- label 的 for，input 用 id 接
 
 
+//- 預先綁定只有「己知己存在元素」+「on」方法，不可用週遊取代
 //- $('body').find('.cover-btn').click(function(){  (X)
 //- ^ 不等於 v
 //- $('body').on('click', '.cover-btn', function(){ (O)
+
+
+//- 以 js 非同步後加載元素
+//- A.若是開始的 default view 要用 setInterval + html().test('element name')
+//- 之後再操作新增元素
+//- ======================================================
+//- B.若是行為事件，用預先綁定就可以操作
+//- 無需 setInterval 或 sitTimeout
+
+
+//- RADIO
+//- vvvvv
+//- type css => -webkit-appearance: radio
+//- input#aa
+//- label(for='aa')
+//- ^^^^^^
+//- 'input.id' fro 'label.for'
+//- 'name' for 'more radio chose 1'
+//- 'checked' for checked
