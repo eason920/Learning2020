@@ -31,7 +31,7 @@ $hbtn: 50px
 
 // -----------------------------------
 .s2-main
-	height: calc( 100% - #{$th} )
+	height: calc( 100% - #{$th} - #{$tmb} )
 	position: relative
 
 .s2-main-box
@@ -41,7 +41,6 @@ $hbtn: 50px
 	
 .s2-main-item
 	height: 100%
-	text-align: center
 
 .s2-main-flex
 	display: flex
@@ -49,6 +48,10 @@ $hbtn: 50px
 	align-items: center
 	justify-content: center
 
+.s2-main-wrapper
+	width: 95%
+
+.s2-main-pre,
 .s2-main-next
 	display: flex
 	align-items: center
@@ -58,14 +61,24 @@ $hbtn: 50px
 	letter-spacing: 2px
 	cursor: pointer
 	.icon-arrowleft
-		margin:
-			top: 5px
-			left: -1px
 		display: inline-block
-		transform: rotate(-90deg) scale(.8)
 		width: 22px
 		background:
 			position: -4px 0
+
+.s2-main-pre
+	margin:
+		bottom: 100px
+	.icon-arrowleft
+		transform: rotate(90deg) scale(.8)
+
+.s2-main-next
+	.icon-arrowleft
+		margin:
+			top: 5px
+			left: -1px
+		transform: scale
+		transform: rotate(-90deg) scale(.8)
 
 // EN
 .s2-en
@@ -86,6 +99,11 @@ $hbtn: 50px
 	margin:
 		bottom: 50px
 
+// -----------------------------------
+// TITLE
+#Step2t0, #Tct0
+	text-align: center
+
 
 // -----------------------------------
 // -- RECORD UI
@@ -99,6 +117,7 @@ $hbtn: 50px
 	width: 100%
 
 .s2-record-item
+	text-align: center
 	cursor: pointer
 	display:flex
 	flex-direction: column
@@ -108,4 +127,3 @@ $hbtn: 50px
 	margin:
 		right: 10px
 		left: 10px
-

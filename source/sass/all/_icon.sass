@@ -1,6 +1,6 @@
 @import 'compass'
 @import 'sprite/*.png'
-$height: sprite-sprite-height(favorite) + sprite-sprite-height(print) + sprite-sprite-height(arrow_left) + sprite-sprite-height(pink) + sprite-sprite-height(bulb) + sprite-sprite-height(refresh) + sprite-sprite-height(correct) + sprite-sprite-height(del) + sprite-sprite-height(like) + sprite-sprite-height(del_c) + sprite-sprite-height(recording) + sprite-sprite-height(record_play) + sprite-sprite-height(record_start) + sprite-sprite-height(record_re)
+$height: sprite-sprite-height(favorite) + sprite-sprite-height(print) + sprite-sprite-height(arrow_left) + sprite-sprite-height(pink) + sprite-sprite-height(bulb) + sprite-sprite-height(refresh) + sprite-sprite-height(correct) + sprite-sprite-height(del) + sprite-sprite-height(like) + sprite-sprite-height(del_c) + sprite-sprite-height(recording) + sprite-sprite-height(record_play) + sprite-sprite-height(record_start) + sprite-sprite-height(record_re) + sprite-sprite-height(start_off) + sprite-sprite-height(start_on)
 @mixin BG($path)
 	@include sprite-sprite($path)
 	background:
@@ -14,6 +14,13 @@ $height: sprite-sprite-height(favorite) + sprite-sprite-height(print) + sprite-s
 	transform-origin: 50% 50%
 	margin:
 		bottom: -7px
+
+.icon-start-off
+	@include BG(start_off)
+	
+.icon-start-on
+	@include BG(start_on)
+
 .icon-record-re
 	@include BG(record_re)
 	@extend %record

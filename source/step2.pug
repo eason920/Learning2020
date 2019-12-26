@@ -8,20 +8,25 @@
 		.s2-main-item
 			a#Tt0(name='Tt0')
 			.s2-main-flex
-				div
-					//- EN
-					#Step2t0.s2-en
-						span(ondblclick='word_get("Shopee","0");')  Shopee
-						span(ondblclick='word_get("in","1");')  in
-						span(ondblclick='word_get("Legal","2");')  Legal
-						span(ondblclick='word_get("Battle","3");')  Battle
-						span(ondblclick='word_get("with","4");')  with
-						span(ondblclick='word_get("PChome","5");')  PChome
-					//- CH
-					div
-						#Tct0.s2-ch &#x8766;&#x76AE;&#x8207;PChome&#x5B98;&#x53F8;&#x7E8F;&#x9B25;
-					div
-						include partials/record
+				.s2-main-wrapper
+					.s2-main-pre(style='display: none;')
+						.icon-arrowleft
+						|返回前段
+					.s2-main-textbox
+						.s2-main-textbox-left
+							.icon-start-off
+						.s2-main-textbox-right
+							//- EN
+							#Step2t0.s2-en
+								span(ondblclick='word_get("Shopee","0");')  Shopee
+								span(ondblclick='word_get("in","1");')  in
+								span(ondblclick='word_get("Legal","2");')  Legal
+								span(ondblclick='word_get("Battle","3");')  Battle
+								span(ondblclick='word_get("with","4");')  with
+								span(ondblclick='word_get("PChome","5");')  PChome
+							//- CH
+							#Tct0.s2-ch &#x8766;&#x76AE;&#x8207;PChome&#x5B98;&#x53F8;&#x7E8F;&#x9B25;
+					include partials/record
 					//- NEXT BTN
 					//- div(onclick='play_vo(1)')
 					.s2-main-next
@@ -33,7 +38,10 @@
 			a#Tt1(name='Tt1')
 			//- MAIN BOX
 			.s2-main-flex
-				div
+				.s2-main-wrapper
+					.s2-main-pre
+						.icon-arrowleft
+						|返回前段
 					//- EN
 					#Step2t1.s2-en
 						span(ondblclick='word_get("Competition","0");')  Competition
@@ -57,11 +65,9 @@
 						span(ondblclick='word_get("other.","18");')  other.
 						span(ondblclick='word_get("","19");') 
 					//- CH
-					div
-						#Tct1.s2-ch 隨著台灣的電商競爭越演越烈，大型平台相互較勁搶客，
+					#Tct1.s2-ch 隨著台灣的電商競爭越演越烈，大型平台相互較勁搶客，
 					//- RADIO RECODER
-					div
-						include partials/record
+					include partials/record
 						//- orange table
 						//- table.TDtable(width='50%' align='center' cellpadding='0' cellspacing='0' border='0' style='width: 50%;')
 						//- 	tbody
@@ -103,7 +109,10 @@
 		.s2-main-item
 			a#Tt2(name='Tt2')
 			.s2-main-flex
-				div
+				.s2-main-wrapper
+					.s2-main-pre
+						.icon-arrowleft
+						|返回前段
 					//- EN
 					span#Step2t2.s2-en
 						span(ondblclick='word_get("Now,","0");')  Now,
@@ -142,11 +151,9 @@
 						span(ondblclick='word_get("campaign.","33");')  campaign.
 						span(ondblclick='word_get("","34");')  
 					//- CH
-					div
-						#Tct2.s2-ch 而現在更延燒出新的戰場：網購龍頭PChome控告新加坡電商蝦皮妨害名譽，指出蝦皮針鋒相對的宣傳廣告讓PChome商譽受損。
+					#Tct2.s2-ch 而現在更延燒出新的戰場：網購龍頭PChome控告新加坡電商蝦皮妨害名譽，指出蝦皮針鋒相對的宣傳廣告讓PChome商譽受損。
 					//- RADIO RECODER
-					div
-						include partials/record
+					include partials/record
 						//- table.TDtable(width='50%' align='center' cellpadding='0' cellspacing='0' border='0' style='width: 50%;')
 						//- 	tbody
 						//- 		tr

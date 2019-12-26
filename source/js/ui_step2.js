@@ -1,9 +1,6 @@
 $(function(){
 	const $parent = $('.stepblock2');
 
-
-
-
 	const ready = function(){
 		if( /s2-main/.test( $parent.html() ) ){
 			clearInterval(sid);
@@ -11,11 +8,19 @@ $(function(){
 			const height = $main.height();
 			const max = $('.s2-main-item').length;
 
+			// INIT
 			$('.s2-main-item').css({height});
 
+			// PREV
+			$('.s2-main-pre').click(function(){
+				const idx = $(this).parent().parent().parent().index() - 1;
+				const top = idx * height * -1;
+				$('.s2-main-box').animate({top})
+			});
+
+			// NEXT
 			$('.s2-main-next').click(function(){
 				const idx = $(this).parent().parent().parent().index() + 1;
-				console.log(idx);
 				if( idx < max ){
 					const top = idx * height * -1;
 					$('.s2-main-box').animate({ top });
@@ -27,10 +32,6 @@ $(function(){
 				}
 				$('.s2-main-box').animate({ top });
 			});
-
-			
-			console.log(max);
-			
 		}
 	}
 	let sid = setInterval(ready, 50)
