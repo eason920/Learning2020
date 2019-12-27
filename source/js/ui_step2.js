@@ -12,14 +12,14 @@ $(function(){
 			$('.s2-main-item').css({height});
 
 			// PREV
-			$('.s2-main-pre').click(function(){
+			$('.share-pre').click(function(){
 				const idx = $(this).parent().parent().parent().index() - 1;
 				const top = idx * height * -1;
 				$('.s2-main-box').animate({top})
 			});
 
 			// NEXT
-			$('.s2-main-next').click(function(){
+			$('.stepblock2 .share-next').click(function(){
 				const idx = $(this).parent().parent().parent().index() + 1;
 				if( idx < max ){
 					const top = idx * height * -1;

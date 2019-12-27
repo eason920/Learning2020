@@ -94,7 +94,7 @@
 	<link rel="stylesheet" href="css/all.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display&amp;display=swap">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface&amp;display=swap">
-
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Engagement&amp;display=swap">
 
 	<script src="js/jquery-1.11.1.min.js"></script>
 	<script type="text/javascript" src="../../../jquery/jquery-1.10.4.ui.min.js"></script>	
@@ -120,6 +120,8 @@
 	<script src="js/ui_all.js"></script>
   <script src='js/ui_step1.js'></script>
   <script src="js/memobox.js"></script>
+  <script src="js/ui_step2.js"></script>
+  <script src="js/ui_step3.js"></script>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -207,7 +209,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	<script async defer crossorigin="anonymous" src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v4.0&appId=665673953932390&autoLogAppEvents=1"></script>
 	<input type="hidden" name="repeat" id="repeat" value="0" />
 	<!-- v HTML START v -->
-	<div class="is-step2" id="stepBox">
+	
+  
+  <div class="is-step3" id="stepBox">
       <div class="topbar">
         <div class="wrapper">
           <div class="wrapper-left"><a class="topbar-back-btn" href="#">
@@ -420,7 +424,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="icon-bulb"></div>
         <div class="icon-how-text">Tips</div></a>
     </div>
-  	<!-- ^ HTML END ^ -->
+
+
+  <!-- ^ HTML END ^ -->
 </body>
 
 </html>

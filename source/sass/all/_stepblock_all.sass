@@ -50,6 +50,7 @@
 		color: #fff
 	position: relative
 	z-index: 1
+	position: relative
 
 .share-title-text
 	font:
@@ -76,4 +77,36 @@
 	font:
 		size: 1.125rem
 	letter-spacing: 2px
-	
+
+
+// -----------------------------------
+// -- PRE / NEXT
+// -----------------------------------
+.share-pre,
+.share-next
+	display: flex
+	align-items: center
+	flex-direction: column
+	font-size: 1rem
+	color: $c1
+	letter-spacing: 2px
+	cursor: pointer
+	.icon-arrowleft
+		display: inline-block
+		width: 22px
+		background:
+			position: -4px 0
+
+.share-pre
+	margin:
+		bottom: 100px
+	.icon-arrowleft
+		transform: rotate(90deg) scale(.8)
+
+.share-next
+	.icon-arrowleft
+		margin:
+			top: 5px
+			left: -1px
+		transform: scale
+		transform: rotate(-90deg) scale(.8)

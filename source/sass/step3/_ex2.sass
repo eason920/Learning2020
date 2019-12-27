@@ -1,0 +1,35 @@
+#EX2.is-def
+	.s3-score,
+	.share-next,
+	.s3-ansbox
+		display: none
+	.s3ex2-submitbox
+		display: block
+	.s3ex2-iptbox
+		display: inline-block
+
+// -----------------------------------
+.s3ex2-iptbox input
+	@extend %s3en
+	line-height: 1.5
+
+.s3ex2-iptbox
+	font-size: 0
+	display: none
+	margin:
+		right: 8px
+	span, input 
+		color: #000
+	input
+		// line-height: 26px
+		height: 23px
+		border: none
+		border-bottom: solid 1px #333
+		text-align: center
+		&::placeholder
+			color: #777
+
+// -----------------------------------
+.s3ex2-submitbox
+	text-align: center
+	display: none

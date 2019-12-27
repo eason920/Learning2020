@@ -1,0 +1,96 @@
+$w: 260px
+$p: 30px
+$w2: 50px
+// -----------------------------------
+#EX3.is-def
+	.s3ex3-ipt
+		display: inline-block
+	.s3-ansbox,
+	.s3-score
+		display: none
+
+// -----------------------------------
+.s3ex3-main
+	display: flex
+
+.s3ex3-left
+	width: calc( 100% - #{$w} )
+	border:
+		right: solid 2px #e7e7e7
+	padding:
+		right: $p
+
+.s3ex3-right
+	width: $w
+	padding:
+		left: $p
+// -----------------------------------
+.s3ex3-ipt
+	display: none
+	color: #000
+
+// -----------------------------------
+.s3ex3-right-title
+	font:
+		size: 1.5rem
+		weight: bold
+	color: $c1
+	text:
+		align: center
+	margin:
+		bottom: 20px
+
+.s3ex3-right-ansbox
+	margin-bottom: 80px
+
+.s3ex3-right-item
+	font:
+		size: 1.5rem
+	color: $c7
+	border-radius: 25px
+	border: solid 1px $c1
+	background-color: $c1-t
+	margin:
+		bottom: 15px
+	line-height: 50px
+	cursor: pointer
+	padding: 0 15px 0 30px
+	display: flex
+	span
+		text-align: center
+		&:first-child
+			width: calc( 100% - #{$w2} )
+		&:last-child
+			width: $w2
+
+// -----------------------------------
+.s3ex3-submitbox
+	text-align: center
+	overflow: hidden
+	display: block
+	.s3-submit
+		float: right
+	& > *
+		width: 46%
+
+.s3-reset
+	float: left
+	display: inline-block
+	border: solid 1px $c1
+	background:
+		color: $c1
+	color: #fff
+	font:
+		size: 1.125rem
+		// weight: bold
+	line-height: 1
+	padding: 10px 20px
+	border-radius: 50px
+	opacity: .8
+	transition: .3s
+	&:hover,&:focus
+		text:
+			decoration: none
+		opacity: 1
+		color: #fff
+		transition: .3s
