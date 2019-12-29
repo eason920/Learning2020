@@ -1,24 +1,24 @@
 #stepBox
 	&.is-step2
-		.stepblock-box
+		#stepBlockBox
 			left: -100%
 	&.is-step3
-		.stepblock-box
+		#stepBlockBox
 			left: -200%
 
-.stepblock-outer
+#stepBlockOuter
 	width: 100%
 	height: 100%
 	overflow: hidden
 
-.stepblock-box
+#stepBlockBox
 	width: 300%
 	display: flex
 	position: relative
 	transition: left .5s
 	left: 0
 
-.stepblock1, .stepblock2, .stepblock3
+#stepBlock1, #stepBlock2, #stepBlock3
 	position: relative
 	user-select: none
 	display: inline-block
@@ -29,20 +29,23 @@
 	&.is-lock
 		overflow: hidden
 
-.stepblock1,.stepblock3
+#stepBlock1
 	overflow-y: auto
 
-.stepblock2
+#stepBlock2,#stepBlock3
 	overflow: hidden
 
-.stepblock3
+#stepBlock3
 
 
 // ====================================
 // == STEP 2 & STEP 3 SHARE
 // ====================================
+$fw: 110px
 .share-title
-	height: $th
+	display: flex
+	justify-content: center
+	min-height: $th
 	border-bottom: solid 3px #e7e7e7
 	margin:
 		bottom: $tmb
@@ -51,6 +54,13 @@
 	position: relative
 	z-index: 1
 	position: relative
+
+.share-basic
+	width: calc(100% - #{$fw})
+
+.is-def
+	.share-basic
+		width: 100%
 
 .share-title-text
 	font:
@@ -77,8 +87,34 @@
 	font:
 		size: 1.125rem
 	letter-spacing: 2px
+	line-height: 1.3
+	margin:
+		bottom: 8px
+// -----------------------------------
+.s3-score
+	width: $fw
+	// position: absolute
+	right: 0
+	bottom: 0
+	display: flex
+	justify-content: flex-end
+	align-items: flex-end
+	&> *
+		color: $c1-2
+		line-height: 1
 
-
+.s3-score-num
+	font:
+		size: 3.75rem
+		family: 'Engagement', cursive
+		
+.s3-score-ch
+	font:
+		size: 1.1875rem
+	padding:
+		left: 7px
+		bottom: 10px
+		
 // -----------------------------------
 // -- PRE / NEXT
 // -----------------------------------

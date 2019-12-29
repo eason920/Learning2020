@@ -1,5 +1,5 @@
 $(function(){
-	const $parent = $('.stepblock2');
+	const $parent = $('#stepBlock2');
 
 	const ready = function(){
 		if( /s2-main/.test( $parent.html() ) ){
@@ -19,7 +19,7 @@ $(function(){
 			});
 
 			// NEXT
-			$('.stepblock2 .share-next').click(function(){
+			$('#stepBlock2 .share-next').click(function(){
 				const idx = $(this).parent().parent().parent().index() + 1;
 				if( idx < max ){
 					const top = idx * height * -1;

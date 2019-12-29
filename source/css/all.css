@@ -654,6 +654,24 @@ section.move {
   display: none;
 }
 
+.is-play3.is-lock {
+  position: relative;
+}
+.is-play3.is-lock:before {
+  position: absolute;
+  display: block;
+  content: "";
+  z-index: 2;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.is-play3.is-lock .play_btn {
+  filter: grayscale(100%);
+  opacity: 0.5;
+}
+
 aside {
   display: block;
   float: left;
@@ -999,20 +1017,20 @@ input[type=range]::-ms-track {
   left: 0;
 }
 
-#stepBox.is-step2 .stepblock-box {
+#stepBox.is-step2 #stepBlockBox {
   left: -100%;
 }
-#stepBox.is-step3 .stepblock-box {
+#stepBox.is-step3 #stepBlockBox {
   left: -200%;
 }
 
-.stepblock-outer {
+#stepBlockOuter {
   width: 100%;
   height: 100%;
   overflow: hidden;
 }
 
-.stepblock-box {
+#stepBlockBox {
   width: 300%;
   display: flex;
   position: relative;
@@ -1020,7 +1038,7 @@ input[type=range]::-ms-track {
   left: 0;
 }
 
-.stepblock1, .stepblock2, .stepblock3 {
+#stepBlock1, #stepBlock2, #stepBlock3 {
   position: relative;
   user-select: none;
   display: inline-block;
@@ -1028,26 +1046,36 @@ input[type=range]::-ms-track {
   padding-right: 1%;
   height: calc( 100vh - 55px - 100px - 20px );
 }
-.stepblock1.is-lock, .stepblock2.is-lock, .stepblock3.is-lock {
+#stepBlock1.is-lock, #stepBlock2.is-lock, #stepBlock3.is-lock {
   overflow: hidden;
 }
 
-.stepblock1, .stepblock3 {
+#stepBlock1 {
   overflow-y: auto;
 }
 
-.stepblock2 {
+#stepBlock2, #stepBlock3 {
   overflow: hidden;
 }
 
 .share-title {
-  height: 88px;
+  display: flex;
+  justify-content: center;
+  min-height: 88px;
   border-bottom: solid 3px #e7e7e7;
   margin-bottom: 20px;
   background-color: #fff;
   position: relative;
   z-index: 1;
   position: relative;
+}
+
+.share-basic {
+  width: calc(100% - 110px);
+}
+
+.is-def .share-basic {
+  width: 100%;
 }
 
 .share-title-text {
@@ -1074,6 +1102,32 @@ input[type=range]::-ms-track {
 .share-title-sub {
   font-size: 1.125rem;
   letter-spacing: 2px;
+  line-height: 1.3;
+  margin-bottom: 8px;
+}
+
+.s3-score {
+  width: 110px;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+.s3-score > * {
+  color: #ff2c55;
+  line-height: 1;
+}
+
+.s3-score-num {
+  font-size: 3.75rem;
+  font-family: "Engagement", cursive;
+}
+
+.s3-score-ch {
+  font-size: 1.1875rem;
+  padding-left: 7px;
+  padding-bottom: 10px;
 }
 
 .share-pre,
@@ -1638,7 +1692,7 @@ article {
   transition: opacity 0.3s;
 }
 
-.stepblock1 {
+#stepBlock1 {
   position: relative;
 }
 
@@ -2216,27 +2270,20 @@ body.is-memo-moving .english span:hover, body.is-memo-moving .Chinese span:hover
   margin-left: 10px;
 }
 
-.s3-score {
+#stepBlock3 {
+  padding-right: 0;
+  position: relative;
+}
+
+#exBox {
+  height: 300%;
   position: absolute;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  align-items: flex-end;
-}
-.s3-score > * {
-  color: #ff2c55;
-  line-height: 1;
 }
 
-.s3-score-num {
-  font-size: 3.75rem;
-  font-family: "Engagement", cursive;
-}
-
-.s3-score-ch {
-  font-size: 1.1875rem;
-  padding-left: 7px;
-  padding-bottom: 10px;
+#ex1, #ex2, #ex3 {
+  height: 33.333%;
+  padding-right: 20px;
+  overflow-y: auto;
 }
 
 .s3-submit {
@@ -2290,21 +2337,21 @@ body.is-memo-moving .english span:hover, body.is-memo-moving .Chinese span:hover
   right: -1px;
   height: 2px;
   background-color: #d0021b;
-  top: 17px;
+  top: 13px;
 }
 
 .s3-true {
   color: #005f40 !important;
 }
 
-#EX1.is-def .s3-score,
-#EX1.is-def .s3ex1-box:before,
-#EX1.is-def .s3ex1-icon,
-#EX1.is-def .s3ex1-item-ch,
-#EX1.is-def .share-next {
+#ex1.is-def .s3-score,
+#ex1.is-def .s3ex1-box:before,
+#ex1.is-def .s3ex1-icon,
+#ex1.is-def .s3ex1-item-ch,
+#ex1.is-def .share-next {
   display: none;
 }
-#EX1.is-def .s3ex1-submitbox {
+#ex1.is-def .s3ex1-submitbox {
   display: block;
 }
 
@@ -2410,15 +2457,15 @@ input:checked + label .s3ex1-check:after {
   display: none;
 }
 
-#EX2.is-def .s3-score,
-#EX2.is-def .share-next,
-#EX2.is-def .s3-ansbox {
+#ex2.is-def .s3-score,
+#ex2.is-def .share-next,
+#ex2.is-def .s3-ansbox {
   display: none;
 }
-#EX2.is-def .s3ex2-submitbox {
+#ex2.is-def .s3ex2-submitbox {
   display: block;
 }
-#EX2.is-def .s3ex2-iptbox {
+#ex2.is-def .s3ex2-iptbox {
   display: inline-block;
 }
 
@@ -2449,11 +2496,11 @@ input:checked + label .s3ex1-check:after {
   display: none;
 }
 
-#EX3.is-def .s3ex3-ipt {
+#ex3.is-def .s3ex3-ipt {
   display: inline-block;
 }
-#EX3.is-def .s3-ansbox,
-#EX3.is-def .s3-score {
+#ex3.is-def .s3-ansbox,
+#ex3.is-def .s3-score {
   display: none;
 }
 

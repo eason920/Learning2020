@@ -328,7 +328,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </aside>
             <article>
               <div class="stepblock-outer">
-                <div class="stepblock-box">
+                <div class="#stepBlockBox">
                   <div class="stepblock1"></div>
                   <div class="stepblock2 is-lock"></div>
                   <div class="stepblock3"></div>

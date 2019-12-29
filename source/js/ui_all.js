@@ -61,7 +61,7 @@ $(function () {
 		// talk
 		if( $(".play_btn").hasClass("pause") ) {
 			$(".play_btn").removeClass('pause');
-			pausetime();
+			// pausetime();
 		}
 	});
 	$('.y-small').click(function () {
@@ -83,7 +83,7 @@ $(function () {
 			$('.speed').removeClass("show");
 			$('.speed-point').fadeOut();
 			$('.play_btn').removeClass("pause");
-			pausetime();
+			// pausetime();
 		}else{
 			// when stoping
 			$('.speed').addClass("show");
@@ -118,9 +118,9 @@ $(function () {
 	// ====================================
 	// == TOP BAR & FUNCTION BAR
 	// ====================================
-	$('.is-step-switch1, .is-step-switch2, .is-step-switch3').click(function(){
+	$('.topbar-step-item').click(function(){
 		// init video
-		pausetime();
+		// pausetime();
 		$('.speed').removeClass("show");
 		$('.speed-point').fadeOut();
 		$('.play_btn').removeClass("pause");
@@ -146,6 +146,12 @@ $(function () {
 			default:
 		}
 		$('#stepBox').removeClass().addClass(className);
+
+		if( !/step3/.test( $('#stepBox').attr('class') ) ){
+			$('#exBox').css({top: 0});
+			// aside player status v
+			$('.aside-speedbox.is-play3').removeClass('is-lock');
+		}
 	});
 
 
@@ -172,6 +178,40 @@ $(function () {
 
 	$('.is-step-switch2, .topbar-icon').mouseover(function(){
 		closeScort();
+	});
+
+	$('.topbar-scrot-item').click(function(){
+		const $play3 = $('.aside-speedbox.is-play3');
+		$play3.addClass('is-lock')
+		const className = $(this).attr('class');
+		let index;
+		switch(true){
+			case /1/.test(className):
+				index = 0;
+				console.log('1');
+				$play3.removeClass('is-lock');
+				break;
+			case /2/.test(className):
+				index = 1;
+				console.log('2');
+				$play3.removeClass('is-lock');
+				break;
+			case /3/.test(className):
+				index = 2;
+				console.log('3');
+				$play3.addClass('is-lock');
+				break;
+			default:
+		};
+
+		const height = $('#stepBlock3').height();
+		const top = index * height * -1;
+
+		if( /step3/.test( $('#stepBox').attr('class') ) ){
+			$('#exBox').animate({top});
+		}else{
+			$('#exBox').css({top});
+		}
 	});
 
 	// ====================================
@@ -214,8 +254,10 @@ $(function () {
 	// ====================================
 	// == START SWITCH
 	// ====================================
-	$('.stepblock2').on('click', '.icon-star', function(){
+	$('#stepBlock2').on('click', '.icon-star', function(){
 		$(this).toggleClass('active');
 	});
 
 });
+
+console.log('%c remenber ui_all.js 「pausetime();」', 'color: red;font-size: 16px');

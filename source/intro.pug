@@ -1,4 +1,4 @@
--var status = 'devv'
+-var status = 'dev'
 doctype html
 html(lang='zh')
 	head
@@ -25,7 +25,7 @@ html(lang='zh')
 			let memoUpdate = '';
 			for(let i = 1; i<=3; i++){
 				$.get('step' + i + '.html', function(html){
-					$('.stepblock' + i ).html(html);
+					$('#stepBlock' + i ).html(html);
 				});
 			};
 		script(src='js/ui_all.js')
@@ -59,19 +59,19 @@ html(lang='zh')
 									.icon-pink
 									.topbar-scort-outer
 										ul.topbar-scort
-											li.topbar-scrot-item
+											li.topbar-scrot-item.is-ex1
 												//- .topbar-num A
 												.topbar-text 理解力測驗
 												.topbar-s 100
 													span 分
 												.icon-correct
-											li.topbar-scrot-item
+											li.topbar-scrot-item.is-ex2
 												//- .topbar-num(style='margin-left: -22px') B
 												.topbar-text 聽力測驗
 												.topbar-s 89
 													span 分
 												.icon-correct
-											li.topbar-scrot-item
+											li.topbar-scrot-item.is-ex3
 												//- .topbar-num C
 												.topbar-text 克漏字測驗
 												.topbar-s 77
@@ -151,11 +151,11 @@ html(lang='zh')
 									img.y-start(src='images/y_start.png')
 									.y-small
 						article
-							.stepblock-outer
-								.stepblock-box
-									.stepblock1
-									.stepblock2.is-lock
-									.stepblock3
+							#stepBlockOuter
+								#stepBlockBox
+									#stepBlock1
+									#stepBlock2.is-lock
+									#stepBlock3
 								
 					.tranglationBody
 						input.close_btn(type='button')
@@ -349,3 +349,8 @@ html(lang='zh')
 
 //- ==============
 //- -webkit-appearance: radio
+
+//- ================
+//- split() => string.split('切開跟據字元') => 切開字元，可用作將字串切成一ary用
+//- splice(值在ayr中的順序位置,刪除個數,取代值) => target 必是 ary
+//- supbtr(開切點序號,起算取幾個字元) => 用在 string

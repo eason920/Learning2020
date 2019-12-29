@@ -12,8 +12,25 @@
 	&.is-step3
 		.is-play3
 			display: block
+			&.is-lock
+				
 		.is-play1,.is-play2
 			display: none
+
+.is-play3.is-lock
+	position: relative
+	&:before
+		position: absolute
+		display: block
+		content: ''
+		z-index: 2
+		top: 0
+		right: 0
+		bottom: 0
+		left: 0
+	.play_btn
+		filter: grayscale(100%)
+		opacity: .5
 	
 aside
 	display: block
@@ -44,8 +61,6 @@ aside
 			bottom: 25px
 
 // -----------------------------------
-
-
 .aside-above-sub
 	color: #ff859c
 	line-height: 1.2

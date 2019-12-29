@@ -5,7 +5,7 @@ $(function(){
 	const $section = $('section');
 	const $side = $('aside');
 	const $art = $('article');
-	const $stepblock = $('.stepblock1');
+	const $stepblock = $('#stepBlock1');
 	const $artMask = $('.article_mask');
 	const dw = $(document).width();
 	const $doc = $(document);

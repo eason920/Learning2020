@@ -1,13 +1,9 @@
 $(function(){
-	$parent = $('.stepblock3');
+	$parent = $('#stepBlock3');
 	
 	const ready = function(){
 		if( $parent.html() != '' ){
 			clearInterval(sid);
-			$('#EX2, #EX3').hide();
-			
-			const minHeight = $parent.height();
-			$('#EX1').css({minHeight});
 
 			$('.s3ex2-iptbox input').each(function(){
 				const length = $(this).attr('placeholder').length;
@@ -15,31 +11,26 @@ $(function(){
 				$(this).attr('maxlength', length).css({width});
 			});
 			
-			
 			// EVENT v
 			for(let i = 1;i<=3;i++){
 				$('.s3ex' + i +'-submitbox .s3-submit').click(function(){
-					$('#EX'+i).removeAttr('class');
+					$('#ex'+i).removeAttr('class');
 				});
 			};
 
-			$('.stepblock3 .share-next').click(function(){
-				const $p = $(this).parents().attr('id');
-				let target;
-				switch(true){
-					case $p == 'EX1':
-						target = $('#EX2');
-						break;
-					case $p == 'EX2':
-						target = $('#EX3');
-						break;
-					default:
-				}
-				$('#EX1, #EX2, #EX3').removeAttr('style').slideUp();
-				target.slideDown().css({minHeight});
-				setTimeout(function(){
-					$parent.scrollTop(0);
-				}, 300);
+			$('#stepBlock3 .share-next').click(function(){
+				const index = $(this).parent().index() + 1;
+				const height = $parent.height();
+				const top = index * height * -1
+				const $play3 = $('.aside-speedbox.is-play3');
+				$('#exBox').animate({top});
+				
+				if(index == 2){
+					$play3.addClass('is-lock');
+				};
+				// else{
+				// 	$play3.removeClass('is-lock');
+				// }
 			});
 		}
 	};
