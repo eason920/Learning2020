@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Dr.eye example</title>
+<script type="text/javascript" language="javascript" src="./md5.js"></script>
+</head>
+<style>
+#result2{
+    position: relative;
+    width: 100%;
+    height: 90vh;
+}   
+</style>
+<body>
+
+        <input id="text">
+        <button id="hash-it">Hash it</button>
+        <div id="result"></div>
+        <div id="result2"></div>
+</body>
+</html>
+<script>
+var button = document.getElementById('hash-it'),
+    textbox = document.getElementById('text'),
+    result = document.getElementById('result');
+
+    function Dr(Str){
+      var q=Str, FirmID = 'B0013' , salt='20180508180000' ,secretkey='82add88e914f73643b7f'; 
+      var url='http://61.220.79.170/Dict.aspx';
+      var sign=md5(q+FirmID+salt+secretkey);
+      var Parameter='q='+(q)+'&FirmID='+FirmID+'&ContentID=DIC0025_DIC0026&type=html&salt='+salt+'&sign='+sign;
+      result.innerHTML=url+'?'+Parameter;
+      result2.innerHTML='<iframe  src="'+url+'?'+Parameter+'" width="100%" height="100%" frameborder="0" border="0" cellspacing="0" marginwidth="0" marginheight="0"  ></iframe>';
+    }
+
+
+button.onclick = function(){
+    Dr(textbox.value);
+}
+
+</script>

@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Dr.eye example</title>
+<Script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></Script>
+<script type="text/javascript" language="javascript" src="./md5.js"></script>
+<script type="text/javascript" language="javascript" src="http://61.220.79.170/Dict.aspx?q=book&FirmID=B0013&type=json&salt=20180508180000&sign=502e5a3996933dd6f1eac81bed6d4aae&jsoncallback=handler"></script>
+</head>
+<style>
+#result2{
+    position: relative;
+    width: 100%;
+    height: 90vh;
+}   
+</style>
+<body>
+
+        <input id="text">
+        <button id="hash-it">Hash it</button>
+        <div id="result"></div>
+        <div id="result2"></div>
+</body>
+</html>
+<script>
+var button = document.getElementById('hash-it'),
+    textbox = document.getElementById('text'),
+    result = document.getElementById('result');
+    result2 = document.getElementById('result2');
+    
+    function Dr(Str){
+      var q=Str, FirmID = 'B0013' , salt='20180508180000' ,secretkey='82add88e914f73643b7f'; 
+      var url='http://61.220.79.170/Dict.aspx';
+      var sign=md5(q+FirmID+salt+secretkey).toLowerCase();
+      var Parameter='q='+q+'&FirmID='+FirmID+'&type=json&salt='+salt+'&sign='+sign;
+      result.innerHTML=url+'?'+Parameter;
+      $.ajax({
+             type: "get",
+             async: false,
+             url: url+'?'+Parameter,
+             dataType: "jsonp",
+             jsonp: "callback",//传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(一般默认为:callback)
+             jsonpCallback:"flightHandler",//自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名，也可以写"?"，jQuery会自动为你处理数据
+             success: function(json){
+                result2.innerHTML=json;
+             },
+             error: function(){
+                 alert('fail');
+             }
+         });
+    
+    }
+
+
+button.onclick = function(){
+    Dr(textbox.value);
+}
+
+</script>

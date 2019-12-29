@@ -188,17 +188,14 @@ $(function () {
 		switch(true){
 			case /1/.test(className):
 				index = 0;
-				console.log('1');
 				$play3.removeClass('is-lock');
 				break;
 			case /2/.test(className):
 				index = 1;
-				console.log('2');
 				$play3.removeClass('is-lock');
 				break;
 			case /3/.test(className):
 				index = 2;
-				console.log('3');
 				$play3.addClass('is-lock');
 				break;
 			default:
@@ -255,6 +252,10 @@ $(function () {
 	// == START SWITCH
 	// ====================================
 	$('#stepBlock2').on('click', '.icon-star', function(){
+		$(this).toggleClass('active');
+	});
+
+	$('.icon-star-big').click(function(){
 		$(this).toggleClass('active');
 	});
 

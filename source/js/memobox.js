@@ -136,6 +136,10 @@ $(function(){
 			};
 
 			clearInterval(sid);
+		}else{
+			setTimeout(function(){
+				clearInterval(sid);
+			}, 8000);
 		}
 	};
 	const sid = setInterval(checkArt, 200);

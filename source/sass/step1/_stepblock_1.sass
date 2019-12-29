@@ -60,32 +60,26 @@ article
 #stepBlock1
 	position: relative
 	
-.icon-refresh
-	position: absolute
-	top: 8px
-	opacity: .85
-	transition: .3s
-	&:hover
-		transform: rotate(180deg)
-		opacity: 1
-		transition: .3s
+// .icon-refresh
+// 	transition: .3s
+// 	&:hover
+// 		transform: rotate(180deg)
+// 		transition: .3s
 
 .icon-like
 	position: absolute
-	display: flex
-	align-items: center
-	top: 6px
-	opacity: .85
-	transform: scale(.8)
+	top: 0
+	right: 3%
 	transition: .3s
 	font:
-		size: 1.7rem
+		size: 1.375rem
 	padding:
-		left: 41px
-		top: 5px
+		top: 38px
 	letter-spacing: 0px
 	width: auto
 	color: #f74769
+	text-align: center
+	min-width: 37px
 	&:hover
 		opacity: 1
 		transition: .3s
@@ -179,7 +173,7 @@ span.is-height-light
 	padding:
 		top: 0
 	padding:
-		right: 135px
+		right: 50px
 	span
 		font:
 			size: 2.5rem
@@ -222,16 +216,16 @@ span.is-height-light
 		left: 5px
 
 
-@media screen and (max-width: 1440px)
-	.icon-refresh
-		right: calc( 3% - 10px )
+// @media screen and (max-width: 1440px)
+// 	.icon-refresh
+// 		right: calc( 3% - 10px )
 
-	.icon-like
-		right: calc( 3% + 54px )
+// 	.icon-like
+// 		right: calc( 3% + 54px )
 
-@media screen and (min-width: 1441px)
-	.icon-refresh
-		right: calc( 3% - 20px )
+// @media screen and (min-width: 1441px)
+// 	.icon-refresh
+// 		right: calc( 3% - 20px )
+// 	.icon-like
+// 		right: calc( 3% + 47px)
 
-	.icon-like
-		right: calc( 3% + 47px)

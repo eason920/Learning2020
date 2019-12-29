@@ -1,6 +1,7 @@
 $w: 260px
 $p: 30px
 $w2: 50px
+$wa: 40px
 // -----------------------------------
 #ex3.is-def
 	.s3ex3-ipt
@@ -39,39 +40,65 @@ $w2: 50px
 		align: center
 	margin:
 		bottom: 20px
+	padding-right: $wa
 
 .s3ex3-right-ansbox
 	margin-bottom: 80px
 
 .s3ex3-right-item
+	display: flex
+	align-items: center
+	margin:
+		bottom: 15px
+
+.s3ex3-right-l
 	font:
 		size: 1.5rem
 	color: $c7
 	border-radius: 25px
 	border: solid 1px $c1
 	background-color: $c1-t
-	margin:
-		bottom: 15px
-	line-height: 50px
+	line-height: 46px
 	cursor: pointer
 	padding: 0 15px 0 30px
 	display: flex
-	span
+	width: calc( 100% - #{$wa})
+	& > span
 		text-align: center
 		&:first-child
 			width: calc( 100% - #{$w2} )
 		&:last-child
 			width: $w2
 
+.s3ex3-right-r
+	width: $wa
+	padding:
+		left: 10px
+
+.is-true
+	.s3ex3-right-l
+		color: $c-true
+
+.is-false
+	.s3ex3-right-l
+		color: $c-false
+		& > span:first-child > span
+			display: inline-block
+			border-bottom: solid 1px $c-false
+			height: 26px
+
 // -----------------------------------
 .s3ex3-submitbox
 	text-align: center
 	overflow: hidden
 	display: block
+	padding:
+		right: $wa
 	.s3-submit
 		float: right
 	& > *
 		width: 46%
+		padding: 10px 0
 
 .s3-reset
 	float: left
@@ -84,7 +111,6 @@ $w2: 50px
 		size: 1.125rem
 		// weight: bold
 	line-height: 1
-	padding: 10px 20px
 	border-radius: 50px
 	opacity: .8
 	transition: .3s

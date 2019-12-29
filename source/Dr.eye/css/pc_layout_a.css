@@ -1,0 +1,18 @@
+/* inner html */
+body,
+.translation_list_BG,
+#BGLoading{
+	background-color: #fff1ef!important;
+}
+#tranglationFont,
+.part-of-speech{
+	color: #f74769;
+}
+.translation_DJ,
+.translation_status,
+.translation_status l1,
+.translation_status li,
+.definitionS,
+.example_enS{
+	color: #003366;
+}

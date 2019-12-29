@@ -39,7 +39,8 @@
 .s3-en
 	margin:
 		bottom: 25px
-		
+
+// -----------------------------------	
 .s3-ansbox
 	display: inline-block
 
@@ -59,7 +60,7 @@
 	line-height: 1.5
 
 .s3-false
-	color: #d0021b!important
+	color: #{$c-false}!important
 	position: relative
 	&:after
 		content: ''
@@ -70,7 +71,15 @@
 		height: 2px
 		background:
 			color: #d0021b
-		top: 13px
 
 .s3-true
-	color: #005f40!important
+	color: #{$c-true}!important
+
+
+@media screen and (max-width: 1440px)
+	.s3-false:after
+		top: 13px
+
+@media screen and (min-width: 1441px)
+	.s3-false:after
+		top: 16px

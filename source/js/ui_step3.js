@@ -1,5 +1,5 @@
 $(function(){
-	$parent = $('#stepBlock3');
+	const $parent = $('#stepBlock3');
 	
 	const ready = function(){
 		if( $parent.html() != '' ){

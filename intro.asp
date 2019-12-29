@@ -112,10 +112,10 @@
     let memoJSON = JSON.parse('[{"id":"memo1","text":"msg%201%0Afloor2%0Afloor3%0AASDFIASJEFIASE%0A","basicid2":"Nct1-52","basicid1":"ct1-52"},{"id":"memo2","text":"msg%202","basicid2":"Nt15-19","basicid1":"t15-19"},{"id":"memo3","text":"eason%20success%0Aya%7E%7E","basicid2":"Nct1-76","basicid1":"ct1-76"}]');
     let memoUpdate = '';
     for(let i = 1; i<=3; i++){
-      $.get('step' + i + '.html', function(html){
-        $('.stepblock' + i ).html(html);
-      });
-    };
+      	$.get('step' + i + '.html', function(html){
+      		$('#stepBlock' + i ).html(html);
+      	});
+      };
 	</script>		
 	<script src="js/ui_all.js"></script>
   <script src='js/ui_step1.js'></script>
@@ -210,8 +210,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	<input type="hidden" name="repeat" id="repeat" value="0" />
 	<!-- v HTML START v -->
 	
-  
-  <div class="is-step3" id="stepBox">
+  <div class="is-step1" id="stepBox">
       <div class="topbar">
         <div class="wrapper">
           <div class="wrapper-left"><a class="topbar-back-btn" href="#">
@@ -235,17 +234,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                   <div class="icon-pink"></div>
                   <div class="topbar-scort-outer">
                     <ul class="topbar-scort">
-                      <li class="topbar-scrot-item">
+                      <li class="topbar-scrot-item is-ex1">
                         <div class="topbar-text">理解力測驗</div>
                         <div class="topbar-s">100<span>分</span></div>
                         <div class="icon-correct"></div>
                       </li>
-                      <li class="topbar-scrot-item">
+                      <li class="topbar-scrot-item is-ex2">
                         <div class="topbar-text">聽力測驗</div>
                         <div class="topbar-s">89<span>分</span></div>
                         <div class="icon-correct"></div>
                       </li>
-                      <li class="topbar-scrot-item">
+                      <li class="topbar-scrot-item is-ex3">
                         <div class="topbar-text">克漏字測驗</div>
                         <div class="topbar-s">77<span>分</span></div>
                         <div class="icon-correct"></div>
@@ -256,8 +255,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </li>
               </ul>
               <div class="topbar-icon"><a class="topbar-icon-item" href="#">
-                  <div class="icon-favorite"></div></a><a class="topbar-icon-item" href="#">
-                  <div class="icon-print"></div></a></div>
+                  <div class="icon-refresh"></div></a><a class="topbar-icon-item" href="#">
+                  <div class="icon-print"></div></a><a class="topbar-icon-item" href="#">
+                  <div class="icon-star-big"></div></a></div>
             </div>
           </div>
         </div>
@@ -327,11 +327,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
             </aside>
             <article>
-              <div class="stepblock-outer">
-                <div class="#stepBlockBox">
-                  <div class="stepblock1"></div>
-                  <div class="stepblock2 is-lock"></div>
-                  <div class="stepblock3"></div>
+              <div id="stepBlockOuter">
+                <div id="stepBlockBox">
+                  <div id="stepBlock1"></div>
+                  <div class="is-lock" id="stepBlock2"></div>
+                  <div id="stepBlock3"></div>
                 </div>
               </div>
             </article>
@@ -424,6 +424,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="icon-bulb"></div>
         <div class="icon-how-text">Tips</div></a>
     </div>
+ 
 
 
   <!-- ^ HTML END ^ -->

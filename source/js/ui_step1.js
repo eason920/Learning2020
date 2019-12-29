@@ -11,22 +11,29 @@ $(function(){
 	// ====================================
 	// == 講解 & 朗讀
 	// ====================================
-	const $control = $('#control-1');
-	const $explain = $('.article2');
-	const $readOnly = $('.article');
-	$('#control-1 b').click(function(){
-		$control.addClass("active");
-		$control.attr('data-value', '1');
-		$explain.show();
-		$readOnly.hide();
-	});
-	
-	$('#control-1 i').click(function(){
-		$control.removeClass("active");
-		$control.attr('data-value', '0');
-		$explain.hide();
-		$readOnly.show();
-	});
+	const ready = function(){
+		if( /stepBlock1/.test( $('body').html() ) ){
+			clearInterval(sid);
+			const $control = $('#control-1');
+			const $explain = $('.article2');
+			const $readOnly = $('.article');
+			$('#control-1 b').click(function(){
+				$control.addClass("active");
+				$control.attr('data-value', '1');
+				$explain.show();
+				$readOnly.hide();
+			});
+			
+			$('#control-1 i').click(function(){
+				$control.removeClass("active");
+				$control.attr('data-value', '0');
+				$explain.hide();
+				$readOnly.show();
+			});				
+		}
+	}
+	let sid = setInterval(ready, 50);
+
 
 	let beforeClassName='';
 	$('.funbar-phrase, .funbar-collection').click(function (e) {
