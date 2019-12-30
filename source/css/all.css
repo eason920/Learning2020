@@ -253,8 +253,8 @@ section.move {
 .is-false .s3ex1-icon,
 .is-false .s3ex3-icon, .icon-like, .icon-del, .icon-correct,
 .is-true .s3ex1-icon,
-.is-true .s3ex3-icon, .icon-refresh, .icon-favorite, .icon-print, .icon-arrowleft, .icon-pink, .icon-bulb {
-  background-image: url('../images/sprite-seb57658b1f.png');
+.is-true .s3ex3-icon, .icon-refresh, .icon-print, .icon-arrowleft, .icon-pink, .icon-bulb {
+  background-image: url('../images/sprite-s8ccd2ba6f3.png');
   background-repeat: no-repeat;
 }
 
@@ -265,8 +265,8 @@ section.move {
 }
 
 .icon-star-big {
-  background-position: 0 -554px;
-  background-size: auto 662px;
+  background-position: 0 -514px;
+  background-size: auto 622px;
   background-repeat: no-repeat;
   width: 38px;
   height: 38px;
@@ -274,16 +274,16 @@ section.move {
 }
 
 .icon-star-big.active {
-  background-position: 0 -592px;
-  background-size: auto 662px;
+  background-position: 0 -552px;
+  background-size: auto 622px;
   background-repeat: no-repeat;
   width: 38px;
   height: 38px;
 }
 
 .icon-star, .drbox-icon {
-  background-position: 0 -630px;
-  background-size: auto 662px;
+  background-position: 0 -590px;
+  background-size: auto 622px;
   background-repeat: no-repeat;
   width: 18px;
   height: 16px;
@@ -291,40 +291,40 @@ section.move {
 }
 
 .icon-star.active, .drbox-icon.active {
-  background-position: 0 -646px;
-  background-size: auto 662px;
+  background-position: 0 -606px;
+  background-size: auto 622px;
   background-repeat: no-repeat;
   width: 18px;
   height: 16px;
 }
 
 .icon-record-re {
-  background-position: 0 -307px;
-  background-size: auto 662px;
+  background-position: 0 -267px;
+  background-size: auto 622px;
   background-repeat: no-repeat;
   width: 71px;
   height: 71px;
 }
 
 .icon-recording {
-  background-position: 0 -451px;
-  background-size: auto 662px;
+  background-position: 0 -411px;
+  background-size: auto 622px;
   background-repeat: no-repeat;
   width: 73px;
   height: 73px;
 }
 
 .icon-record-play {
-  background-position: 0 -236px;
-  background-size: auto 662px;
+  background-position: 0 -196px;
+  background-size: auto 622px;
   background-repeat: no-repeat;
   width: 71px;
   height: 71px;
 }
 
 .icon-record-start {
-  background-position: 0 -378px;
-  background-size: auto 662px;
+  background-position: 0 -338px;
+  background-size: auto 622px;
   background-repeat: no-repeat;
   width: 73px;
   height: 73px;
@@ -333,24 +333,24 @@ section.move {
 .icon-del-c,
 .is-false .s3ex1-icon,
 .is-false .s3ex3-icon {
-  background-position: 0 -90px;
-  background-size: auto 662px;
+  background-position: 0 -88px;
+  background-size: auto 622px;
   background-repeat: no-repeat;
   width: 17px;
   height: 20px;
 }
 
 .icon-like {
-  background-position: 0 -148px;
-  background-size: auto 662px;
+  background-position: 0 -108px;
+  background-size: auto 622px;
   background-repeat: no-repeat;
   width: 38px;
   height: 38px;
 }
 
 .icon-del {
-  background-position: 0 -78px;
-  background-size: auto 662px;
+  background-position: 0 -76px;
+  background-size: auto 622px;
   background-repeat: no-repeat;
   width: 12px;
   height: 12px;
@@ -359,32 +359,24 @@ section.move {
 .icon-correct,
 .is-true .s3ex1-icon,
 .is-true .s3ex3-icon {
-  background-position: 0 -56px;
-  background-size: auto 662px;
+  background-position: 0 -54px;
+  background-size: auto 622px;
   background-repeat: no-repeat;
   width: 26px;
   height: 22px;
 }
 
 .icon-refresh {
-  background-position: 0 -524px;
-  background-size: auto 662px;
+  background-position: 0 -484px;
+  background-size: auto 622px;
   background-repeat: no-repeat;
   width: 40px;
   height: 30px;
 }
 
-.icon-favorite {
-  background-position: 0 -110px;
-  background-size: auto 662px;
-  background-repeat: no-repeat;
-  width: 38px;
-  height: 38px;
-}
-
 .icon-print {
-  background-position: 0 -198px;
-  background-size: auto 662px;
+  background-position: 0 -158px;
+  background-size: auto 622px;
   background-repeat: no-repeat;
   width: 38px;
   height: 38px;
@@ -392,23 +384,23 @@ section.move {
 
 .icon-arrowleft {
   background-position: 0 0;
-  background-size: auto 662px;
+  background-size: auto 622px;
   background-repeat: no-repeat;
-  width: 32px;
-  height: 32px;
+  width: 18px;
+  height: 30px;
 }
 
 .icon-pink {
-  background-position: 0 -186px;
-  background-size: auto 662px;
+  background-position: 0 -146px;
+  background-size: auto 622px;
   background-repeat: no-repeat;
   width: 19px;
   height: 12px;
 }
 
 .icon-bulb {
-  background-position: 0 -32px;
-  background-size: auto 662px;
+  background-position: 0 -30px;
+  background-size: auto 622px;
   background-repeat: no-repeat;
   width: 23px;
   height: 24px;
@@ -466,6 +458,10 @@ section.move {
 .topbar-back-btn:hover {
   color: #f74769;
   text-decoration: none;
+}
+.topbar-back-btn .icon-arrowleft {
+  margin-right: 7px;
+  margin-left: 10px;
 }
 
 .topbar-step {
@@ -1042,6 +1038,9 @@ input[type=range]::-ms-track {
   left: 0;
 }
 
+#stepBox {
+  height: 100vh;
+}
 #stepBox.is-step2 #stepBlockBox {
   left: -100%;
 }
@@ -1674,10 +1673,6 @@ input[type=range]::-ms-track {
   width: 53px;
   height: 12px;
   margin-right: 10px;
-}
-
-#stepBox {
-  height: 100vh;
 }
 
 .is-phrase {
