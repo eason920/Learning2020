@@ -15,13 +15,8 @@ $bottom: 15px
 	top: 0
 	left: 0
 	&:hover
-		.memobox-text,.memobox-box:before
-			background:
-				color: $c3
-			@extend %transition
+		.memobox-text,.memobox-box:before,
 		.memobox-box:after
-			border:
-				color: $c4 transparent transparent
 			@extend %transition
 	&.is-static
 		transition: .1s
@@ -33,18 +28,13 @@ body.is-memo-moving
 		cursor: not-allowed
 	.english, .Chinese
 		cursor: not-allowed
-		// &:hover
-		// 	border-color: $c1
 		span:hover
 			color: #003368
-			background-color: $c6
 			cursor: pointer
 
 .memobox-bar
 	display: flex
 	height: $bar
-	background:
-		color: $c3
 	position: relative
 	z-index: 1
 
@@ -72,7 +62,6 @@ body.is-memo-moving
 	// margin: 8px 8px 0
 	// height: calc( 100% - 30px - 8px )
 	// width: calc( 100% - 16px )
-	background: $c3-t	
 	font:
 		size: 16px
 		family: '新細明體'
@@ -93,8 +82,6 @@ body.is-memo-moving
 		float: left
 		@extend %transition
 	&:before
-		background:
-			color: $c3-t
 		height: $bottom
 		width: calc( 100% - #{$bottom})
 	&:after
@@ -103,6 +90,3 @@ body.is-memo-moving
 		border:
 			style: solid
 			width: #{$bottom} #{$bottom} 0 0
-			color: $c4-t transparent transparent
-
-

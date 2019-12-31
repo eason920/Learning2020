@@ -1,0 +1,116 @@
+@mixin nav-active
+	.topbar-num
+		background-color: $m-c2
+	.topbar-text
+		color: $m-c2
+
+// ====================================
+// == MAGENTA
+// ====================================
+.skin1
+	// _aside_above.sass v
+	.play_btn
+		border-color: $m-c1
+	.cover-title
+		color: $m-c1
+	.speed-point,.cover-btn
+		background-color: $m-c1
+
+	// _nav.sass v
+	&#stepBox
+		&.is-step1 .is-step-switch1,
+		&.is-step2 .is-step-switch2,
+		&.is-step3 .is-step-switch3
+			@include nav-active
+
+	.topbar-step-item:hover
+		@include nav-active
+
+	.topbar-back-btn,
+	.topbar-back-btn:hover
+		color: $m-c1
+
+	.topbar-num
+		background:
+			color: $m-c1-l
+
+	.topbar-text
+		color: $m-c1-l
+
+	.topbar-scrot-item:after
+		background:
+			color: $m-c1-t
+
+	// _stepblock_all.sass v
+	.share-title-text,
+	.share-pre,
+	.share-next
+		color: $m-c1
+
+	.s3-score > *
+		color: $m-c1-2
+
+	// _funbar_1.sass v
+	.icon-how:after
+		border-color: transparent transparent #{$m-c1} transparent
+
+	// _memobox.sass v
+	.memobox:hover
+		.memobox-text,.memobox-box:before
+			background-color: $m-c3
+		.memobox-box:after
+			border-color: $m-c4 transparent transparent
+
+	.memobox-bar
+		background-color: $m-c3
+	
+	.memobox-text
+		background-color: $m-c3-t
+
+	.memobox-box
+		&:before
+			background-color: $m-c3-t
+		&:after
+			border-color: $m-c4-t transparent transparent
+
+	// _funbar_2.sass v
+	.controlbox2-on
+		background-color: $m-c1
+	.s2-record-item
+		color: $m-c1
+
+	// _ex3.sass v
+	.s3ex3-right-title
+		color: $m-c1
+	.s3ex3-right-l
+		color: $m-c7
+		background-color: $m-c1-t
+		border-color: $m-c1
+	.s3-reset
+		border-color: $m-c1
+		background-color: $m-c1
+
+	// _stepblock_3.sass v
+	.s3-submit
+		border-color: $m-c1
+		color: $m-c1
+		&:hover,&:focus
+			background-color: $m-c1
+
+// ====================================
+// == BODY CLASS
+// ====================================
+// _memobox.sass v
+body.is-memo-moving
+	.skin1
+		.english, .Chinese
+			span:hover
+				background-color: $m-c6
+
+
+
+
+
+
+
+
