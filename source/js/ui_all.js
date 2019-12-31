@@ -259,6 +259,47 @@ $(function () {
 		$(this).toggleClass('active');
 	});
 
+	// ====================================
+	// == PRINT
+	// ====================================
+	const printScreen = function(target){
+		const title = $('title').text();
+		const value = target.innerHTML;
+		let printPage = window.open();
+		printPage.document.open();
+		printPage.document.write(
+			"<html><head>" 
+			+ "<link rel='icon' href='./images/favicon.ico' type='image/ico'></link>"
+			+ "<title>" + title + "</title>"
+			+ "<link href='css/bootstrap.min.css' rel='stylesheet' type='text/css'>"
+			+ "<link rel='stylesheet' href='css/all.css'>"
+			+ "<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Playfair+Display&amp;display=swap'>"
+			+ "<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Abril+Fatface&amp;display=swap'>"
+			+ "<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Engagement&amp;display=swap'>"
+			+ "<link href='css/print.css' rel='stylesheet' type='text/css'>"
+			+ "</head><body onload='window.print();window.close()'>"
+			+ value
+		);
+		printPage.document.close("</body></html>");
+	};
+
+	$('.icon-print').click(function(){
+		const i = $('#stepBox').attr('class').substr(-1, 1);
+		let target
+		switch(true){
+			case i == 1:
+				printScreen(stepBlock1);
+				break;
+			case i == 2:
+				printScreen(stepBlock2);
+				break;
+			case i == 3:
+				printScreen(stepBlock3);
+				break;
+			default:
+		}
+	});
+
 });
 
 console.log('%c remenber ui_all.js 「pausetime();」', 'color: red;font-size: 16px');
