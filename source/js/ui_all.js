@@ -145,7 +145,7 @@ $(function () {
 				break;
 			default:
 		}
-		$('#stepBox').removeClass().addClass(className);
+		$('#stepBox').removeClass('is-step1 is-step2 is-step3').addClass(className);
 
 		if( !/step3/.test( $('#stepBox').attr('class') ) ){
 			$('#exBox').css({top: 0});
@@ -284,8 +284,7 @@ $(function () {
 	};
 
 	$('.icon-print').click(function(){
-		const i = $('#stepBox').attr('class').substr(-1, 1);
-		let target
+		const i = $('.topbar-step-item.active .topbar-num').text();
 		switch(true){
 			case i == 1:
 				printScreen(stepBlock1);
@@ -297,6 +296,7 @@ $(function () {
 				printScreen(stepBlock3);
 				break;
 			default:
+				printScreen(stepBlock1);
 		}
 	});
 

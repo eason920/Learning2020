@@ -1,6 +1,7 @@
 @import 'compass'
 @import 'sprite/*.png'
-$height: sprite-sprite-height(print) + sprite-sprite-height(arrow_left) + sprite-sprite-height(pink) + sprite-sprite-height(bulb) + sprite-sprite-height(refresh) + sprite-sprite-height(correct) + sprite-sprite-height(del) + sprite-sprite-height(like) + sprite-sprite-height(del_c) + sprite-sprite-height(recording) + sprite-sprite-height(record_play) + sprite-sprite-height(record_start) + sprite-sprite-height(record_re) + sprite-sprite-height(star_off) + sprite-sprite-height(star_on) + sprite-sprite-height(star_big_off) + sprite-sprite-height(star_big_on)
+$height: sprite-sprite-height(bulb) + sprite-sprite-height(correct) + sprite-sprite-height(del) + sprite-sprite-height(del_c) + sprite-sprite-height(star_off) + sprite-sprite-height(star_on)
+
 @mixin BG($path)
 	@include sprite-sprite($path)
 	background:
@@ -9,19 +10,21 @@ $height: sprite-sprite-height(print) + sprite-sprite-height(arrow_left) + sprite
 	width: sprite-sprite-width($path)
 	height: sprite-sprite-height($path)
 
-%record
-	transform: scale(.8)
-	transform-origin: 50% 50%
-	margin:
-		bottom: -7px
+.icon-bulb
+	@include BG(bulb)
 
-.icon-star-big
-	@include BG(star_big_off)
-	cursor: pointer
-	
-.icon-star-big.active
-	@include BG(star_big_on)
+.icon-correct,
+.is-true .s3ex1-icon,
+.is-true .s3ex3-icon
+	@include BG(correct)	
 
+.icon-del
+	@include BG(del)
+
+.icon-del-c, 
+.is-false .s3ex1-icon,
+.is-false .s3ex3-icon
+	@include BG(del_c)
 
 .icon-star, .drbox-icon
 	@include BG(star_off)
@@ -29,50 +32,3 @@ $height: sprite-sprite-height(print) + sprite-sprite-height(arrow_left) + sprite
 	
 .icon-star.active, .drbox-icon.active
 	@include BG(star_on)
-
-.icon-record-re
-	@include BG(record_re)
-	@extend %record
-
-.icon-recording
-	@include BG(recording)
-	@extend %record
-
-.icon-record-play
-	@include BG(record_play)
-	@extend %record
-
-.icon-record-start
-	@include BG(record_start)
-	@extend %record
-
-.icon-del-c, 
-.is-false .s3ex1-icon,
-.is-false .s3ex3-icon
-	@include BG(del_c)
-
-.icon-like
-	@include BG(like)
-		
-.icon-del
-	@include BG(del)
-
-.icon-correct,
-.is-true .s3ex1-icon,
-.is-true .s3ex3-icon
-	@include BG(correct)	
-	
-.icon-refresh
-	@include BG(refresh)
-
-.icon-print
-	@include BG(print)
-
-.icon-arrowleft
-	@include BG(arrow_left)
-
-.icon-pink
-	@include BG(pink)
-
-.icon-bulb
-	@include BG(bulb)

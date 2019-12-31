@@ -1,0 +1,56 @@
+@import 'compass'
+@import 'green/*.png'
+$height: green-sprite-height(arrow_left) + green-sprite-height(like) + green-sprite-height(pink) + green-sprite-height(print) + green-sprite-height(record_play) + green-sprite-height(record_re) + green-sprite-height(record_start) + green-sprite-height(recording) + green-sprite-height(refresh) + green-sprite-height(star_big_off) + green-sprite-height(star_big_on)	
+
+@mixin BG($path)
+	@include green-sprite($path)
+	background:
+		size: auto $height
+		repeat: no-repeat
+	width: green-sprite-width($path)
+	height: green-sprite-height($path)
+
+%record
+	transform: scale(.8)
+	transform-origin: 50% 50%
+	margin:
+		bottom: -7px
+
+.skin2
+	.icon-arrowleft
+		@include BG(arrow_left)
+
+	.icon-like
+		@include BG(like)
+
+	.icon-pink
+		@include BG(pink)
+
+	.icon-print
+		@include BG(print)
+
+	.icon-record-play
+		@include BG(record_play)
+		@extend %record
+
+	.icon-record-re
+		@include BG(record_re)
+		@extend %record
+
+	.icon-record-start
+		@include BG(record_start)
+		@extend %record
+
+	.icon-recording
+		@include BG(recording)
+		@extend %record
+
+	.icon-refresh
+		@include BG(refresh)
+
+	.icon-star-big
+		@include BG(star_big_off)
+		cursor: pointer
+		
+	.icon-star-big.active
+		@include BG(star_big_on)

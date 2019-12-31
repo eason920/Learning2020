@@ -1,0 +1,56 @@
+@import 'compass'
+@import 'magenta/*.png'
+$height: magenta-sprite-height(arrow_left) + magenta-sprite-height(like) + magenta-sprite-height(pink) + magenta-sprite-height(print) + magenta-sprite-height(record_play) + magenta-sprite-height(record_re) + magenta-sprite-height(record_start) + magenta-sprite-height(recording) + magenta-sprite-height(refresh) + magenta-sprite-height(star_big_off) + magenta-sprite-height(star_big_on)	
+
+@mixin BG($path)
+	@include magenta-sprite($path)
+	background:
+		size: auto $height
+		repeat: no-repeat
+	width: magenta-sprite-width($path)
+	height: magenta-sprite-height($path)
+
+%record
+	transform: scale(.8)
+	transform-origin: 50% 50%
+	margin:
+		bottom: -7px
+
+.skin1
+	.icon-arrowleft
+		@include BG(arrow_left)
+
+	.icon-like
+		@include BG(like)
+
+	.icon-pink
+		@include BG(pink)
+
+	.icon-print
+		@include BG(print)
+
+	.icon-record-play
+		@include BG(record_play)
+		@extend %record
+
+	.icon-record-re
+		@include BG(record_re)
+		@extend %record
+
+	.icon-record-start
+		@include BG(record_start)
+		@extend %record
+
+	.icon-recording
+		@include BG(recording)
+		@extend %record
+
+	.icon-refresh
+		@include BG(refresh)
+
+	.icon-star-big
+		@include BG(star_big_off)
+		cursor: pointer
+		
+	.icon-star-big.active
+		@include BG(star_big_on)
