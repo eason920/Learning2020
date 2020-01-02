@@ -1,3 +1,5 @@
+$w-star: 25px
+// -----------------------------------
 .is-phrase
 	position: relative
 	&:after
@@ -75,7 +77,7 @@ article
 			decoration: none
 
 .english
-	display: block
+	display: flex
 	padding:
 		top: 20px
 		bottom: 7px
@@ -98,6 +100,19 @@ article
 		.read_btn
 			opacity: 1
 			transition: opacity .3s
+.art-star
+	width: $w-star
+	padding-top: 5px
+	.icon-star
+		opacity: 0
+
+.english:hover
+	.icon-star
+		opacity: 1
+
+.art-art
+	width: calc( 100% - #{$w-star})
+
 #Nt1, #t1
 	padding-top: 0
 
@@ -107,6 +122,7 @@ article
 	padding:
 		top: 7px
 		bottom: 30px
+		left: $w-star
 	line-height: 1.6
 	font:
 		size: .9375rem
@@ -166,6 +182,9 @@ span.is-height-light
 		size: 1.4375rem
 		weight: bold
 		family: 'Playfair Display', serif, 'PMingLiU'
+	margin:
+		left: $w-star
+	width: calc( 100% - #{$w-star})
 
 
 .buble-ch

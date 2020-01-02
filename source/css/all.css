@@ -2145,7 +2145,7 @@ article {
 }
 
 .english {
-  display: block;
+  display: flex;
   padding-top: 20px;
   padding-bottom: 7px;
   font-family: arial;
@@ -2165,6 +2165,22 @@ article {
   transition: opacity 0.3s;
 }
 
+.art-star {
+  width: 25px;
+  padding-top: 5px;
+}
+.art-star .icon-star {
+  opacity: 0;
+}
+
+.english:hover .icon-star {
+  opacity: 1;
+}
+
+.art-art {
+  width: calc( 100% - 25px);
+}
+
 #Nt1, #t1 {
   padding-top: 0;
 }
@@ -2174,6 +2190,7 @@ article {
   display: block;
   padding-top: 7px;
   padding-bottom: 30px;
+  padding-left: 25px;
   line-height: 1.6;
   font-size: 0.9375rem;
   font-weight: normal;
@@ -2228,6 +2245,8 @@ span.is-height-light {
   font-size: 1.4375rem;
   font-weight: bold;
   font-family: "Playfair Display", serif, "PMingLiU";
+  margin-left: 25px;
+  width: calc( 100% - 25px);
 }
 
 .buble-ch {

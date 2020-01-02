@@ -24,9 +24,9 @@ function ch_font(str,clock){
 		
 	if(str.indexOf("**")!=-1){
 		str=str.replace("**","");
-		x=str.replace(str,"**<a name='"+y+"' id='"+y+"'></a><div id='t"+y+"' onDblClick='_dictClose();'  class='english'>" +str+ "<input type='button' onclick='"+playo+"' class='read_btn link'></div>");
+		x=str.replace(str,"**<a name='"+y+"' id='"+y+"'></a><div id='t"+y+"' onDblClick='_dictClose();'  class='english'><div class='art-star'><div class='icon-star'></div></div><div class='art-art'>" +str+ "<input type='button' onclick='"+playo+"' class='read_btn link'></div></div>");
 	}else{
-		x=str.replace(str,"**<a name='"+y+"' id='"+y+"'></a><div id='t"+y+"' onDblClick='_dictClose();'  class='english'>" +str+ "<input type='button' onclick='"+playo+"' class='read_btn link'></div>");
+		x=str.replace(str,"**<a name='"+y+"' id='"+y+"'></a><div id='t"+y+"' onDblClick='_dictClose();'  class='english'><div class='art-star'><div class='icon-star'></div></div><div class='art-art'>" +str+ "<input type='button' onclick='"+playo+"' class='read_btn link'></div></div>");
 	}
 
 	return x;
@@ -88,7 +88,7 @@ const replaceCode = function(target, Str){
 	});
 }
 
-// for 朗讀
+// for 朗讀(單句換行)
 function Step1(){
 	var eu='',cu='';Str='';
 	for (i=0;i<=$(en).find("lrclist:last").index();i++){
@@ -115,7 +115,7 @@ function Step1(){
 	
 }
 
-// for 講解
+// for 講解(多句合成段才換行)
 function Step2(){
     var eu='',Str='';
 	
@@ -125,7 +125,7 @@ function Step2(){
 			
 			playo="playC("+i+");"			
 			eu=eu.replace("**","");
-			eu = eu + '<a name="' + i + '" id="N' + i + '"></a><div class="english" id="Nt' + i + '" >' + spanWord($(en).find("lrclist:eq(" + i + ")").attr("content"), pAry)+'<input type="button" onclick="'+playo+'" class="read_btn link"></div><div id="bubble'+i+'"  class="annotation" style="display:none;"></div><div class="Chinese" id="Nct'+i+'" >'+$(tc).find("lrclist:eq("+i+")").attr("content")+'</div>';
+			eu = eu + '<a name="' + i + '" id="N' + i + '"></a><div class="english" id="Nt' + i + '" ><div class="art-star"></div><div class="art-art">' + spanWord($(en).find("lrclist:eq(" + i + ")").attr("content"), pAry)+'<input type="button" onclick="'+playo+'" class="read_btn link"></div></div><div id="bubble'+i+'"  class="annotation" style="display:none;"></div><div class="Chinese" id="Nct'+i+'" >'+$(tc).find("lrclist:eq("+i+")").attr("content")+'</div>';
 			eu=eu.replace("**","");
 		
 		}else{

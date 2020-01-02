@@ -251,7 +251,7 @@ $(function () {
 	// ====================================
 	// == START SWITCH
 	// ====================================
-	$('#stepBlock2').on('click', '.icon-star', function(){
+	$('#stepBlock1, #stepBlock2').on('click', '.icon-star', function(){
 		$(this).toggleClass('active');
 	});
 

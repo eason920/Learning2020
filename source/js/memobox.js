@@ -147,8 +147,10 @@ $(function(){
 	// ====================================
 	// == CREATE
 	// ====================================
-	$body.on('dblclick', '.english, .Chinese, .annotation', function(e){
+	// v .art-art = .english area
+	$body.on('dblclick', '.art-art, .Chinese, .annotation', function(e){
 		const id = $('.memobox').length + 1;
+		console.log($(this).attr('class'));
 		
 		if( id < 16 ){
 			$('.funbar-memobox').hasClass('active') ? null : $('.funbar-memobox').click();
@@ -171,7 +173,7 @@ $(function(){
 			top >= maxY ? top = maxY : null;
 	
 			switch(true){
-				case /english/i.test( className ):
+				case /art-art/i.test( className ):
 					thisid = $this.find('span:nth-last-child(2)').attr('id');
 					break;
 				case /chinese/i.test( className ):
