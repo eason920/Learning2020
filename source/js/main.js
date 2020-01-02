@@ -168,9 +168,9 @@ function Vocabulary(){
 						if(right(words_sen[1],1)=='，')
 							words_sen[1]=left(words_sen[1],words_sen[1].length-1)+'。'		
 								
-						eu = eu + '<div class="vacbox"><div class="vacmain"><span class="vacmain-en">' + work[0] + work[1] + '</span><span class="vacmain-ch">' + work[2] + '</span></div><div class="vacsub"><span class="vacsub-en">' + (words_sen[0]) + '</span><span class="vacsub-ch" >' + words_sen[1] + '</span></div></div>'
+						eu = eu + '<div class="vacbox"><div class="vacmain"><span class="vacmain-en">' + work[0] + work[1] + '<span class="vacmain-sound"></span></span><span class="vacmain-ch">' + work[2] + '</span></div><div class="vacsub"><span class="vacsub-en">' + (words_sen[0]) + '</span><span class="vacsub-ch" >' + words_sen[1] + '</span></div></div>'
 					}else{
-						eu=eu+'<div class="vacbox"><div class="vacmain"><span class="vacmain-en">'+work[0]+work[1]+'</span><span class="vacmain-ch">'+work[2]+'</span></div></div>'
+						eu=eu+'<div class="vacbox"><div class="vacmain"><span class="vacmain-en">'+work[0]+work[1]+'<span class="vacmain-sound"></span></span><span class="vacmain-ch">'+work[2]+'</span></div></div>'
 					}
 				
 				}

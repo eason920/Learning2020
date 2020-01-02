@@ -19,8 +19,6 @@ $h-nav: 76px
 		@include nav-active
 
 .topbar
-	background:
-		color: #fff
 	position: fixed
 	top: 0
 	width: 100%
@@ -98,11 +96,10 @@ $h-nav: 76px
 .topbar-num
 	text-align: center
 	border-radius: 50%
-	color: #fff
 	font:
 		weight: bold
 		family: serif
-		transtion: .3s
+	transtion: .3s
 	cursor: pointer		
 
 .topbar-text
@@ -141,9 +138,6 @@ $h-nav: 76px
 .topbar-scort
 	margin:
 		top: -2px
-	background:
-		color: #fff
-	box-shadow: 0 0 12px rgba(0,0,0,.3)
 	.icon-correct
 		margin-left: 15px
 
@@ -159,14 +153,9 @@ $h-nav: 76px
 	// padding:
 		// left: 25%
 	&:hover
-		background:
-			color: #d8d8d8
 		@extend %transition
 		.topbar-num
-			background:
-				color: #fff
-			color: #f74769
-		@extend %transition
+			@extend %transition
 
 	&:after
 		content: ''
@@ -190,7 +179,6 @@ $h-nav: 76px
 	.topbar-text
 		font:
 			size: 1rem
-		color: #4a4a4a
 		@extend %transition
 .topbar-s
 	margin:
@@ -198,7 +186,6 @@ $h-nav: 76px
 	font:
 		size: 1.125rem
 		weight: bold
-	color: #aa0102
 	span
 		font:
 			size: 1rem

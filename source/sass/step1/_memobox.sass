@@ -29,7 +29,6 @@ body.is-memo-moving
 	.english, .Chinese
 		cursor: not-allowed
 		span:hover
-			color: #003368
 			cursor: pointer
 
 .memobox-bar
@@ -50,8 +49,6 @@ body.is-memo-moving
 		size: 0
 	display: block
 	user-select: none
-	background:
-		color: transparent
 	border: none
 
 .memobox-text
@@ -64,18 +61,15 @@ body.is-memo-moving
 	// width: calc( 100% - 16px )
 	font:
 		size: 16px
-		family: '新細明體'
+		family: AdobeKaitiStd-Regular
 	line-height: 1.2
 	@extend %transition
 	resize: none
 	&:focus
 		outline: none
-	&:placeholder
-		color: red
 
 .memobox-box
 	overflow: hidden
-	cursor: move
 	&:before,&:after
 		content: ''
 		display: block

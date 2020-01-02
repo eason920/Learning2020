@@ -2,8 +2,6 @@
 	width: 24%
 	display: block
 	height: 100%
-	color: #FFF
-	background-color: #ff9eb1
 	position: absolute
 	top: 0px
 	right: -26%
@@ -18,13 +16,6 @@
 		right: 0px
 
 .close_btn
-	background:
-		image: url(../images/pc_a/close_btn.png)
-		repeat: no-repeat
-		size: 100% auto
-		color: transparent
-	height: 30px
-	width: 30px
 	position: absolute
 	top: 95px
 	right: 30px
@@ -36,7 +27,6 @@
 		family: 'Abril Fatface', PingFangTC-Regular, Microsoft JhengHei, sans-serif
 		weight: 500
 	line-height: 1.2
-	color: #4a4a4a
 	letter-spacing: 1px
 	border-bottom: 1px solid #e7e7e7
 	text-align: center
@@ -62,7 +52,6 @@
 		bottom: 38px
 // -----------------------------------
 .vacmain
-	color: #036
 	& > *
 		display: block
 	margin:
@@ -81,9 +70,26 @@
 		size: 1rem
 		weight: bold
 
+//-
+.vacmain-en
+	position: relative
+
+.vacmain-sound
+	position: absolute
+	right: 0
+	top: 2px
+	cursor: pointer
+	background-color: #fff
+	border-radius: 50%
+	border:
+		style: solid
+		width: 5px
+	width: 30px!important
+	height: 30px!important
+
+
 // -----------------------------------
 .vacsub
-	color: #000
 	& > *
 		display: block
 .vacsub-en
@@ -111,14 +117,11 @@ $h: 23px
 		size: 1.125rem
 		family: "Playfair Display", serif, "PMingLiU"
 		weight: bold
-	color: #036
 	padding: 4px 8px 6px
 	text-align: center
 	min-width: 50px
 	line-height: 1
 	border-radius: 18px
-	background:
-		color: #fff
 	margin:
 		bottom: 8px
 
@@ -137,7 +140,6 @@ $h: 23px
 .colbox-abovebox-text
 	margin:
 		bottom: 5px
-	color: #036
 
 .colbox-abovebox-del
 	margin:
@@ -148,11 +150,8 @@ $h: 23px
 	font:
 		size: 1.5rem
 		weight: bold
-	color: #d0021b
 	&:hover
-		color: #d0021b
 		text-decoration: none
-
 
 // -----------------------------------
 // -- UNDER BOX
@@ -162,7 +161,6 @@ $h: 23px
 
 // -----------------------------------
 .colbox-underbox-memo
-	color: #4a4a4a
 	line-height: $h
 	font:
 		size: 1rem
@@ -171,7 +169,6 @@ $h: 23px
 // -----------------------------------
 .colbox-underbox-placeholder
 	line-height: $h
-	color: #e7e7e7
 	text-decoration: underline
 	cursor: pointer
 	font:
@@ -186,16 +183,15 @@ $h: 23px
 	height: $h
 	padding: 5px
 	border: none
-	color: #000
-	// display: none
 	width: calc( 100% - 60px)
 
 .colbox-underbox-ok
 	width: 50px
 	line-height: $h - 2px
-	border: solid 1px #cf3b57
+	border:
+		style: solid
+		width: 1px
 	border-radius: $h / 2
-	color: #cf3b57
 	padding: 0 10px
 	position: absolute
 	display: block
@@ -204,14 +200,11 @@ $h: 23px
 	&:focuse
 		outlien: none
 	&:hover
-		background:
-			color: #cf3b57
-		color: #fff
 		text-decoration: none
 	
 
 //
-@media screen and (max-width: 1440px)
+// @media screen and (max-width: 1440px)
 
 
-@media screen and (min-width: 1441px)
+// @media screen and (min-width: 1441px)
