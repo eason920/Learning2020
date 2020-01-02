@@ -5,10 +5,6 @@
 		color: $m-c2
 
 .skin1
-	// _drbox.sass
-	#Dr_layer
-		background-color: #fff1ef!important
-
 	// _nav.sass v
 	&#stepBox
 		&.is-step1 .is-step-switch1,
@@ -50,7 +46,7 @@
 				color: #f74769
 
 	.topbar-s
-		color: #aa0102
+		color: $m-c-art-strong
 
 	.topbar-scrot-item
 		.topbar-text
@@ -218,16 +214,16 @@
 			color: $c-gray1
 			&:hover
 				color: #003368
-				background-color: #fa7e96
+				background-color: $m-c-art-hover
 	
 	.Chinese
 		color: #555
 
 	.english.lightheight,
 	.Chinese.lightheight
-		color: #aa0102!important
+		color: $m-c-art-strong!important
 		span
-			color: #aa0102!important
+			color: $m-c-art-strong!important
 
 	// un reqding
 	.english.lightheightBG,
@@ -236,7 +232,7 @@
 
 	span.is-height-light
 		color: #003368
-		background-color: #fa7e96
+		background-color: $m-c-art-hover
 
 	#Nt0, #t0,
 	#Nct0, #ct0
@@ -251,6 +247,32 @@
 	.share-title-percent,
 	.share-title-sub
 		color: $c-gray1
+
+	// vvv
+	#stepBlock1.is-art-important
+		.is-art-important
+			.art-art,
+				color: $m-c-art-strong
+				span
+					color: $m-c-art-strong
+
+	#stepBlock1.is-art-muted
+		.is-art-muted
+			.art-art,
+				color: $m-c-art-muted
+				span
+					color: $m-c-art-muted
+	
+	#stepBlock1.is-art-title
+		.is-art-title
+			.art-art,
+				background-color: $m-c-art-strong
+				color: $c-w
+				span
+					background-color: $m-c-art-strong
+					color: $c-w
+					&:hover
+						background-color: $m-c-art-hover
 
 	// _stepblock_3.sass v
 	.s3-submit
@@ -403,3 +425,7 @@ body.is-memo-moving
 			span:hover
 				color: $c-blue
 				background-color: $m-c6
+
+// _drbox.sass
+#Dr_layer.skin1
+	background-color: #fff1ef!important

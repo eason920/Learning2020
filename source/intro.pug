@@ -1,4 +1,4 @@
--var status = 'devv'
+-var status = 'dev'
 doctype html
 html(lang='zh')
 	head
@@ -22,7 +22,7 @@ html(lang='zh')
 			let videoId = 'h1I5JM16N0c';
 			let lbUrl = 'https://www.youtube.com/embed/h1I5JM16N0c';
 			//- let memoJSON = JSON.parse('[{"id":"memo1","text":"msg 1","top":"2200","left":"0"},{"id":"memo2","text":"msg 2","top":"500","left":"300"}]');
-			let memoJSON = JSON.parse('[{"id":"memo1","text":"msg%201%0Afloor2%0Afloor3%0AASDFIASJEFIASE%0A","basicid2":"Nct1-52","basicid1":"ct1-52"},{"id":"memo2","text":"msg%202","basicid2":"Nt15-19","basicid1":"t15-19"},{"id":"memo3","text":"%u4FBF%u5229%u8CBC%u6210%u529F%0Aya%7E%7E","basicid2":"Nt1-41","basicid1":"t1-41"}]');
+			let memoJSON = JSON.parse('[{"id":"memo1","text":"msg%201%0Afloor2%0Afloor3%0AASDFIASJEFIASE%0A","basicid2":"Nct1-52","basicid1":"ct1-52"},{"id":"memo2","text":"msg%202","basicid2":"Nt15-19","basicid1":"t15-19"},{"id":"memo3","text":"%u4FBF%u5229%u8CBC%u6210%u529F%0Aya%7E%7E","basicid2":"Nt2-6","basicid1":"t2-6"}]');
 			let memoUpdate = '';
 			for(let i = 1; i<=3; i++){
 				$.get('step' + i + '.html', function(html){
@@ -156,8 +156,8 @@ html(lang='zh')
 						article
 							#stepBlockOuter
 								#stepBlockBox
-									#stepBlock1
-									#stepBlock2.is-lock
+									#stepBlock1.is-art-important
+									#stepBlock2
 									#stepBlock3
 								
 					.tranglationBody

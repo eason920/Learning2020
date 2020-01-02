@@ -24,7 +24,20 @@ function DrSign(Str){
 	return md5(Str+'B00052018050818000014c6e8aea71936e21479');
 }
 
-
+const fnLayerColor = function(){
+	const parentClassName = $('#stepBox').attr('class');
+	let className;
+	switch(true){
+		case /skin1/.test(parentClassName):
+			className = 'skin1';
+			break;
+		case /skin2/.test(parentClassName):
+			className = 'skin2';
+			break;
+		default:
+	}
+	return className;
+}
 
 let cx, cy;
 const orgOffset = function(){
@@ -80,6 +93,8 @@ function DrDate(Str) {
 		$('.drbox-icon').click(function () {
 			$('.drbox-icon').toggleClass('active');
 		});
+		const className = fnLayerColor();
+		$( "#Dr_layer" ).addClass(className);
 	});
 }
 
@@ -109,6 +124,8 @@ function DrDate1(Str){
 		$('.drbox-icon').click(function () {
 			$('.drbox-icon').toggleClass('active');
 		});
+		const className = fnLayerColor();
+		$( "#Dr_layer" ).addClass(className);
 	});
 }
 
@@ -134,7 +151,9 @@ function DrDate2(Str){
 	$('body').append('<div id="Dr_layer" style="position: absolute; z-index: 9000;  left:' + cx + 'px;top:' + cy + 'px;"><table border="0" cellspacing="0" cellpadding="0" width="100%" align="center" ><tbody><tr><td width="100%" class="BG" id="BGLoading"><div class="drbox"><div class="drbox-logo"></div><div class="drbox-icon"></div></div><iframe id="_dictFrame" name="_dictFrame"  height="600"  src="' + url + '?' + Parameter + '" frameborder="0" width="100%" style="border:0px;" border="0" ></iframe></td></tr></tbody></table></div>')
 	//$('body').append('<div id="Dr_layer2" style="position: absolute; z-index: 9000;  left:' + (mx + 10) + 'px;top:' + (my - 50) + 'px;"><table border="0" cellspacing="0" cellpadding="0" width="100%" align="center" style="background-color:#f9efaa;"><tbody><tr><td width="100%" class="BG" id="BGLoading"><iframe id="_dictFrame" name="_dictFrame"  height="600"  src="' + url + '?' + Parameter + '" frameborder="0" width="100%" style="border:0px;" border="0" ></iframe></td></tr></tbody></table></div>')
     $(function(){
-       $( "#Dr_layer" ).draggable();
+		$( "#Dr_layer" ).draggable();
+		const className = fnLayerColor();
+		$( "#Dr_layer" ).addClass(className);
     });
 }
 

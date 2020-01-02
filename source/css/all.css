@@ -363,7 +363,7 @@ section.move {
 }
 
 .topbar-scrot-item, .topbar-scrot-item:hover, .topbar-scrot-item:hover .topbar-num, .topbar-scrot-item .topbar-num, .topbar-scrot-item .topbar-text, .memobox:hover .memobox-text, .memobox:hover .memobox-box:before,
-.memobox:hover .memobox-box:after, .memobox-text, .memobox-box:before, .memobox-box:after {
+.memobox:hover .memobox-box:after, .memobox-text, .memobox-bottom:before, .memobox-bottom:after {
   transition: 0.3s;
 }
 
@@ -1445,6 +1445,7 @@ input[type=range]::-ms-track {
   background-repeat: no-repeat;
   width: 18px;
   height: 16px;
+  opacity: 1 !important;
 }
 
 .lb-mask {
@@ -1470,11 +1471,22 @@ input[type=range]::-ms-track {
   background-color: rgba(255, 250, 161, 0.85);
 }
 
-.memobox-box:before {
+.memobox-bottom:before {
   background-color: rgba(255, 250, 161, 0.85);
 }
-.memobox-box:after {
+.memobox-bottom:after {
   border-color: rgba(212, 197, 133, 0.85) transparent transparent;
+}
+
+.memobox-del,
+.memobox-save {
+  border-color: #5e5321;
+  color: #5e5321;
+}
+.memobox-del:hover,
+.memobox-save:hover {
+  background-color: #5e5321;
+  color: #fffaa1;
 }
 
 .magenta-sprite, .skin1 .read_btn, .skin1 .vacmain-sound, .skin1 .close_btn, .skin1 .icon-arrowleft, .skin1 .icon-like, .skin1 .icon-play, .skin1 .icon-play.pause, .skin1 .icon-pink, .skin1 .icon-print, .skin1 .icon-record-play, .skin1 .icon-record-re, .skin1 .icon-record-start, .skin1 .icon-recording, .skin1 .icon-refresh, .skin1 .icon-star-big, .skin1 .icon-star-big.active {
@@ -1595,9 +1607,6 @@ input[type=range]::-ms-track {
   height: 38px;
 }
 
-.skin1 #Dr_layer {
-  background-color: #fff1ef !important;
-}
 .skin1#stepBox.is-step1 .is-step-switch1 .topbar-num, .skin1#stepBox.is-step2 .is-step-switch2 .topbar-num, .skin1#stepBox.is-step3 .is-step-switch3 .topbar-num {
   background-color: #cf3b57;
 }
@@ -1824,6 +1833,29 @@ input[type=range]::-ms-track {
 .skin1 .share-title-sub {
   color: #4a4a4a;
 }
+.skin1 #stepBlock1.is-art-important .is-art-important .art-art {
+  color: #aa0102;
+}
+.skin1 #stepBlock1.is-art-important .is-art-important .art-art span {
+  color: #aa0102;
+}
+.skin1 #stepBlock1.is-art-muted .is-art-muted .art-art {
+  color: #bbb;
+}
+.skin1 #stepBlock1.is-art-muted .is-art-muted .art-art span {
+  color: #bbb;
+}
+.skin1 #stepBlock1.is-art-title .is-art-title .art-art {
+  background-color: #aa0102;
+  color: #fff;
+}
+.skin1 #stepBlock1.is-art-title .is-art-title .art-art span {
+  background-color: #aa0102;
+  color: #fff;
+}
+.skin1 #stepBlock1.is-art-title .is-art-title .art-art span:hover {
+  background-color: #fa7e96;
+}
 .skin1 .s3-submit {
   border-color: #f74769;
   color: #f74769;
@@ -1954,6 +1986,10 @@ input[type=range]::-ms-track {
 body.is-memo-moving .skin1 .english span:hover, body.is-memo-moving .skin1 .Chinese span:hover {
   color: #036;
   background-color: #fa7e91;
+}
+
+#Dr_layer.skin1 {
+  background-color: #fff1ef !important;
 }
 
 .green-sprite, .skin2 .read_btn, .skin2 .vacmain-sound, .skin2 .close_btn, .skin2 .icon-arrowleft, .skin2 .icon-like, .skin2 .icon-play, .skin2 .icon-play.pause, .skin2 .icon-pink, .skin2 .icon-print, .skin2 .icon-record-play, .skin2 .icon-record-re, .skin2 .icon-record-start, .skin2 .icon-recording, .skin2 .icon-refresh, .skin2 .icon-star-big, .skin2 .icon-star-big.active {
@@ -2362,7 +2398,7 @@ span.is-height-light {
   }
 }
 .topbar-scrot-item, .topbar-scrot-item:hover, .topbar-scrot-item:hover .topbar-num, .topbar-scrot-item .topbar-num, .topbar-scrot-item .topbar-text, .memobox:hover .memobox-text, .memobox:hover .memobox-box:before,
-.memobox:hover .memobox-box:after, .memobox-text, .memobox-box:before, .memobox-box:after {
+.memobox:hover .memobox-box:after, .memobox-text, .memobox-bottom:before, .memobox-bottom:after {
   transition: 0.3s;
 }
 
@@ -2372,7 +2408,7 @@ span.is-height-light {
   height: 155px;
   position: absolute;
   box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, 0.1);
-  border-radius: 0 0 26px 0;
+  border-radius: 0 0 32px 0;
   z-index: 15;
   top: 0;
   left: 0;
@@ -2403,22 +2439,12 @@ body.is-memo-moving .english span:hover, body.is-memo-moving .Chinese span:hover
 
 .memobox-movearea {
   cursor: move;
-  width: calc( 100% - 12px - 10px);
-}
-
-.memobox-del {
-  margin: 5px;
-  right: 0;
-  top: 0;
-  font-size: 0;
-  display: block;
-  user-select: none;
-  border: none;
+  width: 100%;
 }
 
 .memobox-text {
   width: 100%;
-  height: calc( 155px - 15px - 15px );
+  height: calc( 155px - 15px - 18px );
   padding: 5px 10px 0;
   border: none;
   font-size: 16px;
@@ -2430,23 +2456,52 @@ body.is-memo-moving .english span:hover, body.is-memo-moving .Chinese span:hover
   outline: none;
 }
 
-.memobox-box {
-  overflow: hidden;
+.memobox-bottom {
+  position: relative;
+  height: 18px;
 }
-.memobox-box:before, .memobox-box:after {
+.memobox-bottom:before, .memobox-bottom:after {
   content: "";
   display: block;
-  float: left;
+  position: absolute;
+  bottom: 0;
 }
-.memobox-box:before {
-  height: 15px;
-  width: calc( 100% - 15px);
+.memobox-bottom:before {
+  height: 18px;
+  width: calc( 100% - 18px);
+  left: 0;
 }
-.memobox-box:after {
+.memobox-bottom:after {
   width: 0;
   height: 0;
   border-style: solid;
-  border-width: 15px 15px 0 0;
+  border-width: 18px 18px 0 0;
+  right: 0;
+}
+
+.memobox-del {
+  right: 69px;
+  user-select: none;
+  border: none;
+}
+
+.memobox-save {
+  right: 20px;
+}
+
+.memobox-del,
+.memobox-save {
+  padding: 0 3px;
+  text-transform: capitalize;
+  bottom: 5px;
+  line-height: 0.875rem;
+  height: 0.875rem;
+  position: absolute;
+  font-size: 0.875rem;
+}
+.memobox-del:hover,
+.memobox-save:hover {
+  text-decoration: none;
 }
 
 .cover-btn {

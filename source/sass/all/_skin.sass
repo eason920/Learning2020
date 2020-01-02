@@ -18,8 +18,16 @@
 .memobox-text
 	background-color: $m-c3-t
 
-.memobox-box
+.memobox-bottom
 	&:before
 		background-color: $m-c3-t
 	&:after
 		border-color: $m-c4-t $c-t $c-t
+
+.memobox-del,
+.memobox-save
+	border-color: $c-memobox-sd
+	color: $c-memobox-sd
+	&:hover
+		background-color: $c-memobox-sd
+		color: $m-c3
