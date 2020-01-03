@@ -24,9 +24,9 @@ function ch_font(str,clock){
 		
 	if(str.indexOf("**")!=-1){
 		str=str.replace("**","");
-		x=str.replace(str,"**<a name='"+y+"' id='"+y+"'></a><div id='t"+y+"' onDblClick='_dictClose();'  class='english'><div class='art-star'><div class='icon-star'></div></div><div class='art-art'>" +str+ "<input type='button' onclick='"+playo+"' class='read_btn link'></div></div>");
+		x=str.replace(str,"**<a name='"+y+"' id='"+y+"'></a><div id='t"+y+"' onDblClick='_dictClose();'  class='english'><div class='art-star'><div class='icon-star'></div></div><div class='art-art'><p>" +str+ "</p><input type='button' onclick='"+playo+"' class='read_btn link'></div></div>");
 	}else{
-		x=str.replace(str,"**<a name='"+y+"' id='"+y+"'></a><div id='t"+y+"' onDblClick='_dictClose();'  class='english'><div class='art-star'><div class='icon-star'></div></div><div class='art-art'>" +str+ "<input type='button' onclick='"+playo+"' class='read_btn link'></div></div>");
+		x=str.replace(str,"**<a name='"+y+"' id='"+y+"'></a><div id='t"+y+"' onDblClick='_dictClose();'  class='english'><div class='art-star'><div class='icon-star'></div></div><div class='art-art'><p>" +str+ "</p><input type='button' onclick='"+playo+"' class='read_btn link'></div></div>");
 	}
 
 	return x;
@@ -55,34 +55,34 @@ function ch_font2(str,clock){
 
 const replaceCode = function(target, Str){
 	// v span
-	Str = Str.replace(/<\/span>/g, '</span>&nbsp');
+	// Str = Str.replace(/<\/span>/g, '</span>&nbsp');
 	Str = Str.replace(/;> /g, ';>');
 
-	// v special code
+	// CODE AT END
 	// Str = Str.replace(/’/g, "'");
-	Str = Str.replace(/,<\/span>/g, '<\/span>,');
-	Str = Str.replace(/\.<\/span>/g, '<\/span>.');
-	Str = Str.replace(/!<\/span>/g, '<\/span>!');
-	Str = Str.replace(/\?<\/span>/g, '<\/span>?');
-	Str = Str.replace(/:<\/span>/g, '<\/span>:');
-	Str = Str.replace(/”<\/span>/g, '<\/span>”');
-	Str = Str.replace(/\)<\/span>/g, '<\/span>)');
-	Str = Str.replace(/\]<\/span>/g, '<\/span>]');
+	Str = Str.replace(/,<\/span>/g, '<\/span><b>,</b>');
+	Str = Str.replace(/\.<\/span>/g, '<\/span><b>.</b>');
+	Str = Str.replace(/!<\/span>/g, '<\/span><b>!</b>');
+	Str = Str.replace(/\?<\/span>/g, '<\/span><b>?</b>');
+	Str = Str.replace(/:<\/span>/g, '<\/span><b>:</b>');
+	Str = Str.replace(/”<\/span>/g, '<\/span><b>”</b>');
+	Str = Str.replace(/\)<\/span>/g, '<\/span><b>)</b>');
+	Str = Str.replace(/\]<\/span>/g, '<\/span><b>]</b>');
 
 	target.html(Str);
 
-	// Befor of 「“」
+	// CODE AT START
 	$('.english span').each(function(){
 		if( $(this).text().indexOf('“') >= 0 ){
-			$(this).before('“');
+			$(this).before('<b>“</b>');
 			$(this).text( $(this).text().substr(1) );
 		}
 		if( $(this).text().indexOf('(') >= 0 ){
-			$(this).before('(');
+			$(this).before('<b>(</b>');
 			$(this).text( $(this).text().substr(1) );
 		}
 		if( $(this).text().indexOf('[') >= 0 ){
-			$(this).before('[');
+			$(this).before('<b>[</b>');
 			$(this).text( $(this).text().substr(1) );
 		}
 	});
@@ -125,7 +125,7 @@ function Step2(){
 			
 			playo="playC("+i+");"			
 			eu=eu.replace("**","");
-			eu = eu + '<a name="' + i + '" id="N' + i + '"></a><div class="english" id="Nt' + i + '" ><div class="art-star"></div><div class="art-art">' + spanWord($(en).find("lrclist:eq(" + i + ")").attr("content"), pAry)+'<input type="button" onclick="'+playo+'" class="read_btn link"></div></div><div id="bubble'+i+'"  class="annotation" style="display:none;"></div><div class="Chinese" id="Nct'+i+'" >'+$(tc).find("lrclist:eq("+i+")").attr("content")+'</div>';
+			eu = eu + '<a name="' + i + '" id="N' + i + '"></a><div class="english" id="Nt' + i + '" ><div class="art-star"></div><div class="art-art"><p>' + spanWord($(en).find("lrclist:eq(" + i + ")").attr("content"), pAry)+'</p><input type="button" onclick="'+playo+'" class="read_btn link"></div></div><div id="bubble'+i+'"  class="annotation" style="display:none;"></div><div class="Chinese" id="Nct'+i+'" >'+$(tc).find("lrclist:eq("+i+")").attr("content")+'</div>';
 			eu=eu.replace("**","");
 		
 		}else{

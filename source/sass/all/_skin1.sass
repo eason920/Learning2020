@@ -210,10 +210,14 @@
 
 	.english
 		color: $c-gray1
-		span
+		span,b
 			color: $c-gray1
+			border:
+				right-color: $c-w
+				bottom-color: $c-w
+		span
 			&:hover
-				color: #003368
+				color: $c-blue
 				background-color: $m-c-art-hover
 	
 	.Chinese
@@ -221,8 +225,7 @@
 
 	.english.lightheight,
 	.Chinese.lightheight
-		color: $m-c-art-strong!important
-		span
+		span,b
 			color: $m-c-art-strong!important
 
 	// un reqding
@@ -249,30 +252,26 @@
 		color: $c-gray1
 
 	// vvv
-	#stepBlock1.is-art-important
-		.is-art-important
-			.art-art,
+	#stepBlock1.is-art-strong
+		.is-art-strong
+			span,b
 				color: $m-c-art-strong
-				span
-					color: $m-c-art-strong
 
 	#stepBlock1.is-art-muted
 		.is-art-muted
-			.art-art,
+			span,b
 				color: $m-c-art-muted
-				span
-					color: $m-c-art-muted
 	
 	#stepBlock1.is-art-title
 		.is-art-title
-			.art-art,
+			span,b
 				background-color: $m-c-art-strong
 				color: $c-w
-				span
+				&:after
 					background-color: $m-c-art-strong
-					color: $c-w
-					&:hover
-						background-color: $m-c-art-hover
+			span
+				&:hover
+					background-color: $m-c-art-hover
 
 	// _stepblock_3.sass v
 	.s3-submit
@@ -346,6 +345,25 @@
 	.s2-ch
 		color: $c-gray2
 
+	// item-arttype
+	.is-item-arttype.active
+		.funbar-btn
+			background-color: $c-w
+
+	.typebox
+		background-color: $c-w
+		&:after
+			border:
+				color: $c-w $c-t $c-t
+
+	.typebox-item
+		&:hover,&.active
+			background:
+				color: $m-c1
+			color: $c-w
+		
+		& + .typebox-item:after
+			background-color: $c-gray-fnbar
 
 	// ====================================
 	// == STEP 3 EX

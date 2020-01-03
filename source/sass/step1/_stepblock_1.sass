@@ -1,4 +1,5 @@
 $w-star: 25px
+$words-border-width: 10px
 // -----------------------------------
 .is-phrase
 	position: relative
@@ -39,10 +40,9 @@ article
 .read_btn
 	opacity: 0
 	border-style: none
-	vertical-align: middle
+	vertical-align: top
 	margin:
-		right: 5px
-		left: 10px
+		top: 5px
 	transition: opacity .3s
 
 // -----------------------------------
@@ -86,14 +86,23 @@ article
 		weight: normal
 		size: 1.375rem
 	letter-spacing: 1.2px
-	line-height: 1.4
+	line-height: 1.25
 	word-wrap: break-word
 	
+	p
+		display: inline
 
-	span
+	span,b
 		display: inline-block
 		font:
 			size: 1.375rem
+		border-right:
+			style: solid
+			width: $words-border-width
+		border-bottom:
+			style: solid
+			width: 3px
+	span
 		cursor: pointer
 
 	&:hover
@@ -112,6 +121,20 @@ article
 
 .art-art
 	width: calc( 100% - #{$w-star})
+	font-size: 0
+
+#stepBlock1.is-art-title
+	.is-art-title
+		span,b
+			position: relative
+			&:after
+				content: ''
+				display: block
+				position: absolute
+				width: $words-border-width
+				height: 100%
+				right: $words-border-width * -1
+				top: 0
 
 #Nt1, #t1
 	padding-top: 0
@@ -155,15 +178,19 @@ span.is-height-light
 		top: 0
 	padding:
 		right: 50px
-	span
+	span,b
 		font:
 			size: 2.5rem
 			weight: bold
+	.read_btn
+		margin:
+			top: 14px
+
 
 #Nct0, #ct0
 	font:
 		size: 1.5rem
-	span
+	span,b
 		font:
 			size: 1.5rem
 

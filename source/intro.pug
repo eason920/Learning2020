@@ -156,7 +156,7 @@ html(lang='zh')
 						article
 							#stepBlockOuter
 								#stepBlockBox
-									#stepBlock1.is-art-important
+									#stepBlock1
 									#stepBlock2
 									#stepBlock3
 								
@@ -181,14 +181,20 @@ html(lang='zh')
 					.wrapper-right-f1
 						.wrapper-right-f2
 							ul.funbar.step-fnbar1
-								li.funbar-item.active.is-ench
+								li.funbar-item.active.is-item-language
 									.controlbox
 										b.controlbox-item 中+EN
 										i.controlbox-item EN
-								li.funbar-item#control-1.active(data-value='1')
+								li.funbar-item.is-item-read.active(data-value='1')
 									.controlbox
 										b.controlbox-item 老師講解
 										i.controlbox-item 英文朗讀
+								li.funbar-item.is-item-arttype
+									a.funbar-btn(href='#') 原文分析
+									ul.typebox
+										li.typebox-item.active(data-arttype='muted') 長句分解
+										li.typebox-item(data-arttype='strong') 加強描述
+										li.typebox-item(data-arttype='title') 加強主題
 								li.funbar-item.is-item-memo
 									a.funbar-btn.funbar-memobox.active(href='#') 便利貼
 								li.funbar-item.is-item-group
