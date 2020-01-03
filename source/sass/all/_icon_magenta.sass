@@ -1,6 +1,6 @@
 @import 'compass'
 @import 'magenta/*.png'
-$height: magenta-sprite-height(arrow_left) + magenta-sprite-height(close) + magenta-sprite-height(like) + magenta-sprite-height(play) + magenta-sprite-height(pink) + magenta-sprite-height(pause) + magenta-sprite-height(print) + magenta-sprite-height(record_play) + magenta-sprite-height(record_re) + magenta-sprite-height(record_start) + magenta-sprite-height(recording) + magenta-sprite-height(sound) + magenta-sprite-height(refresh) + magenta-sprite-height(star_big_off) + magenta-sprite-height(star_big_on)	
+$height: magenta-sprite-height(arrow_left) + magenta-sprite-height(close) + magenta-sprite-height(like) + magenta-sprite-height(play) + magenta-sprite-height(pink) + magenta-sprite-height(pause) + magenta-sprite-height(print) + magenta-sprite-height(record_play) + magenta-sprite-height(record_re) + magenta-sprite-height(record_start) + magenta-sprite-height(recording) + magenta-sprite-height(sound) + magenta-sprite-height(refresh) + magenta-sprite-height(star_big_off) + magenta-sprite-height(star_big_on) + magenta-sprite-height(check)
 
 @mixin BG($path)
 	@include magenta-sprite($path)
@@ -17,6 +17,9 @@ $height: magenta-sprite-height(arrow_left) + magenta-sprite-height(close) + mage
 		bottom: -7px
 
 .skin1
+	.icon-check
+		@include BG(check)
+		
 	.read_btn,.vacmain-sound
 		@include BG(sound)
 

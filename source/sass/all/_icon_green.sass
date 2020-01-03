@@ -1,6 +1,6 @@
 @import 'compass'
 @import 'green/*.png'
-$height: green-sprite-height(arrow_left) + green-sprite-height(close) + green-sprite-height(like) + green-sprite-height(play) + green-sprite-height(pink) + green-sprite-height(pause) + green-sprite-height(print) + green-sprite-height(record_play) + green-sprite-height(record_re) + green-sprite-height(record_start) + green-sprite-height(recording) + green-sprite-height(sound) + green-sprite-height(refresh) + green-sprite-height(star_big_off) + green-sprite-height(star_big_on)	
+$height: green-sprite-height(arrow_left) + green-sprite-height(close) + green-sprite-height(like) + green-sprite-height(play) + green-sprite-height(pink) + green-sprite-height(pause) + green-sprite-height(print) + green-sprite-height(record_play) + green-sprite-height(record_re) + green-sprite-height(record_start) + green-sprite-height(recording) + green-sprite-height(sound) + green-sprite-height(refresh) + green-sprite-height(star_big_off) + green-sprite-height(star_big_on) + green-sprite-height(check)
 
 @mixin BG($path)
 	@include green-sprite($path)
@@ -17,6 +17,9 @@ $height: green-sprite-height(arrow_left) + green-sprite-height(close) + green-sp
 		bottom: -7px
 
 .skin2
+	.icon-check
+		@include BG(check)
+		
 	.read_btn,.vacmain-sound
 		@include BG(sound)
 

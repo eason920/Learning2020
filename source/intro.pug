@@ -20,7 +20,9 @@ html(lang='zh')
 		script(src='js/jquery-1.11.1.min.js')
 		script.
 			let videoId = 'h1I5JM16N0c';
-			let lbUrl = 'https://www.youtube.com/embed/h1I5JM16N0c';
+			const lbUrl1 = 'https://www.youtube.com/embed/h1I5JM16N0c';
+			const lbUrl2 = 'https://www.youtube.com/embed/hN09_3jfNFE';
+			const lbUrl3 = 'https://www.youtube.com/embed/RPBLbKwRAkw'
 			//- let memoJSON = JSON.parse('[{"id":"memo1","text":"msg 1","top":"2200","left":"0"},{"id":"memo2","text":"msg 2","top":"500","left":"300"}]');
 			let memoJSON = JSON.parse('[{"id":"memo1","text":"msg%201%0Afloor2%0Afloor3%0AASDFIASJEFIASE%0A","basicid2":"Nct1-52","basicid1":"ct1-52"},{"id":"memo2","text":"msg%202","basicid2":"Nt15-19","basicid1":"t15-19"},{"id":"memo3","text":"%u4FBF%u5229%u8CBC%u6210%u529F%0Aya%7E%7E","basicid2":"Nt2-6","basicid1":"t2-6"}]');
 			let memoUpdate = '';
@@ -62,22 +64,31 @@ html(lang='zh')
 										ul.topbar-scort
 											li.topbar-scrot-item.is-ex1
 												//- .topbar-num A
-												.topbar-text 理解力測驗
-												.topbar-s 100
-													span 分
-												.icon-correct
+												.topbar-box-l
+													.topbar-text 理解力測驗
+													.topbar-s 
+														|100
+														span 分
+												.topbar-box-r
+													.icon-correct
 											li.topbar-scrot-item.is-ex2
 												//- .topbar-num(style='margin-left: -22px') B
-												.topbar-text 聽力測驗
-												.topbar-s 89
-													span 分
-												.icon-correct
+												.topbar-box-l
+													.topbar-text 聽力測驗
+													.topbar-s 
+														// |89
+														// span 分
+												.topbar-box-r
+													// .icon-correct
 											li.topbar-scrot-item.is-ex3
 												//- .topbar-num C
-												.topbar-text 克漏字測驗
-												.topbar-s 77
-													span 分
-												.icon-correct
+												.topbar-box-l
+													.topbar-text 克漏字測驗
+													.topbar-s 
+														|77
+														span 分
+												.topbar-box-r
+													.icon-correct
 									.icon-correct
 							.topbar-icon
 								a.topbar-icon-item(href='#')
@@ -215,10 +226,55 @@ html(lang='zh')
 			a.icon-how(href='#')
 				.icon-bulb
 				.icon-how-text Tips
-		//-.lb-mask
-		//-.lb
-			.lb-box
+		.lb-mask
+		.lb.is-lb-step1.skin1
+			//.lb-box.is-lb-teach
 				iframe(src='https://www.youtube.com/embed/h1I5JM16N0c')
+			.lb-box
+				h2.lb-title 研讀本文
+				ul.lb-contentbox
+					li.lb-item
+						.lb-left.is-t4
+							.lb-num 1
+							.lb-text 聆聽原文 ：
+						.lb-right 透過文字跟播放導讀的過程中，試著理解這篇文章主要大意是傳遞什麼訊息。
+					li.lb-item.is-t4
+						.lb-left.is-t4
+							.lb-num 2
+							.lb-text 老師講解 ：
+						.lb-right 可挑選較不熟悉的段落，透過老師講解與註記功能，讓您更精準的了解文章大意。
+					li.lb-item.is-t3
+						.lb-left.is-t3
+							.lb-num 3
+							.lb-text 便利貼 ：
+						.lb-right 如果自己需要加強補充，可使用便利貼，用自己的語言去註記，詮釋感受到的意義。
+					li.lb-item.is-t4
+						.lb-left.is-t4
+							.lb-num 4
+							.lb-text 收錄佳句 ：
+						.lb-right 點選句子前面的小星號，可收錄自己喜歡的英文佳句。
+					li.lb-item.is-t4
+						.lb-left.is-t4
+							.lb-num 5
+							.lb-text 收錄單字 ：
+						.lb-right 在查字典的過程中，如果有些單字對您來說是蠻重要的，可點選右上角星星，收錄起來。
+					li.lb-item.is-t4
+						.lb-left.is-t4
+							.lb-num 6
+							.lb-text 單字片語 ：
+						.lb-right 本文作者也有提供特別的單字片語，另外做一些說明跟例句，提供給您做參考。
+					//li.lb-item
+						.lb-left
+							.lb-num
+							.lb-text
+						.lb-right
+				.lb-checkbox
+					input.lb-check#lbCheck1(type='checkbox', checked)
+					label.lb-label(for='lbCheck1') 
+						.lb-quadrangle
+							.icon-check
+						|30天內不再顯示此訊息
+				.lb-start Start
 		// ^ HTML END ^
 
 //- NEW STUDY ####################################
