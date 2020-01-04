@@ -1,5 +1,4 @@
 $w-star: 25px
-$words-border-width: 10px
 // -----------------------------------
 .is-phrase
 	position: relative
@@ -50,12 +49,6 @@ article
 // -----------------------------------
 #stepBlock1
 	position: relative
-	
-// .icon-refresh
-// 	transition: .3s
-// 	&:hover
-// 		transform: rotate(180deg)
-// 		transition: .3s
 
 .icon-like
 	position: absolute
@@ -85,7 +78,7 @@ article
 		family: arial
 		weight: normal
 		size: 1.375rem
-	letter-spacing: 1.2px
+	letter-spacing: .3px
 	line-height: 1.25
 	word-wrap: break-word
 	
@@ -98,7 +91,6 @@ article
 			size: 1.375rem
 		border-right:
 			style: solid
-			width: $words-border-width
 		border-bottom:
 			style: solid
 			width: 3px
@@ -131,9 +123,7 @@ article
 				content: ''
 				display: block
 				position: absolute
-				width: $words-border-width
 				height: 100%
-				right: $words-border-width * -1
 				top: 0
 
 #Nt1, #t1
@@ -186,10 +176,7 @@ span.is-height-light
 		margin:
 			top: 14px
 
-
 #Nct0, #ct0
-	font:
-		size: 1.5rem
 	span,b
 		font:
 			size: 1.5rem
@@ -213,7 +200,6 @@ span.is-height-light
 		left: $w-star
 	width: calc( 100% - #{$w-star})
 
-
 .buble-ch
 	font:
 		size: .875rem
@@ -221,17 +207,20 @@ span.is-height-light
 	margin:
 		left: 5px
 
+@media screen and (max-width: 1440px)
+	$words-border-width: 6px
+	.english span,b
+		border-right-width: $words-border-width
+	#stepBlock1.is-art-title
+		.is-art-title span,b
+			width: $words-border-width
+			right: $words-border-width * -1
 
-// @media screen and (max-width: 1440px)
-// 	.icon-refresh
-// 		right: calc( 3% - 10px )
-
-// 	.icon-like
-// 		right: calc( 3% + 54px )
-
-// @media screen and (min-width: 1441px)
-// 	.icon-refresh
-// 		right: calc( 3% - 20px )
-// 	.icon-like
-// 		right: calc( 3% + 47px)
-
+@media screen and (min-width: 1441px)
+	$words-border-width: 10px
+	.english span,b
+		border-right-width: $words-border-width
+	#stepBlock1.is-art-title
+		.is-art-title span,b
+			width: $words-border-width
+			right: $words-border-width * -1

@@ -1,7 +1,7 @@
 @mixin nav-active
 	.topbar-num
 		background-color: $m-c2
-	.topbar-text
+	& >.topbar-text
 		color: $m-c2
 
 .skin1
@@ -15,15 +15,20 @@
 	.topbar-step-item:hover
 		@include nav-active
 
+	.topbar-step-item
+		& > .topbar-text
+			color: $m-c1-l
+
+	.topbar-scrot-item
+		& > .topbar-text
+			color: $c-gray1
+
 	.topbar-back-btn,
 	.topbar-back-btn:hover
 		color: $m-c1
 
 	.topbar-num
 		background-color: $m-c1-l
-
-	.topbar-text
-		color: $m-c1-l
 
 	.topbar-scrot-item:after
 		background-color: $m-c1-t
@@ -47,10 +52,6 @@
 
 	.topbar-s
 		color: $m-c-art-strong
-
-	.topbar-scrot-item
-		.topbar-text
-			color: $c-gray1
 	
 	// _hack.sass v
 	::-webkit-input-placeholder, :-ms-input-placeholder
@@ -435,6 +436,9 @@
 	// _lb.sass v
 	.lb-start
 		background-color: $m-c1
+
+	.lb-final-text
+		color: $m-c1
 
 
 // ====================================

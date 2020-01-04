@@ -1,4 +1,6 @@
 .lb-mask,
+.lb-mask-teach,
+.lb-mask-final,
 .lb
 	position: fixed
 	margin: auto
@@ -8,8 +10,9 @@
 	left: 0
 	z-index: 9999
 
-.lb-mask
-	@extend %row2
+.lb-box
+	transform: translateY(-50%)
+	top: 50%
 
 .lb
 	height: 1px
@@ -19,12 +22,9 @@
 			@include video
 	&.is-lb-step1,
 	&.is-lb-step2,
-	&.is-lb-step3
-		width: 43%
-
-.lb-box
-	transform: translateY(-50%)
-	top: 50%
+	&.is-lb-step3,
+	&.is-lb-final
+		width: 825px
 
 
 // -----------------------------------
@@ -39,20 +39,11 @@
 	// flex-direction: column
 	margin:
 		bottom: 12px
-$w3: 115px
-$w4: 135px
+
 .lb-left
 	display: flex
 	padding:
 		top: 3px
-	&.is-t3
-		width: $w3
-		& + .lb-right
-			width: calc( 100% - #{$w3})
-	&.is-t4
-		width: $w4
-		& + .lb-right
-			width: calc( 100% - #{$w4})
 
 .lb-right
 	line-height: 1.3
@@ -66,7 +57,6 @@ $w4: 135px
 	width: 20px
 	text-align: center
 	border-radius: 50%
-
 
 .lb-num,
 .lb-text,
@@ -104,9 +94,10 @@ $w4: 135px
 	letter-spacing: 1.2px
 	cursor: pointer
 
-.lbcheckbox input[type='checkbox']:checked
-	& + .lb-label .icon-check
-		opacity: 1
+.lb-check:checked
+	& + .lb-label
+		.icon-check
+			opacity: 1
 
 // -----------------------------------
 .lb-start
@@ -120,3 +111,99 @@ $w4: 135px
 	letter-spacing: 1.2px
 	text-align: center
 	cursor: pointer
+
+// -----------------------------------
+// -- final v
+// -----------------------------------
+.lb-final-img
+	width: 450px
+	margin: 0 auto 30px
+	display: block
+
+.lb-final-title
+	text-align: center
+	font:
+		size: 1.125rem
+	letter-spacing: 1px
+	margin:
+		bottom: 50px
+	line-height: 1.5
+
+.lb-final-box
+	display: flex
+	justify-content: center
+
+.lb-final-item
+	overflow: hidden
+	border-radius: 12px
+	width: 170px
+	height: 170px
+	display: flex
+	justify-content: center
+	align-items: center
+	background:
+		size: cover
+		position: center center
+	position: relative
+	// filter: brightness(.5)
+	&:after
+		content: ''
+		display: block
+		width: 100%
+		height: 100%
+		position: absolute
+		top: 0
+		left: 0
+	&:hover
+		text:
+			decoration: none
+		.lb-final-text
+			text:
+				decoration: none
+	& + .lb-final-item
+		margin-left: 120px
+
+.lb-final-text
+	font:
+		size: 1rem
+		weight: bold
+	text-align: center
+	line-height: 25px
+	height: 25px
+	padding: 0 10px
+	border-radius: 13px
+	z-index: 1
+
+.lb-final-art
+	font-sizze: 1rem
+	position: absolute
+	width: 80%
+	@extend %row1
+	bottom: 30px
+	z-index: 1
+
+@media screen and (max-width: 1440px)
+	$w3: 103px
+	$w4: 122px
+	.lb-left
+		&.is-t3
+			width: $w3
+			& + .lb-right
+				width: calc( 100% - #{$w3})
+		&.is-t4
+			width: $w4
+			& + .lb-right
+				width: calc( 100% - #{$w4})
+
+@media screen and (min-width: 1441px)
+	$w3: 115px
+	$w4: 135px
+	.lb-left
+		&.is-t3
+			width: $w3
+			& + .lb-right
+				width: calc( 100% - #{$w3})
+		&.is-t4
+			width: $w4
+			& + .lb-right
+				width: calc( 100% - #{$w4})

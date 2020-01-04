@@ -118,50 +118,74 @@ $(function () {
 	// ====================================
 	// == TOP BAR & FUNCTION BAR
 	// ====================================
+	const lbHtml1 = '<div class="lb-mask"></div><div class="lb is-lb-step1 ' + template +'"><div class="lb-box"><h2 class="lb-title">研讀本文</h2><ul class="lb-contentbox"><li class="lb-item"><div class="lb-left is-t4"><div class="lb-num">1</div><div class="lb-text">聆聽原文 ：</div></div><div class="lb-right">透過文字跟播放導讀的過程中，試著理解這篇文章主要大意是傳遞什麼訊息。</div></li><li class="lb-item"><div class="lb-left is-t4"><div class="lb-num">2</div><div class="lb-text">老師講解 ：</div></div><div class="lb-right">可挑選較不熟悉的段落，透過老師講解與註記功能，讓您更精準的了解文章大意。</div></li><li class="lb-item"><div class="lb-left is-t3"><div class="lb-num">3</div><div class="lb-text">便利貼 ：</div></div><div class="lb-right">如果自己需要加強補充，可使用便利貼，用自己的語言去註記，詮釋感受到的意義。</div></li><li class="lb-item"><div class="lb-left is-t4"><div class="lb-num">4</div><div class="lb-text">收錄佳句 ：</div></div><div class="lb-right">點選句子前面的小星號，可收錄自己喜歡的英文佳句。</div></li><li class="lb-item"><div class="lb-left is-t4"><div class="lb-num">5</div><div class="lb-text">收錄單字 ：</div></div><div class="lb-right">在查字典的過程中，如果有些單字對您來說是蠻重要的，可點選右上角星星，收錄起來。</div></li><li class="lb-item"><div class="lb-left is-t4"><div class="lb-num">6</div><div class="lb-text">單字片語 ：</div></div><div class="lb-right">本文作者也有提供特別的單字片語，另外做一些說明跟例句，提供給您做參考。</div></li></ul><div class="lb-checkbox"><input class="lb-check" id="lbCheck1" type="checkbox"><label class="lb-label" for="lbCheck1"><div class="lb-quadrangle"><div class="icon-check"></div></div>30天內不再顯示此訊息 </label></div><div class="lb-start">Start</div></div></div>';
+	const lbHtml2 = '<div class="lb-mask"></div><div class="lb is-lb-step2 ' + template +'"><div class="lb-box"><h2 class="lb-title">加強記憶</h2><ul class="lb-contentbox"><li class="lb-item"><div class="lb-left is-t4"><div class="lb-num">1</div><div class="lb-text">抄寫練習：</div></div><div class="lb-right">將聽到的原音一字一句抄寫在筆記本中，可大幅強化本文語感與文字能力。</div></li><li class="lb-item"><div class="lb-left is-t4"><div class="lb-num">2</div><div class="lb-text">跟讀練習：</div></div><div class="lb-right">抄完之後試著點選錄音鍵，將你所聽到的句子再錄一次，撥放給自己聽，增強自己的跟讀能力。</div></li></ul><div class="lb-checkbox"><input class="lb-check" id="lbCheck1" type="checkbox"><label class="lb-label" for="lbCheck1"><div class="lb-quadrangle"><div class="icon-check"></div></div>30天內不再顯示此訊息 </label></div><div class="lb-start">Start</div></div></div>';
+	const lbHtml3 = '<div class="lb-mask"></div><div class="lb is-lb-step3 ' + template +'"><div class="lb-box"><h2 class="lb-title">學習驗收</h2><ul class="lb-contentbox"><li class="lb-item"><div class="lb-left is-t5"><div class="lb-num">1</div><div class="lb-text">理解力測驗：</div></div><div class="lb-right">確實瞭解文章內容嗎？依照內容依序回答下列問題吧！</div></li><li class="lb-item"><div class="lb-left is-t4"><div class="lb-num">2</div><div class="lb-text">聽力測驗：</div></div><div class="lb-right">利用滑鼠點擊喇叭播放音擋，試著將隱藏的單字拼出來，快速檢視自己的聽力及字彙能力。</div></li><li class="lb-item"><div class="lb-left is-t5"><div class="lb-num">3</div><div class="lb-text">克漏字測驗：</div></div><div class="lb-right">想增進介系詞與片語能力嗎？依照題號順序，點選右方最適合的答案，完成後，即可獲得解答與分數。</div></li></ul><div class="lb-checkbox"><input class="lb-check" id="lbCheck1" type="checkbox"><label class="lb-label" for="lbCheck1"><div class="lb-quadrangle"><div class="icon-check"></div></div>30天內不再顯示此訊息 </label></div><div class="lb-start">Start</div></div></div>';
+	if( read1 === false ){
+		$('body').append(lbHtml1);
+	}
+
 	$('.topbar-step-item').click(function(){
-		// init video
+		const $body = $('body');
+		const $this = $(this);
+		const targetClass = $this.attr('class');
+		let i = '';
+
+		// job 1 : INIT VIDEO v
 		// pausetime();
 		$('.speed').removeClass("show");
 		$('.speed-point').fadeOut();
 		$('.play_btn').removeClass("pause");
 
-		// v start v
-		const $this = $(this);
-		const check = $this.attr('class');
-		let className = '';
-
+		// job 2 : TOP-BAR-ITEM control v
 		$('.topbar-step-item').removeClass('active');
 		$(this).addClass('active');
 
+		// job 3 : STEP-BLOCK control v
 		switch(true){
-			case /switch1/.test( check ):
-				className = 'is-step1';
+			case /1/.test( targetClass ):
+				i = '1';
 				break;
-			case /switch2/.test( check ):
-				className = 'is-step2';
+			case /2/.test( targetClass ):
+				i = '2';
 				break;
-			case /switch3/.test( check ):
-				className = 'is-step3';
+			case /3/.test( targetClass ):
+				i = '3';
 				break;
 			default:
 		}
-		$('#stepBox').removeClass('is-step1 is-step2 is-step3').addClass(className);
+		$('#stepBox').removeClass('is-step1 is-step2 is-step3').addClass('is-step'+i);
 
-		if( !/step3/.test( $('#stepBox').attr('class') ) ){
+		// job 4 : EX3 SCROLLTOP control v
+		if( !/3/.test( i ) ){
 			$('#exBox').css({top: 0});
 			// aside player status v
 			$('.aside-speedbox.is-play3').removeClass('is-lock');
 		}
+
+		// job 5 : LIGHT-BOX CHECK v
+		read1 = true
+		switch(true){
+			case i === '1' && read1 === false:
+				$body.append(lbHtml1);
+				break;
+			case i === '2' && read2 === false:
+				$body.append(lbHtml2);
+				read2 = true;
+				break;
+			case i === '3' && read3 === false:
+				$body.append(lbHtml3);
+				read3 = true;
+			default:
+		};
 	});
 
-
 	// ------------------------------------
-	// -- step 3
+	// -- step 3 = ex1 ~ 3
 	// ------------------------------------
-	$pink = $('.icon-pink');
-	$step3 = $('.is-step-switch3');
+	const $step3 = $('.is-step-switch3');
 
-	$pink.mouseover(function(){
+	$('.icon-pink').mouseover(function(){
 		$step3.addClass('is-open');
 	});
 
@@ -232,7 +256,7 @@ $(function () {
 				src = lbUrl1;
 		};
 		$('body').append(
-			$('<div>', {class: 'lb-mask'}),
+			$('<div>', {class: 'lb-mask-teach'}),
 			$('<div>', {class: 'lb is-lb-teach'}).append(
 				$('<div>', {class: 'lb-box'}).append(
 					$('<iframe>', {src})
@@ -241,25 +265,12 @@ $(function () {
 		);
 	});
 
-	$('body').on('click', '.lb-mask', function(){
-		$('.lb-mask, .lb').fadeOut(100);
+	// REMOVE LIGHT-BOX v
+	$('body').on('click', '.lb-mask-teach, .lb-mask-final, .lb-start', function(){
+		$('.lb-mask-teach, lb-mask, .lb').fadeOut(100);
 		setTimeout(function(){
-			$('.lb-mask, .lb').remove();
-		}, 150);
-		
-	});
-	
-	// ====================================
-	// == COVER
-	// ====================================
-	$('body').on('click', '.cover-btn', function(){
-		const $cover = $(this).parent().parent();
-		const $block = $(this).parents().find('.is-lock');
-		$cover.fadeOut(200);
-		setTimeout(function(){
-			$cover.remove();
-			$block.removeClass('is-lock');
-		}, 200);
+			$('.lb-mask-teach, .lb-mask-final, .lb-mask, .lb').remove();
+		}, 300);
 	});
 
 

@@ -1,0 +1,52 @@
+.lb-mask-teach
+.lb.is-lb-teach
+	.lb-box
+		iframe(src='https://www.youtube.com/embed/h1I5JM16N0c')
+mixin list(num, className, text, right)
+	li.lb-item
+		.lb-left(class=className)
+			.lb-num #{num}
+			.lb-text #{text}
+		.lb-right #{right}
+.lb-mask
+.lb.is-lb-step1.skin1
+	.lb-box
+		h2.lb-title 研讀本文
+		ul.lb-contentbox
+			each item in lb.stepblock1
+				+list(item.num, item.class, item.text, item.right)
+		.lb-checkbox
+			input.lb-check#lbCheck1(type='checkbox', checked)
+			label.lb-label(for='lbCheck1') 
+				.lb-quadrangle
+					.icon-check 
+				|30天內不再顯示此訊息
+		.lb-start Start
+.lb-mask
+.lb.is-lb-step2.skin1
+	.lb-box
+		h2.lb-title 加強記憶
+		ul.lb-contentbox
+			each item in lb.stepblock2
+				+list(item.num, item.class, item.text, item.right)
+		.lb-checkbox
+			input.lb-check#lbCheck1(type='checkbox', checked)
+			label.lb-label(for='lbCheck1') 
+				.lb-quadrangle
+					.icon-check 
+				|30天內不再顯示此訊息
+		.lb-start Start
+.lb-mask
+.lb.is-lb-step3.skin1
+	.lb-box
+		h2.lb-title 學習驗收
+		ul.lb-contentbox
+			each item in lb.stepblock3
+				+list(item.num, item.class, item.text, item.right)
+		.lb-checkbox
+			input.lb-check#lbCheck1(type='checkbox', checked)
+			label.lb-label(for='lbCheck1') 
+				.lb-quadrangle
+					.icon-check 
+				|30天內不再顯示此訊息
+		.lb-start Start

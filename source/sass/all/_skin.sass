@@ -1,7 +1,3 @@
-// _lb.sass v
-.lb-mask
-	background-color: $c-dk-t
-
 // _memobox.sass v
 .memobox-del
 	background-color: $c-t
@@ -33,11 +29,17 @@
 		color: $m-c3
 
 // _lb.sass v
+.lb-mask,
+.lb-mask-teach,
+.lb-mask-final
+	background-color: $c-dk-t
+
 .lb-title,
 .lb-text,
 .lb-right,
 .lb-label,
-.lb-start
+.lb-start,
+.lb-final-title
 	color: $c-w
 
 .lb-num
@@ -46,3 +48,14 @@
 
 .lb-quadrangle
 	border-color: $c-w
+
+.lb-final-text
+	background-color: $c-w
+
+.lb-final-art
+	color: $c-w
+
+.lb-final-item
+	box-shadow: 0 0 15px rgba(0,0,0,.5)
+	&:after
+		background-color: $c-dk-t5

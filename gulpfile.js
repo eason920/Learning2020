@@ -19,10 +19,8 @@ gulp.task('pug', function(){
 	gulp.src('./source/*.pug')
 		.pipe($.plumber())
 		.pipe($.data(function(){
-			var page = require('./source/data/page.json'),
-				source = {
-					page
-				}
+			var lb = require('./source/data/lb.json'),
+				source = {lb}
 			return source;
 		}))
 		.pipe($.pug({
