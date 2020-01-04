@@ -119,9 +119,9 @@ function l_play(s){
 }
 
 function ModeCheck(){
-  if($('#control-1').attr('data-value')=='0'){
+  if($('.is-item-read').attr('data-value')=='0'){
     playmode=1; 
-  }else if($('#control-1').attr('data-value')=='1'){
+  }else if($('.is-item-read').attr('data-value')=='1'){
     playmode=3; 
   }
   //console.log(playmode)
@@ -315,7 +315,7 @@ function updatetime(){
   if(parseFloat(Utime1)>parseFloat(Utime2)){		
     if(parseInt($("#repeat").val())<=parseInt(count)){
     
-      if($('#control-1').attr('data-value')=='0'){
+      if($('.is-item-read').attr('data-value')=='0'){
         //$('#stepBlock1').scrollTop(document.getElementById(temp+1).offsetTop);
         $('#stepBlock1').stop().animate({ 'scrollTop': document.getElementById(temp+1).offsetTop }, 1000, 'swing');	
       }else{

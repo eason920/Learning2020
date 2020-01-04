@@ -216,11 +216,26 @@ $(function () {
 	// ====================================
 	$('.icon-how').click(function(e){
 		e.preventDefault;
+		let src;
+		const val = $('#stepBox').attr('class');
+		switch(true){
+			case /step1/.test(val):
+				src = lbUrl1;
+				break;
+			case /step2/.test(val):
+				src = lbUrl2;
+				break;
+			case /step3/.test(val):
+				src = lbUrl3;
+				break;
+			default:
+				src = lbUrl1;
+		};
 		$('body').append(
 			$('<div>', {class: 'lb-mask'}),
-			$('<div>', {class: 'lb'}).append(
+			$('<div>', {class: 'lb is-lb-teach'}).append(
 				$('<div>', {class: 'lb-box'}).append(
-					$('<iframe>', {src: lbUrl})
+					$('<iframe>', {src})
 				)
 			)
 		);
@@ -251,7 +266,7 @@ $(function () {
 	// ====================================
 	// == START SWITCH
 	// ====================================
-	$('#stepBlock2').on('click', '.icon-star', function(){
+	$('#stepBlock1, #stepBlock2').on('click', '.icon-star', function(){
 		$(this).toggleClass('active');
 	});
 

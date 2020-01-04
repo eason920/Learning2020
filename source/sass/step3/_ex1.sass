@@ -6,7 +6,7 @@
 	.share-next
 		display: none
 	.s3ex1-submitbox
-		display: block
+		display: block 
 
 // -----------------------------------
 .s3ex1-box
@@ -36,7 +36,6 @@
 
 .s3ex1-item-l
 	width: 25px
-	color: #000
 
 .s3ex1-item-m
 	width: 25px
@@ -55,7 +54,6 @@
 		bottom: 6px
 
 .s3ex1-item-ch
-	color: #777
 	font:
 		size: .9375rem
 	padding-left: 27px
@@ -69,7 +67,9 @@
 	cursor: pointer
 	width: 20px
 	height: 20px
-	border: solid 1px #4a4a4a
+	border:
+		style: solid 
+		width: 1px
 	position: relative
 	border-radius: 50%
 
@@ -85,28 +85,6 @@ input:checked + label
 			position: absolute
 			border-radius: 50%
 
-.s3ex1-check
-	&:after
-		background:
-			color: #ff859c
-
-.is-true
-	.s3ex1-check
-		&:after
-			background:
-				color: #20a0a0
-	.s3ex1-item-en,
-	.s3ex1-item-ch
-		color: #005f40
-
-.is-false
-	.s3ex1-check
-		&:after
-			background:
-				color: #d0021b
-	.s3ex1-item-en,
-	.s3ex1-item-ch
-		color: #d0021b
 
 // -----------------------------------
 .s3ex1-submitbox

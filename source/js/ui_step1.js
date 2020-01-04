@@ -1,9 +1,10 @@
 $(function(){
+	const $parent = $('#stepBlock1');
 	// =============================
 	// == CONTROL EN & CH
 	// =============================
-	$('.is-ench .controlbox-item').click(function(){
-		$('.is-ench').toggleClass('active');
+	$('.is-item-language .controlbox-item').click(function(){
+		$('.is-item-language').toggleClass('active');
 		$('body').find('article').find('.Chinese').toggleClass('is-hide');
 		// $('article').find('.Chinese').toggleClass('is-hide');
 	});
@@ -14,17 +15,17 @@ $(function(){
 	const ready = function(){
 		if( /stepBlock1/.test( $('body').html() ) ){
 			clearInterval(sid);
-			const $control = $('#control-1');
+			const $control = $('.is-item-read');
 			const $explain = $('.article2');
 			const $readOnly = $('.article');
-			$('#control-1 b').click(function(){
+			$('.is-item-read b').click(function(){
 				$control.addClass("active");
 				$control.attr('data-value', '1');
 				$explain.show();
 				$readOnly.hide();
 			});
 			
-			$('#control-1 i').click(function(){
+			$('.is-item-read i').click(function(){
 				$control.removeClass("active");
 				$control.attr('data-value', '0');
 				$explain.hide();
@@ -131,6 +132,33 @@ $(function(){
 		checkColbox( $this.parent().parent().parent() );
 	});
 
+	// ====================================
+	// == FUNCTION BAR ARTICLE TYPE
+	// ====================================
+	let orgArtType = 'is-art-muted';
+	$('.is-item-arttype .funbar-btn').click(function(){
+		const $p = $('.is-item-arttype');
+		$p.toggleClass('active');
+		if( $p.hasClass('active') ){
+			$('.typebox-item').each(function(){
+				if( $(this).hasClass('active') ){
+					$(this).click();
+					orgArtType = $(this).data('arttype');
+				}
+			});
+		}else{
+			$parent.removeClass();
+		}
+	});
+
+	$('.typebox-item').click(function(){
+		if( !$this.hasClass('active') ){
+			const string = $(this).data('arttype')
+			$('.typebox-item').removeClass('active');
+			$(this).addClass('active');
+			$parent.removeClass().addClass('is-art-'+string)
+		};
+	});
 
 	// for coding demo
 	// $('.funbar-collection').click();

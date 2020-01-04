@@ -20,11 +20,13 @@ $(function(){
 		$stepblock.append(
 			$('<div>', {class: 'memobox is-static', id: 'memo' + id, style: 'left: ' + left +'px; top: ' + top + 'px'}).attr('data-basicid2', basicid2).attr('data-basicid1', basicid1).append(
 				$('<div>', {class: 'memobox-bar'}).append(
-					$('<div>', {class: 'memobox-movearea'}),
-					$('<input>', {class: 'memobox-del icon-del', type: 'submit'})
+					$('<div>', {class: 'memobox-movearea'})
 				),
 				$('<textarea>', {class: 'memobox-text', placeholder: '在此輸入您的筆記'}).html(text),
-				$('<div>', {class: 'memobox-box'})
+				$('<div>', {class: 'memobox-bottom'}).append(
+					$('<input>', {class: 'memobox-del', type: 'submit', value: 'delete'}),
+					$('<a>', {class: 'memobox-save', href: '#'}).text('save')
+				)
 			)
 		);	
 	};
@@ -147,8 +149,10 @@ $(function(){
 	// ====================================
 	// == CREATE
 	// ====================================
-	$body.on('dblclick', '.english, .Chinese, .annotation', function(e){
+	// v .art-art = .english area
+	$body.on('dblclick', '.art-art, .Chinese, .annotation', function(e){
 		const id = $('.memobox').length + 1;
+		console.log($(this).attr('class'));
 		
 		if( id < 16 ){
 			$('.funbar-memobox').hasClass('active') ? null : $('.funbar-memobox').click();
@@ -171,7 +175,7 @@ $(function(){
 			top >= maxY ? top = maxY : null;
 	
 			switch(true){
-				case /english/i.test( className ):
+				case /art-art/i.test( className ):
 					thisid = $this.find('span:nth-last-child(2)').attr('id');
 					break;
 				case /chinese/i.test( className ):
@@ -342,7 +346,8 @@ $(function(){
 		fnSave();
 	})
 
-	$('.funbar').click(function(){
+	$('#stepBlock1').on('click', '.memobox-save', function(e){
+		e.preventDefault;
 		fnSave();
 		console.log(memoUpdate);
 	});

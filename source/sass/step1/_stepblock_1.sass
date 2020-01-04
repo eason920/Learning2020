@@ -1,3 +1,6 @@
+$w-star: 25px
+$words-border-width: 10px
+// -----------------------------------
 .is-phrase
 	position: relative
 	&:after
@@ -7,8 +10,6 @@
 		height: 1px
 		width: 100%
 		bottom: 3px
-		background:
-			color: #0d86ff
 	&:hover:after
 		display: none
 	
@@ -38,20 +39,10 @@ article
 
 .read_btn
 	opacity: 0
-	background:
-		image: url(../images/pc_a/sound_icn.png)
-		repeat: no-repeat
-		size: 100% auto
-		color: transparent
-		position: center center
 	border-style: none
-	height: 20px
-	width: 20px
-	padding: 0px
-	vertical-align: middle
+	vertical-align: top
 	margin:
-		right: 5px
-		left: 10px
+		top: 5px
 	transition: opacity .3s
 
 // -----------------------------------
@@ -77,7 +68,6 @@ article
 		top: 38px
 	letter-spacing: 0px
 	width: auto
-	color: #f74769
 	text-align: center
 	min-width: 37px
 	&:hover
@@ -85,10 +75,9 @@ article
 		transition: .3s
 		text:
 			decoration: none
-		color: #cf3b57
 
 .english
-	display: block
+	display: flex
 	padding:
 		top: 20px
 		bottom: 7px
@@ -97,34 +86,66 @@ article
 		weight: normal
 		size: 1.375rem
 	letter-spacing: 1.2px
-	line-height: 1.4
+	line-height: 1.25
 	word-wrap: break-word
-	color: #4a4a4a
+	
+	p
+		display: inline
 
-	span
-		color: #4a4a4a
+	span,b
 		display: inline-block
 		font:
 			size: 1.375rem
-		&:hover
-			color: #003368
-			background-color: #fa7e96
-			cursor: pointer
+		border-right:
+			style: solid
+			width: $words-border-width
+		border-bottom:
+			style: solid
+			width: 3px
+	span
+		cursor: pointer
 
 	&:hover
 		.read_btn
 			opacity: 1
 			transition: opacity .3s
+.art-star
+	width: $w-star
+	padding-top: 5px
+	.icon-star
+		opacity: 0
+
+.english:hover
+	.icon-star
+		opacity: 1
+
+.art-art
+	width: calc( 100% - #{$w-star})
+	font-size: 0
+
+#stepBlock1.is-art-title
+	.is-art-title
+		span,b
+			position: relative
+			&:after
+				content: ''
+				display: block
+				position: absolute
+				width: $words-border-width
+				height: 100%
+				right: $words-border-width * -1
+				top: 0
+
 #Nt1, #t1
 	padding-top: 0
 
 .Chinese
 	display: none
 	display: block
-	color: #555
 	padding:
 		top: 7px
 		bottom: 30px
+		left: $w-star
 	line-height: 1.6
 	font:
 		size: .9375rem
@@ -142,30 +163,13 @@ article
 			height: 0
 			line-height: 0
 
-// now reading
-.english.lightheight,
-.Chinese.lightheight
-	color: #aa0102!important
-	span
-		color: #aa0102!important
-	.read_btn
-		opacity: 1
-
-// un reqding
-.english.lightheightBG,
-.Chinese.lightheightBG
-	// color: #888!important
-
 span.is-height-light
-	color: #003368
-	background-color: #fa7e96
 	cursor: pointer
 
 // -----------------------------------
 // -- TITLE
 // -----------------------------------
 #Nt0, #t0
-	color: #4a4a4a
 	font:
 		size: 2.5rem
 		weight: bold
@@ -174,16 +178,19 @@ span.is-height-light
 		top: 0
 	padding:
 		right: 50px
-	span
+	span,b
 		font:
 			size: 2.5rem
 			weight: bold
+	.read_btn
+		margin:
+			top: 14px
+
 
 #Nct0, #ct0
-	color: #4a4a4a
 	font:
 		size: 1.5rem
-	span
+	span,b
 		font:
 			size: 1.5rem
 
@@ -195,8 +202,6 @@ span.is-height-light
 		top: solid 15px #fff
 		bottom: solid 15px #fff
 	display: block
-	color: rgba(0,87,175,1)
-	background-color: #f2f2f2
 	padding: 18px 20px
 	line-height: 1.3
 	border-radius: 6px
@@ -204,9 +209,10 @@ span.is-height-light
 		size: 1.4375rem
 		weight: bold
 		family: 'Playfair Display', serif, 'PMingLiU'
+	margin:
+		left: $w-star
+	width: calc( 100% - #{$w-star})
 
-	&.bubblehighlightBG
-		color: rgba(0,87,175,.6)
 
 .buble-ch
 	font:

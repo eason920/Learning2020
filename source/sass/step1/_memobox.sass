@@ -2,7 +2,7 @@
 	transition: .3s
 $wh: 155px
 $bar: 15px
-$bottom: 15px
+$bottom: 18px
 .memobox
 	font:
 		size: 0
@@ -10,7 +10,7 @@ $bottom: 15px
 	height: $wh
 	position: absolute
 	box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, 0.1)
-	border-radius: 0 0 26px 0
+	border-radius: 0 0 32px 0
 	z-index: 15
 	top: 0
 	left: 0
@@ -29,7 +29,6 @@ body.is-memo-moving
 	.english, .Chinese
 		cursor: not-allowed
 		span:hover
-			color: #003368
 			cursor: pointer
 
 .memobox-bar
@@ -40,19 +39,7 @@ body.is-memo-moving
 
 .memobox-movearea
 	cursor: move
-	width: calc( 100% - 12px - 10px)
-
-.memobox-del
-	margin: 5px
-	right: 0
-	top: 0
-	font:
-		size: 0
-	display: block
-	user-select: none
-	background:
-		color: transparent
-	border: none
+	width: 100%
 
 .memobox-text
 	width: 100%
@@ -64,29 +51,52 @@ body.is-memo-moving
 	// width: calc( 100% - 16px )
 	font:
 		size: 16px
-		family: '新細明體'
+		family: AdobeKaitiStd-Regular
 	line-height: 1.2
 	@extend %transition
 	resize: none
 	&:focus
 		outline: none
-	&:placeholder
-		color: red
 
-.memobox-box
-	overflow: hidden
-	cursor: move
+.memobox-bottom
+	position: relative
+	height: $bottom
 	&:before,&:after
 		content: ''
 		display: block
-		float: left
+		position: absolute
+		bottom: 0
 		@extend %transition
 	&:before
 		height: $bottom
 		width: calc( 100% - #{$bottom})
+		left: 0
 	&:after
 		width: 0
 		height: 0
 		border:
 			style: solid
 			width: #{$bottom} #{$bottom} 0 0
+		right: 0
+
+.memobox-del
+	right: 69px
+	user-select: none
+	border: none
+
+.memobox-save
+	right: 20px
+
+.memobox-del,
+.memobox-save
+	padding: 0 3px
+	text-transform: capitalize
+	bottom: 5px
+	line-height: .875rem
+	height: .875rem
+	position: absolute
+	font:
+		size: .875rem
+	&:hover
+		text:
+			decoration: none

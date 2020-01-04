@@ -28,7 +28,6 @@ $wa: 40px
 // -----------------------------------
 .s3ex3-ipt
 	display: none
-	color: #000
 
 // -----------------------------------
 .s3ex3-right-title
@@ -74,17 +73,12 @@ $wa: 40px
 	padding:
 		left: 10px
 
-.is-true
-	.s3ex3-right-l
-		color: $c-true
-
 .is-false
 	.s3ex3-right-l
-		color: $c-false
 		& > span:first-child > span
-			display: inline-block
-			border-bottom: solid 1px $c-false
-			height: 26px
+			border:
+				bottom-style: solid
+				bottom-width: 1px
 
 // -----------------------------------
 .s3ex3-submitbox
@@ -105,7 +99,6 @@ $wa: 40px
 	border:
 		style: solid
 		width: 1px
-	color: #fff
 	font:
 		size: 1.125rem
 		// weight: bold
@@ -117,5 +110,4 @@ $wa: 40px
 		text:
 			decoration: none
 		opacity: 1
-		color: #fff
 		transition: .3s
