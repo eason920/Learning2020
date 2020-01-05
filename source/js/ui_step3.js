@@ -7,7 +7,7 @@ $(function(){
 
 			$('.s3ex2-iptbox input').each(function(){
 				const length = $(this).attr('placeholder').length;
-				const width = 17 * length;
+				const width = 13 * length;
 				$(this).attr('maxlength', length).css({width});
 			});
 			
@@ -28,9 +28,6 @@ $(function(){
 				if(index == 2){
 					$play3.addClass('is-lock');
 				};
-				// else{
-				// 	$play3.removeClass('is-lock');
-				// }
 			});
 		}
 	};

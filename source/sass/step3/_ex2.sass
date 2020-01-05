@@ -25,7 +25,36 @@
 		border-bottom: solid 1px #333
 		text-align: center
 
+.s3ex2-str,
+.s3ex2-end
+	display: inline-block
+	position: relative
+	&:after
+		display: block
+		content: ''
+		width: 100%
+		height: 1px
+		background-color: #000
+		bottom: 2px
+		position: absolute
+
+.s3ex2-str
+	&::after
+		left: 2px
+
 // -----------------------------------
 .s3ex2-submitbox
 	text-align: center
 	display: none
+
+@media screen and (max-width: 1440px)
+	.s3ex2-str,
+	.s3ex2-end
+		&:after
+			bottom: 2px
+
+@media screen and (min-width: 1441px)
+	.s3ex2-str,
+	.s3ex2-end
+		&:after
+			bottom: 5px

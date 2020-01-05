@@ -309,8 +309,9 @@ section.move {
 }
 .topbar-step-item .icon-pink {
   margin-left: 8px;
-  transition: 0.3s;
+  transition: transform 0.3s;
   transform: rotateX(0);
+  background-position: 0 -195px !important;
 }
 .topbar-step-item .icon-correct {
   margin-left: 5px;
@@ -2439,7 +2440,6 @@ article {
   position: absolute;
   top: 0;
   right: 3%;
-  transition: 0.3s;
   font-size: 1.375rem;
   padding-top: 38px;
   letter-spacing: 0px;
@@ -2449,7 +2449,6 @@ article {
 }
 .icon-like:hover {
   opacity: 1;
-  transition: 0.3s;
   text-decoration: none;
 }
 
@@ -3275,11 +3274,43 @@ input:checked + label .s3ex1-check:after {
   text-align: center;
 }
 
+.s3ex2-str,
+.s3ex2-end {
+  display: inline-block;
+  position: relative;
+}
+.s3ex2-str:after,
+.s3ex2-end:after {
+  display: block;
+  content: "";
+  width: 100%;
+  height: 1px;
+  background-color: #000;
+  bottom: 2px;
+  position: absolute;
+}
+
+.s3ex2-str::after {
+  left: 2px;
+}
+
 .s3ex2-submitbox {
   text-align: center;
   display: none;
 }
 
+@media screen and (max-width: 1440px) {
+  .s3ex2-str:after,
+  .s3ex2-end:after {
+    bottom: 2px;
+  }
+}
+@media screen and (min-width: 1441px) {
+  .s3ex2-str:after,
+  .s3ex2-end:after {
+    bottom: 5px;
+  }
+}
 #ex3.is-def .s3ex3-ipt {
   display: inline-block;
 }
