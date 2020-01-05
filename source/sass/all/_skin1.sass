@@ -1,8 +1,8 @@
 @mixin nav-active
 	.topbar-num
-		background-color: $m-c2
+		background-color: $m-c1
 	& >.topbar-text
-		color: $m-c2
+		color: $m-c1
 
 .skin1
 	// _nav.sass v
@@ -17,7 +17,7 @@
 
 	.topbar-step-item
 		& > .topbar-text
-			color: $m-c1-l
+			color: $m-light1
 
 	.topbar-scrot-item
 		& > .topbar-text
@@ -28,7 +28,7 @@
 		color: $m-c1
 
 	.topbar-num
-		background-color: $m-c1-l
+		background-color: $m-light1
 
 	.topbar-scrot-item:after
 		background-color: $m-c1-t
@@ -51,7 +51,7 @@
 				color: #f74769
 
 	.topbar-s
-		color: $m-c-art-strong
+		color: $m-strong
 	
 	// _hack.sass v
 	::-webkit-input-placeholder, :-ms-input-placeholder
@@ -97,7 +97,7 @@
 	// _transition_box.sass
 	.tranglationBody
 		color: $c-w
-		background-color: #ff9eb1
+		background-color: $m-light2
 
 	.close_btn
 		background-color: $c-t
@@ -160,7 +160,7 @@
 
 	.aside-above-sub-en,
 	.aside-above-sub-ch
-		color: $m-c7
+		color: $c-gray3
 
 	.play_btn
 		background-color: $c-t
@@ -176,7 +176,7 @@
 
 	// _aside_below.sass v
 	.ArticleInfo1
-		color: $m-c7
+		color: $c-gray3
 
 	.ArticleInfo2
 		color: $c-gray1
@@ -191,7 +191,7 @@
 		color: $m-c1
 
 	.s3-score > *
-		color: $m-c1-2
+		color: $m-strong
 
 	.share-title
 		background-color: $c-w
@@ -206,8 +206,6 @@
 
 	.icon-like
 		color: #f74769
-		&:hover
-			color: $c-red
 
 	.english
 		color: $c-gray1
@@ -219,7 +217,7 @@
 		span
 			&:hover
 				color: $c-blue
-				background-color: $m-c-art-hover
+				background-color: $m-light1
 	
 	.Chinese
 		color: #555
@@ -227,7 +225,9 @@
 	.english.lightheight,
 	.Chinese.lightheight
 		span,b
-			color: $m-c-art-strong!important
+			color: $m-strong!important
+			&:hover
+				
 
 	// un reqding
 	.english.lightheightBG,
@@ -236,7 +236,7 @@
 
 	span.is-height-light
 		color: #003368
-		background-color: $m-c-art-hover
+		background-color: $m-light1
 
 	#Nt0, #t0,
 	#Nct0, #ct0
@@ -256,23 +256,25 @@
 	#stepBlock1.is-art-strong
 		.is-art-strong
 			span,b
-				color: $m-c-art-strong
+				color: $m-strong
 
 	#stepBlock1.is-art-muted
 		.is-art-muted
 			span,b
-				color: $m-c-art-muted
+				color: $c-gray4
 	
 	#stepBlock1.is-art-title
 		.is-art-title
+			background-color: $m-strong
+			color: $c-w
 			span,b
-				background-color: $m-c-art-strong
+				background-color: $m-strong
 				color: $c-w
 				&:after
-					background-color: $m-c-art-strong
+					background-color: $m-strong
 			span
 				&:hover
-					background-color: $m-c-art-hover
+					background-color: $m-light1
 
 	// _stepblock_3.sass v
 	.s3-submit
@@ -450,7 +452,7 @@ body.is-memo-moving
 		.english, .Chinese
 			span:hover
 				color: $c-blue
-				background-color: $m-c6
+				background-color: $m-light1
 
 // _drbox.sass v
 #Dr_layer.skin1

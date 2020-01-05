@@ -101,7 +101,7 @@ function DrDate(Str) {
 function DrDate1(Str){
 	var lpos, tpos;
 	var url='../../../../sample/learning/Dr.eye/data3.asp';
-	var Parameter='str='+(Str)+'&key='+DrSign(Str)+'&tamplate='+tamplate;
+	var Parameter='str='+(Str)+'&key='+DrSign(Str)+'&template='+template;
 	RemoveDr()
 	orgOffset();
 	spanHeightLight();
@@ -132,7 +132,7 @@ function DrDate1(Str){
 function DrDate2(Str){
 	var lpos, tpos;
 	var url='../../../../sample/learning/Dr.eye/data2.asp';
-	var Parameter='str='+(Str)+'&key='+DrSign(Str)+'&tamplate='+tamplate;
+	var Parameter='str='+(Str)+'&key='+DrSign(Str)+'&template='+template;
 	RemoveDr()
 	orgOffset();
 	spanHeightLight();

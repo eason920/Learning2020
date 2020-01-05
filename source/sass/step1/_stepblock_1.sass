@@ -33,7 +33,6 @@ article
 		bottom: 20px
 		top: 100px
 	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif
-	line-height: 1.4
 	letter-spacing: 1px
 
 .read_btn
@@ -213,8 +212,9 @@ span.is-height-light
 		border-right-width: $words-border-width
 	#stepBlock1.is-art-title
 		.is-art-title span,b
-			width: $words-border-width
-			right: $words-border-width * -1
+			&:after
+				width: $words-border-width
+				right: $words-border-width * -1
 
 @media screen and (min-width: 1441px)
 	$words-border-width: 10px
@@ -222,5 +222,6 @@ span.is-height-light
 		border-right-width: $words-border-width
 	#stepBlock1.is-art-title
 		.is-art-title span,b
-			width: $words-border-width
-			right: $words-border-width * -1
+			&:after
+				width: $words-border-width
+				right: $words-border-width * -1

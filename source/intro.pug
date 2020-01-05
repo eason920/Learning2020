@@ -1,4 +1,4 @@
--var status = 'dev'
+-var status = 'devv'
 doctype html
 html(lang='zh')
 	head
@@ -16,7 +16,7 @@ html(lang='zh')
 		link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Playfair+Display&display=swap')
 		link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Abril+Fatface&display=swap')
 		link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Engagement&display=swap")
-		//- link(rel="stylesheet", href="css/print.css")
+		link(rel="stylesheet", href="css/print.css")
 		script(src='js/jquery-1.11.1.min.js')
 		script.
 			// art video v
@@ -239,8 +239,8 @@ html(lang='zh')
 				.icon-bulb
 				.icon-how-text Tips
 		//- include partials/lb
-		//.lb-mask-final
-		//.lb.is-lb-final
+		.lb-mask-final
+		.lb.is-lb-final
 			.lb-box
 				img.lb-final-img(src='./images/congrats.png')
 				h2.lb-final-title 表現真的太棒！建議一週至少要完成三到七篇文章的學習驗收，才能大幅提升自己的英文實力。
@@ -255,8 +255,8 @@ html(lang='zh')
 			// skin ( 必需寫在下方 ) v
 			let template;
 			const skinSource = new Date().getTime()%2;
-			template = 'skin1'
-			//- skinSource === 0 ? template = 'skin1' : template = 'skin2';
+			//- template = 'skin1'
+			skinSource === 0 ? template = 'skin1' : template = 'skin2';
 			$('#stepBox').addClass(template);
 			$('.is-lb-final').addClass(template);
 		// ^ HTML END ^

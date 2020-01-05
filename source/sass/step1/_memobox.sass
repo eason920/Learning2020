@@ -18,6 +18,9 @@ $bottom: 18px
 		.memobox-text,.memobox-box:before,
 		.memobox-box:after
 			@extend %transition
+		.memobox-del,
+		.memobox-save
+			display: block
 	&.is-static
 		transition: .1s
 		
@@ -89,6 +92,7 @@ body.is-memo-moving
 
 .memobox-del,
 .memobox-save
+	display: none
 	padding: 0 3px
 	text-transform: capitalize
 	bottom: 5px
