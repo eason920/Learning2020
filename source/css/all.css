@@ -1697,6 +1697,10 @@ input[type=range]::-ms-track {
   color: #fffaa1;
 }
 
+.s3-selected {
+  color: #2087ff !important;
+}
+
 .lb-mask,
 .lb-mask-teach,
 .lb-mask-final {
@@ -2197,18 +2201,24 @@ input[type=range]::-ms-track {
 .skin1 .s3ex1-check:after {
   background-color: #ff859c;
 }
+.skin1 .is-true .s3ex1-check {
+  border-color: #005f40;
+}
 .skin1 .is-true .s3ex1-check:after {
   background-color: #20a0a0;
 }
-.skin1 .is-true .s3ex1-check .s3ex1-item-en,
-.skin1 .is-true .s3ex1-check .s3ex1-item-ch {
+.skin1 .is-true .s3ex1-item-en,
+.skin1 .is-true .s3ex1-item-ch {
   color: #005f40;
+}
+.skin1 .is-false .s3ex1-check {
+  border-color: #d0021b;
 }
 .skin1 .is-false .s3ex1-check:after {
   background-color: #d0021b;
 }
-.skin1 .is-false .s3ex1-check .s3ex1-item-en,
-.skin1 .is-false .s3ex1-check .s3ex1-item-ch {
+.skin1 .is-false .s3ex1-item-en,
+.skin1 .is-false .s3ex1-item-ch {
   color: #d0021b;
 }
 .skin1 .s3ex2-iptbox span, .skin1 .s3ex2-iptbox input {
@@ -2723,18 +2733,21 @@ body.is-memo-moving .skin1 .english span:hover, body.is-memo-moving .skin1 .Chin
 .skin2 .s3ex1-check:after {
   background-color: #ff859c;
 }
+.skin2 .is-true .s3ex1-check {
+  border-color: #005f40;
+}
 .skin2 .is-true .s3ex1-check:after {
   background-color: #20a0a0;
 }
-.skin2 .is-true .s3ex1-check .s3ex1-item-en,
-.skin2 .is-true .s3ex1-check .s3ex1-item-ch {
+.skin2 .is-true .s3ex1-item-en,
+.skin2 .is-true .s3ex1-item-ch {
   color: #005f40;
 }
 .skin2 .is-false .s3ex1-check:after {
   background-color: #d0021b;
 }
-.skin2 .is-false .s3ex1-check .s3ex1-item-en,
-.skin2 .is-false .s3ex1-check .s3ex1-item-ch {
+.skin2 .is-false .s3ex1-item-en,
+.skin2 .is-false .s3ex1-item-ch {
   color: #d0021b;
 }
 .skin2 .s3ex2-iptbox span, .skin2 .s3ex2-iptbox input {
