@@ -185,6 +185,7 @@
 @media screen and (max-width: 1440px)
 	$w3: 103px
 	$w4: 122px
+	$w5: 140px
 	.lb-left
 		&.is-t3
 			width: $w3
@@ -194,10 +195,15 @@
 			width: $w4
 			& + .lb-right
 				width: calc( 100% - #{$w4})
+		&.is-t5
+			width: $w5
+			& + .lb-right
+				width: calc( 100% - #{$w5})
 
 @media screen and (min-width: 1441px)
 	$w3: 115px
 	$w4: 135px
+	$w5: 155px
 	.lb-left
 		&.is-t3
 			width: $w3
@@ -207,3 +213,7 @@
 			width: $w4
 			& + .lb-right
 				width: calc( 100% - #{$w4})
+		&.is-t5
+			width: $w5
+			& + .lb-right
+				width: calc( 100% - #{$w5})

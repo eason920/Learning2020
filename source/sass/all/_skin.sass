@@ -29,8 +29,13 @@
 		color: $m-memo
 
 // _ex3.sass v
+#ex3.is-def
+	.s3ex3-ipt
+		color: $c-q
+		&:after
+			background-color: $c-q
 .s3-selected
-	color: #2087ff!important
+	color: #{$c-q}!important
 
 // _lb.sass v
 .lb-mask,
@@ -63,3 +68,97 @@
 	box-shadow: 0 0 15px rgba(0,0,0,.5)
 	&:after
 		background-color: $c-dk-t5
+
+// -----------------------------------
+// -----------------------------------
+// _nav.sass v
+.topbar,
+.topbar-scort
+	background-color: $c-w
+
+.topbar-num
+	color: $c-w
+
+.topbar-scort
+	box-shadow: 0 0 12px $c-dk-t3
+
+.topbar-scrot-item:hover
+	background-color: #d8d8d8
+	.topbar-num
+		.topbar-num
+			background-color: $c-w
+			color: #f74769
+
+// _hack.sass v
+::-webkit-input-placeholder, :-ms-input-placeholder
+	color: $c-black
+
+::placeholder
+	color: #999
+
+::-webkit-scrollbar-track
+	background-color: rgba(0, 0, 0, 0)
+
+::-webkit-scrollbar-thumb
+	background-color: #d8d8d8
+
+::-webkit-scrollbar-corner
+	background-color: black
+
+// _input_range_decoration.sass v
+input[type=range]
+	&::-webkit-slider-runnable-track
+		color: $c-w
+
+	&::-webkit-slider-thumb
+		background-color: $c-w
+
+	&::-moz-slider-thumb,
+	&::-moz-thumb
+		background-color: $c-w
+
+	// edge bar
+	&::-ms-fill-lower, 
+	&::-ms-fill-upper
+	&:focus::-ms-fill-lower, 
+	&:focus::-ms-fill-upper
+		background: $c-w
+
+	// ??
+	&::-ms-track
+		background: $c-t
+		border-color: $c-t
+		color: $c-t
+
+.topbar-s
+	color: $m-strong
+	
+// _ex1.sass v
+.is-true
+	.s3ex1-check
+		border-color: #{$c-true}!important
+		&:after
+			background-color: #{$c-true}!important
+	.s3ex1-item-en,
+	.s3ex1-item-ch
+		color: #{$c-true}!important
+
+.is-false
+	.s3ex1-check
+		border-color: #{$c-false}!important
+		&:after
+			background-color: #{$c-false}!important
+	.s3ex1-item-en,
+	.s3ex1-item-ch
+		color: #{$c-false}!important
+
+// _ex3.sass v
+.is-true
+	.s3ex3-right-l
+		color: $c-true
+
+.is-false
+	.s3ex3-right-l
+		color: $c-false
+		& > span:first-child > span
+			border-bottom-color: $c-false

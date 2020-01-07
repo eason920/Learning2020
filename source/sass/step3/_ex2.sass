@@ -9,21 +9,53 @@
 		display: inline-block
 
 // -----------------------------------
-.s3ex2-iptbox input
-	@extend %s3en
-	line-height: 1.5
-
 .s3ex2-iptbox
 	font-size: 0
 	display: none
 	margin:
 		right: 8px
+	span
+		&:nth-child(2),
+		&:last-child
+			font:
+				family: 'Roboto Mono', monospace
+			border-bottom: 
+				style: solid 
+				width: 1px
+		&:nth-child(3)
+			position: relative
+			&:after
+				content: ''
+				display: block
+				height: 1px
+				width: 100%
+				background:
+					repeat: repeat-x
+				position: absolute
+				left: 0
+		&:nth-child(2),
+		&:nth-child(3)
+			margin-right: 2px
+		&:nth-child(3)
+			font-size: 0
+			height: 26px
+			display: inline-block
+
 	input
+		@extend %s3en
+		line-height: 1.5
 		// line-height: 26px
 		height: 23px
 		border: none
-		border-bottom: solid 1px #333
 		text-align: center
+		font:
+			family: 'Roboto Mono', monospace
+		letter-spacing: 3px
+
+.for-demo
+	span, input
+		font:
+			family: PingFangTC-Regular, Microsoft JhengHei, sans-serif
 
 .s3ex2-str,
 .s3ex2-end
@@ -39,8 +71,8 @@
 		position: absolute
 
 .s3ex2-str
-	&::after
-		left: 2px
+	&:after
+		// left: 2px
 
 // -----------------------------------
 .s3ex2-submitbox
@@ -48,13 +80,13 @@
 	display: none
 
 @media screen and (max-width: 1440px)
-	.s3ex2-str,
-	.s3ex2-end
-		&:after
-			bottom: 2px
+	.s3ex2-iptbox span:nth-child(3):after
+		bottom: 1px
+		background:
+			image: url(./../images/ex2_dotted_15.png)
 
 @media screen and (min-width: 1441px)
-	.s3ex2-str,
-	.s3ex2-end
-		&:after
-			bottom: 5px
+	.s3ex2-iptbox span:nth-child(3):after
+		bottom: -1px
+		background:
+			image: url(./../images/ex2_dotted_17.png)

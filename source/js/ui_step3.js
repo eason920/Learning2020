@@ -7,7 +7,9 @@ $(function(){
 
 			$('.s3ex2-iptbox input').each(function(){
 				const length = $(this).attr('placeholder').length;
-				const width = 13 * length;
+				let num;
+				$(window).width() >= 1441? num = 17 : num = 15;
+				const width = num * length;
 				$(this).attr('maxlength', length).css({width});
 			});
 			

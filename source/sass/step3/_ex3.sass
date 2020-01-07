@@ -4,8 +4,17 @@ $w2: 50px
 $wa: 40px
 // -----------------------------------
 #ex3.is-def
-	.s3ex3-ipt
+	.s3ex3-ipt 
 		display: inline-block
+		position: relative
+		&:after
+			content: ''
+			display: block
+			width: 100%
+			height: 1px
+			position: absolute
+			bottom: 3px
+
 	.s3-ansbox,
 	.s3-score
 		display: none
