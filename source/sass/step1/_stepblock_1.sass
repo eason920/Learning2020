@@ -2,14 +2,14 @@ $w-star: 25px
 // -----------------------------------
 .is-phrase
 	position: relative
-	&:after
+	&:before
 		content: ''
 		display: block
 		position: absolute
 		height: 1px
 		width: 100%
 		bottom: 3px
-	&:hover:after
+	&:hover:before
 		display: none
 	
 .article_mask
@@ -41,6 +41,7 @@ article
 	vertical-align: top
 	margin:
 		top: 5px
+		left: 10px
 	transition: opacity .3s
 
 // -----------------------------------
@@ -96,6 +97,9 @@ article
 	span
 		cursor: pointer
 
+	font
+		display: inline-block
+
 	&:hover
 		.read_btn
 			opacity: 1
@@ -115,15 +119,15 @@ article
 	font-size: 0
 
 #stepBlock1.is-art-title
-	.is-art-title
-		span,b
-			position: relative
-			&:after
-				content: ''
-				display: block
-				position: absolute
-				height: 100%
-				top: 0
+	.is-art-title,
+	.is-art-title + b
+		position: relative
+		&:after
+			content: ''
+			display: block
+			position: absolute
+			height: 100%
+			top: 0
 
 #Nt1, #t1
 	padding-top: 0
@@ -208,20 +212,20 @@ span.is-height-light
 
 @media screen and (max-width: 1440px)
 	$words-border-width: 6px
-	.english span,b
+	.english span
 		border-right-width: $words-border-width
 	#stepBlock1.is-art-title
-		.is-art-title span,b
+		.is-art-title
 			&:after
 				width: $words-border-width
 				right: $words-border-width * -1
 
 @media screen and (min-width: 1441px)
 	$words-border-width: 10px
-	.english span,b
+	.english span
 		border-right-width: $words-border-width
 	#stepBlock1.is-art-title
-		.is-art-title span,b
+		.is-art-title
 			&:after
 				width: $words-border-width
 				right: $words-border-width * -1

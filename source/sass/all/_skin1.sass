@@ -137,7 +137,7 @@
 
 	// _stepblock_1.sass v
 	.is-phrase
-		&:after
+		&:before
 			background-color: #0d86ff
 
 	.read_btn
@@ -191,29 +191,54 @@
 	.share-title-sub
 		color: $c-gray1
 
-	// vvv
+	// ORANGE v
+	// #stepBlock1.is-art-strong
+	// 	.is-art-strong
+	// 		span,b
+	// 			color: $m-strong
+
+	// #stepBlock1.is-art-muted
+	// 	.is-art-muted
+	// 		span,b
+	// 			color: $c-gray4
+	
+	// #stepBlock1.is-art-title
+	// 	.is-art-title
+	// 		background-color: $m-strong
+	// 		color: $c-w
+	// 		span,b
+	// 			background-color: $m-strong
+	// 			color: $c-w
+	// 			&:after
+	// 				background-color: $m-strong
+	// 		span
+	// 			&:hover
+	// 				background-color: $m-light1
+	// NEW(109/02/04) v
 	#stepBlock1.is-art-strong
 		.is-art-strong
-			span,b
-				color: $m-strong
+			color: #0d86ff!important
+			&:hover
+				color: #fff!important
 
 	#stepBlock1.is-art-muted
-		.is-art-muted
-			span,b
-				color: $c-gray4
+		.is-art-strong
+			color: #bbb!important
+			&:hover
+				color: #fff!important
 	
 	#stepBlock1.is-art-title
-		.is-art-title
-			background-color: $m-strong
+		.is-art-title,
+		.is-art-title + b
+			background-color: #9b9b9b
 			color: $c-w
-			span,b
-				background-color: $m-strong
-				color: $c-w
-				&:after
-					background-color: $m-strong
-			span
-				&:hover
-					background-color: $m-light1
+			&:after
+				background-color: #9b9b9b
+		span.is-art-title:hover
+			color: #fff!important
+			background-color: #555
+		.is-art-title.is-phrase:before
+			background-color: #000
 
 	// _stepblock_3.sass v
 	.s3-submit

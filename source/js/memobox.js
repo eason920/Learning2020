@@ -115,36 +115,38 @@ $(function(){
 			});
 			
 			// INIT MEMO CREATE
-			if(memoJSON.length > 0){
-				const distanceX = fnDistanceX();
-				const maxX = fnMaxXY()[0];
-				const maxY = fnMaxXY()[1];
+				if(memoJSON.length > 0){
+					const distanceX = fnDistanceX();
+					const maxX = fnMaxXY()[0];
+					const maxY = fnMaxXY()[1];
+					
+					for(a in memoJSON ){
+						const data = memoJSON[a];
+						const basicid2 = data.basicid2;
+						const basicid1 = data.basicid1;
+						const target = $body.find('#' + basicid2);
 
-				for(a in memoJSON ){
-					const data = memoJSON[a];
-					const basicid2 = data.basicid2;
-					const basicid1 = data.basicid1;
-					const target = $body.find('#' + basicid2);
-
-					// xy
-					const offsets = target.offset();
-					let left = Math.floor( offsets.left ) - distanceX;
-					left >= maxX ? left = maxX : null;
-					let top = Math.floor( offsets.top ) - distanceY + target.height();
-					top >= maxY ? top = maxY : null;
-					// target.css({color: 'red'});
-					addMemo( Number(a)+1 , data.text, left, top, basicid2, basicid1);
+						// xy
+						const offsets = target.offset();
+						let left = Math.floor( offsets.left ) - distanceX;
+						left >= maxX ? left = maxX : null;
+						let top = Math.floor( offsets.top ) - distanceY + target.height();
+						top >= maxY ? top = maxY : null;
+						// target.css({color: 'red'});
+						addMemo( Number(a)+1 , data.text, left, top, basicid2, basicid1);
+					};
 				};
-			};
-
-			clearInterval(sid);
+			clearInterval(sidGetChinese);
 		}else{
 			setTimeout(function(){
-				clearInterval(sid);
+				clearInterval(sidGetChinese);
 			}, 8000);
 		}
 	};
-	const sid = setInterval(checkArt, 200);
+	let sidGetChinese;
+	setTimeout(function(){
+		sidGetChinese = setInterval(checkArt, 200);
+	}, 800);
 
 	// ====================================
 	// == CREATE
@@ -176,10 +178,10 @@ $(function(){
 	
 			switch(true){
 				case /art-art/i.test( className ):
-					thisid = $this.find('span:nth-last-child(2)').attr('id');
+					thisid = $this.find('p').find('span:first-child').attr('id');
 					break;
 				case /chinese/i.test( className ):
-					thisid = $this.find('span:last-child').attr('id');
+					thisid = $this.find('span:first-child').attr('id');
 					top = top - 30;// 30 = .Chinese.padding-bottom
 					break;
 				case /annotation/i.test( className ):

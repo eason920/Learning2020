@@ -92,7 +92,7 @@ $(function(){
 	// == TRANSLATION UI : (PHRASE & COLLECT)
 	// ====================================
 	$('.tranglationBody .close_btn').click(function () {
-		$('.funbar-btn').removeClass('active');
+		$('.funbar-phrase, .funbar-collection').removeClass('active');
 		$('section, .funbar-box').removeClass('move');
 		$('.tranglationBody').removeClass("show");
 	});
