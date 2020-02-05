@@ -90,63 +90,20 @@ $(function(){
 	// ====================================
 	// == SPAN ADD ID & INIT
 	// ====================================
-	const checkArt = function(){
-		if( $('body').html().indexOf('Chinese') >= 0 ){
-			// ENGLISH
-			$('body').find('.english').each(function(){
-				$this = $(this);
-				const pId = $this.attr('id');
-				let i = 1;
-				$this.find('span').each(function(){
-					$(this).attr('id', pId + '-' + i);
-					i ++;
-				});
-			});
+	// const checkArt = function(){
+	// 	if( $('body').html().indexOf('Chinese') >= 0 ){
 			
-			// CHINESE
-			$('body').find('.Chinese').each(function(){
-				const parentId = $(this).attr('id');
-				let html = '';
-				let ary = $(this).text().split('');
-				for(a in ary){
-					html += '<span id="' + parentId + '-' + a + '">' + ary[a] + '</span>'
-				}
-				$(this).html(html);
-			});
-			
-			// INIT MEMO CREATE
-				if(memoJSON.length > 0){
-					const distanceX = fnDistanceX();
-					const maxX = fnMaxXY()[0];
-					const maxY = fnMaxXY()[1];
-					
-					for(a in memoJSON ){
-						const data = memoJSON[a];
-						const basicid2 = data.basicid2;
-						const basicid1 = data.basicid1;
-						const target = $body.find('#' + basicid2);
-
-						// xy
-						const offsets = target.offset();
-						let left = Math.floor( offsets.left ) - distanceX;
-						left >= maxX ? left = maxX : null;
-						let top = Math.floor( offsets.top ) - distanceY + target.height();
-						top >= maxY ? top = maxY : null;
-						// target.css({color: 'red'});
-						addMemo( Number(a)+1 , data.text, left, top, basicid2, basicid1);
-					};
-				};
-			clearInterval(sidGetChinese);
-		}else{
-			setTimeout(function(){
-				clearInterval(sidGetChinese);
-			}, 8000);
-		}
-	};
-	let sidGetChinese;
-	setTimeout(function(){
-		sidGetChinese = setInterval(checkArt, 200);
-	}, 800);
+	// 		clearInterval(sidGetChinese);
+	// 	}else{
+	// 		setTimeout(function(){
+	// 			clearInterval(sidGetChinese);
+	// 		}, 8000);
+	// 	}
+	// };
+	// let sidGetChinese;
+	// setTimeout(function(){
+	// 	sidGetChinese = setInterval(checkArt, 200);
+	// }, 800);
 
 	// ====================================
 	// == CREATE
@@ -336,9 +293,61 @@ $(function(){
 	// -- SHOW & HIDDEN
 	// ------------------------------------
 	$('.funbar-memobox').click(function(){
-		$(this).toggleClass('active');
-		$('.memobox').toggle(0);
-		lockTarget();
+		// console.log($(this).hasClass('do-insert-id'));
+		if( $(this).hasClass('do-insert-id') ){
+			$(this).removeClass('do-insert-id');
+			// ENGLISH
+			$('body').find('.english').each(function(){
+				$this = $(this);
+				const pId = $this.attr('id');
+				let i = 1;
+				$this.find('span').each(function(){
+					$(this).attr('id', pId + '-' + i);
+					i ++;
+				});
+			});
+			
+			// CHINESE
+			$('body').find('.Chinese').each(function(){
+				const parentId = $(this).attr('id');
+				let html = '';
+				let ary = $(this).text().split('');
+				for(a in ary){
+					html += '<span id="' + parentId + '-' + a + '">' + ary[a] + '</span>'
+				}
+				$(this).html(html);
+			});
+			
+			// INIT MEMO CREATE
+			if(memoJSON.length > 0){
+				const distanceX = fnDistanceX();
+				const maxX = fnMaxXY()[0];
+				const maxY = fnMaxXY()[1];
+				
+				for(a in memoJSON ){
+					const data = memoJSON[a];
+					const basicid2 = data.basicid2;
+					const basicid1 = data.basicid1;
+					const target = $body.find('#' + basicid2);
+
+					// xy
+					const offsets = target.offset();
+					let left = Math.floor( offsets.left ) - distanceX;
+					left >= maxX ? left = maxX : null;
+					let top = Math.floor( offsets.top ) - distanceY + target.height();
+					top >= maxY ? top = maxY : null;
+					// target.css({color: 'red'});
+					addMemo( Number(a)+1 , data.text, left, top, basicid2, basicid1);
+				};
+			};
+			lockTarget();
+			$(this).toggleClass('active');
+		}else{
+
+			$(this).toggleClass('active');
+			$('.memobox').toggle(0);
+			lockTarget();
+		}
 	});
 
 	// =============================

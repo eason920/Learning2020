@@ -117,8 +117,8 @@
       
       // read lightbox status v
       let read1 = true;
-      let read2 = false;
-      let read3 = false;
+      let read2 = true;
+      let read3 = true;
       
       // memobox v
       let memoJSON = JSON.parse('[{"id":"memo1","text":"msg%201%0Afloor2%0Afloor3%0AASDFIASJEFIASE%0A","basicid2":"Nct1-52","basicid1":"ct1-52"},{"id":"memo2","text":"msg%202","basicid2":"Nt15-19","basicid1":"t15-19"},{"id":"memo3","text":"%u4FBF%u5229%u8CBC%u6210%u529F%0Aya%7E%7E","basicid2":"Nt2-6","basicid1":"t2-6"}]');
@@ -434,7 +434,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <li class="typebox-item" data-arttype="title">加強主題</li>
                   </ul>
                 </li>
-                <li class="funbar-item is-item-memo"><a class="funbar-btn funbar-memobox active" href="#">便利貼</a></li>
+                <li class="funbar-item is-item-memo"><a class="funbar-btn funbar-memobox do-insert-id" href="#">便利貼</a></li>
                 <li class="funbar-item is-item-group"><a class="funbar-btn funbar-phrase" href="#">單字片語</a></li>
                 <li class="funbar-item"><a class="funbar-btn funbar-collection" href="#">單字收錄</a></li>
               </ul>
@@ -461,7 +461,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="icon-bulb"></div>
         <div class="icon-how-text">Tips</div></a>
     </div>
-    <div class="lb-mask-final"></div>
+    <!--div class="lb-mask-final"></div>
     <div class="lb is-lb-final">
       <div class="lb-box"><img class="lb-final-img" src="./images/congrats.png">
         <h2 class="lb-final-title">表現真的太棒！建議一週至少要完成三到七篇文章的學習驗收，才能大幅提升自己的英文實力。</h2>
@@ -470,7 +470,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div class="lb-final-text">學下一篇</div>
             <div class="lb-final-art">特斯拉駕駛落橋身亡特斯拉駕駛落橋身亡</div></a></div>
       </div>
-    </div>
+    </div-->
 	<script>
 		// skin ( 必需寫在下方 ) v
 		let template;
