@@ -135,7 +135,7 @@ $(function(){
 	// ====================================
 	// == FUNCTION BAR ARTICLE TYPE
 	// ====================================
-	let orgArtType = 'is-art-muted';
+	let orgArtType;
 	$('.is-item-arttype .funbar-btn').click(function(){
 		const $p = $('.is-item-arttype');
 		$p.toggleClass('active');
@@ -144,19 +144,20 @@ $(function(){
 				if( $(this).hasClass('active') ){
 					$(this).click();
 					orgArtType = $(this).data('arttype');
+					$('#stepBlock1').addClass('is-art-'+orgArtType);
 				}
 			});
 		}else{
-			$parent.removeClass();
-		}
+			$('#stepBlock1').removeClass();
+		};
 	});
 
 	$('.typebox-item').click(function(){
-		if( !$this.hasClass('active') ){
+		if( !$(this).hasClass('active') ){
 			const string = $(this).data('arttype')
 			$('.typebox-item').removeClass('active');
 			$(this).addClass('active');
-			$parent.removeClass().addClass('is-art-'+string)
+			$('#stepBlock1').removeClass().addClass('is-art-'+string)
 		};
 	});
 

@@ -60,29 +60,29 @@ const replaceCode = function(target, Str){
 
 	// CODE AT END
 	// Str = Str.replace(/’/g, "'");
-	Str = Str.replace(/,<\/span>/g, '<\/span><b>,</b>');
-	Str = Str.replace(/\.<\/span>/g, '<\/span><b>.</b>');
-	Str = Str.replace(/!<\/span>/g, '<\/span><b>!</b>');
-	Str = Str.replace(/\?<\/span>/g, '<\/span><b>?</b>');
-	Str = Str.replace(/:<\/span>/g, '<\/span><b>:</b>');
-	Str = Str.replace(/”<\/span>/g, '<\/span><b>”</b>');
-	Str = Str.replace(/\)<\/span>/g, '<\/span><b>)</b>');
-	Str = Str.replace(/\]<\/span>/g, '<\/span><b>]</b>');
+	Str = Str.replace(/,<\/span>/g, '<\/span><span class="is-symbol">,</span>');
+	Str = Str.replace(/\.<\/span>/g, '<\/span><span class="is-symbol">.</span>');
+	Str = Str.replace(/!<\/span>/g, '<\/span><span class="is-symbol">!</span>');
+	Str = Str.replace(/\?<\/span>/g, '<\/span><span class="is-symbol">?</span>');
+	Str = Str.replace(/:<\/span>/g, '<\/span><span class="is-symbol">:</span>');
+	Str = Str.replace(/”<\/span>/g, '<\/span><span class="is-symbol">”</span>');
+	Str = Str.replace(/\)<\/span>/g, '<\/span><span class="is-symbol">)</span>');
+	Str = Str.replace(/\]<\/span>/g, '<\/span><span class="is-symbol">]</span>');
 
 	target.html(Str);
 
 	// CODE AT START
 	$('.english span').each(function(){
 		if( $(this).text().indexOf('“') >= 0 ){
-			$(this).before('<b>“</b>');
+			$(this).before('<span class="is-symbol">“</span>');
 			$(this).text( $(this).text().substr(1) );
 		}
 		if( $(this).text().indexOf('(') >= 0 ){
-			$(this).before('<b>(</b>');
+			$(this).before('<span class="is-symbol">(</span>');
 			$(this).text( $(this).text().substr(1) );
 		}
 		if( $(this).text().indexOf('[') >= 0 ){
-			$(this).before('<b>[</b>');
+			$(this).before('<span class="is-symbol">[</span>');
 			$(this).text( $(this).text().substr(1) );
 		}
 	});

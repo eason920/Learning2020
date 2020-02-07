@@ -148,7 +148,7 @@
 
 	.english
 		color: $c-gray1
-		span,b
+		span
 			color: $c-gray1
 			border:
 				right-color: $c-w
@@ -157,13 +157,16 @@
 			&:hover
 				color: $c-blue
 				background-color: $m-light1
+			&.is-symbol:hover
+				color: $c-gray1
+				background-color: $c-t
 	
 	.Chinese
 		color: #555
 
 	.english.lightheight,
 	.Chinese.lightheight
-		span,b
+		span
 			color: $m-strong!important
 			&:hover			
 
@@ -228,8 +231,7 @@
 				color: #fff!important
 	
 	#stepBlock1.is-art-title
-		.is-art-title,
-		.is-art-title + b
+		.is-art-title
 			background-color: #9b9b9b
 			color: $c-w
 			&:after
@@ -237,6 +239,8 @@
 		span.is-art-title:hover
 			color: #fff!important
 			background-color: #555
+		span.is-art-title.is-symbol:hover
+			background-color: #9b9b9b
 		.is-art-title.is-phrase:before
 			background-color: #000
 

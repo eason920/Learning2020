@@ -71,9 +71,6 @@ article
 
 .english
 	display: flex
-	padding:
-		top: 20px
-		bottom: 7px
 	font:
 		family: arial
 		weight: normal
@@ -85,7 +82,7 @@ article
 	p
 		display: inline
 
-	span,b
+	span
 		display: inline-block
 		font:
 			size: 1.375rem
@@ -106,7 +103,8 @@ article
 			transition: opacity .3s
 .art-star
 	width: $w-star
-	padding-top: 5px
+	padding:
+		top: 24px
 	.icon-star
 		opacity: 0
 
@@ -117,10 +115,12 @@ article
 .art-art
 	width: calc( 100% - #{$w-star})
 	font-size: 0
+	padding:
+		top: 20px
+		bottom: 7px
 
 #stepBlock1.is-art-title
-	.is-art-title,
-	.is-art-title + b
+	.is-art-title
 		position: relative
 		&:after
 			content: ''
@@ -171,7 +171,7 @@ span.is-height-light
 		top: 0
 	padding:
 		right: 50px
-	span,b
+	span
 		font:
 			size: 2.5rem
 			weight: bold
@@ -180,9 +180,8 @@ span.is-height-light
 			top: 14px
 
 #Nct0, #ct0
-	span,b
-		font:
-			size: 1.5rem
+	font:
+		size: 1.5rem
 
 // -----------------------------------
 // -- ANNOTATION
