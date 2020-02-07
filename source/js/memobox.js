@@ -86,7 +86,55 @@ $(function(){
 		});
 		memoUpdate += ']';
 	};
+	
+	const fnInit = function(){
+		$('.funbar-memobox').removeClass('do-insert-id');
+		// ENGLISH
+		$('body').find('.english').each(function(){
+			const $this = $(this);
+			const pId = $this.attr('id');
+			let i = 1;
+			$this.find('span').each(function(){
+				$(this).attr('id', pId + '-' + i);
+				i ++;
+			});
+		});
+		
+		// CHINESE
+		$('body').find('.Chinese').each(function(){
+			const parentId = $(this).attr('id');
+			let html = '';
+			let ary = $(this).text().split('');
+			for(a in ary){
+				html += '<span id="' + parentId + '-' + a + '">' + ary[a] + '</span>'
+			}
+			$(this).html(html);
+		});
+		
+		// INIT MEMO CREATE
+		if(memoJSON.length > 0){
+			const distanceX = fnDistanceX();
+			const maxX = fnMaxXY()[0];
+			const maxY = fnMaxXY()[1];
+			
+			for(a in memoJSON ){
+				const data = memoJSON[a];
+				const basicid2 = data.basicid2;
+				const basicid1 = data.basicid1;
+				const target = $body.find('#' + basicid2);
 
+				// xy
+				const offsets = target.offset();
+				let left = Math.floor( offsets.left ) - distanceX;
+				left >= maxX ? left = maxX : null;
+				let top = Math.floor( offsets.top ) - distanceY + target.height();
+				top >= maxY ? top = maxY : null;
+				// target.css({color: 'red'});
+				addMemo( Number(a)+1 , data.text, left, top, basicid2, basicid1);
+			};
+		};
+		lockTarget();
+	};
 	// ====================================
 	// == SPAN ADD ID & INIT
 	// ====================================
@@ -110,57 +158,73 @@ $(function(){
 	// ====================================
 	// v .art-art = .english area
 	$body.on('dblclick', '.art-art, .Chinese, .annotation', function(e){
+		const $btn = $('.funbar-memobox');
+		const $this = $(this);
 		const id = $('.memobox').length + 1;
-		console.log($(this).attr('class'));
+		let times;
 		
-		if( id < 16 ){
-			$('.funbar-memobox').hasClass('active') ? null : $('.funbar-memobox').click();
-			// $body.find('.memobox').eq(0).is(':visible') ? null : ;
-			const maxX = fnMaxXY()[0];
-			const maxY = fnMaxXY()[1];
-			const $this = $(this);
-			const className = $this.attr('class');
-			const distanceX = fnDistanceX();
-			const distanceScrolltop = $stepblock.scrollTop();
-			let thisid;
-			let basicid1;
-			let basicid2;
-	
-			// xy
-			let left = Math.floor( e.pageX - distanceX);
-			$section.hasClass('move') ? left = left + Math.floor($section.width() * .25) : null;
-			left >= maxX ? left = maxX : null;
-			let top = $this.offset().top - distanceY + $this.innerHeight() + distanceScrolltop;
-			top >= maxY ? top = maxY : null;
-	
-			switch(true){
-				case /art-art/i.test( className ):
-					thisid = $this.find('p').find('span:first-child').attr('id');
-					break;
-				case /chinese/i.test( className ):
-					thisid = $this.find('span:first-child').attr('id');
-					top = top - 30;// 30 = .Chinese.padding-bottom
-					break;
-				case /annotation/i.test( className ):
-					thisid = $this.next().find('span:first-child').attr('id');
-					break
-				default:
-			}
-	
-			if ($('.article2').is(':visible')) {
-				// .article2
-				basicid2 = thisid;
-				basicid1 = thisid.substr(1);
-			} else {
-				// .article
-				basicid2 = 'N' + basicid;
-				basicid1 = thisid;
-			}
-			addMemo(id, '', left, top, basicid2, basicid1);
+		if( $btn.hasClass('do-insert-id') ){
+			fnInit();
+			times = 100;
+			//^ 剛入文章、第一次 create時，要等待 fnInit 加戴好 englist & chinese 中 span 的 id再執行 create memo
 		}else{
-			alert('便利貼數量己逹上限 !')
-		}
-	})
+			times = 0;
+			//^ 不是剛入文章、span 的 id 己加好，就直接執行 create memo
+		};
+
+		setTimeout(function(){
+			if( !$btn.hasClass('active') ){
+				$btn.addClass('active');
+				$('.memobox').show();
+			}
+	
+			if( id < 16 ){
+				// $body.find('.memobox').eq(0).is(':visible') ? null : ;
+				const maxX = fnMaxXY()[0];
+				const maxY = fnMaxXY()[1];
+				const className = $this.attr('class');
+				const distanceX = fnDistanceX();
+				const distanceScrolltop = $stepblock.scrollTop();
+				let thisid;
+				let basicid1;
+				let basicid2;
+		
+				// xy
+				let left = Math.floor( e.pageX - distanceX);
+				$section.hasClass('move') ? left = left + Math.floor($section.width() * .25) : null;
+				left >= maxX ? left = maxX : null;
+				let top = $this.offset().top - distanceY + $this.innerHeight() + distanceScrolltop;
+				top >= maxY ? top = maxY : null;
+		
+				switch(true){
+					case /art-art/i.test( className ):
+						thisid = $this.find('p').find('span:last-child').attr('id');
+						break;
+					case /chinese/i.test( className ):
+						thisid = $this.find('span:last-child').attr('id');
+						top = top - 30;// 30 = .Chinese.padding-bottom
+						break;
+					case /annotation/i.test( className ):
+						thisid = $this.next().find('span:last-child').attr('id');
+						break
+					default:
+				}
+		
+				if ($('.article2').is(':visible')) {
+					// .article2
+					basicid2 = thisid;
+					basicid1 = thisid.substr(1);
+				} else {
+					// .article
+					basicid2 = 'N' + basicid;
+					basicid1 = thisid;
+				}
+				addMemo(id, '', left, top, basicid2, basicid1);
+			}else{
+				alert('便利貼數量己逹上限 !')
+			};
+		}, times);
+	});
 
 	// ====================================
 	// == MOVE
@@ -292,59 +356,13 @@ $(function(){
 	// ------------------------------------
 	// -- SHOW & HIDDEN
 	// ------------------------------------
+	
 	$('.funbar-memobox').click(function(){
 		// console.log($(this).hasClass('do-insert-id'));
+		$(this).toggleClass('active');
 		if( $(this).hasClass('do-insert-id') ){
-			$(this).removeClass('do-insert-id');
-			// ENGLISH
-			$('body').find('.english').each(function(){
-				$this = $(this);
-				const pId = $this.attr('id');
-				let i = 1;
-				$this.find('span').each(function(){
-					$(this).attr('id', pId + '-' + i);
-					i ++;
-				});
-			});
-			
-			// CHINESE
-			$('body').find('.Chinese').each(function(){
-				const parentId = $(this).attr('id');
-				let html = '';
-				let ary = $(this).text().split('');
-				for(a in ary){
-					html += '<span id="' + parentId + '-' + a + '">' + ary[a] + '</span>'
-				}
-				$(this).html(html);
-			});
-			
-			// INIT MEMO CREATE
-			if(memoJSON.length > 0){
-				const distanceX = fnDistanceX();
-				const maxX = fnMaxXY()[0];
-				const maxY = fnMaxXY()[1];
-				
-				for(a in memoJSON ){
-					const data = memoJSON[a];
-					const basicid2 = data.basicid2;
-					const basicid1 = data.basicid1;
-					const target = $body.find('#' + basicid2);
-
-					// xy
-					const offsets = target.offset();
-					let left = Math.floor( offsets.left ) - distanceX;
-					left >= maxX ? left = maxX : null;
-					let top = Math.floor( offsets.top ) - distanceY + target.height();
-					top >= maxY ? top = maxY : null;
-					// target.css({color: 'red'});
-					addMemo( Number(a)+1 , data.text, left, top, basicid2, basicid1);
-				};
-			};
-			lockTarget();
-			$(this).toggleClass('active');
+			fnInit();
 		}else{
-
-			$(this).toggleClass('active');
 			$('.memobox').toggle(0);
 			lockTarget();
 		}
