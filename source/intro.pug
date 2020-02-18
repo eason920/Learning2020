@@ -30,8 +30,8 @@ html(lang='zh')
 			
 			// read lightbox status v
 			let read1 = true;
-			let read2 = false;
-			let read3 = false;
+			let read2 = true;
+			let read3 = true;
 
 			// memobox v
 			//- let memoJSON = JSON.parse('[{"id":"memo1","text":"msg 1","top":"2200","left":"0"},{"id":"memo2","text":"msg 2","top":"500","left":"300"}]');
@@ -55,7 +55,7 @@ html(lang='zh')
 			.topbar
 				.wrapper
 					.wrapper-left
-						a.topbar-back-btn(href='#')
+						a.topbar-back-btn(href='javascript:void(0)')
 							.icon-arrowleft
 							|返回
 					.wrapper-right-f1
@@ -104,11 +104,11 @@ html(lang='zh')
 													.icon-correct
 									.icon-correct
 							.topbar-icon
-								a.topbar-icon-item(href='#')
+								a.topbar-icon-item(href='javascript:void(0)')
 									.icon-refresh
-								a.topbar-icon-item(href='#')
+								a.topbar-icon-item(href='javascript:void(0)')
 									.icon-print
-								a.topbar-icon-item(href='#')
+								a.topbar-icon-item(href='javascript:void(0)')
 									.icon-star-big
 			.main
 				.article_mask
@@ -214,29 +214,37 @@ html(lang='zh')
 										b.controlbox-item 老師講解
 										i.controlbox-item 英文朗讀
 								li.funbar-item.is-item-arttype
-									a.funbar-btn(href='#') 原文分析
+									a.funbar-btn(href='javascript:void(0)') 原文分析
 									ul.typebox
 										li.typebox-item.active(data-arttype='muted') 長句分解
 										li.typebox-item(data-arttype='strong') 加強描述
 										li.typebox-item(data-arttype='title') 加強主題
 								li.funbar-item.is-item-memo
-									a.funbar-btn.funbar-memobox.do-insert-id(href='#') 便利貼
+									a.funbar-btn.funbar-memobox.do-insert-id(href='javascript:void(0)') 便利貼
 								li.funbar-item.is-item-group
-									a.funbar-btn.funbar-phrase(href='#') 單字片語
+									a.funbar-btn.funbar-phrase(href='javascript:void(0)') 單字片語
 								li.funbar-item
-									a.funbar-btn.funbar-collection(href='#') 單字收錄
+									a.funbar-btn.funbar-collection(href='javascript:void(0)') 單字收錄
 							ul.funbar.step-fnbar2
-								li.funbar-item
-									.controlbox2.is-play-part
-										.controlbox2-on on
-										.controlbox2-off off
-										.controlbox2-text 全文錄音播放
-								li.funbar-item
-									.controlbox2.is-play-repeat
-										.controlbox2-on on
-										.controlbox2-off off
-										.controlbox2-text 錄音重複
-			a.icon-how(href='#')
+								li.funbar-item.is-item-audiotype.is-not-ready
+									.funbar-btn
+										|全文播放
+										.audio-icon
+									ul.typebox2
+										li.typebox-item.active(data-audiotype='org') 原音
+										li.typebox-item(data-audiotype='rec') 錄音
+										li.typebox-item(data-audiotype='mix') 原音+錄音
+								//- li.funbar-item
+								//- 	.controlbox2.is-play-part
+								//- 		.controlbox2-on on
+								//- 		.controlbox2-off off
+								//- 		.controlbox2-text 全文錄音播放
+								//- li.funbar-item
+								//- 	.controlbox2.is-play-repeat
+								//- 		.controlbox2-on on
+								//- 		.controlbox2-off off
+								//- 		.controlbox2-text 錄音重複
+			a.icon-how(href='javascript:void(0)')
 				.icon-bulb
 				.icon-how-text Tips
 		//- include partials/lb
@@ -246,9 +254,9 @@ html(lang='zh')
 				img.lb-final-img(src='./images/congrats.png')
 				h2.lb-final-title 表現真的太棒！建議一週至少要完成三到七篇文章的學習驗收，才能大幅提升自己的英文實力。
 				.lb-final-box
-					a.lb-final-item(href='#', style='background-image: url(./images/galxy.jpg)')
+					a.lb-final-item(href='javascript:void(0)', style='background-image: url(./images/galxy.jpg)')
 						.lb-final-text 觀看成效
-					a.lb-final-item(href='#', style='background-image: url(./images/galxy.jpg)')
+					a.lb-final-item(href='javascript:void(0)', style='background-image: url(./images/galxy.jpg)')
 						.lb-final-text 學下一篇
 						.lb-final-art 特斯拉駕駛落橋身亡特斯拉駕駛落橋身亡
 

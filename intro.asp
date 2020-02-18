@@ -439,19 +439,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <li class="funbar-item"><a class="funbar-btn funbar-collection" href="#">單字收錄</a></li>
               </ul>
               <ul class="funbar step-fnbar2">
-                <li class="funbar-item">
-                  <div class="controlbox2 is-play-part">
-                    <div class="controlbox2-on">on</div>
-                    <div class="controlbox2-off">off</div>
-                    <div class="controlbox2-text">全文錄音播放</div>
+                <li class="funbar-item is-item-audiotype is-not-ready">
+                  <div class="funbar-btn">全文播放
+                    <div class="audio-icon"></div>
                   </div>
-                </li>
-                <li class="funbar-item">
-                  <div class="controlbox2 is-play-repeat">
-                    <div class="controlbox2-on">on</div>
-                    <div class="controlbox2-off">off</div>
-                    <div class="controlbox2-text">錄音重複</div>
-                  </div>
+                  <ul class="typebox2">
+                    <li class="typebox-item active" data-audiotype="org">原音</li>
+                    <li class="typebox-item" data-audiotype="rec">錄音</li>
+                    <li class="typebox-item" data-audiotype="mix">原音+錄音</li>
+                  </ul>
                 </li>
               </ul>
             </div>

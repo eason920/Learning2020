@@ -140,7 +140,7 @@ $(function(){
 		const $p = $('.is-item-arttype');
 		$p.toggleClass('active');
 		if( $p.hasClass('active') ){
-			$('.typebox-item').each(function(){
+			$('.typebox .typebox-item').each(function(){
 				if( $(this).hasClass('active') ){
 					$(this).click();
 					orgArtType = $(this).data('arttype');
@@ -152,10 +152,10 @@ $(function(){
 		};
 	});
 
-	$('.typebox-item').click(function(){
+	$('.typebox .typebox-item').click(function(){
 		if( !$(this).hasClass('active') ){
 			const string = $(this).data('arttype')
-			$('.typebox-item').removeClass('active');
+			$('.typebox .typebox-item').removeClass('active');
 			$(this).addClass('active');
 			$('#stepBlock1').removeClass().addClass('is-art-'+string)
 		};

@@ -132,7 +132,28 @@ input[type=range]
 
 .topbar-s
 	color: $m-strong
-	
+
+// _funbar_2.sass v
+.is-item-audiotype
+	.funbar-btn
+		background:
+			color: #b8b8b8
+	&.is-not-ready
+		.funbar-btn
+			color: #e7e7e7!important
+		.audio-icon
+			&:before
+				border:
+					color: $c-t $c-t $c-t #e7e7e7
+	&.active
+		.funbar-btn
+			color: #fff!important
+
+.audio-icon
+	background:
+		color: #fff
+
+
 // _ex1.sass v
 .is-true
 	.s3ex1-check

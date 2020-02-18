@@ -1,90 +1,60 @@
-.controlbox2
-	user-select: none
-	cursor: pointer
-	border-radius: 20px
-	overflow: hidden
+.is-item-audiotype
 	position: relative
-	display: flex
-	& > *
+	.funbar-btn
+		cursor: pointer
 		line-height: 34px
-		font-size: 1.0625rem
-		text-transform: uppercase
+		user-select: none
+		border-radius: 17px
+		display: flex
+		align-items: center
+		padding:
+			right: 10px
 
-.controlbox2-on
-	border-radius: 20px 0 0 20px
-	padding:
-		left: 15px
+	&.is-not-ready
+		.funbar-btn
+			cursor: not-allowed
+		.audio-icon
+			box-shadow: none
+		
+	&.active
+		.audio-icon
+			&:before
+				display: none
+			&:after
+				display: block
 
-.controlbox2-off
-	border-radius: 0 20px 20px 0
-	padding:
-		right: 15px
-
-.controlbox2-text
-	border-radius: 20px
-	position: absolute
-	left: 0
-	top: 0
-	padding: 0 15px
-	transition: .3s
-
-.active
-	.controlbox2-text
-		// left: auto
-		// right: 0
-		transition: .3s
+.audio-icon
+	position: relative
+	width: 20px
+	height: 20px
+	border-radius: 50%
+	margin:
+		left: 7px
+	box-shadow: 0 0 8px rgba(0,0,0,.3), 0 0 1px rgba(0,0,0,.65)
+	&:before,&:after
+		content: ''
+		position: absolute
+	&:before
+		top: 4px
+		left: 7px
+		display: block
+		width: 0
+		height: 0
+		border:
+			style: solid
+			width: 6px 0 6px 8px
+	&:after
+		display: none
+		width: 8px
+		height: 8px
+		top: 6px
+		left: 6px
 
 @media screen and (max-width: 1440px)
-	.is-play-part
-		.controlbox2-on
-			padding:
-				right: 28px
-
-		.controlbox2-off
-			padding:
-				left: 60px
-
-	.is-play-repeat
-		.controlbox2-on
-			padding:
-				right: 28px
-
-		.controlbox2-off
-			padding:
-				left: 32px
-
-	.active
-		.is-play-part
-			.controlbox2-text
-				left: 50px
-		.is-play-repeat
-			.controlbox2-text
-				left: 52.58px
+	.typebox2
+		width: 216px
 
 @media screen and (min-width: 1441px)
-	.is-play-part
-		.controlbox2-on
-			padding:
-				right: 45px
-
-		.controlbox2-off
-			padding:
-				left: 55px
-
-	.is-play-repeat
-		.controlbox2-on
-			padding:
-				right: 39px
-
-		.controlbox2-off
-			padding:
-				left: 27px
-
-	.active
-		.is-play-part
-			.controlbox2-text
-				left: 57.5px
-		.is-play-repeat
-			.controlbox2-text
-				left: 57.5px
+	.typebox2
+		width: 236px
 	

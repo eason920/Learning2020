@@ -242,6 +242,9 @@
 			background-color: #9b9b9b
 		.is-art-title.is-phrase:before
 			background-color: #000
+	// _stepblock_2.sass v
+	.next-unit
+		color: $g-c1
 
 	// _stepblock_3.sass v
 	.s3-submit
@@ -320,7 +323,21 @@
 		.funbar-btn
 			background-color: $c-w
 
-	.typebox
+	.is-item-audiotype
+		&.active
+			.funbar-btn
+				background-color: $g-c1
+
+	.audio-icon
+		&:before
+			border:
+				color: $c-t $c-t $c-t $g-c1
+		&:after
+			background:
+				color: $g-c1
+
+	.typebox,
+	.typebox2
 		background-color: $c-w
 		&:after
 			border:

@@ -329,3 +329,7 @@ $(function () {
 });
 
 console.log('%c remenber ui_all.js 「pausetime();」', 'color: red;font-size: 16px');
+// setTimeout(function(){
+// 	$('.is-step-switch2').click();
+// },10);
+// console.log('%c remenber switch2 default in \'ui_all\' ', 'color: greenyellow; font-size: 20px');

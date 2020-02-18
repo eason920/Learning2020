@@ -70,8 +70,14 @@
 	display: flex
 	justify-content: center
 	width: 100%
+	// for demo
+	& + .s2-record
+		margin:
+			top: -85px
+			bottom: 20px
 
 .s2-record-item
+	width: 60px
 	text-align: center
 	cursor: pointer
 	display:flex
@@ -81,3 +87,25 @@
 	margin:
 		right: 10px
 		left: 10px
+	&.is-small
+		& > div
+			transform: scale(.91)
+			transform-origin: 100% 50%
+	.is-on
+		display: none
+	.active
+		& + .is-off
+			display: none
+		& + .is-off + .is-on
+			display: block
+
+.next-unit
+	font:
+		size: 1.1875rem
+		weight: bold
+	cursor: pointer
+	float: right
+	.icon-arrowleft
+		display: inline-block
+		width: 22px
+		transform: rotate(180deg) scale(.7) translate(9px, -13px) 
