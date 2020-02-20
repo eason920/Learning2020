@@ -1,0 +1,23 @@
+/* inner html */
+body,
+.translation_list_BG,
+#BGLoading{
+	background-color: #e7f7f3!important;
+}
+#tranglationFont,
+.part-of-speech,
+.txt_orange,
+.translation_list_BG{
+	color: #275246!important
+}
+.translation_DJ,
+.translation_status,
+.translation_status l1,
+.translation_status li,
+.definitionS,
+.example_enS{
+	color: #000;
+}
+.translation_list{
+	border-top-color: #275246!important;
+}

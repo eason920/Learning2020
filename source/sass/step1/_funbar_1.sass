@@ -5,7 +5,6 @@
 	align-items: center
 	height: 100%
 	border-radius: 20px
-	padding: 0 15px
 	transition: .3s
 
 .funbar-memobox.active,
@@ -94,7 +93,6 @@
 	position: relative
 	text-align: center
 	.funbar-btn
-		padding: 0 15px
 		position: relative
 		z-index: 1
 	&.active
@@ -165,14 +163,29 @@
 	.funbar-collection
 		padding: 0 10px
 
+	.is-item-arttype,
+	.is-item-audiotype
+		.funbar-btn
+			padding: 0 7px
+
 	.is-item-language
 		.controlbox-item
-			width: 75px
+			width: 70px
 
 	.typebox
 		width: 260px
 
 @media screen and (min-width: 1441px)
+	.funbar-memobox,
+	.funbar-phrase,
+	.funbar-collection
+		padding: 0 15px
+
+	.is-item-arttype,
+	.is-item-audiotype
+		.funbar-btn
+			padding: 0 15px
+
 	.is-item-language
 		.controlbox-item
 			width: 90px

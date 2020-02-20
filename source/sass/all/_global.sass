@@ -40,7 +40,7 @@ section
 @media screen and (max-width: 1440px)
 	html
 		font:
-			size: 14px	
+			size: 13px	
 @media screen and (min-width: 1441px)
 	padding:
 		left: 3%
@@ -95,7 +95,7 @@ section
 @media screen and (max-width: 1440px)
 	$h-youtube: 258px
 	.aside-above
-		height: calc( 100% - #{$gutter-top} - #{$h-youtube} - 20px)
+		min-height: calc( 100% - #{$gutter-top} - #{$h-youtube} + 20px)
 		// 20 - ArticleInfo.height 2 row new height
 
 	.article-vbox,
@@ -105,7 +105,7 @@ section
 @media screen and (max-width: 1770px) and (min-width: 1441px)
 	$h-youtube: 311px
 	.aside-above
-		height: calc( 100% - #{$gutter-top} - #{$h-youtube})
+		min-height: calc( 100% - #{$gutter-top} - #{$h-youtube})
 
 	.article-vbox,
 	#y-box
@@ -114,7 +114,7 @@ section
 @media screen and (min-width: 1771px)
 	$h-youtube: 342px
 	.aside-above
-		height: calc( 100% - #{$gutter-top} - #{$h-youtube})
+		min-height: calc( 100% - #{$gutter-top} - #{$h-youtube})
 
 	.article-vbox,
 	#y-box

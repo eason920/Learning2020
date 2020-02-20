@@ -61,7 +61,7 @@ $(function () {
 		// talk
 		if( $(".play_btn").hasClass("pause") ) {
 			$(".play_btn").removeClass('pause');
-			//pausetime();
+			pausetime();
 		}
 	});
 	$('.y-small').click(function () {
@@ -83,7 +83,7 @@ $(function () {
 			$('.speed').removeClass("show");
 			$('.speed-point').fadeOut();
 			$('.play_btn').removeClass("pause");
-			//pausetime();
+			pausetime();
 		}else{
 			// when stoping
 			$('.speed').addClass("show");
@@ -132,7 +132,7 @@ $(function () {
 		let i = '';
 
 		// job 1 : INIT VIDEO v
-		//pausetime();
+		pausetime();
 		$('.speed').removeClass("show");
 		$('.speed-point').fadeOut();
 		$('.play_btn').removeClass("pause");
@@ -326,6 +326,13 @@ $(function () {
 		}
 	});
 
+	// ====================================
+	// == aside title height
+	// ====================================
+	let titleMaxHeight;
+	const $asideTitle = $('#title-a');
+	$(window).width() < 1441 ? titleMaxHeight = 126 : titleMaxHeight = 171;
+	$asideTitle.height() > titleMaxHeight ? $asideTitle.css('font-size', '2.5rem') : null;
 });
 
 console.log('%c remenber ui_all.js 「pausetime();」', 'color: red;font-size: 16px');
