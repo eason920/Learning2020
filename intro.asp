@@ -6,14 +6,6 @@
 	session.CodePage = 65001   
 	response.Charset = "utf-8"
 	
-	if mobile_chk()="Mobile" then
-		if Request.ServerVariables("QUERY_STRING")<>"" then
-			QUERY_STRING="?"&Request.ServerVariables("QUERY_STRING")
-		else
-			QUERY_STRING=""
-		end if	
-		Response.Redirect "mobile.asp"&QUERY_STRING
-	end if
 
 
 	ADCode() '通路Code
@@ -25,30 +17,41 @@
 	On Error GoTo 0
 
 	if  rid<>"0" then
-		Sql_str=" and ref_id='"&rid&"'"
+		Sql_str=" and a.indx='"&rid&"'"
 	else
-		Sql_str=""
+		Sql_str=" ORDER BY NEWID()"
 	end if
 
-	sql="SELECT  a.*, b.xml_file2,b.filename4,ch_subject,en_subject FROM  Sample AS a INNER JOIN  news AS b ON a.ref_id = b.indx WHERE  (a.tables = 'Learning') and datediff(d,a.sdate,getdate())>=0 and datediff(d,a.edate,getdate())<=0 and a.ready=1 "&Sql_str&" order by indx"
+	'sql="SELECT  a.*, b.xml_file2,b.filename4,ch_subject,en_subject FROM  Sample AS a INNER JOIN  news AS b ON a.ref_id = b.indx WHERE  (a.tables = 'Learning') and datediff(d,a.sdate,getdate())>=0 and datediff(d,a.edate,getdate())<=0 and a.ready=1 "&Sql_str&" order by indx"
+  sql="SELECT a.indx, a.ch_subject, a.en_subject, a.filename1, a.filename2, a.filename3, a.ch_article, a.xml_file2,b.urls AS Youtube, C.Title AS CSlogn, C.ETitle AS Slogn FROM news AS a LEFT OUTER JOIN news_Slogan AS C ON a.indx = C.ref_id LEFT OUTER JOIN news_movie AS b ON a.indx = b.ref_id WHERE (a.ready = 1) AND (DATEDIFF(d, a.ndate, GETDATE()) >= 0) AND (DATEDIFF(y, '2013/1/1', a.ndate) >= 0) "&Sql_str
 	rs.open sql,connection,1,3
 	if not rs.eof then
-	    ref_id=rs("ref_id")	
-		og_title=rs("title")
-		og_description=rs("description")
-		og_url=rs("url")
-		og_image=rs("image")
-		Sample_classify=rs("Sample_classify")
-		tamplate=rs("tmplate")
+	  ref_id=rs("indx")	
+		og_title=rs("ch_subject")
+		og_description=rs("ch_article")
+		og_url=""
+		og_image=rs("filename2")
+		'Sample_classify=rs("Sample_classify")
+		'tamplate=rs("tmplate")
 		xml=rs("xml_file2")
 		Youtube=rs("Youtube")
 		mp3="mp3-8-1-"&ref_id&".mp3"
 		ch_subject=rs("ch_subject")
 		en_subject=rs("en_subject")
+    CSlogn=rs("CSlogn")
+    Slogn=rs("Slogn")
 	end if
 	rs.close
 
+ 
+  if Youtube<>"" then
+    Youtubetemp=split(Youtube,"/")
+    Youbute=Youtubetemp(ubound(Youtubetemp))
+  else
+    Youtube=""
+  end if
 
+  
 	sourceFileEn =  "E:\en\xml\"&xml
 	sourceFileTc =  "E:\tc\xml\"&xml
 
@@ -71,6 +74,16 @@
 	else
 		tamplate="a"
 	end if
+
+  mindx=1179
+  cindx=411
+  sql = "select memo from  member_memobox where ref_id='"&ref_id&"' and customer_id='"&cindx&"' and member_id='"&mindx&"' "
+  set rs=connection2.execute(sql)
+  if not rs.eof then
+    memo= rs("memo")
+  else
+    memo="[]"  
+  end if
 
 %>
 
@@ -99,8 +112,11 @@
 
 	<script src="js/jquery-1.11.1.min.js"></script>
 	<script type="text/javascript" src="../../../jquery/jquery-1.10.4.ui.min.js"></script>	
+  <script src="https://cdn.jsdelivr.net/npm/opus-media-recorder@latest/OpusMediaRecorder.umd.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/opus-media-recorder@latest/encoderWorker.umd.js"></script>
 	<script type="text/javascript" src="Dr.eye/Dre.js"></script>
 	<script src="../../library/js/lightBoxDIY-V2.js"></script>
+  <script  src="../../jquery.cookie.js"></script>
 	<script src="../../js/Uinfo.js"></script>   		
 	<script src='./js/player.js'></script>
 	<script src='./js/page.js'></script>
@@ -108,8 +124,8 @@
 	<script src='../../../../Funfa/Fa.js'></script>
 	<script>
 		// art video v
-      let videoId = 'h1I5JM16N0c';
-      
+      let videoId = '<%=Youbute%>';
+      let refId=<%=ref_id%>
       // teach lightbox video v
       const lbUrl1 = 'https://www.youtube.com/embed/h1I5JM16N0c';
       const lbUrl2 = 'https://www.youtube.com/embed/hN09_3jfNFE';
@@ -121,12 +137,17 @@
       let read3 = true;
       
       // memobox v
-      let memoJSON = JSON.parse('[{"id":"memo1","text":"msg%201%0Afloor2%0Afloor3%0AASDFIASJEFIASE%0A","basicid2":"Nct1-52","basicid1":"ct1-52"},{"id":"memo2","text":"msg%202","basicid2":"Nt15-19","basicid1":"t15-19"},{"id":"memo3","text":"%u4FBF%u5229%u8CBC%u6210%u529F%0Aya%7E%7E","basicid2":"Nt2-6","basicid1":"t2-6"}]');
+      //- let memoJSON = JSON.parse('[{"id":"memo1","text":"msg 1","top":"2200","left":"0"},{"id":"memo2","text":"msg 2","top":"500","left":"300"}]');
+      //let memoJSON = JSON.parse('[{"id":"memo1","text":"msg%201%0Afloor2%0Afloor3%0AASDFIASJEFIASE%0A","basicid2":"Nct1-5","basicid1":"ct1-5"},{"id":"memo2","text":"%u4FBF%u5229%u8CBC%u6210%u529F%0Aya%7E%7E","basicid2":"Nt5-6","basicid1":"t5-6"}]');
+
+      let memoJSON = JSON.parse('<%=memo%>')
+
+      //let memoJSON='';
       let memoUpdate = '';
       
       // content v
       for(let i = 1; i<=3; i++){
-      	$.get('step' + i + '.html', function(html){
+      	$.get('step' + i + '.asp', function(html){
       		$('#stepBlock' + i ).html(html);
       	});
       };
@@ -304,8 +325,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                   </div>
                 </div>
                 <div class="aside-above-sub">
-                  <div class="aside-above-sub-en">Powerful winds blew the smoke to the city and darkened the sky.</div>
-                  <div class="aside-above-sub-ch">強風將濃煙帶到城市，使天空變黑。</div>
+                  <%if Slogn<>"" then%>
+                    <div class="aside-above-sub-en"><%=Slogn%></div>
+                  <%end if%>
+                  <%if CSlogn<>"" then%>
+                  <div class="aside-above-sub-ch"><%=CSlogn%></div>
+                  <%end if%>
                   <div class="aside-speedbox is-play1">
                     <div class="speed-point"></div>
                     <div class="speed"><b class="speed-left">慢</b>
@@ -318,7 +343,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <div class="speed"><b class="speed-left">慢</b>
                       <input type="range" min="0.5" max="1.5" value="1" step="0.25"><b>快</b>
                     </div>
-                    <input class="play_btn icon-play" id="playBtn2" type="button">
+                    <input class="play_btn icon-play is-lock" id="playBtn2" type="button">
                   </div>
                   <div class="aside-speedbox is-play3">
                     <div class="speed-point"></div>
@@ -349,7 +374,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                   </div>
                 </div>
                 <div class="article-vbox">
-                  <div class="Article_pic"><img src="./images/galxy.jpg"></div>
+                  <div class="Article_pic"></div>
                   <!-- img ^v video box-->
                   <div class="is-first-start" id="y-box"></div><img class="y-start" src="images/y_start.png">
                   <div class="y-small"></div>
@@ -368,9 +393,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </section>
           <div class="tranglationBody">
             <input class="close_btn" type="button">
-            <div class="translation_Font"></div>
-            <div class="translation_list">
+            <div class="translation_Font" id="translation_Font1"></div>
+            <div class="translation_list" id="vocabulary">
             </div>
+            <div class="translation_Font" id="translation_Font2"></div>            
+            <div class="translation_list" id="phrase">
+            </div>            
             <div class="translation_list2">
               <div class="colbox">
                 <div class="colbox-prefix">T</div>
@@ -439,16 +467,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <li class="funbar-item"><a class="funbar-btn funbar-collection" href="#">單字收錄</a></li>
               </ul>
               <ul class="funbar step-fnbar2">
-                <li class="funbar-item is-item-audiotype is-not-ready">
+
+                <li class="funbar-item is-item-audiotype is-not-ready"   >
                   <div class="funbar-btn">全文播放
                     <div class="audio-icon"></div>
                   </div>
-                  <ul class="typebox2">
-                    <li class="typebox-item active" data-audiotype="org">原音</li>
-                    <li class="typebox-item" data-audiotype="rec">錄音</li>
-                    <li class="typebox-item" data-audiotype="mix">原音+錄音</li>
+                  <ul class="typebox2" id="is-play-part" data-value="1">
+                    <li class="typebox-item active" data-audiotype="1">原音</li>
+                    <li class="typebox-item" data-audiotype="4">錄音</li>
+                    <li class="typebox-item" data-audiotype="5">原音+錄音</li>
                   </ul>
-                </li>
+                </li>                
               </ul>
             </div>
           </div>
@@ -457,7 +486,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="icon-bulb"></div>
         <div class="icon-how-text">Tips</div></a>
     </div>
-    <!--div class="lb-mask-final"></div>
+    <!--
+    <div class="lb-mask-final"></div>
     <div class="lb is-lb-final">
       <div class="lb-box"><img class="lb-final-img" src="./images/congrats.png">
         <h2 class="lb-final-title">表現真的太棒！建議一週至少要完成三到七篇文章的學習驗收，才能大幅提升自己的英文實力。</h2>
@@ -466,18 +496,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div class="lb-final-text">學下一篇</div>
             <div class="lb-final-art">特斯拉駕駛落橋身亡特斯拉駕駛落橋身亡</div></a></div>
       </div>
-    </div-->
+    </div>
+    <!-->
 	<script>
 		// skin ( 必需寫在下方 ) v
 		let template;
 		const skinSource = new Date().getTime()%2;
 		skinSource === 0 ? template = 'skin1' : template = 'skin2';
 		$('#stepBox').addClass(template);
-    $('.is-lb-final').addClass(template);
-    
-    function tmpVal(){
-      console.log('got parent', template);
-    };
+		$('.is-lb-final').addClass(template);
 	</script>
 
   	<!-- ^ HTML END ^ -->
@@ -485,11 +512,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 </html>
 <script>
+
 var dd='<%=now()%>'
 var xml='<%=xml%>'
 var Sample_classify='<%=Sample_classify%>'
-$.get("join.asp?rid=<%=rid%>",function(data){ //初始將tool.htm" include
-	$("body").append(data);
-}); 
+
 jquery_en('<%=xml%>');
 </script>

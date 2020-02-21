@@ -540,7 +540,6 @@ aside .sub {
 }
 
 .aside-above-sub {
-  overflow: hidden;
   line-height: 1.2;
   text-align: right;
 }
@@ -959,9 +958,6 @@ input[type=range]::-ms-track {
   background-position: -4px 0;
 }
 
-.share-pre {
-  margin-bottom: 100px;
-}
 .share-pre .icon-arrowleft {
   transform: rotate(90deg) scale(0.8);
 }
@@ -1014,7 +1010,6 @@ input[type=range]::-ms-track {
 .translation_list,
 .translation_list2 {
   display: block;
-  overflow-y: auto;
   margin-top: 10px;
   width: 100%;
   padding-right: 20px;
@@ -2081,6 +2076,10 @@ input[type=range]::-ms-track {
 .skin1 .Chinese {
   color: #555;
 }
+.skin1 .english.lightheight,
+.skin1 .Chinese.lightheight {
+  color: #aa0102 !important;
+}
 .skin1 .english.lightheight span,
 .skin1 .Chinese.lightheight span {
   color: #aa0102 !important;
@@ -2584,6 +2583,10 @@ body.is-memo-moving .skin1 .english span:hover, body.is-memo-moving .skin1 .Chin
 }
 .skin2 .Chinese {
   color: #555;
+}
+.skin2 .english.lightheight,
+.skin2 .Chinese.lightheight {
+  color: #007d5a !important;
 }
 .skin2 .english.lightheight span,
 .skin2 .Chinese.lightheight span {
@@ -3430,13 +3433,17 @@ body.is-memo-moving .english span:hover, body.is-memo-moving .Chinese span:hover
 
 .s2-main-flex {
   display: flex;
-  height: calc( 100% - 50px);
   align-items: center;
   justify-content: center;
+  height: 100%;
 }
 
 .s2-main-wrapper {
   width: 95%;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-around;
 }
 
 .s2-main-textbox {
@@ -3460,7 +3467,7 @@ body.is-memo-moving .english span:hover, body.is-memo-moving .Chinese span:hover
 
 .s2-ch {
   font-size: 0.9375rem;
-  margin-bottom: 50px;
+  line-height: 1.4;
 }
 
 #Step2t0, #Tct0 {
@@ -3472,8 +3479,6 @@ body.is-memo-moving .english span:hover, body.is-memo-moving .Chinese span:hover
 }
 
 .s2-record {
-  margin-top: 60px;
-  margin-bottom: 100px;
   display: flex;
   justify-content: center;
   width: 100%;

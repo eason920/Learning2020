@@ -49,13 +49,21 @@ $(function(){
 			canIclose = 'phrase';
 			$('.translation_list').show();
 			$('.translation_list2').hide();
+			$('#translation_Font1').text('Vocabular');
+			$('#translation_Font2').text('Phrase');
+			$('#translation_Font2').show();
 		}else{
 			title='單字收錄';
 			canIclose = 'collection';
 			$('.translation_list').hide();
+
+			wordlist_Get(refId);
+
 			$('.translation_list2').show();
+			$('#translation_Font2').hide();
+			$('#translation_Font1').text(title);
 		}
-		$('.translation_Font').text(title);
+		
 		// on vision
 		$('.funbar-phrase, .funbar-collection').removeClass('active');
 		$(this).addClass('active');

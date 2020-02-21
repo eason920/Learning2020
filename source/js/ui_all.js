@@ -1,40 +1,40 @@
 let player;
 const youtube = function (videoId) {
 	// append script
-	const tag = document.createElement('script');
-	tag.src = "./js/youtube_iframe_api.js";
-	const firstScriptTag = document.getElementsByTagName('script')[0];
-	firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+		const tag = document.createElement('script');
+		tag.src = "./js/youtube_iframe_api.js";
+		const firstScriptTag = document.getElementsByTagName('script')[0];
+		firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-	function onYouTubeIframeAPIReady() {
-		player = new YT.Player('y-box', {
-			videoId,
-			playerVars: {
-				autoplay: 1,
-				playsinline: 1,
-				loop: 1,
-				rel: 0,
-				controls: 0,
-				origin: 'https://test.funday.asia/'
-			},
-			events: {
-				'onReady': onPlayerReady,
-				'onStateChange': onPlayerStateChange
-			},
-			host: 'https://www.youtube.com'
-		});
-	}
-	
-	function onPlayerReady(event) {
-		// event.target.mute();
-		event.target.playVideo();
-	}
-	function onPlayerStateChange(evt) {
-		if (evt.data === YT.PlayerState.ENDED) {
-			evt.target.playVideo();
+		function onYouTubeIframeAPIReady() {
+			player = new YT.Player('y-box', {
+				videoId,
+				playerVars: {
+					autoplay: 1,
+					playsinline: 1,
+					loop: 1,
+					rel: 0,
+					controls: 0,
+					origin: 'https://funday.asia/'
+				},
+				events: {
+					'onReady': onPlayerReady,
+					'onStateChange': onPlayerStateChange
+				},
+				host: 'https://www.youtube.com'
+			});
 		}
-	}
-	window.onYouTubeIframeAPIReady = onYouTubeIframeAPIReady;
+		
+		function onPlayerReady(event) {
+			// event.target.mute();
+			event.target.playVideo();
+		}
+		function onPlayerStateChange(evt) {
+			if (evt.data === YT.PlayerState.ENDED) {
+				evt.target.playVideo();
+			}
+		}
+		window.onYouTubeIframeAPIReady = onYouTubeIframeAPIReady;
 }
 
 const scaleUp = function(){
@@ -45,32 +45,35 @@ const scaleUp = function(){
 
 
 $(function () {
-	$('.y-start').click(function(){
-		$('.speed-point').fadeOut();
-		$('.speed').removeClass('show');
-		if( !$('#y-box').hasClass('is-first-start') ){
-			player.playVideo();
-			scaleUp();
-		}else{
-			youtube(videoId);
-			$('#y-box').removeClass('is-first-start');
-			setTimeout(function(){
+	if(videoId!=''){
+		$('.y-start').click(function(){
+			$('.speed-point').fadeOut();
+			$('.speed').removeClass('show');
+			if( !$('#y-box').hasClass('is-first-start') ){
+				player.playVideo();
 				scaleUp();
-			},700);	
-		}
-		// talk
-		if( $(".play_btn").hasClass("pause") ) {
-			$(".play_btn").removeClass('pause');
-			// pausetime();
-		}
-	});
-	$('.y-small').click(function () {
-		player.pauseVideo();
-		$('#y-box').removeClass('action');
-		$(this).fadeOut();
-		$('.y-start').fadeIn();
-	});
-
+			}else{
+				youtube(videoId);
+				$('#y-box').removeClass('is-first-start');
+				setTimeout(function(){
+					scaleUp();
+				},700);	
+			}
+			// talk
+			if( $(".play_btn").hasClass("pause") ) {
+				$(".play_btn").removeClass('pause');
+				pausetime();
+			}
+		});
+		$('.y-small').click(function () {
+			player.pauseVideo();
+			$('#y-box').removeClass('action');
+			$(this).fadeOut();
+			$('.y-start').fadeIn();
+		});
+	}else{
+		$('.y-start').remove();
+	}
 	$('.y-start').hover(function(){
 		$(this).attr('src', 'images/y_start_over.png');
 	}, function(){
@@ -83,7 +86,7 @@ $(function () {
 			$('.speed').removeClass("show");
 			$('.speed-point').fadeOut();
 			$('.play_btn').removeClass("pause");
-			// pausetime();
+			pausetime();
 		}else{
 			// when stoping
 			$('.speed').addClass("show");
@@ -132,7 +135,7 @@ $(function () {
 		let i = '';
 
 		// job 1 : INIT VIDEO v
-		// pausetime();
+		pausetime();
 		$('.speed').removeClass("show");
 		$('.speed-point').fadeOut();
 		$('.play_btn').removeClass("pause");
@@ -310,21 +313,12 @@ $(function () {
 	};
 
 	$('.icon-print').click(function(){
-		const i = $('.topbar-step-item.active .topbar-num').text();
-		switch(true){
-			case i == 1:
-				printScreen(stepBlock1);
-				break;
-			case i == 2:
-				printScreen(stepBlock2);
-				break;
-			case i == 3:
-				printScreen(stepBlock3);
-				break;
-			default:
-				printScreen(stepBlock1);
-		}
+		window.open("../../newsPDF/PG2.asp?indx="+refId+"&r=1")	  
 	});
+
+	$('.icon-refresh').click(function(){
+		location.href='./'
+	})
 
 	// ====================================
 	// == aside title height
@@ -333,9 +327,11 @@ $(function () {
 	const $asideTitle = $('#title-a');
 	$(window).width() < 1441 ? titleMaxHeight = 126 : titleMaxHeight = 171;
 	$asideTitle.height() > titleMaxHeight ? $asideTitle.css('font-size', '2.5rem') : null;
+
+
 });
 
-console.log('%c remenber ui_all.js 「pausetime();」', 'color: red;font-size: 16px');
+//console.log('%c remenber ui_all.js 「pausetime();」', 'color: red;font-size: 16px');
 // setTimeout(function(){
 // 	$('.is-step-switch2').click();
 // },10);
