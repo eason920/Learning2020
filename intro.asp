@@ -473,7 +473,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		const skinSource = new Date().getTime()%2;
 		skinSource === 0 ? template = 'skin1' : template = 'skin2';
 		$('#stepBox').addClass(template);
-		$('.is-lb-final').addClass(template);
+    $('.is-lb-final').addClass(template);
+    
+    function tmpVal(){
+      console.log('got parent', template);
+    };
 	</script>
 
   	<!-- ^ HTML END ^ -->

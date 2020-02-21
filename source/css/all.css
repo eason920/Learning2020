@@ -34,7 +34,7 @@ input {
   -webkit-appearance: none;
 }
 
-.aside-above-sub-en, .aside-above-sub-ch, .lb-final-art {
+.lb-final-art {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -494,9 +494,11 @@ section.move {
   display: none;
 }
 
+.is-play2,
 .is-play3.is-lock {
   position: relative;
 }
+.is-play2:before,
 .is-play3.is-lock:before {
   position: absolute;
   display: block;
@@ -507,6 +509,7 @@ section.move {
   bottom: 0;
   left: 0;
 }
+.is-play2 .play_btn,
 .is-play3.is-lock .play_btn {
   filter: grayscale(100%);
   opacity: 0.5;
