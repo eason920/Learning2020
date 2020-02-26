@@ -37,6 +37,61 @@ section
 .wrapper-right-f2
 	width: 100%
 	display: flex
+
+.msgbox
+	max-height: 210px
+	max-width: 380px
+	padding: 50px
+	border-radius: 40px
+	position: fixed
+	background-color: #0b121f
+	border: solid 3px #fff
+	left: 0
+	right: 0
+	top: 0
+	bottom: 0
+	margin: auto
+	text-align: center
+	z-index: 10
+	display: flex
+	flex-direction: column
+	justify-content: center
+	align-items: center
+
+.msgbox-text
+	line-height: 1.4
+	letter-spacing: .8px
+	color: #fff
+	font-size: 24px
+	margin-bottom: 15px
+
+.msgbox-btn
+	display: inline-block
+	color: #fff
+	border: solid 2px #fff
+	text-align: center
+	text-decoration: none
+	font-size: 28px
+	line-height: 50px
+	padding: 0 30px
+	border-radius: 25px
+	transition: 0.5s
+	font-size: 20px
+	line-height: 44px
+	cursor: pointer
+	width: 85%
+	&:hover
+		background-color: #fff
+		color: #0b121f
+
+.msgbox-btnbox
+	display: flex
+	justify-content: space-between
+	width: 100%
+	.msgbox-btn
+		width: 45%
+		padding: 0
+
 @media screen and (max-width: 1440px)
 	html
 		font:

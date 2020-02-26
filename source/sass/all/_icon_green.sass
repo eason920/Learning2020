@@ -1,6 +1,6 @@
 @import 'compass'
 @import 'green/*.png'
-$height: green-sprite-height(arrow_left) + green-sprite-height(close) + green-sprite-height(like) + green-sprite-height(play) + green-sprite-height(pink) + green-sprite-height(pause) + green-sprite-height(print) + green-sprite-height(sound) + green-sprite-height(refresh) + green-sprite-height(star_big_off) + green-sprite-height(star_big_on) + green-sprite-height(check) + green-sprite-height(org_play) + green-sprite-height(rec_play) + green-sprite-height(rec_re) + green-sprite-height(rec_recording) + green-sprite-height(rec_start) + green-sprite-height(stop)
+$height: green-sprite-height(arrow_left) + green-sprite-height(close) + green-sprite-height(like) + green-sprite-height(play) + green-sprite-height(pink) + green-sprite-height(pause) + green-sprite-height(print) + green-sprite-height(sound) + green-sprite-height(refresh) + green-sprite-height(star_big_off) + green-sprite-height(star_big_on) + green-sprite-height(check) + green-sprite-height(org_play) + green-sprite-height(rec_play) + green-sprite-height(rec_re) + green-sprite-height(rec_recording) + green-sprite-height(rec_start) + green-sprite-height(stop) + green-sprite-height(rec_restart)
 
 @mixin BG($path)
 	@include green-sprite($path)
@@ -34,6 +34,8 @@ $height: green-sprite-height(arrow_left) + green-sprite-height(close) + green-sp
 		@include BG(rec_start)
 		&.active
 			@include BG(rec_recording)
+	.icon-rec-restart
+		@include BG(rec_restart)
 	//
 	.icon-check
 		@include BG(check)

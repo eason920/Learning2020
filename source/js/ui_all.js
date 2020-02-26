@@ -62,7 +62,7 @@ $(function () {
 			// talk
 			if( $(".play_btn").hasClass("pause") ) {
 				$(".play_btn").removeClass('pause');
-				pausetime();
+				// pausetime();
 			}
 		});
 		$('.y-small').click(function () {
@@ -86,7 +86,7 @@ $(function () {
 			$('.speed').removeClass("show");
 			$('.speed-point').fadeOut();
 			$('.play_btn').removeClass("pause");
-			pausetime();
+			// pausetime();
 		}else{
 			// when stoping
 			$('.speed').addClass("show");
@@ -135,7 +135,7 @@ $(function () {
 		let i = '';
 
 		// job 1 : INIT VIDEO v
-		pausetime();
+		// pausetime();
 		$('.speed').removeClass("show");
 		$('.speed-point').fadeOut();
 		$('.play_btn').removeClass("pause");

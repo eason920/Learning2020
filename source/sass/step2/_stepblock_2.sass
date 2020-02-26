@@ -90,7 +90,7 @@
 		left: 10px
 	&.is-small
 		& > div
-			transform: scale(.91)
+			transform: scale(.91) translateY(3px)
 			transform-origin: 100% 50%
 	& > * 
 		margin: o auto
@@ -102,13 +102,33 @@
 		& + .is-off + .is-on
 			display: block
 
+
+
+.step2-finalbox
+	position: relative
+	line-height: 36px
+
+.recoard-done
+	position: absolute
+	top: 0px
+	left: 50%
+	transform: translateX(-50%)
+	line-height: 36px
+	padding: 0 45px
+	border-radius: 18px
+	cursor: pointer
+	font:
+		size: 1rem
+
 .next-unit
 	font:
 		size: 1.1875rem
 		weight: bold
 	cursor: pointer
 	float: right
+	display: flex
+	align-items: center
 	.icon-arrowleft
 		display: inline-block
 		width: 22px
-		transform: rotate(180deg) scale(.7) translate(9px, -13px) 
+		transform: rotate(180deg) scale(.7) 

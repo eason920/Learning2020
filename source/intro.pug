@@ -226,8 +226,8 @@ html(lang='zh')
 									a.funbar-btn.funbar-phrase(href='javascript:void(0)') 單字片語
 								li.funbar-item
 									a.funbar-btn.funbar-collection(href='javascript:void(0)') 單字收錄
-							ul.funbar.step-fnbar2
-								li.funbar-item.is-item-audiotype.is-not-ready
+							ul.funbar.step-fnbar2.is-not-ready
+								li.funbar-item.is-item-audiotype
 									.funbar-btn
 										|全文播放
 										.audio-icon
@@ -260,7 +260,14 @@ html(lang='zh')
 					a.lb-final-item(href='javascript:void(0)', style='background-image: url(./images/galxy.jpg)')
 						.lb-final-text 學下一篇
 						.lb-final-art 特斯拉駕駛落橋身亡特斯拉駕駛落橋身亡
-
+		.msgbox 
+			.msgbox-text 本句未錄音
+			.msgbox-btn 確定
+		.msgbox 
+			.msgbox-text 要上傳本次的錄音檔嗎？
+			.msgbox-btnbox
+				.msgbox-btn 取消
+				.msgbox-btn 確定
 		script.
 			// skin ( 必需寫在下方 ) v
 			let template;
