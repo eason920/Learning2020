@@ -7,6 +7,15 @@
 	response.Charset = "utf-8"
 	
 
+  mindx=1179  '--使用者ID
+  cindx=411  '--customer ID
+  enddate="2022/1/1" '--使用者到期日
+  Ispay=1
+
+  'mindx=Get_mid()  '--使用者ID
+  'cindx=Get_cid()  '--customer ID
+  'enddate=Get_enddate()  '--使用者到期日
+  edcheck=datediff("d",date(),enddate)
 
 	ADCode() '通路Code
 	On Error Resume Next '下一行程式是否會發生Exception'
@@ -19,11 +28,12 @@
 	if  rid<>"0" then
 		Sql_str=" and a.indx='"&rid&"'"
 	else
-		Sql_str=" ORDER BY NEWID()"
+		'Sql_str=" and datediff(m,a.ndate,getdate())<=1  ORDER BY NEWID()"
+    Sql_str="   ORDER BY NEWID()"
 	end if
 
 	'sql="SELECT  a.*, b.xml_file2,b.filename4,ch_subject,en_subject FROM  Sample AS a INNER JOIN  news AS b ON a.ref_id = b.indx WHERE  (a.tables = 'Learning') and datediff(d,a.sdate,getdate())>=0 and datediff(d,a.edate,getdate())<=0 and a.ready=1 "&Sql_str&" order by indx"
-  sql="SELECT a.indx, a.ch_subject, a.en_subject, a.filename1, a.filename2, a.filename3, a.ch_article, a.xml_file2,b.urls AS Youtube, C.Title AS CSlogn, C.ETitle AS Slogn FROM news AS a LEFT OUTER JOIN news_Slogan AS C ON a.indx = C.ref_id LEFT OUTER JOIN news_movie AS b ON a.indx = b.ref_id WHERE (a.ready = 1) AND (DATEDIFF(d, a.ndate, GETDATE()) >= 0) AND (DATEDIFF(y, '2013/1/1', a.ndate) >= 0) "&Sql_str
+  sql="SELECT a.indx, a.ch_subject, a.en_subject, a.filename1, a.filename2, a.filename3, a.ch_article, a.xml_file2,b.urls AS Youtube, C.Title AS CSlogn, C.ETitle AS Slogn FROM news AS a LEFT OUTER JOIN news_Slogan AS C ON a.indx = C.ref_id LEFT OUTER JOIN news_movie AS b ON a.indx = b.ref_id WHERE (a.ready = 1) AND (DATEDIFF(d, a.ndate, GETDATE()) >= 0) AND (DATEDIFF(yyyy, '2013/1/1', a.ndate) >= 0) "&Sql_str
 	rs.open sql,connection,1,3
 	if not rs.eof then
 	  ref_id=rs("indx")	
@@ -85,6 +95,22 @@
     memo="[]"  
   end if
 
+  Step1Read ="false"
+  Step2Read ="false"
+  Step3Read ="false"
+  sql = "select * from IsRead_Log where member_id='"&mindx&"' and  subject like 'LearningStep%' and datediff(d,mdate,getdate())<=30"
+  set rs=connection2.execute(sql)
+  while not rs.eof 
+    if rs("subject")="LearningStep1" then
+      Step1Read="true"
+    elseif rs("subject")="LearningStep2" then
+      Step2Read="true"
+    elseif rs("subject")="LearningStep3" then
+      Step3Read="true"
+    end if
+    rs.movenext
+  wend
+
 %>
 
 <!DOCTYPE html>
@@ -93,12 +119,12 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name='description' content='<%=og_description%>' />
+	<meta name='description' content='<%=replace(og_description,"[p]","")%>' />
 	<meta property='og:title' content='<%=og_title%>' />
 	<meta property="og:type" content="website" />
-	<meta property='og:url' content='<%=og_url%>' />
-	<meta property='og:image' content='<%=og_image%>' />
-	<meta property='og:description' content='<%=og_description%>' />
+	<meta property='og:url' content='https://funday.asia/learning2020/?rid=<%=ref_id%>' />
+	<meta property='og:image' content='https://funday.asia/en/pic/<%=og_image%>' />
+	<meta property='og:description' content='<%=replace(og_description,"[p]","")%>' />
 	<meta property="fb:app_id" content="665673953932390" />
 	<link rel="icon" href="./images/favicon.ico" type="image/ico" />
 	<title>FUNDAY數位英語學堂</title>
@@ -109,7 +135,6 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface&amp;display=swap">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Engagement&amp;display=swap">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap">
-
 	<script src="js/jquery-1.11.1.min.js"></script>
 	<script type="text/javascript" src="../../../jquery/jquery-1.10.4.ui.min.js"></script>	
   <script src="https://cdn.jsdelivr.net/npm/opus-media-recorder@latest/OpusMediaRecorder.umd.js"></script>
@@ -122,7 +147,9 @@
 	<script src='./js/page.js'></script>
 	<script src='./js/main.js'></script>
 	<script src='../../../../Funfa/Fa.js'></script>
+  <script  src="./js/Times.js"></script>
 	<script>
+      var Me=new User();
 		// art video v
       let videoId = '<%=Youbute%>';
       let refId=<%=ref_id%>
@@ -132,9 +159,9 @@
       const lbUrl3 = 'https://www.youtube.com/embed/RPBLbKwRAkw';
       
       // read lightbox status v
-      let read1 = true;
-      let read2 = true;
-      let read3 = true;
+      let read1 = <%=Step1Read%>;
+      let read2 = <%=Step2Read%>;
+      let read3 = <%=Step3Read%>;
       
       // memobox v
       //- let memoJSON = JSON.parse('[{"id":"memo1","text":"msg 1","top":"2200","left":"0"},{"id":"memo2","text":"msg 2","top":"500","left":"300"}]');
@@ -151,6 +178,16 @@
       		$('#stepBlock' + i ).html(html);
       	});
       };
+
+
+        edcheck='<%=edcheck%>';
+        Ispay='<%=Ispay%>';
+        BuyType=Me.BuyType;
+        Product=Me.Product;
+
+
+      if((parseInt(edcheck)>parseInt(0)) && Product!='228' )
+        display(refId,1)  
 	</script>		
 	<script src="js/ui_all.js"></script>
   <script src="js/memobox.js"></script>
@@ -255,12 +292,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <li class="topbar-step-item is-step-switch1">
                   <div class="topbar-num">1</div>
                   <div class="topbar-text">研讀本文</div>
-                  <div class="icon-correct"></div>
+                  <div class="icon-correct" style="display:none;"></div>
                 </li>
                 <li class="topbar-step-item is-step-switch2">
                   <div class="topbar-num">2</div>
                   <div class="topbar-text">加強記憶</div>
-                  <div class="icon-correct"></div>
+                  <div class="icon-correct" style="display:none;"></div>
                 </li>
                 <li class="topbar-step-item is-step-switch3 is-open">
                   <div class="topbar-num">3</div>
@@ -271,11 +308,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                       <li class="topbar-scrot-item is-ex1">
                         <div class="topbar-box-l">
                           <div class="topbar-text">理解力測驗</div>
-                          <div class="topbar-s">
-                             100<span>分</span></div>
+                          <div class="topbar-s"></div>
                         </div>
                         <div class="topbar-box-r">
-                          <div class="icon-correct"></div>
+                          <div class="icon-correct" style="display:none;"></div>
                         </div>
                       </li>
                       <li class="topbar-scrot-item is-ex2">
@@ -287,22 +323,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                           </div>
                         </div>
                         <div class="topbar-box-r">
-                          <!-- .icon-correct-->
+                          <div class="icon-correct" style="display:none;"></div>
                         </div>
                       </li>
                       <li class="topbar-scrot-item is-ex3">
                         <div class="topbar-box-l">
                           <div class="topbar-text">克漏字測驗</div>
-                          <div class="topbar-s">
-                             77<span>分</span></div>
+                          <div class="topbar-s"></div>
                         </div>
                         <div class="topbar-box-r">
-                          <div class="icon-correct"></div>
+                          <div class="icon-correct" style="display:none;"></div>
                         </div>
                       </li>
                     </ul>
                   </div>
-                  <div class="icon-correct"></div>
+                  <div class="icon-correct" style="display:none;"></div>
                 </li>
               </ul>
               <div class="topbar-icon"><a class="topbar-icon-item" href="#">
@@ -466,9 +501,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <li class="funbar-item is-item-group"><a class="funbar-btn funbar-phrase" href="#">單字片語</a></li>
                 <li class="funbar-item"><a class="funbar-btn funbar-collection" href="#">單字收錄</a></li>
               </ul>
-              <ul class="funbar step-fnbar2">
+              <ul class="funbar step-fnbar2 is-not-ready">
 
-                <li class="funbar-item is-item-audiotype is-not-ready"   >
+                <!--li class="funbar-item is-item-audiotype is-not-ready"-->
+                <li class="funbar-item is-item-audiotype">
                   <div class="funbar-btn">全文播放
                     <div class="audio-icon"></div>
                   </div>
@@ -477,6 +513,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <li class="typebox-item" data-audiotype="4">錄音</li>
                     <li class="typebox-item" data-audiotype="5">原音+錄音</li>
                   </ul>
+                  <div class="funbar-update">重新上傳</div>
                 </li>                
               </ul>
             </div>
@@ -500,9 +537,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-->
 	<script>
 		// skin ( 必需寫在下方 ) v
-		let template;
+		var template;
 		const skinSource = new Date().getTime()%2;
-		skinSource === 0 ? template = 'skin1' : template = 'skin2';
+    skinSource === 0 ? template = 'skin1' : template = 'skin2';
+    
+    if(template=='skin1'){
+      var tamplate='a';
+    }else{
+      var tamplate='b';
+    }
+
 		$('#stepBox').addClass(template);
 		$('.is-lb-final').addClass(template);
 	</script>

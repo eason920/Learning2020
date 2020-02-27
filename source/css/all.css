@@ -132,7 +132,7 @@ section.move {
   max-width: 380px;
   padding: 50px;
   border-radius: 40px;
-  position: fixed;
+  position: absolute;
   background-color: #0b121f;
   border: solid 3px #fff;
   left: 0;
@@ -146,14 +146,35 @@ section.move {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  opacity: 0;
+  transform: translate(-1%, 10px);
+  animation: ani-msgbox 0.3s linear 1 forwards;
+}
+.msgbox.is-config {
+  max-height: 480px;
+}
+.msgbox img {
+  width: 100%;
+  margin-bottom: 15px;
 }
 
+@keyframes ani-msgbox {
+  from {
+    opacity: 0;
+    transform: translate(-1%, 10px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-1%, 0);
+  }
+}
 .msgbox-text {
   line-height: 1.4;
   letter-spacing: 0.8px;
   color: #fff;
   font-size: 24px;
   margin-bottom: 15px;
+  text-align: center;
 }
 
 .msgbox-btn {
@@ -185,6 +206,24 @@ section.move {
 .msgbox-btnbox .msgbox-btn {
   width: 45%;
   padding: 0;
+}
+
+.msgbox-updatebox {
+  color: #fff;
+  width: 100%;
+  padding-top: 10px;
+  font-size: 1.3rem;
+}
+
+.msgbox-percent {
+  background-color: #fff;
+  height: 3px;
+  margin-top: 10px;
+}
+
+.msgbox-bar {
+  background-color: #1ca7ec;
+  height: 100%;
 }
 
 @media screen and (max-width: 1440px) {
@@ -781,7 +820,6 @@ input[type=range]::-ms-track {
 
 .classification_btn {
   display: inline-block;
-  cursor: pointer;
 }
 
 .ArticleInfo2 {
@@ -1241,6 +1279,7 @@ input[type=range]::-ms-track {
 }
 #stepBox.is-step2 .step-fnbar2 {
   display: flex;
+  transform: translateX(25px);
 }
 #stepBox.is-step2 .step-fnbar2.is-not-ready {
   display: none;
@@ -3487,14 +3526,27 @@ body.is-memo-moving .english span:hover, body.is-memo-moving .Chinese span:hover
   left: 6px;
 }
 
+.funbar-update {
+  cursor: pointer;
+  line-height: 34px;
+  font-weight: bold;
+  font-size: 1.0626rem;
+  margin-left: 10px;
+  padding-left: 15px;
+  padding-right: 10px;
+  border-left: solid 1px #aaa;
+}
+
 @media screen and (max-width: 1440px) {
   .typebox2 {
     width: 216px;
+    margin-left: -50px;
   }
 }
 @media screen and (min-width: 1441px) {
   .typebox2 {
     width: 236px;
+    margin-left: -50px;
   }
 }
 #stepBlock2 .share-title {

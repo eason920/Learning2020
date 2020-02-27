@@ -110,13 +110,13 @@ $(function () {
 	// ====================================
 	// == ARTICLE SORT CIRCLE
 	// ====================================
-	$('#class_f').hover(function () {
-		const $cfc = $('.classification');
-		let cfcIndex = $cfc.find('.activity').index();
-		$cfc.toggleClass('show');
-		$cfc.toggleClass('eq'+cfcIndex);
-		$cfc.siblings().toggleClass('eq'+cfcIndex);
-	})
+	// $('#class_f').hover(function () {
+	// 	const $cfc = $('.classification');
+	// 	let cfcIndex = $cfc.find('.activity').index();
+	// 	$cfc.toggleClass('show');
+	// 	$cfc.toggleClass('eq'+cfcIndex);
+	// 	$cfc.siblings().toggleClass('eq'+cfcIndex);
+	// })
 
 	// ====================================
 	// == TOP BAR & FUNCTION BAR
