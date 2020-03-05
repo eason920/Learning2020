@@ -15,10 +15,11 @@ $(function(){
 	let mh = 155;
 	const distanceY =  100;// $art.padding-top
 	//
-	const addMemo = function(id, text, left, top, basicid2, basicid1){
-		text = unescape(text);
+	const addMemo = function(id, text, left, top, basicid2, basicid1, textLength){
+		let addClass = '';
+		textLength == true ? addClass = ' is-lengthy' : null;
 		$stepblock.append(
-			$('<div>', {class: 'memobox is-static', id: 'memo' + id, style: 'left: ' + left +'px; top: ' + top + 'px'}).attr('data-basicid2', basicid2).attr('data-basicid1', basicid1).append(
+			$('<div>', {class: 'memobox is-static' + addClass, id: 'memo' + id, style: 'left: ' + left +'px; top: ' + top + 'px'}).attr('data-basicid2', basicid2).attr('data-basicid1', basicid1).append(
 				$('<div>', {class: 'memobox-bar'}).append(
 					$('<div>', {class: 'memobox-movearea'})
 				),
@@ -85,6 +86,19 @@ $(function(){
 			i ++;
 		});
 		memoUpdate += ']';
+		
+		$.ajax({
+			type:"POST",
+			url:"memo_response.asp?ref_id="+refId+"&memo="+memoUpdate,
+			//data: $("#searchForm").serialize(),
+			dataType:"html",
+			error: function(){
+				//alert(url)
+			},
+			success:function(data){
+				console.log(memoUpdate)				
+			}					
+		});
 	};
 	
 	const fnInit = function(){
@@ -130,7 +144,13 @@ $(function(){
 				let top = Math.floor( offsets.top ) - distanceY + target.height();
 				top >= maxY ? top = maxY : null;
 				// target.css({color: 'red'});
-				addMemo( Number(a)+1 , data.text, left, top, basicid2, basicid1);
+
+				// text length
+				// console.log( text.length, unescape(text).length, escape(text).length );
+				const text = data.text;
+				let textLength;
+				text.length > 32 || escape(text).length > 190 ? textLength = true : textLength = false;
+				addMemo( Number(a)+1 , text, left, top, basicid2, basicid1 , textLength);
 			};
 		};
 		lockTarget();
@@ -158,25 +178,26 @@ $(function(){
 	// ====================================
 	// v .art-art = .english area
 	$body.on('dblclick', '.art-art, .Chinese, .annotation', function(e){
-		const $btn = $('.funbar-memobox');
 		const $this = $(this);
 		const id = $('.memobox').length + 1;
 		let times;
 		
-		if( $btn.hasClass('do-insert-id') ){
+		if( $('.funbar-memobox').hasClass('do-insert-id') ){
 			fnInit();
 			times = 100;
 			//^ 剛入文章、第一次 create時，要等待 fnInit 加戴好 englist & chinese 中 span 的 id再執行 create memo
 		}else{
 			times = 0;
-			//^ 不是剛入文章、span 的 id 己加好，就直接執行 create memo
+			// 不是剛入文章、span 的 id 己加好，就直接執行 create memo
 		};
 
 		setTimeout(function(){
-			if( !$btn.hasClass('active') ){
-				$btn.addClass('active');
+			// $('.funbar-memobox').hasClass('active') ? null : $('.memobox').show();
+			if( !$('.funbar-memobox').hasClass('active') ){
+				$('.funbar-memobox').addClass('active');
 				$('.memobox').show();
 			}
+			// $('.funbar-memobox').hasClass('active') ? null : $('.funbar-memobox').click();
 	
 			if( id < 16 ){
 				// $body.find('.memobox').eq(0).is(':visible') ? null : ;
@@ -332,6 +353,7 @@ $(function(){
 	$('body').on('click', '.memobox-del', function(e){
 		e.preventDefault();
 		$(this).parent().parent().remove();
+		fnSave();
 	});
 
 	// ------------------------------------
@@ -378,7 +400,7 @@ $(function(){
 	$('#stepBlock1').on('click', '.memobox-save', function(e){
 		e.preventDefault;
 		fnSave();
-		console.log(memoUpdate);
+		// console.log(memoUpdate);
 	});
 
 

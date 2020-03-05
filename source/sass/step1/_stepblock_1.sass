@@ -40,7 +40,7 @@ article
 	border-style: none
 	vertical-align: top
 	margin:
-		top: 5px
+		top: 2px
 		left: 10px
 	transition: opacity .3s
 
@@ -157,6 +157,7 @@ span.is-height-light
 // -----------------------------------
 // -- TITLE
 // -----------------------------------
+// en v
 #Nt0, #t0
 	font:
 		size: 2.5rem
@@ -170,17 +171,18 @@ span.is-height-light
 		font:
 			size: 2.5rem
 			weight: bold
-	.read_btn
-		margin:
-			top: 14px
-	.art-star,
-	.art-art
-		padding-top: 0
 
+// ch v
 #Nct0, #ct0
 	font:
 		size: 1.5rem
+	text-indent: -85px
+	span
+		text-indent: 0
 
+#Nt0, #t0,
+#Nct0, #ct0
+	text-align: center
 // -----------------------------------
 // -- ANNOTATION
 // -----------------------------------
@@ -208,22 +210,49 @@ span.is-height-light
 	margin:
 		left: 5px
 
+// -----------------------------------
+.is-symbol-left
+	margin-left: 0!important
+	border-right: none!important
+
 @media screen and (max-width: 1440px)
 	$words-border-width: 6px
 	.english span
 		border-right-width: $words-border-width
+
 	#stepBlock1.is-art-title
 		.is-art-title
 			&:after
 				width: $words-border-width
 				right: $words-border-width * -1
 
+	.is-symbol
+		margin-left: $words-border-width * -1
+
+	#Nt0, #t0
+		.read_btn
+			margin:
+				top: 8px
+		.icon-star
+			margin-top: 5px
+
 @media screen and (min-width: 1441px)
 	$words-border-width: 10px
 	.english span
 		border-right-width: $words-border-width
+
 	#stepBlock1.is-art-title
 		.is-art-title
 			&:after
 				width: $words-border-width
 				right: $words-border-width * -1
+				
+	.is-symbol
+		margin-left: $words-border-width * -1
+
+	#Nt0, #t0
+		.read_btn
+			margin:
+				top: 14px
+		.icon-star
+			margin-top: 10px

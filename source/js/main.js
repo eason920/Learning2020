@@ -17,16 +17,18 @@ function ch_font(str,clock){
 	var x='',y='',playo='';
 	y=clock;
 
-
 	playo="playC("+y+");"
 	str=spanWord((str), pAry)
 
-		
 	if(str.indexOf("**")!=-1){
+		
 		str=str.replace("**","");
-		x=str.replace(str,"**<a name='"+y+"' id='"+y+"'></a><div id='t"+y+"' onDblClick='_dictClose();'  class='english'><div class='art-star'><div class='icon-star'></div></div><div class='art-art'><p>" +str+ "</p><input type='button' onclick='"+playo+"' class='read_btn link'></div></div>");
+		x=str.replace(str,"**<a name='"+y+"' id='"+y+"'></a><div id='t"+y+"' onDblClick='_dictClose();'  class='english'><div class='art-star'   onclick=goP_sentences('"+y+"') ><div class='icon-star' id='art-star"+y+"'></div></div><div class='art-art'><p>" +str+ "</p><input type='button' onclick='"+playo+"' class='read_btn link'></div></div>");
+		// console.log('str above', str);
 	}else{
-		x=str.replace(str,"**<a name='"+y+"' id='"+y+"'></a><div id='t"+y+"' onDblClick='_dictClose();'  class='english'><div class='art-star'><div class='icon-star'></div></div><div class='art-art'><p>" +str+ "</p><input type='button' onclick='"+playo+"' class='read_btn link'></div></div>");
+		
+		x=str.replace(str,"**<a name='"+y+"' id='"+y+"'></a><div id='t"+y+"' onDblClick='_dictClose();'  class='english'><div class='art-star' onclick=goP_sentences('"+y+"')><div class='icon-star' id='art-star"+y+"'></div></div><div class='art-art'><p>" +str+ "</p><input type='button' onclick='"+playo+"' class='read_btn link'></div></div>");
+		// console.log('str under', str);
 	}
 
 	return x;
@@ -53,6 +55,24 @@ function ch_font2(str,clock){
 	return x;
 }
 
+function ch_fontTran(str,clock){
+	var x='',y='',playo='';
+	y=clock;
+	
+	playo="play("+y+");"		
+	str=tranchang(str)
+
+	if(str.indexOf("**")!=-1){
+		str=str.replace("**","");
+		x=str.replace(str,"**<a name='"+y+"' id='"+y+"'></a><div id='t"+y+"' onDblClick='_dictClose();'  class='english'><div class='art-star'  onclick=goP_sentences('"+y+"')><div class='icon-star' id='art-star"+y+"'></div></div><div class='art-art'><p>" +str+ "</p><input type='button' onclick='"+playo+"' class='read_btn link'></div></div>");
+	}else{
+		x=str.replace(str,"**<a name='"+y+"' id='"+y+"'></a><div id='t"+y+"' onDblClick='_dictClose();'  class='english'><div class='art-star'  onclick=goP_sentences('"+y+"')><div class='icon-star' id='art-star"+y+"'></div></div><div class='art-art'><p>" +str+ "</p><input type='button' onclick='"+playo+"' class='read_btn link'></div></div>");
+	}
+
+	return x;
+}
+
+
 const replaceCode = function(target, Str){
 	// v span
 	// Str = Str.replace(/<\/span>/g, '</span>&nbsp');
@@ -74,29 +94,90 @@ const replaceCode = function(target, Str){
 	// CODE AT START
 	$('.english span').each(function(){
 		if( $(this).text().indexOf('“') >= 0 ){
-			$(this).before('<span class="is-symbol">“</span>');
+			$(this).before('<span class="is-symbol is-symbol-left">“</span>');
 			$(this).text( $(this).text().substr(1) );
 		}
 		if( $(this).text().indexOf('(') >= 0 ){
-			$(this).before('<span class="is-symbol">(</span>');
+			$(this).before('<span class="is-symbol is-symbol-left">(</span>');
 			$(this).text( $(this).text().substr(1) );
 		}
 		if( $(this).text().indexOf('[') >= 0 ){
-			$(this).before('<span class="is-symbol">[</span>');
+			$(this).before('<span class="is-symbol is-symbol-left">[</span>');
 			$(this).text( $(this).text().substr(1) );
 		}
 	});
 }
 
+var trx=''
 // for 朗讀(單句換行)
-function Step1(){
+function P1_Step1(){
 	var eu='',cu='';Str='';
 	for (i=0;i<=$(en).find("lrclist:last").index();i++){
 		eu=eu.replace('***','**')
 		cu=cu.replace('***','**')		
-		if($(en).find("lrclist:eq("+i+")").index()!=-1){	
-			eu=eu+ch_font($(en).find("lrclist:eq("+i+")").attr("content"),i);		  
-			cu=cu+ch_font2($(tc).find("lrclist:eq("+i+")").attr("content"),i);
+		if($(en).find("lrclist:eq("+i+")").index()!=-1){
+			trx=$(en).find("lrclist:eq("+i+")").attr("train")
+			
+			// en v
+			let enSource = '';
+			let enCode = '';
+			if((trx!='' && trx!=undefined)){	
+				enSource = ch_fontTran(trx,i); 
+			}else{
+				enSource = ch_font($(en).find("lrclist:eq("+i+")").attr("content"),i);
+			}
+
+			if( i !=0 ){
+				enCode = enSource;
+			}else{
+				if( enSource.indexOf('>(') < 0 ){
+					// haven't sort v
+					enCode = enSource;
+				}else{
+					// have sort v
+					let ary = enSource.split('/');
+					
+					// first sort v
+					const ary3 = ary[3].split('>');
+					let new3 = '';
+					for( j=0; j<= ary3.length - 3; j++ ){
+						new3 += ary3[j] + '>';
+					};
+					new3 = new3 + '<span><';
+					ary[3] = new3;
+
+					// secend sort (if have) v
+					ary[4].indexOf(')<') >= 0 ? ary[4] = 'span><span><' : null;
+			
+					let newEnCode = '';
+					for( k=0; k<=ary.length-1; k++ ){
+						newEnCode += ary[k];
+						k < ary.length-1 ? newEnCode += '/' : null;
+					}
+					enCode = newEnCode.replace(/(\<span\>\<\/span\>)/g, '');
+				}
+			}
+			eu = eu + enCode;
+
+			// ch v
+			const chSource = ch_font2($(tc).find("lrclist:eq("+i+")").attr("content"),i );
+			let chCode = '';
+			if( i != 0 ){
+				// content v
+				chCode = chSource;
+			}else{
+				// title v
+				if( chSource.indexOf('>(') < 0 ){
+					// haven't sort
+					chCode = chSource;
+				}else{
+					// have sort
+					chCode = chSource.replace(/([\>][^\)]*)/, "\>");
+					chCode = chCode.replace('>)', '>');
+				}
+			};
+			cu=cu+chCode;
+
 		}else{
 		  	break ;
 		}
@@ -112,20 +193,82 @@ function Step1(){
 	}
 
 	replaceCode($('.article') , Str);
-	
+	if((trx=='' || trx==undefined)){
+		$('.is-item-arttype').remove();
+	}	
 }
 
+
+const fnEnRemoveSortString = function(i,en){
+	// console.log('do en remove')
+	let str= '';
+	if(i != 0 ){
+		str = en;
+	}else{
+		const begin = '>(';
+		const end = ')<'
+		// en
+		if( en.indexOf(begin) < 0 ){
+			// 字串沒分類文字時 (life) or (health) or ...
+			str = en;
+		}else{
+			// 字串有分類文字時
+			let ary = en.split('\/span>');
+			let k = '';
+
+			// 不確定分類文字的英文字數有幾個，不一定僅1個
+			switch(true){
+				case ary[1].indexOf(end) >= 0 :
+					k = 2;
+					break;
+				case ary[2].indexOf(end) >= 0 :
+					k = 3;
+				case ary[3].indexOf(end) >= 0 :
+					k = 4;
+				default:
+					k = 1;
+			};
+			for( j = k; j<=ary.length; j++){
+				str += ary[j] + '\/span>';
+			};
+		}
+	}
+	return str;
+}
+
+const fnChRemoveSortString = function(i, ch){
+	let str = '';
+	if( i != 0 ){
+		str = ch;
+	}else{
+		// ch
+		str = ch.replace(/([\(][^\)]*)/, "");
+		str = str.replace('\)', '');
+	}
+	return str
+}
+
+
 // for 講解(多句合成段才換行)
-function Step2(){
-    var eu='',Str='';
+function P1_Step2(){
+    var eu='',Str='', enCode='', chCode='';
 	
 	for (i=0;i<=$(en).find("lrclist:last").index();i++){
 	
 		if($(en).find("lrclist:eq("+i+")").index()!=-1){
-			
 			playo="playC("+i+");"			
 			eu=eu.replace("**","");
-			eu = eu + '<a name="' + i + '" id="N' + i + '"></a><div class="english" id="Nt' + i + '" ><div class="art-star"></div><div class="art-art"><p>' + spanWord($(en).find("lrclist:eq(" + i + ")").attr("content"), pAry)+'</p><input type="button" onclick="'+playo+'" class="read_btn link"></div></div><div id="bubble'+i+'"  class="annotation" style="display:none;"></div><div class="Chinese" id="Nct'+i+'" >'+$(tc).find("lrclist:eq("+i+")").attr("content")+'</div>';
+			trx=$(en).find("lrclist:eq("+i+")").attr("train")
+			if((trx!='' && trx!=undefined)){
+				enCode = fnEnRemoveSortString( i, tranchang(trx,i) );
+				chCode = fnChRemoveSortString( i , $(tc).find("lrclist:eq("+i+")").attr("content") );
+				eu=eu+'<a name="' + i + '" id="N' + i + '"></a><div class="english" id="Nt' + i + '" ><div class="art-star" id="art-star'+i+'" onclick=goP_sentences('+i+') ><div class="icon-star"></div></div><div class="art-art"><p>' +enCode+'</p><input type="button" onclick="'+playo+'" class="read_btn link"></div></div><div id="bubble'+i+'"  class="annotation" style="display:none;"></div><div class="Chinese" id="Nct'+i+'" >'+chCode+'</div>';
+
+			}else{
+				enCode = fnEnRemoveSortString( i, spanWord($(en).find("lrclist:eq(" + i + ")").attr("content"), pAry) );
+				chCode = fnChRemoveSortString( i, $(tc).find("lrclist:eq("+i+")").attr("content") );
+				eu = eu + '<a name="' + i + '" id="N' + i + '"></a><div class="english" id="Nt' + i + '" ><div class="art-star" id="art-star'+i+'" onclick=goP_sentences('+i+') ><div class="icon-star"></div></div><div class="art-art"><p>' + enCode +'</p><input type="button" onclick="'+playo+'" class="read_btn link"></div></div><div id="bubble'+i+'"  class="annotation" style="display:none;"></div><div class="Chinese" id="Nct'+i+'" >'+ chCode +'</div>';
+			}
 			eu=eu.replace("**","");
 		
 		}else{
@@ -141,6 +284,11 @@ function Step2(){
 	
 	replaceCode($('.article2') , Str);
 
+	$('.icon-like').on('click',function(){
+		StepFinish('Promote')
+		jquery_Record()
+		
+	})
 }
 
 // for 單字片語
@@ -168,9 +316,9 @@ function Vocabulary(){
 						if(right(words_sen[1],1)=='，')
 							words_sen[1]=left(words_sen[1],words_sen[1].length-1)+'。'		
 								
-						eu = eu + '<div class="vacbox"><div class="vacmain"><span class="vacmain-en">' + work[0] + work[1] + '<span class="vacmain-sound"></span></span><span class="vacmain-ch">' + work[2] + '</span></div><div class="vacsub"><span class="vacsub-en">' + (words_sen[0]) + '</span><span class="vacsub-ch" >' + words_sen[1] + '</span></div></div>'
+						eu = eu + '<div class="vacbox"><div class="vacmain"><span class="vacmain-en">' + work[0] + work[1] + '<span class="vacmain-sound" onclick=playSound("'+work[0]+'") ></span></span><span class="vacmain-ch">' + work[2] + '</span></div><div class="vacsub"><span class="vacsub-en">' + (words_sen[0]) + '</span><span class="vacsub-ch" >' + words_sen[1] + '</span></div></div>'
 					}else{
-						eu=eu+'<div class="vacbox"><div class="vacmain"><span class="vacmain-en">'+work[0]+work[1]+'<span class="vacmain-sound"></span></span><span class="vacmain-ch">'+work[2]+'</span></div></div>'
+						eu=eu+'<div class="vacbox"><div class="vacmain"><span class="vacmain-en">'+work[0]+work[1]+'<span class="vacmain-sound" onclick=playSound("'+work[0]+'") ></span></span><span class="vacmain-ch">'+work[2]+'</span></div></div>'
 					}
 				
 				}
@@ -180,14 +328,159 @@ function Vocabulary(){
 		}	
 	  
 		
-		$('.translation_list').html(eu)
+		$('#vocabulary').html(eu)
 		$('body').show()
 	}
 }
 
 
+function phrase(){
+	
+	if($(en).find('phrase').text().length>5){
+	 
+		if($(en).find('phrase').text().indexOf("@@@@")==-1)  //不重覆判斷
+			$(en).find('phrase > br').replaceWith("@@@@");
+		
+			var regExphra = /[@@@@][\s][@@@@]/g
+			var phra=$(en).find('phrase').text().replace(regExphra,"<br>");
+			//var phra=$(en).find('phrase').text()
+			phra = phra.replace(/@@@@@@@@*/g,"||<br>||")		
+			phra = phra.replace(/@@@@*/g,"||")
+	
+			PHRcontent = phra.split('||<br>||')
+			eu=''
+			for(i=0;i<PHRcontent.length;i++){
+			
+				var pContent = new Array()
+				pContent = PHRcontent[i].split("||")
+				
+				var tmp = new Array()
+				tmp = pContent[0].split(/[^a-z,^A-Z,^\s]/g)
+				//if(tmp[0]!=undefined)
+				//	pContent[2] = pContent[2].replace(tmp[0],'<span class="s-Word">'+tmp[0]+'</span>')
+				
+
+
+				
+				eu =eu+  '<div class="vacbox"><div class="vacmain"><span class="vacmain-en">' + pContent[0] + '</span><span class="vacmain-ch">' +pContent[1] + '</span></div><div class="vacsub"><span class="vacsub-en">' + pContent[2] + '</span><span class="vacsub-ch" >' + pContent[3] + '</span></div></div>'
+
+
+				 
+			}		
+			
+			$('#phrase').html(eu)
+			$('body').show()
+	}
+
+}
+
+function goP_sentences(ix){
+
+	if(!$('#icon-star'+ix).hasClass('active')){
+		var tg='I'
+	}else{
+		var tg='D'
+	}
+
+	$.ajax({
+		type:"POST",
+		url:"./Personal_Sentences_response.asp",
+		data: {
+			indx:refId,
+			orders: ix,
+			en:escape($(en).find("lrclist:eq("+ix+")").attr("content").replace('**','')),
+			tc:escape($(tc).find("lrclist:eq("+ix+")").attr("content").replace('**','')),
+			tg:tg,
+			clock:clock_num0[ix]
+		},
+		dataType:"html",
+		error: function(){
+		},
+		success:function(data){
+			$('body').append(data);
+			jquery_Record()
+		}				   
+	});		 
+
+}
+
+function StepFinish(tg){
+	$.ajax({
+		type:"POST",
+		url:"./StepFinish.asp",
+		data: {
+			indx:refId,
+			tg:tg
+		},
+		dataType:"html",
+		error: function(){
+		},
+		success:function(data){
+			jquery_Record()
+		}				   
+	});
+}	
+
+function jquery_Record(){ 
+	
+	$.ajax({
+		type:"POST",
+		url:"../../newmylessonmobile/api/LearningJson",
+		data: {
+			member_id:Me.Mindx,
+			customer_id:Me.customer,
+			news_id:refId
+		},
+		dataType:"json",
+		success:function(data){
+			let Sarray=''
+			if(data.bookmark==1){
+				$('.icon-star-big').addClass('active')
+			}
+
+			if(data.reading!=''){
+				$('.is-ex1 .topbar-s').html(data.reading+'<span>分</span>')
+				if(data.reading>=60)
+					$('.is-ex1 .icon-correct').fadeIn();
+			}
+
+			if(data.listening!=''){
+				$('.is-ex2 .topbar-s').html(data.listening+'<span>分</span>')
+				if(data.listening>=60)
+					$('.is-ex2 .icon-correct').fadeIn();
+			}
+
+			if(data.word!=''){
+				$('.is-ex3 .topbar-s').html(data.word+'<span>分</span>')
+				if(data.word>=60)
+					$('.is-ex3 .icon-correct').fadeIn();
+			}
+
+			$('.icon-like').html(data.Promote);			
+			if(data.Step1=='1')
+				$('.is-step-switch1 .icon-correct').fadeIn();
+			if(data.Step2=='1')
+				$('.is-step-switch2 .icon-correct').fadeIn();						
+			if(data.Step3=='1')
+				$('.is-step-switch3 .icon-correct').fadeIn();
+			
+			if(data.Sentences!=''){
+				Sarray=data.Sentences.split(',')
+				for(a in Sarray){
+					$('#icon-star'+Sarray[a]).addClass('active');
+					$('.article .icon-star').eq(Sarray[a]).addClass('active');
+					$('.article2 .icon-star').eq(Sarray[a]).addClass('active');
+				}
+			}
+
+
+		} 
+	});
+}
+
 function main() {
 	playerinit()
+	jquery_Record()
 
 	var E_Channel = $(en).find("lrc").attr("Channel");
 	var C_Channel = $(tc).find("lrc").attr("Channel");
@@ -221,28 +514,25 @@ function main() {
 
 	var ndate = left($(en).find("lrc").attr("Ndate"), 4) + '/' + mid($(en).find("lrc").attr("Ndate"), 4, 2) + '/' + mid($(en).find("lrc").attr("Ndate"), 6, 2)
 
-	$('#title-a,#title-b').html(en_title)
-	$('#subtitle-a,#subtitle-b').html(ch_title)
-	$('#class_f').html(Sample_classify + '｜' + E_Channel + '/' + C_Channel + level)
-
-	if (Sample_classify == '專業通則') {
-		$('.classification ul li:eq(0)').attr('class', 'activity')
-	} else if (Sample_classify == '生活') {
-		$('.classification ul li:eq(1)').attr('class', 'activity')
-	} else if (Sample_classify == '社交') {
-		$('.classification ul li:eq(2)').attr('class', 'activity')
-	} else if (Sample_classify == '通識') {
-		$('.classification ul li:eq(3)').attr('class', 'activity')
-	} else if (Sample_classify == '自我意識') {
-		$('.classification ul li:eq(4)').attr('class', 'activity')
-	} else if (Sample_classify == '基礎養成') {
-		$('.classification ul li:eq(5)').attr('class', 'activity')
-	}
-
+	$('#title-a, #title-b').html(en_title)
+	$('#subtitle-a, #subtitle-b').html(ch_title)
+	$('#class_f').html( E_Channel + '/' + C_Channel + level)
 
 	$('.ArticleInfo2').html('文章序號:' + ids[1] + ' Date:' + ndate)
 	$('.Article_pic').html(pic)
+	//Page1
 	Vocabulary()
-	Step1()
-	Step2()
+	phrase()
+	P1_Step1()
+	P1_Step2()
+	//
+	//Page2
+	P2_Step1()
+	//
+	
+	//Page3
+	EX1()
+	EX2()
+	EX3()
+	//
 }

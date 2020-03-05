@@ -1,12 +1,13 @@
 %transition
 	transition: .3s
-$wh: 155px
+$wh: 115px
+$wh6row: 155px
 $bar: 15px
 $bottom: 18px
 .memobox
 	font:
 		size: 0
-	width: $wh + 20px
+	width: $wh + 40px
 	height: $wh
 	position: absolute
 	box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, 0.1)
@@ -21,9 +22,14 @@ $bottom: 18px
 		.memobox-del,
 		.memobox-save
 			display: block
+
 	&.is-static
 		transition: .1s
-		
+
+	&.is-lengthy
+		height: $wh6row
+		.memobox-text
+			height: calc( #{$wh6row} - #{$bar} - #{$bottom} )
 
 body.is-memo-moving
 	user-select: none
@@ -47,7 +53,7 @@ body.is-memo-moving
 .memobox-text
 	width: 100%
 	height: calc( #{$wh} - #{$bar} - #{$bottom} )
-	padding: 5px 10px 0
+	padding: 0 10px
 	border: none
 	// margin: 8px 8px 0
 	// height: calc( 100% - 30px - 8px )

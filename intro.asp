@@ -1,4 +1,4 @@
-<%@LANGUAGE="VBSCRIPT" CODEPAGE="65001"%>  
+﻿<%@LANGUAGE="VBSCRIPT" CODEPAGE="65001"%>  
 <!-- #include virtual="include/DBConnection.asp"-->
 <!-- #include virtual="include/functions.asp"-->
 <%   
@@ -7,14 +7,14 @@
 	response.Charset = "utf-8"
 	
 
-  mindx=1179  '--使用者ID
-  cindx=411  '--customer ID
-  enddate="2022/1/1" '--使用者到期日
-  Ispay=1
+  'mindx=1179  '--使用者ID
+  'cindx=411  '--customer ID
+  'enddate="2022/1/1" '--使用者到期日
+  'Ispay=1
 
-  'mindx=Get_mid()  '--使用者ID
-  'cindx=Get_cid()  '--customer ID
-  'enddate=Get_enddate()  '--使用者到期日
+  mindx=Get_mid()  '--使用者ID
+  cindx=Get_cid()  '--customer ID
+  enddate=Get_enddate()  '--使用者到期日
   edcheck=datediff("d",date(),enddate)
 
 	ADCode() '通路Code
@@ -85,8 +85,7 @@
 		tamplate="a"
 	end if
 
-  mindx=1179
-  cindx=411
+
   sql = "select memo from  member_memobox where ref_id='"&ref_id&"' and customer_id='"&cindx&"' and member_id='"&mindx&"' "
   set rs=connection2.execute(sql)
   if not rs.eof then
@@ -140,6 +139,7 @@
   <script src="https://cdn.jsdelivr.net/npm/opus-media-recorder@latest/OpusMediaRecorder.umd.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/opus-media-recorder@latest/encoderWorker.umd.js"></script>
 	<script type="text/javascript" src="Dr.eye/Dre.js"></script>
+  <script src="../../../Joinus/joinus.js?a"></script>
 	<script src="../../library/js/lightBoxDIY-V2.js"></script>
   <script  src="../../jquery.cookie.js"></script>
 	<script src="../../js/Uinfo.js"></script>   		
@@ -150,6 +150,16 @@
   <script  src="./js/Times.js"></script>
 	<script>
       var Me=new User();
+
+      if(Me.Ispay==1 && Me.EnddateChk()<=0 ){
+        var DemoTimeout=1
+        DemoLimit(<%=cindx%>,<%=mindx%>,'news',<%=ref_id%>)		
+      }else if(Me.Ispay!=1 || Me.EnddateChk()<=0 ){
+        var DemoTimeout=1
+      }else{
+        var DemoTimeout=''
+      }
+
 		// art video v
       let videoId = '<%=Youbute%>';
       let refId=<%=ref_id%>
@@ -180,10 +190,10 @@
       };
 
 
-        edcheck='<%=edcheck%>';
-        Ispay='<%=Ispay%>';
-        BuyType=Me.BuyType;
-        Product=Me.Product;
+      edcheck='<%=edcheck%>';
+      Ispay='<%=Ispay%>';
+      BuyType=Me.BuyType;
+      Product=Me.Product;
 
 
       if((parseInt(edcheck)>parseInt(0)) && Product!='228' )
@@ -393,7 +403,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <div class="ArticleInfo-box">
                   <div class="ArticleInfo1 type2">
                     <div class="classification_btn"><span id="class_f"> </span>
-                      <div class="classification">
+                      <!--div class="classification">
                         <ul>
                           <li>專業通則</li>
                           <li>生活</li>
@@ -402,7 +412,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                           <li>自我意識</li>
                           <li>基礎養成</li>
                         </ul>
-                      </div>
+                      </div-->
                     </div>
                   </div>
                   <div class="ArticleInfo2"> 
@@ -519,22 +529,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
           </div>
         </div>
-      </div><a class="icon-how" href="#">
+      </div><a class="icon-how" href="#" style='display: none;'>
         <div class="icon-bulb"></div>
         <div class="icon-how-text">Tips</div></a>
     </div>
-    <!--
-    <div class="lb-mask-final"></div>
+    
+    <!--div class="lb-mask-final"></div>
     <div class="lb is-lb-final">
-      <div class="lb-box"><img class="lb-final-img" src="./images/congrats.png">
+      <div class="lb-box">
+        <div class="lb-final-img"></div>
         <h2 class="lb-final-title">表現真的太棒！建議一週至少要完成三到七篇文章的學習驗收，才能大幅提升自己的英文實力。</h2>
-        <div class="lb-final-box"><a class="lb-final-item" href="#" style="background-image: url(./images/galxy.jpg)">
-            <div class="lb-final-text">觀看成效</div></a><a class="lb-final-item" href="#" style="background-image: url(./images/galxy.jpg)">
+        <div class="lb-final-box"><a class="lb-final-item" href="javascript:void(0)" style="background-image: url(./images/radar.png)">
+            <div class="lb-final-text">觀看成效</div></a><a class="lb-final-item" href="javascript:void(0)" style="background-image: url(./images/galxy.jpg)">
             <div class="lb-final-text">學下一篇</div>
             <div class="lb-final-art">特斯拉駕駛落橋身亡特斯拉駕駛落橋身亡</div></a></div>
       </div>
-    </div>
-    <!-->
+    </div-->
+    
 	<script>
 		// skin ( 必需寫在下方 ) v
 		var template;
