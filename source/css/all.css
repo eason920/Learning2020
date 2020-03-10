@@ -1561,6 +1561,7 @@ input[type=range]::-ms-track {
 }
 
 .lb-final-art {
+  text-align: center;
   font-sizze: 1rem;
   position: absolute;
   width: 80%;
