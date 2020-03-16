@@ -149,6 +149,7 @@
 	<script src='../../../../Funfa/Fa.js'></script>
   <script  src="./js/Times.js"></script>
 	<script>
+      let pAry = [];// < 單字片語 ary，在文章中比對出單字並加「籃色底線」，push in main.js，use for main.js & page.js
       var Me=new User();
 
       if(Me.Ispay==1 && Me.EnddateChk()<=0 ){
@@ -534,8 +535,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="icon-how-text">Tips</div></a>
     </div>
     
-    <!--div class="lb-mask-final"></div>
-    <div class="lb is-lb-final">
+    <div class="lb-mask-final" style="display:none;"></div>
+    <div class="lb is-lb-final" style="display:none;">
       <div class="lb-box">
         <div class="lb-final-img"></div>
         <h2 class="lb-final-title">表現真的太棒！建議一週至少要完成三到七篇文章的學習驗收，才能大幅提升自己的英文實力。</h2>
@@ -544,7 +545,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div class="lb-final-text">學下一篇</div>
             <div class="lb-final-art">特斯拉駕駛落橋身亡特斯拉駕駛落橋身亡</div></a></div>
       </div>
-    </div-->
+    </div>
     
 	<script>
 		// skin ( 必需寫在下方 ) v

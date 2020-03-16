@@ -1,7 +1,4 @@
 // JavaScript Document
-// 取字串
-let pAry = [];
-
 function Block(id){
 	if(id==1){
 	 $('.article').show();
@@ -21,14 +18,10 @@ function ch_font(str,clock){
 	str=spanWord((str), pAry)
 
 	if(str.indexOf("**")!=-1){
-		
 		str=str.replace("**","");
 		x=str.replace(str,"**<a name='"+y+"' id='"+y+"'></a><div id='t"+y+"' onDblClick='_dictClose();'  class='english'><div class='art-star'   onclick=goP_sentences('"+y+"') ><div class='icon-star' id='art-star"+y+"'></div></div><div class='art-art'><p>" +str+ "</p><input type='button' onclick='"+playo+"' class='read_btn link'></div></div>");
-		// console.log('str above', str);
 	}else{
-		
 		x=str.replace(str,"**<a name='"+y+"' id='"+y+"'></a><div id='t"+y+"' onDblClick='_dictClose();'  class='english'><div class='art-star' onclick=goP_sentences('"+y+"')><div class='icon-star' id='art-star"+y+"'></div></div><div class='art-art'><p>" +str+ "</p><input type='button' onclick='"+playo+"' class='read_btn link'></div></div>");
-		// console.log('str under', str);
 	}
 
 	return x;
@@ -200,7 +193,6 @@ function P1_Step1(){
 
 
 const fnEnRemoveSortString = function(i,en){
-	// console.log('do en remove')
 	let str= '';
 	if(i != 0 ){
 		str = en;
@@ -456,7 +448,9 @@ function jquery_Record(){
 					$('.is-ex3 .icon-correct').fadeIn();
 			}
 
-			$('.icon-like').html(data.Promote);			
+			$('.icon-like').html(data.Promote);	
+			(data.MyPromote == '1')? $('.icon-like').addClass('active') : $('.icon-like').removeClass('active')
+
 			if(data.Step1=='1')
 				$('.is-step-switch1 .icon-correct').fadeIn();
 			if(data.Step2=='1')
@@ -478,9 +472,66 @@ function jquery_Record(){
 	});
 }
 
+function jquery_RecordFinish(){ 
+	
+	$.ajax({
+		type:"POST",
+		url:"../../newmylessonmobile/api/LearningJson",
+		data: {
+			member_id:Me.Mindx,
+			customer_id:Me.customer,
+			news_id:refId
+		},
+		dataType:"json",
+		success:function(data){
+
+			if(data.reading!=''){
+				$('.is-ex1 .topbar-s').html(data.reading+'<span>分</span>')
+				if(data.reading>=60)
+					$('.is-ex1 .icon-correct').fadeIn();
+			}
+
+			if(data.listening!=''){
+				$('.is-ex2 .topbar-s').html(data.listening+'<span>分</span>')
+				if(data.listening>=60)
+					$('.is-ex2 .icon-correct').fadeIn();
+			}
+
+			if(data.word!=''){
+				$('.is-ex3 .topbar-s').html(data.word+'<span>分</span>')
+				if(data.word>=60)
+					$('.is-ex3 .icon-correct').fadeIn();
+			}
+
+			(data.reading>=60 && data.listening>=60 && data.word>=60) ? $('.lb-mask-final,.is-lb-final').show() : null
+
+		} 
+	});
+}
+
+const finalShow=()=>{
+	$.ajax({
+		type:"POST",
+		url:"./nextPage.asp",
+		data: {
+			indx:refId
+		},
+		dataType:"json",
+		success:function(data){
+			$('.lb-final-art').html(data.ch_subject)
+			$('.lb-final-item').eq(1).css('background-image','url(../../en/pic/'+data.pic+')')
+
+			$('.lb-final-item').on('click',function(){
+				$(this).index()===0 ? location.href='../track' : location.href='?rid='+data.indx
+			})
+		}
+	})		
+}
+
 function main() {
 	playerinit()
 	jquery_Record()
+	finalShow()
 
 	var E_Channel = $(en).find("lrc").attr("Channel");
 	var C_Channel = $(tc).find("lrc").attr("Channel");

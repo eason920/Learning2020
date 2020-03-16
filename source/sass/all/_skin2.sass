@@ -211,7 +211,7 @@
 	// 	.is-art-title
 	// 		span,b
 	// 			background-color: $g-strong
-	// 			color: $c-w
+	// 			color:  $c-w
 	// 			&:after
 	// 				background-color: $g-strong
 	// 		span
@@ -407,18 +407,72 @@
 		color: $g-c1
 
 	// MEMO BOX
-	.memobox-del
-		border-color: $g-c1
-		color: $g-c1
-		&:hover
-			background-color: $g-c1
-			color: $g-memo
+	// .memobox-del
+	// 	border-color: $g-c1
+	// 	color: $g-c1
+	// 	&:hover
+	// 		background-color: $g-c1
+	//			color: $g-memo
 
 	.memobox-save
 		border-color: $g-c1
-		background-color: $g-c1
-		color: $g-memo
+		color: $g-c1
+		&:hover
+			background-color: #5e8f81
+			color: $g-memo
+		&.saved
+			border-color: $g-c1
+			background-color: $g-c1
+			color: $g-memo
 
+	// _drbox.sass v
+	&#Dr_layer,
+	.drbox
+		background-color: $g-dr-bg!important
+	.drbox-icon
+		animation: ani-skin2-drbox 1.5s linear infinite forwards
+		color: #fff
+		background-color: $g-c1
+		border-color: $g-c1
+		box-shadow: $g-c1 0 0 0 1px inset
+		span
+			color: $g-c1
+			background-color: #fff
+			border: solid 1px $g-c1
+
+
+
+@keyframes ani-skin2-drbox
+	0%
+		color: $g-c1
+		background-color: $g-dr-bg
+		border-color: $g-c1
+	50%
+		color: $g-c1
+		background-color: $g-dr-bg
+		border-color: $g-c1
+	51%
+		color: #fff
+		background-color: $g-c1
+		border-color: $g-c1
+	100%
+		color: #fff
+		background-color: $g-c1
+		border-color: $g-c1
+
+@keyframes ani-skin2-drbox-span
+	0%
+		color: #fff
+		background-color: $g-c1
+	50%
+		color: #fff
+		background-color: $g-c1
+	51%
+		color: $g-c1
+		background-color: #fff
+	100%
+		color: $g-c1
+		background-color: #fff
 
 // ====================================
 // == BODY CLASS
@@ -428,9 +482,6 @@ body.is-memo-moving
 	.skin2
 		.english, .Chinese
 			span:hover
-				color: $c-blue
+				color: #fff
 				background-color: $g-light1
 
-// _drbox.sass v
-#Dr_layer.skin2
-	background-color: #e7f7f3!important

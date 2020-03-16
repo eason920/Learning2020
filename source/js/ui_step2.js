@@ -22,7 +22,7 @@ function P2_Step1(){
 
 		if($(en).find("lrclist:eq("+i+")").index()==0){
 			Pre_arrow='style="display: none;"'
-			next_text='開始'
+			next_text='下一句'
 			Next_arrow=''
 		}else if($(en).find("lrclist:eq("+i+")").index()==$(en).find("lrclist:last").index()){	
 			Pre_arrow=''

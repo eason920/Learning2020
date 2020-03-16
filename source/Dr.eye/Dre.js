@@ -56,10 +56,10 @@ const orgOffset = function(){
 			cx = maxX + $(window).scrollLeft();
 		}
 
-		cy = $(this).offset().top + 22;
+		cy = $(this).offset().top + $(this).height();
 		if( cy > maxY ){
 			let destance = wh - ( cy + 215 );
-			cy = wh - 215 - destance - 215 - 22;
+			cy = wh - 215 - destance - 215 - $(this).height();
 		}
 		$('.english').off('.xy');
 	});	
@@ -73,7 +73,13 @@ const spanHeightLight = function(){
 	});
 };
 
+
+function fnVocabularyWidth(left){
+	$('.drbox').css({left, 'display': 'block'});
+}
+
 function DrDate(Str) {
+	
     ///Dr.eye/dataCheck.asp?str=urged&key=872b8d233e631c80c8344a1d068e1c52
    var url='/Dr.eye/dataCheck.asp';
 	var Parameter = 'str=' + (Str) + '&key=' + DrSign(Str);
@@ -86,22 +92,31 @@ function DrDate(Str) {
 	
 
 	$('body').append('<div id="lightBoxDIY" style="width:100%;height:100vh;background-color: transparent;position: fixed;z-index: 8999;top:0px;left:0px;" onclick="RemoveDrAll()"></div>')
-	$('body').append('<div id="Dr_layer" style="position: absolute; z-index: 9000;  left:' + cx + 'px;top:' + cy + 'px;"><table border="0" cellspacing="0" cellpadding="0" width="100%" align="center"  ><tbody><tr><td width="100%" class="BG" id="BGLoading"><div class="drbox"><div class="drbox-logo"></div><div class="drbox-icon"></div></div><iframe id="_dictFrame" name="_dictFrame"  height="200"  src="' + url + '?' + Parameter +'" frameborder="0" width="100%" style="border:0px;" border="0" scrolling="no" ></iframe></td></tr></tbody></table></div>')
+	$('body').append('<div id="Dr_layer" style="position: absolute; z-index: 9000;  left:' + cx + 'px;top:' + cy + 'px;"><table border="0" cellspacing="0" cellpadding="0" width="100%" align="center"  ><tbody><tr><td width="100%" class="BG" id="BGLoading"><div class="drbox"><div class="drbox-icon" data-value="0"><div class="drbox-true"><span>+</span>收錄</div><div class="drbox-false">己收錄</div></div><div class="drbox-logo"></div></div><iframe id="_dictFrame" name="_dictFrame"  height="200"  src="' + url + '?' + Parameter +'" frameborder="0" width="100%" style="border:0px;" border="0" scrolling="no" ></iframe></td></tr></tbody></table></div>')
 	$(function(){
 		$( "#Dr_layer" ).draggable();
 		$('#Dr_layer').addClass('is-ready');
+		
 		$('.drbox-icon').click(function () {
 			$('.drbox-icon').toggleClass('active');
+			if(!$('.drbox-icon').hasClass('active')){
+				$('.drbox-icon').attr('data-value',"0")
+				Dr_Starjoin(refId,Str,'','D')
+			}else{
+				$('.drbox-icon').attr('data-value',"1")
+				Dr_Starjoin(refId,Str,'','I')
+			}			
 		});
 		const className = fnLayerColor();
 		$( "#Dr_layer" ).addClass(className);
+
 	});
 }
 
 function DrDate1(Str){
 	var lpos, tpos;
 	var url='../../../../sample/learning/Dr.eye/data3.asp';
-	var Parameter='str='+(Str)+'&key='+DrSign(Str)+'&template='+template;
+	var Parameter='str='+(Str)+'&key='+DrSign(Str)+'&tamplate='+tamplate;
 	RemoveDr()
 	orgOffset();
 	spanHeightLight();
@@ -116,23 +131,32 @@ function DrDate1(Str){
 	// }else{
 	// 	tpos = my - 50;
 	// }
-	$('body').append('<div id="Dr_layer" style="position: absolute; z-index: 9000;  left:' + cx + 'px;top:' + cy +'px;"><table border="0" cellspacing="0" cellpadding="0" width="100%" align="center"  ><tbody><tr><td width="100%" class="BG" id="BGLoading"><div class="drbox"><div class="drbox-logo"></div><div class="drbox-icon"></div></div><iframe id="_dictFrame" name="_dictFrame"  height="200"  src="'+url+'?'+Parameter+'" frameborder="0" width="100%" style="border:0px;" border="0" scrolling="no" ></iframe></td></tr></tbody></table></div>')
+	$('body').append('<div id="Dr_layer" style="position: absolute; z-index: 9000;  left:' + cx + 'px;top:' + cy +'px;"><table border="0" cellspacing="0" cellpadding="0" width="100%" align="center"  ><tbody><tr><td width="100%" class="BG" id="BGLoading"><div class="drbox"><div class="drbox-icon" data-value="0"><div class="drbox-true"><span>+</span>收錄</div><div class="drbox-false">己收錄</div></div><div class="drbox-logo"></div></div><iframe id="_dictFrame" name="_dictFrame"  height="200"  src="'+url+'?'+Parameter+'" frameborder="0" width="100%" style="border:0px;" border="0" scrolling="no" ></iframe></td></tr></tbody></table></div>')
 	//$('body').append('<div id="Dr_layer" style="position: absolute; z-index: 9000;  left:'+(mx+10)+'px;top:'+(my-50)+'px;"><table border="0" cellspacing="0" cellpadding="0" width="100%" align="center" style="background-color:#f9efaa;" ><tbody><tr><td width="100%" class="BG" id="BGLoading"><iframe id="_dictFrame" name="_dictFrame"  height="200"  src="'+url+'?'+Parameter+'" frameborder="0" width="100%" style="border:0px;" border="0" scrolling="no" ></iframe></td></tr></tbody></table></div>')
 	$(function(){
 		$( "#Dr_layer" ).draggable();
 		$('#Dr_layer').addClass('is-ready');
+		Dr_StarChk(refId,Str)
 		$('.drbox-icon').click(function () {
 			$('.drbox-icon').toggleClass('active');
+			if(!$('.drbox-icon').hasClass('active')){
+				$('.drbox-icon').attr('data-value',"0")
+				Dr_Starjoin(refId,Str,'','D')
+			}else{
+				$('.drbox-icon').attr('data-value',"1")
+				Dr_Starjoin(refId,Str,'','I')
+			}					
 		});
 		const className = fnLayerColor();
 		$( "#Dr_layer" ).addClass(className);
+
 	});
 }
 
 function DrDate2(Str){
 	var lpos, tpos;
 	var url='../../../../sample/learning/Dr.eye/data2.asp';
-	var Parameter='str='+(Str)+'&key='+DrSign(Str)+'&template='+template;
+	var Parameter='str='+(Str)+'&key='+DrSign(Str)+'&tamplate='+tamplate;
 	RemoveDr()
 	orgOffset();
 	spanHeightLight();
@@ -148,13 +172,89 @@ function DrDate2(Str){
 	// }else{
 	// 	tpos = my - 50;
 	// }
-	$('body').append('<div id="Dr_layer" style="position: absolute; z-index: 9000;  left:' + cx + 'px;top:' + cy + 'px;"><table border="0" cellspacing="0" cellpadding="0" width="100%" align="center" ><tbody><tr><td width="100%" class="BG" id="BGLoading"><div class="drbox"><div class="drbox-logo"></div><div class="drbox-icon"></div></div><iframe id="_dictFrame" name="_dictFrame"  height="600"  src="' + url + '?' + Parameter + '" frameborder="0" width="100%" style="border:0px;" border="0" ></iframe></td></tr></tbody></table></div>')
+	$('body').append('<div id="Dr_layer" style="position: absolute; z-index: 9000;  left:' + cx + 'px;top:' + cy + 'px;"><table border="0" cellspacing="0" cellpadding="0" width="100%" align="center" ><tbody><tr><td width="100%" class="BG" id="BGLoading"><div class="drbox"><div class="drbox-icon" data-value="0"><div class="drbox-true"><span>+</span>收錄</div><div class="drbox-false">己收錄</div></div><div class="drbox-logo"></div></div><iframe id="_dictFrame" name="_dictFrame"  height="600"  src="' + url + '?' + Parameter + '" frameborder="0" width="100%" style="border:0px;" border="0" ></iframe></td></tr></tbody></table></div>')
 	//$('body').append('<div id="Dr_layer2" style="position: absolute; z-index: 9000;  left:' + (mx + 10) + 'px;top:' + (my - 50) + 'px;"><table border="0" cellspacing="0" cellpadding="0" width="100%" align="center" style="background-color:#f9efaa;"><tbody><tr><td width="100%" class="BG" id="BGLoading"><iframe id="_dictFrame" name="_dictFrame"  height="600"  src="' + url + '?' + Parameter + '" frameborder="0" width="100%" style="border:0px;" border="0" ></iframe></td></tr></tbody></table></div>')
     $(function(){
 		$( "#Dr_layer" ).draggable();
 		const className = fnLayerColor();
 		$( "#Dr_layer" ).addClass(className);
+
     });
+}
+
+function wordlist_Get(xml){
+	$.ajax({
+		type:"POST",
+		url:"Word.asp?xml="+xml,
+		//data: $("#searchForm").serialize(),
+		dataType:"html",
+		error: function(){
+			//alert(url)
+		},
+		success:function(data){
+			$('.translation_list2').html(data)
+			
+		}					
+	});
+}
+
+function Dr_Starjoin(xml,En,Ch,target){
+
+	$.ajax({
+		type:"POST",
+		url:"Word_response.asp?tg="+target+"&xml="+xml+"&Enword="+En+"&Chword="+Ch,
+		//data: $("#searchForm").serialize(),
+		dataType:"html",
+		error: function(){
+			//alert(url)
+		},
+		success:function(data){
+			//$("#search").html("");
+			//console.log("Word_response.asp?tg="+tg+"&xml="+xml+"&ix="+ix+"&Enword="+en+"&Chword="+tc+"&ods="+ods)
+			//word_get2();
+			wordlist_Get(xml);
+		}					
+	});		 
+ 
+}
+
+function Dr_StarjoinM(xml,En,target,ods){
+	var Ch=$('#Chword_'+ods).val()
+	$.ajax({
+		type:"POST",
+		url:"Word_response.asp?tg="+target+"&xml="+xml+"&Enword="+En+"&Chword="+Ch+"&ods="+ods,
+		//data: $("#searchForm").serialize(),
+		dataType:"html",
+		error: function(){
+			//alert(url)
+		},
+		success:function(data){
+			//$("#search").html("");
+			//console.log("Word_response.asp?tg="+tg+"&xml="+xml+"&ix="+ix+"&Enword="+en+"&Chword="+tc+"&ods="+ods)
+			//word_get2();
+			wordlist_Get(xml);
+		}					
+	});		 
+ 
+}
+
+function Dr_StarChk(xml,Str){
+	$.ajax({
+		type: 'POST',
+		url: 'vocabulary.asp?Enkeyword='+Str+'&ref_id='+xml ,
+		cache:false,
+		dateType:'json',
+		success:function(data){
+			
+			if(data.En_word==''){
+				$('.drbox-icon').attr('data-value',"0")
+				$('.drbox-icon').removeClass('active');	
+			}else{
+				$('.drbox-icon').attr('data-value',"1")
+				$('.drbox-icon').addClass('active');				
+			}
+		}			   
+	});
 }
 
 function RemoveDrAll(){

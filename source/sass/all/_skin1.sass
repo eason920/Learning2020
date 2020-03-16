@@ -408,17 +408,70 @@
 		color: $m-c1
 
 	// MEMO BOX
-	.memobox-del
-		border-color: $m-c1
-		color: $m-c1
-		&:hover
-			background-color: $m-c1
-			color: $m-memo
+	// .memobox-del
+	// 	border-color: $m-c1
+	// 	color: $m-c1
+	// 	&:hover
+	// 		background-color: $m-c1
+	// 		color: $m-memo
 
 	.memobox-save
 		border-color: $m-c1
+		color: $m-c1
+		&:hover
+			background-color: #ff7d96
+			color: $m-memo
+		&.saved
+			border-color: $m-c1
+			background-color: $m-c1
+			color: $m-memo
+
+	// _drbox.sass v
+	&#Dr_layer,
+	.drbox
+		background-color: $m-dr-bg!important
+	.drbox-icon
+		animation: ani-skin1-drbox 1.5s linear infinite forwards
+		color: #fff
 		background-color: $m-c1
-		color: $m-memo
+		border-color: $m-c1
+		box-shadow: $m-c1 0 0 0 1px inset
+		span
+			color: $m-c1
+			background-color: #fff
+			border: solid 1px $m-c1
+
+@keyframes ani-skin1-drbox
+	0%
+		color: $m-c1
+		background-color: $m-dr-bg
+		border-color: $m-c1
+	50%
+		color: $m-c1
+		background-color: $m-dr-bg
+		border-color: $m-c1
+	51%
+		color: #fff
+		background-color: $m-c1
+		border-color: $m-c1
+	100%
+		color: #fff
+		background-color: $m-c1
+		border-color: $m-c1
+
+@keyframes ani-skin1-drbox-span
+	0%
+		color: #fff
+		background-color: $m-c1
+	50%
+		color: #fff
+		background-color: $m-c1
+	51%
+		color: $m-c1
+		background-color: #fff
+	100%
+		color: $m-c1
+		background-color: #fff
 
 // ====================================
 // == BODY CLASS
@@ -431,6 +484,6 @@ body.is-memo-moving
 				color: $c-blue
 				background-color: $m-light1
 
-// _drbox.sass v
-#Dr_layer.skin1
-	background-color: #fff1ef!important
+
+
+

@@ -4,6 +4,7 @@ $wh: 115px
 $wh6row: 155px
 $bar: 15px
 $bottom: 18px
+$bottom2: $bottom - 8px
 .memobox
 	font:
 		size: 0
@@ -78,30 +79,30 @@ body.is-memo-moving
 		@extend %transition
 	&:before
 		height: $bottom
-		width: calc( 100% - #{$bottom})
+		width: calc( 100% - #{$bottom2})
 		left: 0
 	&:after
 		width: 0
 		height: 0
 		border:
 			style: solid
-			width: #{$bottom} #{$bottom} 0 0
+			width: #{$bottom} #{$bottom2} 0 0
 		right: 0
 
 .memobox-del
-	right: 68px
 	user-select: none
 	border: none
+	font-size: 0
+	position: absolute
+	left: 12px
+	bottom: 6px
 
 .memobox-save
-	right: 22px
-
-.memobox-del,
-.memobox-save
-	// display: none
-	text-transform: capitalize
+	right: 17px
+	text:
+		transform: capitalize
+		decoration: none!important
 	bottom: 5px
-	// line-height: 1rem
 	height: 14px
 	position: absolute
 	font:

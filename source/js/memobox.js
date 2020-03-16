@@ -25,7 +25,7 @@ $(function(){
 				),
 				$('<textarea>', {class: 'memobox-text', placeholder: '在此輸入您的筆記'}).html(text),
 				$('<div>', {class: 'memobox-bottom'}).append(
-					$('<input>', {class: 'memobox-del', type: 'submit', value: 'delete'}),
+					$('<input>', {class: 'memobox-del icon-delete', type: 'submit'}),
 					$('<a>', {class: 'memobox-save', href: '#'}).text('save')
 				)
 			)
@@ -48,12 +48,13 @@ $(function(){
 		return [x, y];
 	}
 
+	const fixY = 5;
 	const fnXY = function(selector, maxX, maxY, distanceX, scrolltop){
 		let target;
 		$('.article2').is(':visible') ? target = selector.attr('data-basicid2') : target = selector.attr('data-basicid1');
 		const offsets = $('#'+target).offset();
 		let left = Math.floor(offsets.left - distanceX );
-		let top = Math.floor(offsets.top - distanceY + $('#' + target).height() + scrolltop );
+		let top = Math.floor(offsets.top - distanceY + $('#' + target).height() + scrolltop + fixY);
 		$section.hasClass('move') ? left = left + Math.floor( $section.width() * .25 ) : null;
 		left >= maxX ? left = maxX : null;
 		top >= maxY ? top = maxY : null;
@@ -96,7 +97,7 @@ $(function(){
 				//alert(url)
 			},
 			success:function(data){
-				console.log(memoUpdate)				
+				console.log(memoUpdate);	
 			}					
 		});
 	};
@@ -149,7 +150,9 @@ $(function(){
 				// console.log( text.length, unescape(text).length, escape(text).length );
 				const text = data.text;
 				let textLength;
-				text.length > 32 || escape(text).length > 190 ? textLength = true : textLength = false;
+				const countBr = text.split('%0A').length;
+				// v 未解壓 32 字元內 or 解壓 190 字元內 or 換行符 br 有 4 個時
+				text.length > 32 || escape(text).length > 190 || countBr >= 5 ? textLength = true : textLength = false;
 				addMemo( Number(a)+1 , text, left, top, basicid2, basicid1 , textLength);
 			};
 		};
@@ -240,9 +243,19 @@ $(function(){
 					basicid2 = 'N' + basicid;
 					basicid1 = thisid;
 				}
-				addMemo(id, '', left, top, basicid2, basicid1);
+				addMemo(id, '', left, top, basicid2, basicid1, false);
 			}else{
 				alert('便利貼數量己逹上限 !')
+				// const st = $('#stepBlock1').scrollTop();
+				// $('#stepBlock1').append(
+				// 	$('<div>', {class: 'msgbox'}).css('transform', 'translateY('+st+')').append(
+				// 		$('<div>', {class: 'msgbox-text'}).text('便利貼數量己逹上限 !'),
+				// 		$('<div>', {class: 'msgbox-btn'}).text('確定')
+				// 	)
+				// );
+				$('.msgbox-btn').on('click',function(){
+					$('.msgbox').remove()
+				})	
 			};
 		}, times);
 	});
@@ -318,7 +331,7 @@ $(function(){
 			if( basicid != undefined && basicid == lastid ){
 				//** HAVE LOCK TARGET
 				let otherid;
-				$selector.css({ left: finalX, top: finalY });
+				$selector.css({ left: finalX, top: finalY + fixY });
 				if( $('.article2').is(':visible') ){
 					// .article2
 					otherid = basicid.substr(1);
@@ -399,6 +412,17 @@ $(function(){
 
 	$('#stepBlock1').on('click', '.memobox-save', function(e){
 		e.preventDefault;
+		$('.memobox-save').each(function(){
+			!$(this).hasClass('saved') ? $(this).addClass('saved') : null;
+			const text = $(this).parent().siblings().eq(1).val();
+			const countBr = text.split('\n').length;
+			const $parent = $(this).parent().parent();
+			if( text.length > 32 || escape(text).length > 190 || countBr >= 5 ){
+				$parent.addClass('is-lengthy');
+			}else{
+				$parent.removeClass('is-lengthy');
+			}
+		});
 		fnSave();
 		// console.log(memoUpdate);
 	});

@@ -1,14 +1,23 @@
 @import 'compass'
 @import 'sprite/*.png'
-$height: sprite-sprite-height(bulb) + sprite-sprite-height(correct) + sprite-sprite-height(del) + sprite-sprite-height(del_c) + sprite-sprite-height(star_off) + sprite-sprite-height(star_on)
+$height: sprite-sprite-height(bulb) + sprite-sprite-height(correct) + sprite-sprite-height(del) + sprite-sprite-height(del_c) + sprite-sprite-height(star_off) + sprite-sprite-height(star_on) + sprite-sprite-height(trashcan_green) + sprite-sprite-height(trashcan_magenta)
 
 @mixin BG($path)
 	@include sprite-sprite($path)
 	background:
 		size: auto $height
-		repeat: no-repeat
+		repeat: no-repeattrashcan_green
 	width: sprite-sprite-width($path)
 	height: sprite-sprite-height($path)
+
+.skin1
+	.icon-delete
+		@include BG(trashcan_magenta)
+
+.skin2
+	.icon-delete
+		@include BG(trashcan_green)
+
 
 .icon-bulb
 	@include BG(bulb)
@@ -26,10 +35,10 @@ $height: sprite-sprite-height(bulb) + sprite-sprite-height(correct) + sprite-spr
 .is-false .s3ex3-icon
 	@include BG(del_c)
 
-.icon-star, .drbox-icon
+.icon-star
 	@include BG(star_off)
 	cursor: pointer
 	
-.icon-star.active, .drbox-icon.active
+.icon-star.active
 	@include BG(star_on)
 	opacity: 1!important

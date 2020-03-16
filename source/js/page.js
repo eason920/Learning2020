@@ -73,10 +73,70 @@ function RemoveTag( strText ){
 	return regx; 
 } 
 
+function tranchang(transtr){
+	var regEx =/\[r1\]/g
+	var regEx2 =/\[\/r1\]/g
+	var regEx3 =/\[r2\]/g
+	var regEx4 =/\[\/r2\]/g
+	var regEx5 =/\[r3\]/g
+	var regEx6 =/\[\/r3\]/g
 
-function spanWord( strText , ary){ 
+	 //transtr="<font class='train_1'>"+transtr	
+	 transtr=transtr.replace(regEx,"[r1]") 
+	 transtr=transtr.replace(regEx2,"[/r1]") 
+	 transtr=transtr.replace(regEx3,"") 
+	 transtr=transtr.replace(regEx4,"") 	  
+	 transtr=transtr.replace(regEx5,"[r3]") 
+	 transtr=transtr.replace(regEx6,"[/r3]") 
+	 
+	 transtr=spanWord((transtr), pAry, 'page.js tranchang')
+	 
+	 transtr=transtr.replace(regEx5,"") 
+	 transtr=transtr.replace(regEx6,"") 
+	 transtr=transtr.replace(regEx,"") 
+	 transtr=transtr.replace(regEx2,"") 
+	 transtr=transtr.replace(regEx5,"") 
+	 transtr=transtr.replace(regEx6,"") 
+
+
+	
+
+	return transtr;
+	
+}
+
+// 函式：加戴字典事件。by Dr eye v
+function spanWord( strText , ary){
+	// console.log('is spanWord');
+	// console.log('where from', where);
+	// console.log(ary);
+	
 	var chstr='';
 	var chstr2='';
+	var R1String='',R1array='';
+	var R3String='',R3array='';
+
+	if(strText.indexOf('[r1]')>0){
+		R1array=strText
+		R1array=R1array.replace("[r3]","") 
+		R1array=R1array.replace("[/r3]","") 
+		R1array=R1array.split('[r1]')
+		for(u=1;u<R1array.length;u++){
+		   R1array[u]=R1array[u].split('[/r1]')[0]
+		   R1String=R1String+R1array[u]
+		}
+	}
+
+	if(strText.indexOf('[r3]')>0){
+		R3array=strText
+		R3array=R3array.replace("[r1]","") 
+		R3array=R3array.replace("[/r1]","") 
+		R3array=R3array.split('[r3]')
+		for(u=1;u<R3array.length;u++){
+		   R3array[u]=R3array[u].split('[/r3]')[0]
+		   R3String=R3String+R3array[u]
+		}
+	}
 
 	strText=strText.replace("[r1]","") 
 	strText=strText.replace("[/r1]","") 
@@ -84,16 +144,52 @@ function spanWord( strText , ary){
 	strText=strText.replace("[/r3]","") 	  
 
 	strText=escape(strText);
+
 	chstr=strText.split("%20");
-		
+	if(R1String!=''){
+		R1String=escape(R1String);
+		R1String=R1String.split("%20");
+	}
+	if(R3String!=''){
+		R3String=escape(R3String);
+		R3String=R3String.split("%20");
+	}
+	
+	
+
 	for(w=0;w<chstr.length;w++){
+		var isphrase=''
+		var isR1=''
+		var isR3=''
+
+		// console.log('w |', chstr[w]);
+		
 		chstr2 += '<span '
 		for( a in ary ){
 			const re = new RegExp(ary[a], 'g');
 			if( re.test(chstr[w]) ){
-				chstr2 += 'class="is-phrase" '
+				isphrase=' is-phrase'
 			}
 		}
+		
+		if(R1String.length>0)
+			for( b in R1String ){				
+				const re2 = new RegExp(R1String[b], 'g');
+				if( re2.test(chstr[w]) ){
+					isR1=' is-art-strong'
+				}
+			}
+
+		if(R3String.length>0)
+			for( c in R3String ){
+				const re3 = new RegExp(R3String[c], 'g');
+				if( re3.test(chstr[w]) ){
+					isR3=' is-art-title'
+				}
+			}
+
+		chstr2 += 'class="'+isphrase+ isR1+ isR3+'" '
+		
 		chstr2 += 'onClick=DrDate("';
 		chstr2 += RemoveTag(unescape(chstr[w])) + '");>'
 		chstr2 += unescape(chstr[w])
@@ -103,47 +199,26 @@ function spanWord( strText , ary){
 	return chstr2; 
 } 
 
-function spanWordTitle( strText ){
-	var chstr='';
-	var chstr2='';
-
-	strText=strText.replace("[r1]","") 
-	strText=strText.replace("[/r1]","") 
-	strText=strText.replace("[r3]","") 
-	strText=strText.replace("[/r3]","") 	  
-
-
-	strText=escape(strText);
-	chstr=strText.split("%20");
+// 函式：加戴字典事件。公司於使用 Dr eye 套件之前的舊版本會走此( dblclick event active fn word_get ) v
+// 舊版本應不會再用到，故此註記掉 (2020/3/12) v
+// function spanWord2( strText ){ 
+// 	console.log('is spanWord2');
 	
-	for(w=0;w<chstr.length;w++){
-		if(unescape(chstr[w]).indexOf('.')!=-1 || unescape(chstr[w]).indexOf(',')!=-1 || unescape(chstr[w]).indexOf('[r1]')!=-1 || unescape(chstr[w]).indexOf('[/r1]')!=-1 || unescape(chstr[w]).indexOf('[r3]')!=-1 || unescape(chstr[w]).indexOf('[/r3]')!=-1){
-			chstr2=chstr2+'<span  onClick=DrDate("'+RemoveTag(unescape(chstr[w]))+'"); > '+unescape(chstr[w])+'</span>'
-		}else{
-			chstr2=chstr2+'<span  onClick=DrDate("'+RemoveTag(unescape(chstr[w]))+'"); > '+unescape(chstr[w])+'</span>'
-		}
-	}
-
-	return chstr2; 
-}
-
-
-function spanWord2( strText ){ 
-	var chstr='';
-	var chstr2='';
-	strText=escape(strText);
-	chstr=strText.split("%20");
+// 	var chstr='';
+// 	var chstr2='';
+// 	strText=escape(strText);
+// 	chstr=strText.split("%20");
  
-	for(w=0;w<chstr.length;w++){
-		if(unescape(chstr[w]).indexOf('.')!=-1 || unescape(chstr[w]).indexOf(',')!=-1 || unescape(chstr[w]).indexOf('[r1]')!=-1 || unescape(chstr[w]).indexOf('[/r1]')!=-1 || unescape(chstr[w]).indexOf('[r3]')!=-1 || unescape(chstr[w]).indexOf('[/r3]')!=-1){
-			chstr2=chstr2+'<span onDblClick=word_get("'+unescape(chstr[w])+'","'+w+'");> '+unescape(chstr[w])+'</span>'
-		}else{
-			chstr2=chstr2+'<span onDblClick=word_get("'+unescape(chstr[w])+'","'+w+'");> '+unescape(chstr[w])+'</span>'
-		}
-	}
+// 	for(w=0;w<chstr.length;w++){
+// 		if(unescape(chstr[w]).indexOf('.')!=-1 || unescape(chstr[w]).indexOf(',')!=-1 || unescape(chstr[w]).indexOf('[r1]')!=-1 || unescape(chstr[w]).indexOf('[/r1]')!=-1 || unescape(chstr[w]).indexOf('[r3]')!=-1 || unescape(chstr[w]).indexOf('[/r3]')!=-1){
+// 			chstr2=chstr2+'<span onDblClick=word_get("'+unescape(chstr[w])+'","'+w+'");> '+unescape(chstr[w])+'</span>'
+// 		}else{
+// 			chstr2=chstr2+'<span onDblClick=word_get("'+unescape(chstr[w])+'","'+w+'");> '+unescape(chstr[w])+'</span>'
+// 		}
+// 	}
 
-	return chstr2; 
-} 
+// 	return chstr2; 
+// } 
 
 //loading En
 function jquery_en(url_str){
@@ -170,8 +245,9 @@ function jquery_tc(url_str){
 		error: function(xml){
 		},
 		success:function(xml){
-			tc=xml;	   
+			tc=xml;
 			main()
+			//EX1()
 		}	
 			
 	});

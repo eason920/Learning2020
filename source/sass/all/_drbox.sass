@@ -8,19 +8,61 @@
 #BGLoading
 	position: relative
 
+// -----------------------------------
 .drbox
 	position: absolute
-	right: 0
 	top: 0
-	display: flex
-	align-items: flex-end
-	padding: 3px
+	height: 30px
+	right: 20px
+	margin: auto
+	display: none
+	cursor: default
+
+.drbox-icon
+	width: 60px
+	padding: 0 8px 0 0
+	line-height: 16px
+	border-radius: 10px
+	font-size: 12px
+	letter-spacing: 1px
+	cursor: pointer
+	border:
+		style: solid
+		width: 1px
+	position: absolute
+	top: 6px
+	.drbox-true
+		display: block
+	.drbox-false
+		display: none
+		line-height: 18px
+	&.active
+		text-align: center
+		padding: 0
+		animation: none!important
+		span
+			animation: none!important
+		.drbox-true
+			display: none
+		.drbox-false
+			display: block
+
+.drbox-true
+	span
+		line-height: 16px
+		font-size: 13px
+		display: inline-block
+		width: 18px
+		text-align: center
+		border-radius: 10px
+		margin-right: 4px
+
 
 .drbox-logo
 	background:
 		image: url('../images/dr-eye-logo.png')
 	width: 53px
 	height: 12px
-	margin-right: 10px
-
-.drbox-icon
+	float: right
+	margin:
+		top: 11px
