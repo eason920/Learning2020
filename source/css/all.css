@@ -172,7 +172,7 @@ section.move {
   line-height: 1.4;
   letter-spacing: 0.8px;
   color: #fff;
-  font-size: 24px;
+  font-size: 1.5rem;
   margin-bottom: 15px;
   text-align: center;
 }
@@ -188,7 +188,7 @@ section.move {
   padding: 0 30px;
   border-radius: 25px;
   transition: 0.5s;
-  font-size: 20px;
+  font-size: 1.25rem;
   line-height: 44px;
   cursor: pointer;
   width: 85%;
@@ -728,6 +728,19 @@ aside .sub {
   }
   100% {
     opacity: 0;
+  }
+}
+@media screen and (max-height: 800px) {
+  .aside-above-sub-en,
+  .aside-above-sub-ch {
+    display: none;
+  }
+
+  aside .title {
+    font-size: 3rem;
+  }
+  aside .sub {
+    font-size: 1.5rem;
   }
 }
 @media screen and (max-width: 1440px) {
@@ -2550,157 +2563,157 @@ body.is-memo-moving .skin1 .english span:hover, body.is-memo-moving .skin1 .Chin
 }
 
 .green-sprite, .skin2 .icon-org-play, .skin2 .icon-org-play.active, .skin2 .icon-rec-play, .skin2 .icon-rec-play.active, .skin2 .icon-rec-re, .skin2 .icon-rec-start, .skin2 .icon-rec-start.active, .skin2 .icon-rec-restart, .skin2 .icon-check, .skin2 .read_btn, .skin2 .vacmain-sound, .skin2 .close_btn, .skin2 .icon-arrowleft, .skin2 .icon-like, .skin2 .icon-like.active, .skin2 .icon-play, .skin2 .icon-play.pause, .skin2 .icon-pink, .skin2 .icon-print, .skin2 .icon-refresh, .skin2 .icon-star-big, .skin2 .icon-star-big.active {
-  background-image: url('../images/green-sd4db8a05b9.png');
+  background-image: url('../images/green-s24895d6faf.png');
   background-repeat: no-repeat;
 }
 
 .skin2 .icon-org-play {
-  background-position: 0 -158px;
-  background-size: auto 869px;
+  background-position: 0 -160px;
+  background-size: auto 871px;
   background-repeat: no-repeat;
   width: 55px;
   height: 55px;
 }
 .skin2 .icon-org-play.active {
-  background-position: 0 -814px;
-  background-size: auto 869px;
+  background-position: 0 -816px;
+  background-size: auto 871px;
   background-repeat: no-repeat;
   width: 55px;
   height: 55px;
 }
 .skin2 .icon-rec-play {
-  background-position: 0 -413px;
-  background-size: auto 869px;
+  background-position: 0 -415px;
+  background-size: auto 871px;
   background-repeat: no-repeat;
   width: 55px;
   height: 55px;
 }
 .skin2 .icon-rec-play.active {
-  background-position: 0 -814px;
-  background-size: auto 869px;
+  background-position: 0 -816px;
+  background-size: auto 871px;
   background-repeat: no-repeat;
   width: 55px;
   height: 55px;
 }
 .skin2 .icon-rec-re {
-  background-position: 0 -468px;
-  background-size: auto 869px;
+  background-position: 0 -470px;
+  background-size: auto 871px;
   background-repeat: no-repeat;
   width: 55px;
   height: 55px;
 }
 .skin2 .icon-rec-start {
-  background-position: 0 -633px;
-  background-size: auto 869px;
+  background-position: 0 -635px;
+  background-size: auto 871px;
   background-repeat: no-repeat;
   width: 55px;
   height: 55px;
 }
 .skin2 .icon-rec-start.active {
-  background-position: 0 -523px;
-  background-size: auto 869px;
+  background-position: 0 -525px;
+  background-size: auto 871px;
   background-repeat: no-repeat;
   width: 55px;
   height: 55px;
 }
 .skin2 .icon-rec-restart {
-  background-position: 0 -578px;
-  background-size: auto 869px;
+  background-position: 0 -580px;
+  background-size: auto 871px;
   background-repeat: no-repeat;
   width: 55px;
   height: 55px;
 }
 .skin2 .icon-check {
   background-position: 0 -30px;
-  background-size: auto 869px;
+  background-size: auto 871px;
   background-repeat: no-repeat;
   width: 26px;
-  height: 22px;
+  height: 24px;
 }
 .skin2 .read_btn, .skin2 .vacmain-sound {
-  background-position: 0 -718px;
-  background-size: auto 869px;
+  background-position: 0 -720px;
+  background-size: auto 871px;
   background-repeat: no-repeat;
   width: 20px;
   height: 20px;
 }
 .skin2 .close_btn {
-  background-position: 0 -52px;
-  background-size: auto 869px;
+  background-position: 0 -54px;
+  background-size: auto 871px;
   background-repeat: no-repeat;
   width: 30px;
   height: 30px;
 }
 .skin2 .icon-arrowleft {
   background-position: 0 0;
-  background-size: auto 869px;
+  background-size: auto 871px;
   background-repeat: no-repeat;
   width: 18px;
   height: 30px;
 }
 .skin2 .icon-like {
-  background-position: 0 -82px;
-  background-size: auto 869px;
+  background-position: 0 -84px;
+  background-size: auto 871px;
   background-repeat: no-repeat;
   width: 38px;
   height: 38px;
 }
 .skin2 .icon-like:active, .skin2 .icon-like.like-active {
-  background-position: 0 -120px;
+  background-position: 0 -122px;
 }
 .skin2 .icon-like.active {
-  background-position: 0 -120px;
-  background-size: auto 869px;
+  background-position: 0 -122px;
+  background-size: auto 871px;
   background-repeat: no-repeat;
   width: 38px;
   height: 38px;
 }
 .skin2 .icon-play {
-  background-position: 0 -300px;
-  background-size: auto 869px;
+  background-position: 0 -302px;
+  background-size: auto 871px;
   background-repeat: no-repeat;
   width: 75px;
   height: 75px;
 }
 .skin2 .icon-play.pause {
-  background-position: 0 -213px;
-  background-size: auto 869px;
+  background-position: 0 -215px;
+  background-size: auto 871px;
   background-repeat: no-repeat;
   width: 75px;
   height: 75px;
 }
 .skin2 .icon-pink {
-  background-position: 0 -288px;
-  background-size: auto 869px;
+  background-position: 0 -290px;
+  background-size: auto 871px;
   background-repeat: no-repeat;
   width: 19px;
   height: 12px;
 }
 .skin2 .icon-print {
-  background-position: 0 -375px;
-  background-size: auto 869px;
+  background-position: 0 -377px;
+  background-size: auto 871px;
   background-repeat: no-repeat;
   width: 38px;
   height: 38px;
 }
 .skin2 .icon-refresh {
-  background-position: 0 -688px;
-  background-size: auto 869px;
+  background-position: 0 -690px;
+  background-size: auto 871px;
   background-repeat: no-repeat;
   width: 40px;
   height: 30px;
 }
 .skin2 .icon-star-big {
-  background-position: 0 -738px;
-  background-size: auto 869px;
+  background-position: 0 -740px;
+  background-size: auto 871px;
   background-repeat: no-repeat;
   width: 38px;
   height: 38px;
   cursor: pointer;
 }
 .skin2 .icon-star-big.active {
-  background-position: 0 -776px;
-  background-size: auto 869px;
+  background-position: 0 -778px;
+  background-size: auto 871px;
   background-repeat: no-repeat;
   width: 38px;
   height: 38px;
@@ -3054,7 +3067,9 @@ body.is-memo-moving .skin1 .english span:hover, body.is-memo-moving .skin1 .Chin
   background-image: url('../images/congrats2.png?1582163368');
 }
 .skin2 .lb-start {
-  background-color: #275246;
+  background-color: #b8d2cb;
+  color: #275246;
+  font-weight: bold;
 }
 .skin2 .lb-final-text {
   color: #275246;
@@ -3835,12 +3850,12 @@ body.is-memo-moving .english span:hover, body.is-memo-moving .Chinese span:hover
   padding-bottom: 14px;
 }
 .s2-en span {
-  font-size: 1.375rem;
+  font-size: 1.3125rem;
   letter-spacing: 1.2px;
 }
 
 .s2-ch {
-  font-size: 0.9375rem;
+  font-size: 1rem;
   line-height: 1.4;
 }
 

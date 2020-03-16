@@ -149,7 +149,7 @@
 	<script src='../../../../Funfa/Fa.js'></script>
   <script  src="./js/Times.js"></script>
 	<script>
-      let pAry = [];// < 單字片語 ary，在文章中比對出單字並加「籃色底線」，push in main.js，use for main.js & page.js
+      let pAry = [];
       var Me=new User();
 
       if(Me.Ispay==1 && Me.EnddateChk()<=0 ){
