@@ -228,7 +228,7 @@ section.move {
 
 @media screen and (max-width: 1440px) {
   html {
-    font-size: 13px;
+    font-size: 16px;
   }
 }
 @media screen and (min-width: 1441px) {
@@ -737,10 +737,15 @@ aside .sub {
   }
 
   aside .title {
-    font-size: 3rem;
+    font-size: 2.6rem;
   }
   aside .sub {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+  }
+
+  .aside-speedbox {
+    padding-bottom: 0 !important;
   }
 }
 @media screen and (max-width: 1440px) {
@@ -842,7 +847,7 @@ input[type=range]::-ms-track {
   line-height: 1.5;
   font-family: PingFangTC-Regular, Microsoft JhengHei, sans-serif;
   font-weight: bold;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
 }
 
 .classification {
@@ -971,7 +976,7 @@ input[type=range]::-ms-track {
   display: inline-block;
   width: 33.333%;
   padding-right: 1%;
-  height: calc( 100vh - 55px - 100px - 20px );
+  height: calc( 100vh - 55px - 100px - 10px );
 }
 #stepBlock1.is-lock, #stepBlock2.is-lock, #stepBlock3.is-lock {
   overflow: hidden;
@@ -3585,6 +3590,15 @@ span.is-height-light {
   .typebox {
     width: 260px;
   }
+
+  .controlbox-item,
+  .funbar-btn {
+    font-size: 13px;
+  }
+
+  .is-item-arttype .typebox-item {
+    font-size: 12px;
+  }
 }
 @media screen and (min-width: 1441px) {
   .funbar-memobox,
@@ -3805,6 +3819,10 @@ body.is-memo-moving .english span:hover, body.is-memo-moving .Chinese span:hover
   display: block;
 }
 
+.share-title-percent {
+  text-indent: 12px;
+}
+
 .s2-main {
   height: calc( 100% - 88px - 20px );
   position: relative;
@@ -3850,13 +3868,14 @@ body.is-memo-moving .english span:hover, body.is-memo-moving .Chinese span:hover
   padding-bottom: 14px;
 }
 .s2-en span {
-  font-size: 1.3125rem;
+  font-size: 1.6rem;
   letter-spacing: 1.2px;
 }
 
 .s2-ch {
-  font-size: 1rem;
+  font-size: 1.1rem;
   line-height: 1.4;
+  color: #888 !important;
 }
 
 #Step2t0, #Tct0 {
@@ -3995,14 +4014,14 @@ body.is-memo-moving .english span:hover, body.is-memo-moving .Chinese span:hover
   content: "";
   display: block;
   position: absolute;
-  left: -1px;
-  right: -1px;
+  left: 5px;
+  right: 5px;
   height: 2px;
 }
 
 @media screen and (max-width: 1440px) {
   .s3-false:after {
-    top: 13px;
+    top: 16px;
   }
 }
 @media screen and (min-width: 1441px) {
@@ -4075,6 +4094,10 @@ body.is-memo-moving .english span:hover, body.is-memo-moving .Chinese span:hover
 .is-title .s3ex1-item-ch {
   padding: 0;
 }
+.is-title .s3ex1-item-en {
+  font-size: 1.45rem;
+  font-weight: bold;
+}
 
 .s3ex1-check {
   cursor: pointer;
@@ -4084,6 +4107,7 @@ body.is-memo-moving .english span:hover, body.is-memo-moving .Chinese span:hover
   border-width: 1px;
   position: relative;
   border-radius: 50%;
+  margin-top: 4px;
 }
 
 input:checked + label .s3ex1-check:after {
@@ -4146,7 +4170,6 @@ input:checked + label .s3ex1-check:after {
 }
 .s3ex2-iptbox input {
   line-height: 1.5;
-  height: 23px;
   border: none;
   text-align: center;
   font-family: "Roboto Mono", monospace;
@@ -4181,13 +4204,21 @@ input:checked + label .s3ex1-check:after {
 @media screen and (max-width: 1440px) {
   .s3ex2-iptbox span:nth-child(3):after {
     bottom: 1px;
-    background-image: url(./../images/ex2_dotted_15.png);
+    background-image: url(./../images/ex2_dotted_17.png);
+  }
+
+  .s3ex2-iptbox input {
+    height: 19px;
   }
 }
 @media screen and (min-width: 1441px) {
   .s3ex2-iptbox span:nth-child(3):after {
     bottom: -1px;
     background-image: url(./../images/ex2_dotted_17.png);
+  }
+
+  .s3ex2-iptbox input {
+    height: 22px;
   }
 }
 #ex3.is-def .s3ex3-ipt {

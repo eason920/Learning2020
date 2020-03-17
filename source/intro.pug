@@ -50,6 +50,7 @@ html(lang='zh')
 		script(src='js/ui_step2.js')
 		script(src='js/ui_step3.js')
 		script(src="Dr.eye/Dre.js")
+		script(src="js/alt_text.js")
 	body
 		// v HTML START v
 		#stepBox.is-step1
@@ -177,8 +178,8 @@ html(lang='zh')
 										img(src='./images/galxy.jpg')
 									// img ^v video box
 									#y-box.is-first-start
-									img.y-start(src='images/y_start.png')
-									.y-small
+									img.y-start(src='images/y_start.png', title='開始播放相關影片')
+									.y-small(title='停止播放相關影片')
 						article
 							#stepBlockOuter
 								#stepBlockBox
@@ -187,7 +188,7 @@ html(lang='zh')
 									#stepBlock3
 								
 					.tranglationBody
-						input.close_btn(type='button')
+						input.close_btn(type='button', title='收闔介面')
 						.translation_Font
 						.translation_list
 							if (status === 'dev')
@@ -209,18 +210,18 @@ html(lang='zh')
 							ul.funbar.step-fnbar1
 								li.funbar-item.active.is-item-language
 									.controlbox
-										b.controlbox-item 中+EN
-										i.controlbox-item EN
+										b.controlbox-item#altD 中+EN
+										i.controlbox-item#altE EN
 								li.funbar-item.is-item-read.active(data-value='1')
 									.controlbox
-										b.controlbox-item 老師講解
-										i.controlbox-item 英文朗讀
+										b.controlbox-item#altF 老師講解
+										i.controlbox-item#altG 英文朗讀
 								li.funbar-item.is-item-arttype
-									a.funbar-btn(href='javascript:void(0)') 原文分析
+									a.funbar-btn#alt0(href='javascript:void(0)') 原文分析
 									ul.typebox
-										li.typebox-item.active(data-arttype='muted') 長句分解
-										li.typebox-item(data-arttype='strong') 加強描述
-										li.typebox-item(data-arttype='title') 加強主題
+										li.typebox-item#altA.active(data-arttype='muted') 長句分解
+										li.typebox-item#altB(data-arttype='strong') 加強描述
+										li.typebox-item#altC(data-arttype='title') 加強主題
 								li.funbar-item.is-item-memo
 									a.funbar-btn.funbar-memobox.do-insert-id(href='javascript:void(0)') 便利貼
 								li.funbar-item.is-item-group
@@ -252,8 +253,8 @@ html(lang='zh')
 				.icon-bulb
 				.icon-how-text Tips
 		//- include partials/lb
-		.lb-mask-final
-		.lb.is-lb-final
+		//- .lb-mask-final
+		//- .lb.is-lb-final
 			.lb-box
 				.lb-final-img
 				h2.lb-final-title 表現真的太棒！建議一週至少要完成三到七篇文章的學習驗收，才能大幅提升自己的英文實力。

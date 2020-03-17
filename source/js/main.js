@@ -503,11 +503,16 @@ function jquery_RecordFinish(){
 					$('.is-ex3 .icon-correct').fadeIn();
 			}
 
-			(data.reading>=60 && data.listening>=60 && data.word>=60) ? $('.lb-mask-final,.is-lb-final').show() : null
+			if(data.reading>=60 && data.listening>=60 && data.word>=60){
+				$('.lb-mask-final,.is-lb-final').show()
+				playFinish()
+			}
 
 		} 
 	});
 }
+
+
 
 const finalShow=()=>{
 	$.ajax({
@@ -524,6 +529,7 @@ const finalShow=()=>{
 			$('.lb-final-item').on('click',function(){
 				$(this).index()===0 ? location.href='../track' : location.href='?rid='+data.indx
 			})
+			
 		}
 	})		
 }

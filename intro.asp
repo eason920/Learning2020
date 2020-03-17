@@ -147,7 +147,8 @@
 	<script src='./js/page.js'></script>
 	<script src='./js/main.js'></script>
 	<script src='../../../../Funfa/Fa.js'></script>
-  <script  src="./js/Times.js"></script>
+  <script src="./js/Times.js"></script>
+  <script src="./js/alt_text.js"></script>
 	<script>
       let pAry = [];
       var Me=new User();
@@ -422,8 +423,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <div class="article-vbox">
                   <div class="Article_pic"></div>
                   <!-- img ^v video box-->
-                  <div class="is-first-start" id="y-box"></div><img class="y-start" src="images/y_start.png">
-                  <div class="y-small"></div>
+                  <div class="is-first-start" id="y-box"></div><img class="y-start" src="images/y_start.png" title='開始播放相關影片'>
+                  <div class="y-small" title='停止播放相關影片'></div>
                 </div>
               </div>
             </aside>
@@ -438,7 +439,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </article>
           </section>
           <div class="tranglationBody">
-            <input class="close_btn" type="button">
+            <input class="close_btn" title='收闔介面' type="button">
             <div class="translation_Font" id="translation_Font1"></div>
             <div class="translation_list" id="vocabulary">
             </div>
@@ -496,16 +497,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div class="wrapper-right-f2">
               <ul class="funbar step-fnbar1">
                 <li class="funbar-item active is-item-language">
-                  <div class="controlbox"><b class="controlbox-item">中+EN</b><i class="controlbox-item">EN</i></div>
+                  <div class="controlbox"><b class="controlbox-item" id="altD">中+EN</b><i class="controlbox-item" id="altE">EN</i></div>
                 </li>
                 <li class="funbar-item is-item-read active" data-value="1">
-                  <div class="controlbox"><b class="controlbox-item">老師講解</b><i class="controlbox-item">英文朗讀</i></div>
+                  <div class="controlbox"><b class="controlbox-item" id="altF">老師講解</b><i class="controlbox-item" id="altG">英文朗讀</i></div>
                 </li>
-                <li class="funbar-item is-item-arttype"><a class="funbar-btn" href="#">原文分析</a>
+                <li class="funbar-item is-item-arttype"><a class="funbar-btn" id="alt0" href="#">原文分析</a>
                   <ul class="typebox">
-                    <li class="typebox-item active" data-arttype="muted">長句分解</li>
-                    <li class="typebox-item" data-arttype="strong">加強描述</li>
-                    <li class="typebox-item" data-arttype="title">加強主題</li>
+                    <li class="typebox-item active" id="altA" data-arttype="muted">長句分解</li>
+                    <li class="typebox-item" id="altB" data-arttype="strong">加強描述</li>
+                    <li class="typebox-item" id="altC" data-arttype="title">加強主題</li>
                   </ul>
                 </li>
                 <li class="funbar-item is-item-memo"><a class="funbar-btn funbar-memobox do-insert-id" href="#">便利貼</a></li>

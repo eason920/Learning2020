@@ -62,7 +62,7 @@ $(function () {
 			// talk
 			if( $(".play_btn").hasClass("pause") ) {
 				$(".play_btn").removeClass('pause');
-				// pausetime();
+				pausetime();
 			}
 		});
 		$('.y-small').click(function () {
@@ -81,18 +81,24 @@ $(function () {
 	});
 
 	$('.play_btn').click(function () {
+		
 		if( $('.play_btn').hasClass('pause') ){
 			// when playing
 			$('.speed').removeClass("show");
 			$('.speed-point').fadeOut();
 			$('.play_btn').removeClass("pause");
-			// pausetime();
+			pausetime();
 		}else{
 			// when stoping
-			$('.speed').addClass("show");
+
+			$('.is-step-switch3').hasClass('active') ? $('.speed').removeClass("show") : $('.speed').addClass("show")
+
 			$('.speed-point').fadeIn();
 			$('.play_btn').addClass("pause");
-			/playBtn1/.test($(this).attr('id')) ? pauseplay() : null;
+
+			if($(this).attr('id')=='playBtn1' || $(this).attr('id')=='playBtn3'){
+				pauseplay()
+			}
 		}
 
 		// youtube
@@ -121,9 +127,9 @@ $(function () {
 	// ====================================
 	// == TOP BAR & FUNCTION BAR
 	// ====================================
-	const lbHtml1 = '<div class="lb-mask"></div><div class="lb is-lb-step1 ' + template +'"><div class="lb-box"><h2 class="lb-title">研讀本文</h2><ul class="lb-contentbox"><li class="lb-item"><div class="lb-left is-t4"><div class="lb-num">1</div><div class="lb-text">聆聽原文 ：</div></div><div class="lb-right">透過文字跟播放導讀的過程中，試著理解這篇文章主要大意是傳遞什麼訊息。</div></li><li class="lb-item"><div class="lb-left is-t4"><div class="lb-num">2</div><div class="lb-text">老師講解 ：</div></div><div class="lb-right">可挑選較不熟悉的段落，透過老師講解與註記功能，讓您更精準的了解文章大意。</div></li><li class="lb-item"><div class="lb-left is-t3"><div class="lb-num">3</div><div class="lb-text">便利貼 ：</div></div><div class="lb-right">如果自己需要加強補充，可使用便利貼，用自己的語言去註記，詮釋感受到的意義。</div></li><li class="lb-item"><div class="lb-left is-t4"><div class="lb-num">4</div><div class="lb-text">收錄佳句 ：</div></div><div class="lb-right">點選句子前面的小星號，可收錄自己喜歡的英文佳句。</div></li><li class="lb-item"><div class="lb-left is-t4"><div class="lb-num">5</div><div class="lb-text">收錄單字 ：</div></div><div class="lb-right">在查字典的過程中，如果有些單字對您來說是蠻重要的，可點選右上角星星，收錄起來。</div></li><li class="lb-item"><div class="lb-left is-t4"><div class="lb-num">6</div><div class="lb-text">單字片語 ：</div></div><div class="lb-right">本文作者也有提供特別的單字片語，另外做一些說明跟例句，提供給您做參考。</div></li></ul><div class="lb-checkbox"><input class="lb-check" id="lbCheck1" type="checkbox"><label class="lb-label" for="lbCheck1"><div class="lb-quadrangle"><div class="icon-check"></div></div>30天內不再顯示此訊息 </label></div><div class="lb-start">Start</div></div></div>';
-	const lbHtml2 = '<div class="lb-mask"></div><div class="lb is-lb-step2 ' + template +'"><div class="lb-box"><h2 class="lb-title">加強記憶</h2><ul class="lb-contentbox"><li class="lb-item"><div class="lb-left is-t4"><div class="lb-num">1</div><div class="lb-text">抄寫練習：</div></div><div class="lb-right">將聽到的原音一字一句抄寫在筆記本中，可大幅強化本文語感與文字能力。</div></li><li class="lb-item"><div class="lb-left is-t4"><div class="lb-num">2</div><div class="lb-text">跟讀練習：</div></div><div class="lb-right">抄完之後試著點選錄音鍵，將你所聽到的句子再錄一次，撥放給自己聽，增強自己的跟讀能力。</div></li></ul><div class="lb-checkbox"><input class="lb-check" id="lbCheck1" type="checkbox"><label class="lb-label" for="lbCheck1"><div class="lb-quadrangle"><div class="icon-check"></div></div>30天內不再顯示此訊息 </label></div><div class="lb-start">Start</div></div></div>';
-	const lbHtml3 = '<div class="lb-mask"></div><div class="lb is-lb-step3 ' + template +'"><div class="lb-box"><h2 class="lb-title">學習驗收</h2><ul class="lb-contentbox"><li class="lb-item"><div class="lb-left is-t5"><div class="lb-num">1</div><div class="lb-text">理解力測驗：</div></div><div class="lb-right">確實瞭解文章內容嗎？依照內容依序回答下列問題吧！</div></li><li class="lb-item"><div class="lb-left is-t4"><div class="lb-num">2</div><div class="lb-text">聽力測驗：</div></div><div class="lb-right">利用滑鼠點擊喇叭播放音擋，試著將隱藏的單字拼出來，快速檢視自己的聽力及字彙能力。</div></li><li class="lb-item"><div class="lb-left is-t5"><div class="lb-num">3</div><div class="lb-text">克漏字測驗：</div></div><div class="lb-right">想增進介系詞與片語能力嗎？依照題號順序，點選右方最適合的答案，完成後，即可獲得解答與分數。</div></li></ul><div class="lb-checkbox"><input class="lb-check" id="lbCheck1" type="checkbox"><label class="lb-label" for="lbCheck1"><div class="lb-quadrangle"><div class="icon-check"></div></div>30天內不再顯示此訊息 </label></div><div class="lb-start">Start</div></div></div>';
+	const lbHtml1 = '<div class="lb-mask"></div><div class="lb is-lb-step1 ' + template +'"><div class="lb-box"><h2 class="lb-title">研讀本文</h2><ul class="lb-contentbox"><li class="lb-item"><div class="lb-left is-t4"><div class="lb-num">1</div><div class="lb-text">聆聽原文 ：</div></div><div class="lb-right">透過文字跟播放導讀的過程中，試著理解這篇文章主要大意是傳遞什麼訊息。</div></li><li class="lb-item"><div class="lb-left is-t4"><div class="lb-num">2</div><div class="lb-text">老師講解 ：</div></div><div class="lb-right">可挑選較不熟悉的段落，透過老師講解與註記功能，讓您更精準的了解文章大意。</div></li><li class="lb-item"><div class="lb-left is-t3"><div class="lb-num">3</div><div class="lb-text">便利貼 ：</div></div><div class="lb-right">如果自己需要加強補充，可使用便利貼，用自己的語言去註記，詮釋感受到的意義。</div></li><li class="lb-item"><div class="lb-left is-t4"><div class="lb-num">4</div><div class="lb-text">收錄佳句 ：</div></div><div class="lb-right">點選句子前面的小星號，可收錄自己喜歡的英文佳句。</div></li><li class="lb-item"><div class="lb-left is-t4"><div class="lb-num">5</div><div class="lb-text">收錄單字 ：</div></div><div class="lb-right">在查字典的過程中，如果有些單字對您來說是蠻重要的，可點選右上角星星，收錄起來。</div></li><li class="lb-item"><div class="lb-left is-t4"><div class="lb-num">6</div><div class="lb-text">單字片語 ：</div></div><div class="lb-right">本文作者也有提供特別的單字片語，另外做一些說明跟例句，提供給您做參考。</div></li></ul><div class="lb-checkbox"><input class="lb-check" id="lbCheck1" type="checkbox"><label class="lb-label" for="lbCheck1"><div class="lb-quadrangle"><div class="icon-check"></div></div>30天內不再顯示此訊息 </label></div><div class="lb-start" data-value="1">Start</div></div></div>';
+	const lbHtml2 = '<div class="lb-mask"></div><div class="lb is-lb-step2 ' + template +'"><div class="lb-box"><h2 class="lb-title">加強記憶</h2><ul class="lb-contentbox"><li class="lb-item"><div class="lb-left is-t4"><div class="lb-num">1</div><div class="lb-text">抄寫練習：</div></div><div class="lb-right">將聽到的原音一字一句抄寫在筆記本中，可大幅強化本文語感與文字能力。</div></li><li class="lb-item"><div class="lb-left is-t4"><div class="lb-num">2</div><div class="lb-text">跟讀練習：</div></div><div class="lb-right">抄完之後試著點選錄音鍵，將你所聽到的句子再錄一次，撥放給自己聽，增強自己的跟讀能力。</div></li></ul><div class="lb-checkbox"><input class="lb-check" id="lbCheck2" type="checkbox"><label class="lb-label" for="lbCheck2"><div class="lb-quadrangle"><div class="icon-check"></div></div>30天內不再顯示此訊息 </label></div><div class="lb-start" data-value="2">Start</div></div></div>';
+	const lbHtml3 = '<div class="lb-mask"></div><div class="lb is-lb-step3 ' + template +'"><div class="lb-box"><h2 class="lb-title">學習驗收</h2><ul class="lb-contentbox"><li class="lb-item"><div class="lb-left is-t5"><div class="lb-num">1</div><div class="lb-text">理解力測驗：</div></div><div class="lb-right">確實瞭解文章內容嗎？依照內容依序回答下列問題吧！</div></li><li class="lb-item"><div class="lb-left is-t4"><div class="lb-num">2</div><div class="lb-text">聽力測驗：</div></div><div class="lb-right">利用滑鼠點擊喇叭播放音擋，試著將隱藏的單字拼出來，快速檢視自己的聽力及字彙能力。</div></li><li class="lb-item"><div class="lb-left is-t5"><div class="lb-num">3</div><div class="lb-text">克漏字測驗：</div></div><div class="lb-right">想增進介系詞與片語能力嗎？依照題號順序，點選右方最適合的答案，完成後，即可獲得解答與分數。</div></li></ul><div class="lb-checkbox"><input class="lb-check" id="lbCheck3" type="checkbox"><label class="lb-label" for="lbCheck3"><div class="lb-quadrangle"><div class="icon-check"></div></div>30天內不再顯示此訊息 </label></div><div class="lb-start" data-value="3">Start</div></div></div>';
 	if( read1 === false ){
 		$('body').append(lbHtml1);
 	}
@@ -134,8 +140,15 @@ $(function () {
 		const targetClass = $this.attr('class');
 		let i = '';
 
+		temp=0;
+		count=0;
+
+		$('.speed').removeClass("show");
+		$('.speed-point').fadeOut();
+		$('.play_btn').removeClass("pause");
+		pausetime();
+
 		// job 1 : INIT VIDEO v
-		// pausetime();
 		$('.speed').removeClass("show");
 		$('.speed-point').fadeOut();
 		$('.play_btn').removeClass("pause");
@@ -147,7 +160,7 @@ $(function () {
 		// job 3 : STEP-BLOCK control v
 		switch(true){
 			case /1/.test( targetClass ):
-				i = '1';
+				i = '1';				
 				break;
 			case /2/.test( targetClass ):
 				i = '2';
@@ -270,12 +283,30 @@ $(function () {
 
 	// REMOVE LIGHT-BOX v
 	$('body').on('click', '.lb-mask-teach, .lb-mask-final, .lb-start', function(){
+
+		if($('#lbCheck'+$(this).data('value')).prop('checked')){
+			IsRead($(this).data('value'))
+		}
 		$('.lb-mask-teach, lb-mask, .lb').fadeOut(100);
 		setTimeout(function(){
 			$('.lb-mask-teach, .lb-mask-final, .lb-mask, .lb').remove();
 		}, 300);
 	});
 
+	const IsRead=function(id){
+		$.ajax({
+			type:"POST",
+			url:"./IsRead.asp",
+			data: {
+				tg:'LearningStep'+id
+			},
+			dataType:"html",
+			error: function(){
+			},
+			success:function(data){
+			}				   
+		});	
+	}
 
 	// ====================================
 	// == START SWITCH
@@ -284,9 +315,6 @@ $(function () {
 		$(this).toggleClass('active');
 	});
 
-	$('.icon-star-big').click(function(){
-		$(this).toggleClass('active');
-	});
 
 	// ====================================
 	// == PRINT
@@ -319,6 +347,25 @@ $(function () {
 	$('.icon-refresh').click(function(){
 		location.href='./'
 	})
+
+	$('.icon-star-big').click(function(){
+		
+		if(!$(this).hasClass('active')){
+			var tg='I'
+		}else{
+			var tg='D'
+		}
+		$.ajax({
+			type:"GET",
+			url:'./booking.asp?tg='+tg+'&indx='+refId,
+			dataType:"html",
+			success:function(data){
+				$('body').append(data);			
+			} 
+		});
+	})
+
+
 
 	// ====================================
 	// == aside title height
