@@ -41,7 +41,7 @@ const fnLayerColor = function(){
 
 let cx, cy;
 const orgOffset = function(){
-	$('.english').on('click.xy', 'span', function(){
+	$('.english, .vacsub-en').on('click.xy', 'span', function(){
 		const drWidth = 300;
 		const drHeight = 215;
 		const gutter = 20;
@@ -61,15 +61,15 @@ const orgOffset = function(){
 			let destance = wh - ( cy + 215 );
 			cy = wh - 215 - destance - 215 - $(this).height();
 		}
-		$('.english').off('.xy');
+		$('.english, .vacsub-en').off('.xy');
 	});	
 }
 
 const spanHeightLight = function(){
-	$('.english').on('click.heightLight', 'span', function(){
-		$('.english span').removeClass('is-height-light');
+	$('.english, .vacsub-en').on('click.heightLight', 'span', function(){
+		$('.english span, .vacsub-en span').removeClass('is-height-light');
 		$(this).addClass('is-height-light');
-		$('.english').off('.heightLight');
+		$('.english, .vacsub-en').off('.heightLight');
 	});
 };
 
@@ -261,7 +261,7 @@ function RemoveDrAll(){
 	$('#lightBoxDIY').remove();
 	$('#Dr_layer').remove();
 	$('#Dr_layer2').remove();	
-	$('.english span').removeClass('is-height-light');
+	$('.english span, .vacsub-en span').removeClass('is-height-light');
  }
 
 function RemoveDr(){

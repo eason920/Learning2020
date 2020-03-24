@@ -276,7 +276,7 @@ fbq('track', "PageView");
 
 </head>
 
-<body onload="DrInit();" >
+<body onload="DrInit();" oncontextmenu="return false">
 
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P5J9V9J"
@@ -438,7 +438,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               </div>
             </article>
           </section>
-          <div class="tranglationBody">
+          <div class="tranglationBody is-not-add-dr-yet">
             <input class="close_btn" title='收闔介面' type="button">
             <div class="translation_Font" id="translation_Font1"></div>
             <div class="translation_list" id="vocabulary">

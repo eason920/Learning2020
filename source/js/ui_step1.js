@@ -49,7 +49,7 @@ $(function(){
 			canIclose = 'phrase';
 			$('.translation_list').show();
 			$('.translation_list2').hide();
-			$('#translation_Font1').text('Vocabular');
+			$('#translation_Font1').text('Vocabulary');
 			$('#translation_Font2').text('Phrase');
 			$('#translation_Font2').show();
 		}else{
@@ -169,7 +169,72 @@ $(function(){
 		};
 	});
 
-	// for coding demo
-	// $('.funbar-collection').click();
-	// $('.topbar-scort-outer').hide();
+	// ====================================
+	// == 單字 DREYE
+	// ====================================
+	// DEBUG (若本文的dr未開過，直接開單字的dr會開失敗) v
+	setTimeout(function(){
+		$('.art-art p').find('span').eq(0).click();
+	}, 2000);
+
+	setTimeout(function(){
+		$('#lightBoxDIY').click();
+	}, 2200);
+
+	// START v
+	$('.funbar-phrase').click(function(){
+		if( $('.tranglationBody').hasClass('is-not-add-dr-yet') ){
+			$('.vacsub-en').each(function(){
+				let ary = $(this).text();
+				ary = ary.split(' ');
+				let html = '';
+				for( a in ary ){
+					const text = ary[a];
+					let change = '';
+					html += '<span onclick="DrDate(&quot;';
+					switch(true){
+						case /\,/.test(text):
+							change = text.replace(',', '');
+							break;
+						case /\./.test(text):
+							change = text.replace('.', '');
+							break;
+						case /!/.test(text):
+							change = text.replace('!', '');
+							break;
+						case /\?/.test(text):
+							change = text.replace('?', '');
+							break;
+						case /:/.test(text):
+							change = text.replace(':', '');
+							break;
+						case /”/.test(text):
+							change = text.replace('”', '');
+							break;
+						case /\’/.test(text):
+							change = text.replace('’', '');
+							break;	
+						case /\(/.test(text):
+							change = text.replace('(', '');
+							break;
+						default:
+							change = text;
+					}
+					/\)/.test(change) ? change = change.replace(')', '') : null;
+					html += change;
+					html += '&quot;);">';
+					html += ary[a] + '</span>';
+				}
+				$(this).html(html);
+			});
+			$('.tranglationBody').removeClass('is-not-add-dr-yet');
+		};
+	});
+
+	// ====================================
+	// == WIN 7 (以下)不支援 css calc() 方法
+	// ====================================
+	const win7Width = $(window).width();
+	const win7Left = $('.topbar .wrapper-left').outerWidth(true);
+	$('.topbar .wrapper-right-f1').css('width', win7Width - win7Left);
 });

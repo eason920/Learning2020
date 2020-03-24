@@ -215,10 +215,15 @@ span.is-height-light
 	margin-left: 0!important
 	border-right: none!important
 
+.is-phrase + .is-symbol
+	position: relative
+	z-index: 1
+
+
 @media screen and (max-width: 1440px)
-	$words-border-width: 6px
+	$words-border-width: 4px
 	.english span
-		border-right-width: $words-border-width
+		border-right-width: $words-border-width + 3
 
 	#stepBlock1.is-art-title
 		.is-art-title
@@ -237,9 +242,9 @@ span.is-height-light
 			margin-top: 5px
 
 @media screen and (min-width: 1441px)
-	$words-border-width: 10px
+	$words-border-width: 7px
 	.english span
-		border-right-width: $words-border-width
+		border-right-width: $words-border-width + 2
 
 	#stepBlock1.is-art-title
 		.is-art-title
