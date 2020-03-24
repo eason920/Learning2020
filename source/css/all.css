@@ -1587,54 +1587,29 @@ input[type=range]::-ms-track {
   z-index: 1;
 }
 
-@media screen and (max-width: 1440px) {
-  .lb.is-lb-step1, .lb.is-lb-step2, .lb.is-lb-step3, .lb.is-lb-final {
-    width: 870px;
-  }
-
-  .lb-left.is-t3 {
-    width: 103px;
-  }
-  .lb-left.is-t3 + .lb-right {
-    width: calc( 100% - 103px);
-  }
-  .lb-left.is-t4 {
-    width: 122px;
-  }
-  .lb-left.is-t4 + .lb-right {
-    width: calc( 100% - 122px);
-  }
-  .lb-left.is-t5 {
-    width: 140px;
-  }
-  .lb-left.is-t5 + .lb-right {
-    width: calc( 100% - 140px);
-  }
+.lb.is-lb-step1, .lb.is-lb-step2, .lb.is-lb-step3, .lb.is-lb-final {
+  width: 995px;
 }
-@media screen and (min-width: 1441px) {
-  .lb.is-lb-step1, .lb.is-lb-step2, .lb.is-lb-step3, .lb.is-lb-final {
-    width: 995px;
-  }
 
-  .lb-left.is-t3 {
-    width: 115px;
-  }
-  .lb-left.is-t3 + .lb-right {
-    width: calc( 100% - 115px);
-  }
-  .lb-left.is-t4 {
-    width: 135px;
-  }
-  .lb-left.is-t4 + .lb-right {
-    width: calc( 100% - 135px);
-  }
-  .lb-left.is-t5 {
-    width: 155px;
-  }
-  .lb-left.is-t5 + .lb-right {
-    width: calc( 100% - 155px);
-  }
+.lb-left.is-t3 {
+  width: 115px;
 }
+.lb-left.is-t3 + .lb-right {
+  width: calc( 100% - 115px);
+}
+.lb-left.is-t4 {
+  width: 135px;
+}
+.lb-left.is-t4 + .lb-right {
+  width: calc( 100% - 135px);
+}
+.lb-left.is-t5 {
+  width: 155px;
+}
+.lb-left.is-t5 + .lb-right {
+  width: calc( 100% - 155px);
+}
+
 #Dr_layer {
   opacity: 0;
 }
