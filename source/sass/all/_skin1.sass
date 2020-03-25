@@ -230,30 +230,34 @@
 	// 				background-color: $m-light1
 	// NEW(109/02/04) v
 	#stepBlock1.is-art-strong
-		.is-art-strong
-			color: #0d86ff!important
-			&:hover
-				color: #fff!important
+		.is-art-strong 
+			span
+				color: #0d86ff!important
+				&:hover
+					color: #fff!important
 
 	#stepBlock1.is-art-muted
-		.is-art-strong
-			color: #bbb!important
-			&:hover
-				color: #fff!important
+		.is-art-strong 
+			span
+				color: #bbb!important
+				&:hover
+					color: #fff!important
 	
 	#stepBlock1.is-art-title
 		.is-art-title
-			background-color: #9b9b9b
-			color: $c-w
-			&:after
+			span
 				background-color: #9b9b9b
-		span.is-art-title:hover
-			color: #fff!important
-			background-color: #555
-		span.is-art-title.is-symbol:hover
-			background-color: #9b9b9b
-		.is-art-title.is-phrase:before
-			background-color: #000
+				color: $c-w
+				&:after
+					background-color: #9b9b9b
+				&:hover,
+				&.is-height-light
+					color: #fff!important
+					background-color: #555
+				&.is-symbol:hover
+					background-color: #9b9b9b
+				&.is-phrase:before
+					background-color: #000
 	// _stepblock_2.sass v
 	.recoard-done
 		color: #fff

@@ -120,6 +120,7 @@ section.move {
 .wrapper-right-f1 {
   padding-left: 4%;
   display: flex;
+  max-width: 1175px !important;
 }
 
 .wrapper-right-f2 {
@@ -2308,33 +2309,33 @@ input[type=range]::-ms-track {
 .skin1 .share-title-sub {
   color: #4a4a4a;
 }
-.skin1 #stepBlock1.is-art-strong .is-art-strong {
+.skin1 #stepBlock1.is-art-strong .is-art-strong span {
   color: #0d86ff !important;
 }
-.skin1 #stepBlock1.is-art-strong .is-art-strong:hover {
+.skin1 #stepBlock1.is-art-strong .is-art-strong span:hover {
   color: #fff !important;
 }
-.skin1 #stepBlock1.is-art-muted .is-art-strong {
+.skin1 #stepBlock1.is-art-muted .is-art-strong span {
   color: #bbb !important;
 }
-.skin1 #stepBlock1.is-art-muted .is-art-strong:hover {
+.skin1 #stepBlock1.is-art-muted .is-art-strong span:hover {
   color: #fff !important;
 }
-.skin1 #stepBlock1.is-art-title .is-art-title {
+.skin1 #stepBlock1.is-art-title .is-art-title span {
   background-color: #9b9b9b;
   color: #fff;
 }
-.skin1 #stepBlock1.is-art-title .is-art-title:after {
+.skin1 #stepBlock1.is-art-title .is-art-title span:after {
   background-color: #9b9b9b;
 }
-.skin1 #stepBlock1.is-art-title span.is-art-title:hover {
+.skin1 #stepBlock1.is-art-title .is-art-title span:hover, .skin1 #stepBlock1.is-art-title .is-art-title span.is-height-light {
   color: #fff !important;
   background-color: #555;
 }
-.skin1 #stepBlock1.is-art-title span.is-art-title.is-symbol:hover {
+.skin1 #stepBlock1.is-art-title .is-art-title span.is-symbol:hover {
   background-color: #9b9b9b;
 }
-.skin1 #stepBlock1.is-art-title .is-art-title.is-phrase:before {
+.skin1 #stepBlock1.is-art-title .is-art-title span.is-phrase:before {
   background-color: #000;
 }
 .skin1 .recoard-done {
@@ -2900,33 +2901,33 @@ body.is-memo-moving .skin1 .english span:hover, body.is-memo-moving .skin1 .Chin
 .skin2 .share-title-sub {
   color: #4a4a4a;
 }
-.skin2 #stepBlock1.is-art-strong .is-art-strong {
+.skin2 #stepBlock1.is-art-strong .is-art-strong span {
   color: #0d86ff !important;
 }
-.skin2 #stepBlock1.is-art-strong .is-art-strong:hover {
+.skin2 #stepBlock1.is-art-strong .is-art-strong span:hover {
   color: #fff !important;
 }
-.skin2 #stepBlock1.is-art-muted .is-art-strong {
+.skin2 #stepBlock1.is-art-muted .is-art-strong span {
   color: #bbb !important;
 }
-.skin2 #stepBlock1.is-art-muted .is-art-strong:hover {
+.skin2 #stepBlock1.is-art-muted .is-art-strong span:hover {
   color: #fff !important;
 }
-.skin2 #stepBlock1.is-art-title .is-art-title {
+.skin2 #stepBlock1.is-art-title .is-art-title span {
   background-color: #9b9b9b;
   color: #fff;
 }
-.skin2 #stepBlock1.is-art-title .is-art-title:after {
+.skin2 #stepBlock1.is-art-title .is-art-title span:after {
   background-color: #9b9b9b;
 }
-.skin2 #stepBlock1.is-art-title span.is-art-title:hover {
+.skin2 #stepBlock1.is-art-title .is-art-title span:hover, .skin2 #stepBlock1.is-art-title .is-art-title span.is-height-light {
   color: #fff !important;
   background-color: #555;
 }
-.skin2 #stepBlock1.is-art-title span.is-art-title.is-symbol:hover {
+.skin2 #stepBlock1.is-art-title .is-art-title span.is-symbol:hover {
   background-color: #9b9b9b;
 }
-.skin2 #stepBlock1.is-art-title .is-art-title.is-phrase:before {
+.skin2 #stepBlock1.is-art-title .is-art-title span.is-phrase:before {
   background-color: #000;
 }
 .skin2 .recoard-done {
@@ -3191,7 +3192,7 @@ article {
   opacity: 0;
   border-style: none;
   vertical-align: top;
-  margin-top: 2px;
+  margin-top: 6px;
   margin-left: 10px;
   transition: opacity 0.3s;
 }
@@ -3265,10 +3266,10 @@ article {
   padding-bottom: 7px;
 }
 
-#stepBlock1.is-art-title .is-art-title {
+#stepBlock1.is-art-title .is-art-title span {
   position: relative;
 }
-#stepBlock1.is-art-title .is-art-title:after {
+#stepBlock1.is-art-title .is-art-title span:after {
   content: "";
   display: block;
   position: absolute;
@@ -3366,9 +3367,9 @@ span.is-height-light {
     border-right-width: 7px;
   }
 
-  #stepBlock1.is-art-title .is-art-title:after {
-    width: 4px;
-    right: -4px;
+  #stepBlock1.is-art-title .is-art-title span:after {
+    width: 8px;
+    right: -8px;
   }
 
   .is-symbol {
@@ -3376,10 +3377,10 @@ span.is-height-light {
   }
 
   #Nt0 .read_btn, #t0 .read_btn {
-    margin-top: 8px;
+    margin-top: 15px;
   }
   #Nt0 .icon-star, #t0 .icon-star {
-    margin-top: 5px;
+    margin-top: 12px;
   }
 }
 @media screen and (min-width: 1441px) {
@@ -3387,9 +3388,9 @@ span.is-height-light {
     border-right-width: 9px;
   }
 
-  #stepBlock1.is-art-title .is-art-title:after {
-    width: 7px;
-    right: -7px;
+  #stepBlock1.is-art-title .is-art-title span:after {
+    width: 9px;
+    right: -9px;
   }
 
   .is-symbol {
@@ -3397,10 +3398,10 @@ span.is-height-light {
   }
 
   #Nt0 .read_btn, #t0 .read_btn {
-    margin-top: 14px;
+    margin-top: 15px;
   }
   #Nt0 .icon-star, #t0 .icon-star {
-    margin-top: 10px;
+    margin-top: 12px;
   }
 }
 .funbar-memobox,

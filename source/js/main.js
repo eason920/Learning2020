@@ -19,9 +19,9 @@ function ch_font(str,clock){
 
 	if(str.indexOf("**")!=-1){
 		str=str.replace("**","");
-		x=str.replace(str,"**<a name='"+y+"' id='"+y+"'></a><div id='t"+y+"' onDblClick='_dictClose();'  class='english'><div class='art-star'   onclick=goP_sentences('"+y+"') ><div class='icon-star' id='art-star"+y+"'></div></div><div class='art-art'><p>" +str+ "</p><input type='button' onclick='"+playo+"' class='read_btn link'></div></div>");
+		x=str.replace(str,"**<a name='"+y+"' id='"+y+"'></a><div id='t"+y+"' onDblClick='_dictClose();'  class='english'><div class='art-star'   onclick=goP_sentences('"+y+"') ><div class='icon-star' id='art-star"+y+"'></div></div><div class='art-art'>" +str+ "<input type='button' onclick='"+playo+"' class='read_btn link'></div></div>");
 	}else{
-		x=str.replace(str,"**<a name='"+y+"' id='"+y+"'></a><div id='t"+y+"' onDblClick='_dictClose();'  class='english'><div class='art-star' onclick=goP_sentences('"+y+"')><div class='icon-star' id='art-star"+y+"'></div></div><div class='art-art'><p>" +str+ "</p><input type='button' onclick='"+playo+"' class='read_btn link'></div></div>");
+		x=str.replace(str,"**<a name='"+y+"' id='"+y+"'></a><div id='t"+y+"' onDblClick='_dictClose();'  class='english'><div class='art-star' onclick=goP_sentences('"+y+"')><div class='icon-star' id='art-star"+y+"'></div></div><div class='art-art'>" +str+ "<input type='button' onclick='"+playo+"' class='read_btn link'></div></div>");
 	}
 
 	return x;
@@ -57,9 +57,9 @@ function ch_fontTran(str,clock){
 
 	if(str.indexOf("**")!=-1){
 		str=str.replace("**","");
-		x=str.replace(str,"**<a name='"+y+"' id='"+y+"'></a><div id='t"+y+"' onDblClick='_dictClose();'  class='english'><div class='art-star'  onclick=goP_sentences('"+y+"')><div class='icon-star' id='art-star"+y+"'></div></div><div class='art-art'><p>" +str+ "</p><input type='button' onclick='"+playo+"' class='read_btn link'></div></div>");
+		x=str.replace(str,"**<a name='"+y+"' id='"+y+"'></a><div id='t"+y+"' onDblClick='_dictClose();'  class='english'><div class='art-star'  onclick=goP_sentences('"+y+"')><div class='icon-star' id='art-star"+y+"'></div></div><div class='art-art'>" +str+ "<input type='button' onclick='"+playo+"' class='read_btn link'></div></div>");
 	}else{
-		x=str.replace(str,"**<a name='"+y+"' id='"+y+"'></a><div id='t"+y+"' onDblClick='_dictClose();'  class='english'><div class='art-star'  onclick=goP_sentences('"+y+"')><div class='icon-star' id='art-star"+y+"'></div></div><div class='art-art'><p>" +str+ "</p><input type='button' onclick='"+playo+"' class='read_btn link'></div></div>");
+		x=str.replace(str,"**<a name='"+y+"' id='"+y+"'></a><div id='t"+y+"' onDblClick='_dictClose();'  class='english'><div class='art-star'  onclick=goP_sentences('"+y+"')><div class='icon-star' id='art-star"+y+"'></div></div><div class='art-art'>" +str+ "<input type='button' onclick='"+playo+"' class='read_btn link'></div></div>");
 	}
 
 	return x;
@@ -251,15 +251,17 @@ function P1_Step2(){
 			playo="playC("+i+");"			
 			eu=eu.replace("**","");
 			trx=$(en).find("lrclist:eq("+i+")").attr("train")
+			console.log('講', trx);
+			
 			if((trx!='' && trx!=undefined)){
 				enCode = fnEnRemoveSortString( i, tranchang(trx,i) );
 				chCode = fnChRemoveSortString( i , $(tc).find("lrclist:eq("+i+")").attr("content") );
-				eu=eu+'<a name="' + i + '" id="N' + i + '"></a><div class="english" id="Nt' + i + '" ><div class="art-star" id="art-star'+i+'" onclick=goP_sentences('+i+') ><div class="icon-star"></div></div><div class="art-art"><p>' +enCode+'</p><input type="button" onclick="'+playo+'" class="read_btn link"></div></div><div id="bubble'+i+'"  class="annotation" style="display:none;"></div><div class="Chinese" id="Nct'+i+'" >'+chCode+'</div>';
+				eu=eu+'<a name="' + i + '" id="N' + i + '"></a><div class="english" id="Nt' + i + '" ><div class="art-star" id="art-star'+i+'" onclick=goP_sentences('+i+') ><div class="icon-star"></div></div><div class="art-art">' +enCode+'<input type="button" onclick="'+playo+'" class="read_btn link"></div></div><div id="bubble'+i+'"  class="annotation" style="display:none;"></div><div class="Chinese" id="Nct'+i+'" >'+chCode+'</div>';
 
 			}else{
 				enCode = fnEnRemoveSortString( i, spanWord($(en).find("lrclist:eq(" + i + ")").attr("content"), pAry) );
 				chCode = fnChRemoveSortString( i, $(tc).find("lrclist:eq("+i+")").attr("content") );
-				eu = eu + '<a name="' + i + '" id="N' + i + '"></a><div class="english" id="Nt' + i + '" ><div class="art-star" id="art-star'+i+'" onclick=goP_sentences('+i+') ><div class="icon-star"></div></div><div class="art-art"><p>' + enCode +'</p><input type="button" onclick="'+playo+'" class="read_btn link"></div></div><div id="bubble'+i+'"  class="annotation" style="display:none;"></div><div class="Chinese" id="Nct'+i+'" >'+ chCode +'</div>';
+				eu = eu + '<a name="' + i + '" id="N' + i + '"></a><div class="english" id="Nt' + i + '" ><div class="art-star" id="art-star'+i+'" onclick=goP_sentences('+i+') ><div class="icon-star"></div></div><div class="art-art">' + enCode +'<input type="button" onclick="'+playo+'" class="read_btn link"></div></div><div id="bubble'+i+'"  class="annotation" style="display:none;"></div><div class="Chinese" id="Nct'+i+'" >'+ chCode +'</div>';
 			}
 			eu=eu.replace("**","");
 		

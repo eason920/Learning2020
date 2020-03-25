@@ -167,7 +167,22 @@ $(function(){
 			$(this).addClass('active');
 			$('#stepBlock1').removeClass().addClass('is-art-'+string)
 		};
+
+		// 原文分析>加強主題 click 後要使空白的 span 隱藏(2) v
+		if( $(this).data('arttype') == 'title' ){
+			console.log('is title');
+			$('#stepBlock1 span').each(function(){
+				$(this).text() == '' ? $(this).hide() : null;
+			});
+		}
 	});
+
+	// default 使空白的 span 隱藏(1) v
+	setTimeout(function(){
+		$('#stepBlock1 span').each(function(){
+			$(this).text() == '' ? $(this).hide() : null;
+		});
+	}, 1000);
 
 	// ====================================
 	// == 單字 DREYE

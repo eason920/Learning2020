@@ -40,7 +40,7 @@ article
 	border-style: none
 	vertical-align: top
 	margin:
-		top: 2px
+		top: 6px
 		left: 10px
 	transition: opacity .3s
 
@@ -121,13 +121,14 @@ article
 
 #stepBlock1.is-art-title
 	.is-art-title
-		position: relative
-		&:after
-			content: ''
-			display: block
-			position: absolute
-			height: 100%
-			top: 0
+		span
+			position: relative
+			&:after
+				content: ''
+				display: block
+				position: absolute
+				height: 100%
+				top: 0
 
 #Nt1, #t1
 	padding-top: 0
@@ -227,9 +228,10 @@ span.is-height-light
 
 	#stepBlock1.is-art-title
 		.is-art-title
-			&:after
-				width: $words-border-width
-				right: $words-border-width * -1
+			span
+				&:after
+					width: $words-border-width + 4
+					right: ($words-border-width + 4) * -1
 
 	.is-symbol
 		margin-left: $words-border-width * -1
@@ -237,9 +239,9 @@ span.is-height-light
 	#Nt0, #t0
 		.read_btn
 			margin:
-				top: 8px
+				top: 15px
 		.icon-star
-			margin-top: 5px
+			margin-top: 12px
 
 @media screen and (min-width: 1441px)
 	$words-border-width: 7px
@@ -248,9 +250,10 @@ span.is-height-light
 
 	#stepBlock1.is-art-title
 		.is-art-title
-			&:after
-				width: $words-border-width
-				right: $words-border-width * -1
+			span
+				&:after
+					width: $words-border-width + 2
+					right: ($words-border-width + 2) * -1
 				
 	.is-symbol
 		margin-left: $words-border-width * -1
@@ -258,6 +261,6 @@ span.is-height-light
 	#Nt0, #t0
 		.read_btn
 			margin:
-				top: 14px
+				top: 15px
 		.icon-star
-			margin-top: 10px
+			margin-top: 12px

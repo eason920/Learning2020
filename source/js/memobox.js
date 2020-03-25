@@ -16,6 +16,10 @@ $(function(){
 	const distanceY =  100;// $art.padding-top
 	//
 	const addMemo = function(id, text, left, top, basicid2, basicid1, textLength){
+		console.log(text);
+		const br = new RegExp(/\<is_br\>/, "g");
+		text = text.replace(br, '\n');
+		
 		let addClass = '';
 		textLength == true ? addClass = ' is-lengthy' : null;
 		$stepblock.append(
@@ -75,12 +79,13 @@ $(function(){
 	const fnSave = function(){
 		let i = 0;
 		const max = $('.memobox').length - 1;
+		const br = new RegExp(/%0A/, "g");
 		memoUpdate = '[';
 		$('.memobox').each(function(){
 			const $this = $(this);
 			const text = escape( $this.find('.memobox-text').val() );
 			memoUpdate += '{"id":"' + $this.attr('id') + '",';
-			memoUpdate += '"text":"' + text + '",';
+			memoUpdate += '"text":"' + text.replace(br, '<is_br>') + '",';
 			memoUpdate += '"basicid2":"' + $this.attr('data-basicid2') + '",';
 			memoUpdate += '"basicid1":"' + $this.attr('data-basicid1') + '"}';
 			i < max ? memoUpdate += ',' : null;
