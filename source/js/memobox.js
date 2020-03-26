@@ -227,7 +227,7 @@ $(function(){
 		
 				switch(true){
 					case /art-art/i.test( className ):
-						thisid = $this.find('p').find('span:last-child').attr('id');
+						thisid = $this.find('span:last-child').attr('id');
 						break;
 					case /chinese/i.test( className ):
 						thisid = $this.find('span:last-child').attr('id');

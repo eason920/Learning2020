@@ -751,7 +751,7 @@ aside .sub {
 }
 @media screen and (max-width: 1440px) {
   .speed-left:before {
-    top: 9px;
+    top: 11px;
   }
 }
 input[type=range] {
