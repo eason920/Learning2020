@@ -87,8 +87,8 @@ const replaceCode = function(target, Str){
 	// CODE AT START
 	$('.english span').each(function(){
 		if( $(this).text().indexOf('“') >= 0 ){
-			$(this).before('<span class="is-symbol is-symbol-left">“</span>');
-			$(this).text( $(this).text().substr(1) );
+			// $(this).before('<span class="is-symbol is-symbol-left">“</span>');
+			$(this).text( $(this).text().substr(1) ).addClass('add-symbol');
 		}
 		if( $(this).text().indexOf('(') >= 0 ){
 			$(this).before('<span class="is-symbol is-symbol-left">(</span>');
