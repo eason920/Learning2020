@@ -2448,8 +2448,8 @@ input[type=range]::-ms-track {
 .skin1 .s3ex1-check {
   border-color: #4a4a4a;
 }
-.skin1 .s3ex1-check:after {
-  background-color: #ff859c;
+.skin1 .ex1-dot {
+  background-color: #0070e0;
 }
 .skin1 .s3ex2-iptbox span, .skin1 .s3ex2-iptbox input {
   color: #000;
@@ -3040,8 +3040,8 @@ body.is-memo-moving .skin1 .english span:hover, body.is-memo-moving .skin1 .Chin
 .skin2 .s3ex1-check {
   border-color: #4a4a4a;
 }
-.skin2 .s3ex1-check:after {
-  background-color: #ff859c;
+.skin2 .ex1-dot {
+  background-color: #0070e0;
 }
 .skin2 .s3ex2-iptbox span, .skin2 .s3ex2-iptbox input {
   color: #000;
@@ -4125,15 +4125,22 @@ body.is-memo-moving .english span:hover, body.is-memo-moving .Chinese span:hover
   margin-top: 4px;
 }
 
-input:checked + label .s3ex1-check:after {
-  content: "";
-  display: block;
+input:checked + label .s3ex1-check:after, .ex1-dot {
   width: 12px;
   height: 12px;
   top: 3px;
   left: 3px;
   position: absolute;
   border-radius: 50%;
+}
+
+input:checked + label .s3ex1-check:after {
+  content: "";
+  display: block;
+}
+
+.ex1-dot {
+  z-index: 1;
 }
 
 .s3ex1-submitbox {
@@ -4189,6 +4196,7 @@ input:checked + label .s3ex1-check:after {
   text-align: center;
   font-family: "Roboto Mono", monospace;
   letter-spacing: 3px;
+  padding: 0;
 }
 
 .for-demo span, .for-demo input {

@@ -1,18 +1,11 @@
+const nua = navigator.userAgent;
+
 $(function(){
 	const $parent = $('#stepBlock3');
 	
 	const ready = function(){
 		if( $parent.html() != '' ){
 			clearInterval(sid);
-
-			$('.s3ex2-iptbox input').each(function(){
-				const length = $(this).attr('placeholder').length;
-				// let num;
-				// $(window).width() >= 1441? num = 17 : num = 15;
-				const width = 17 * length;
-				$(this).attr('maxlength', length).css({width});
-			});
-			
 			// EVENT v
 			for(let i = 1;i<=3;i++){
 				$('.s3ex' + i +'-submitbox .s3-submit').click(function(){
@@ -31,6 +24,14 @@ $(function(){
 					$play3.addClass('is-lock');
 				};
 			});
+
+
+			$('body').on('click', '.s3ex1-item-m label', function(){
+				$(this).parent().parent().siblings().find('.ex1-dot').remove();
+				$(this).find('.s3ex1-check').append(
+					$('<div>', {'class': 'ex1-dot'})
+				)
+			});
 		}
 	};
 
@@ -44,7 +45,6 @@ function blank(ans,id){
 	var a2='';
 	var a3='';
 	var blank='',end1='';
-	//console.log(ans)
 	if(left(a2,1)==" "){
 	  blank="　";
   
@@ -56,7 +56,7 @@ function blank(ans,id){
 		  blank=blank+"＊";
 	  }
 	  
-	  blank='<INPUT type="text" name="EX2answer'+(id+1)+'" id="EX2answer'+(id+1)+'" placeholder="'+blank+'" maxlength="'+parseInt(a2.length)+'" style="width: 85px;">'
+	  blank='<INPUT type="text" name="EX2answer'+(id+1)+'" id="EX2answer'+(id+1)+'" placeholder="'+blank+'" p_r_o_1="'+parseInt(a2.length)+'" p_r_o_2="width: 85px;">'
 
 	  blank=a1.replace(a2,blank);
   
@@ -72,7 +72,7 @@ function blank(ans,id){
 		for(var q=1;q>=parseInt(a2.length)-1;q--)
 		blank=blank+"＊";
 	  }
-	  blank='<INPUT type="text" name="EX2answer'+(id+1)+'" id="EX2answer'+(id+1)+'" placeholder="'+blank+'" maxlength="'+parseInt(a2.length)+'" style="width: 85px;">'
+	  blank='<INPUT type="text" name="EX2answer'+(id+1)+'" id="EX2answer'+(id+1)+'" placeholder="'+blank+'" p_r_o_1="'+parseInt(a2.length)+'" p_r_o_2="width: 85px;">'
 	
 	  blank=al.replace(a2,'<span>'+blank+'</span>'+'<span>'+end1+'</span>');
 	
@@ -91,7 +91,7 @@ function blank(ans,id){
 		blank=blank+"＊";
 	  }
 	  //console.log(blank)
-	  blank='<INPUT  name="EX2answer'+(id+1)+'" id="EX2answer'+(id+1)+'" placeholder="'+blank+'" maxlength="'+parseInt(a1.length-1)+'" style="width: 85px;">'
+	  blank='<INPUT  name="EX2answer'+(id+1)+'" id="EX2answer'+(id+1)+'" placeholder="'+blank+'" p_r_o_1="'+parseInt(a1.length-1)+'" p_r_o_2="width: 85px;">'
 	  
 	  //blank=al.replace(a1,'<span>'+blank+'</span>'+'<span>'+end1+'</span>');
 	  blank='<span>'+left(a1,1)+'</span>' + '<span>'+blank+'</span>' + '<span>'+right(a1,1)+'</span>'
@@ -248,7 +248,9 @@ function EX1(){
 	for(j=0;j<ans.length-1;j++){		
 		ii++;
 		ans[j]=ans[j].replace("`","’");
+		
 		Str=Str.replace("`","’");
+		Str=Str+'<div class="s3ex1-block">'
 		Str=Str+'<div class="s3ex1-item is-title">'
 		Str=Str+'<div class="s3ex1-item-l">'
 		Str=Str+'<div class="s3ex1-icon"></div>'
@@ -269,7 +271,7 @@ function EX1(){
 		Str=Str+'  </label>'
 		Str=Str+'</div>'
 		Str=Str+'<div class="s3ex1-item-r">'
-		Str=Str+'  <div class="s3ex1-item-en">(A).'+op1[j]+'</div>'
+		Str=Str+'  <div class="s3ex1-item-en">(A) '+op1[j]+'</div>'
 		Str=Str+'</div>'
 		Str=Str+'</div>'
 		Str=Str+'<div class="s3ex1-item">'
@@ -283,7 +285,7 @@ function EX1(){
 		Str=Str+'  </label>'
 		Str=Str+'</div>'
 		Str=Str+'<div class="s3ex1-item-r">'
-		Str=Str+'  <div class="s3ex1-item-en">(B).'+op2[j]+'</div>'
+		Str=Str+'  <div class="s3ex1-item-en">(B) '+op2[j]+'</div>'
 		Str=Str+'</div>'
 		Str=Str+'</div>'
 		Str=Str+'<div class="s3ex1-item">'
@@ -297,7 +299,7 @@ function EX1(){
 		Str=Str+'  </label>'
 		Str=Str+'</div>'
 		Str=Str+'<div class="s3ex1-item-r">'
-		Str=Str+'  <div class="s3ex1-item-en">(C).'+op3[j]+'</div>'
+		Str=Str+'  <div class="s3ex1-item-en">(C) '+op3[j]+'</div>'
 		Str=Str+'</div>'
 		Str=Str+'</div>'
 		Str=Str+'<div class="s3ex1-item">'
@@ -311,7 +313,8 @@ function EX1(){
 		Str=Str+'  </label>'
 		Str=Str+'</div>'
 		Str=Str+'<div class="s3ex1-item-r">'
-		Str=Str+'  <div class="s3ex1-item-en">(D).'+op4[j]+'</div>'
+		Str=Str+'  <div class="s3ex1-item-en">(D) '+op4[j]+'</div>'
+		Str=Str+'</div>'
 		Str=Str+'</div>'
 		Str=Str+'</div>'						
 	}
@@ -485,7 +488,8 @@ function EX2(){
 	var Str='';
 	
 	var ans2=$(en).find("listen_answer").text().split("\n"),eu,ii=1,k="",y=0,a,a1,a2,a3,eu='',clock;
-   
+   // console.log('%c ans2> '+ans2,'color: yellow');
+	
    
 	for (i=0;i<=$(en).find("lrclist:last").index();i++){
 		if($(en).find("lrclist:eq("+i+")").index()!=-1){	
@@ -497,7 +501,7 @@ function EX2(){
    
 	for(j=0;j<ans2.length;j++){		  
 		if(eu.indexOf(ans2[j])!=-1 ){			      
-			eu=eu.replace(ans2[j],'<div class="s3ex2-iptbox" ><span>('+(j+1)+').</span>'+blank(ans2[j],j)+'</div><div id="s3ex2-id'+j+'" class="s3-ansbox"></div>')	
+			eu=eu.replace(ans2[j],'<div class="s3ex2-iptbox" ><span>('+(j+1)+')</span>'+blank(ans2[j],j)+'</div><div id="s3ex2-id'+j+'" class="s3-ansbox"></div>')	
 		}	 
 	}
    
@@ -509,7 +513,11 @@ function EX2(){
 		Str=Str+'<div class="s3-en">'+x[i]+'</div>';
 	}
 	
+	
+	Str = Str.replace( /p_r_o_1/g, 'maxlength');
+	Str = Str.replace( /p_r_o_2/g, 'style');
 
+	
 	$('.s3ex2-main').html(Str)
 	$('.s3ex2-submitbox .s3-submit').on('click',function(){EX2_end()})
 
@@ -519,7 +527,21 @@ function EX2(){
 		// $(window).width() >= 1441? num = 17 : num = 15;
 		const width = 17 * length;
 		$(this).attr('maxlength', length).css({width});
-		$(this).width(width)
+		$(this).width(width);
+		// MAC BUG
+		if (/macintosh/i.test(nua) && !/chrome/i.test(nua)) {
+			// alert('safari 2')
+			$('.s3ex2-iptbox input').each(function(){
+				$(this).css('height', 'auto');
+			});
+			
+			//
+			let height;
+			$(window).width() >= 1441 ? height = '31px' : height = '33px';
+			$('.s3ex2-iptbox span:nth-child(3)').each(function(){
+				$(this).css('height', height);
+			});
+		}
 	});
 
    }
@@ -719,7 +741,7 @@ function EX3(){
 	
 	$('.s3ex3-right').html(Str)
    }
-   
+   var Ex3_sp=''
 	function EX3_Clear(){
 		for(i=0;i<=$(en).find("word_answer").text().split("\n").length-1;i++){
 			$("#ex_"+i).show();	 
@@ -732,6 +754,7 @@ function EX3(){
 			$('#ex3').addClass('is-def')
 		}
 		ck=0;
+		Ex3_sp='';
 	}
 	
 	function EX3_end(){
@@ -739,15 +762,19 @@ function EX3(){
 		if(DemoTimeout==1){
 			   JoinusLightBox()
 		}else{			
-			$.cookie('cloze_cookie', '', { path:'/', expires: 5 });  
-			$.cookie('cloze_cookie', $("#cloze_ans").val(), { path:'/', expires: 5 }); 
-			//EX3_Clear()
-			EX3_answers()
+			console.log(Ex3_sp)
+			if(Ex3_sp==''){
+				$.cookie('cloze_cookie', '', { path:'/', expires: 5 });  
+				$.cookie('cloze_cookie', $("#cloze_ans").val(), { path:'/', expires: 5 }); 
+				//EX3_Clear()
+				EX3_answers()				
+			}
 		} 
 	}
    
 	function EX3_answers(){
 		var ans2=$(en).find("word_answer").text().split("\n"),en_article,tc_article,AS,ii=1,y=0,a,a1,a2,a3,eu='';
+		Ex3_sp=1
 
 		for (i=0;i<=$(en).find("lrclist:last").index();i++){
 			if($(en).find("lrclist:eq("+i+")").index()!=-1){
@@ -828,6 +855,7 @@ function EX3(){
    //////////////////////////////////////////////////
 
    function raj(rec,type){
+	console.log(type)
 	$.ajax({
 	  type:"POST",
 	  url:"./test_record.asp",
@@ -838,7 +866,7 @@ function EX3(){
 	  },
 	  dataType:"html",
 	  success:function(data){	
-		jquery_RecordFinish()
+		jquery_RecordFinish()		
 	  }
 	
 	});	
