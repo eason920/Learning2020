@@ -73,6 +73,7 @@ const replaceCode = function(target, Str){
 
 	// CODE AT END
 	// Str = Str.replace(/’/g, "'");
+	Str = Str.replace(/”\)<\/span>/g, '<\/span><span class="is-symbol">”)</span>');
 	Str = Str.replace(/,<\/span>/g, '<\/span><span class="is-symbol">,</span>');
 	Str = Str.replace(/\.<\/span>/g, '<\/span><span class="is-symbol">.</span>');
 	Str = Str.replace(/!<\/span>/g, '<\/span><span class="is-symbol">!</span>');
@@ -83,9 +84,14 @@ const replaceCode = function(target, Str){
 	Str = Str.replace(/\]<\/span>/g, '<\/span><span class="is-symbol">]</span>');
 
 	target.html(Str);
+	// (“NinetyNine”)
 
 	// CODE AT START
 	$('.english span').each(function(){
+		if( $(this).text().indexOf('(“') >= 0 ){
+			$(this).before('<span class="is-symbol is-symbol-left">(“</span>');
+			$(this).text( $(this).text().substr(2) );
+		}
 		if( $(this).text().indexOf('“') >= 0 ){
 			// $(this).before('<span class="is-symbol is-symbol-left">“</span>');
 			$(this).text( $(this).text().substr(1) ).addClass('add-symbol');
