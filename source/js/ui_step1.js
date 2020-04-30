@@ -249,7 +249,7 @@ $(function(){
 	// ====================================
 	// == WIN 7 (以下)不支援 css calc() 方法
 	// ====================================
-	const win7Width = $(window).width();
-	const win7Left = $('.topbar .wrapper-left').outerWidth(true);
-	$('.topbar .wrapper-right-f1').css('width', win7Width - win7Left);
+	// const win7Width = $(window).width();
+	// const win7Left = $('.topbar .wrapper-left').outerWidth(true);
+	// $('.topbar .wrapper-right-f1').css('width', win7Width - win7Left);
 });

@@ -1,4 +1,6 @@
-var state,clock_num='',clock_num0='',clock_num_2='',clock_num0_2='',count=0,pit=0,temp=0,temp2=0,clock,pausev=1,after=0,playmode=1;playflag=1,bubble_num='',bubble_num2='';
+var state,clock_num='',clock_num0='',clock_num_2='',clock_num0_2='',count=0,pit=0,temp=0,temp2=0,clock,pausev=1,after=0,playmode=1;playflag=1,bubble_num='',bubble_num2='',record_num='',record_C='',record_Mode=0,playContinue=1;
+var record_blog=[];
+var reading_check=[];
 //初始化
 function playerinit(){
   //var mp3_1=$(en).find("lrc").attr("mp3file1")
@@ -23,7 +25,8 @@ function playerinit(){
     clock_num=clock_num+second_ck($(en).find("lrclist:eq("+i+")").attr("mp3_1"))+';' ;
     clock_num0=clock_num0+($(en).find("lrclist:eq("+i+")").attr("mp3_1"))+';' ;  
     clock_num_2=clock_num_2+second_ck($(en).find("lrclist:eq("+i+")").attr("mp3_2"))+';';
-    clock_num0_2=clock_num0_2+($(en).find("lrclist:eq("+i+")").attr("mp3_2"))+';';      
+    clock_num0_2=clock_num0_2+($(en).find("lrclist:eq("+i+")").attr("mp3_2"))+';';  
+    record_num=record_num+';'    
   }
 
   clock_num=clock_num+'x';
@@ -35,6 +38,7 @@ function playerinit(){
   clock_num_2=clock_num_2.split(";");
   clock_num0_2=clock_num0_2+'x';
   clock_num0_2=clock_num0_2.split(";");
+  record_num=record_num.split(";");
 
   for (i=0;i<=$(en).find("bubblelist:last").index();i++){
     bubble_num=bubble_num+second_ck($(en).find("bubblelist:eq("+i+")").attr("mp3_1"))+';'
@@ -43,7 +47,49 @@ function playerinit(){
 
   bubble_num=bubble_num.split(";");
   bubble_num2=bubble_num2.split(";");
+  Player_recording_init()
+}
 
+function Player_recording_init(){
+  $.ajax({
+		type:"GET",
+		url:"https://funday.asia/newmylessonmobile/api/LearningRecordlist?member_id="+Me.Mindx+"&customer_id="+Me.customer+"&news_id="+refId,
+		dataType:"json",
+		success:function(data){
+      if(data.mp3.length!=0){
+        data.mp3.forEach((item,id) => {
+          record_num[id]=item
+        });
+
+        rec_State=0
+        percent=100
+
+        $('.share-title-percent').html('100%')
+
+        $('.is-item-audiotype').removeClass('is-not-ready')       
+        $('.step-fnbar2').removeClass('is-not-ready')
+        $('.icon-rec-re').removeClass('icon-rec-re').addClass('icon-rec-restart') 
+        
+        $('.icon-rec-restart > span').html('全部重錄')    
+        $('.s2-main-wrapper .share-pre,.step2-finalbox').show()
+        $('#s2-main-item0 .share-pre').hide()
+
+        $('.icon-C2,.funbar-update,.recoard-done').hide()
+        $('.icon-C3,.icon-C4').show()
+
+        $('.icon-rec-restart').on('click',function(){
+          RecordResetConfirm()
+        })
+
+        $('.next-unit').on('click',function(){
+          $('.is-step-switch3').trigger('click');
+        })
+
+
+
+      }
+		} 
+	});
 }
 
 //秒數換算
@@ -59,53 +105,7 @@ function second_ck(cl){
 
 }
 
-// 全文播放
-function j_play(){
-  document.getElementById('audio').currentTime = 0;
-  document.getElementById('audio').play();
-}
 
-function All_pause(){
-
-  document.getElementById("audio1").pause();
-  document.getElementById("audio1").currentTime = 0;
-
-  document.getElementById("audio2").pause();
-  document.getElementById("audio2").currentTime = 0;
-  temp=0;
-
-  $('#Speed_range').val('1.0')
-  SpeedBar('1.0')
-      
-  $('.EXPlayerS').addClass('EXPlayer')
-  $('.EXPlayer').removeClass('EXPlayerS')
-
-  $('.Step1-contentEn').attr('class','Step1-contentEn link')
-  $('.Step1-contentCh').attr('class','Step1-contentCh')
-
-  $('#Step1PlayIcon').attr('data-value','0')
-  $('#Step1PlayIcon').attr('class','Step1Player link');	
-  $('#ToolBox2').hide()	
-  $('#ToolBox1').show()	
-  $('#Step1PlayIcon').on('click',function(){pauseplay()})
-    
-  $('#Step2PlayIcon').attr('data-value','0')
-  $('#Step2PlayIcon').attr('class','Step1Player link');
-  $('#Step2PlayIcon').on('click',function(){pauseplay2()})
-
-}
-
-function EX_play(){
-  document.getElementById('audio1').currentTime = 0;
-  document.getElementById('audio1').play();
-  $('.EXPlayer').addClass('EXPlayerS')
-  $('.EXPlayerS').removeClass('EXPlayer')
-}
-
-function EX_pause(){
-  document.getElementById("audio1").pause();
-  document.getElementById("audio1").currentTime = 0;
-}
 
 
 //幾秒後全文播放
@@ -119,12 +119,27 @@ function l_play(s){
 }
 
 function ModeCheck(){
-  if($('.is-item-read').attr('data-value')=='0'){
-    playmode=1; 
-  }else if($('.is-item-read').attr('data-value')=='1'){
-    playmode=3; 
-  }
-  //console.log(playmode)
+  if($('.is-step-switch2').hasClass('active')){
+    if(playContinue==0){
+      playmode=1
+    }else{
+      playmode=$('#is-play-part').attr('data-value')
+    }
+  }else if($('.is-step-switch3').hasClass('active')){
+    playmode=1;
+    playflag=1
+  }else{ 
+    if($('.is-item-read').attr('data-value')=='0'){
+      playmode=1; 
+    }else if($('.is-item-read').attr('data-value')=='1'){
+      playmode=3; 
+    }
+
+    if(playflag==3)
+      playflag=1
+  }    
+ 
+
 }
 
 //點擊播放
@@ -144,6 +159,23 @@ function play_vo(t){
   document.getElementById('audio1').play();
 
 }
+// 全文播放
+function PlayA(){
+  playContinue=1
+  //temp=parseInt(temp)
+  temp=0
+  setTimeout(function(){
+    play(temp)
+    $('.s2-main-box').animate({top : 0})
+  },150)
+}
+// 段落播放&停止
+function PlayS(t){
+  playContinue=0
+  setTimeout(function(){
+    play(parseInt(t))
+  },150)
+}
 
 //段落播放
 function play(t){
@@ -156,8 +188,7 @@ function play(t){
   }
 
   //$('.speed').addClass("show");
-  $('#playBtn1').addClass("pause");  
-
+  $('#playBtn1,#playBtn3').addClass("pause");  
   if(playmode==1){
     document.getElementById('audio1').currentTime = clock_num[t];
     document.getElementById('audio1').play();
@@ -173,7 +204,31 @@ function play(t){
       document.getElementById('audio2').currentTime = clock_num_2[t];
       document.getElementById('audio2').play();	 		
     }
-	
+  }else if(playmode==4){
+    if(record_num[t]!=''){
+      recordPlay(t)
+    }else{
+      const scrollStep2=document.getElementById('s2-main-item'+(parseInt(t)+1)).offsetTop * -1
+      $('.s2-main-box').animate({top : scrollStep2})
+      setTimeout(function(){
+        play((parseInt(t)+1))
+      },2000)
+      return false;
+    }
+  }else if(playmode==5){
+    if(playflag==1){
+      document.getElementById('audio1').currentTime = clock_num[t];
+      document.getElementById('audio1').play();	 
+    }else if(playflag==3){
+      if(record_num[t]!=''){
+        recordPlay(t)
+      }else{
+        playflag=1
+        temp=t+1;
+        document.getElementById('audio1').currentTime = clock_num[temp];
+        document.getElementById('audio1').play();	         
+      }
+    }    	
   }else{
     document.getElementById('audio1').currentTime = clock_num[t];
     document.getElementById('audio1').play();	
@@ -196,7 +251,7 @@ function playC(t)
   }
 
   //$('.speed').toggleClass("show");
-  $('#playBtn1').toggleClass("pause");
+  $('#playBtn1,#playBtn3').toggleClass("pause");
 
   if(playmode==1 || playmode==3){
     document.getElementById('audio1').currentTime = clock_num[t];
@@ -215,14 +270,22 @@ function playC(t)
 
 //暫停播放
 function pausetime(){
-  document.getElementById("audio1").pause();
-  document.getElementById("audio2").pause();
+  if(document.getElementById("audio1").paused==false)
+    document.getElementById("audio1").pause();
+  if(document.getElementById("audio2").paused==false)  
+    document.getElementById("audio2").pause();
+  if(document.getElementById("audioP").paused==false)
+    document.getElementById("audioP").pause();
   $('.play_btn').removeClass("pause");
 }
 
 
 function pauseplay(){
 
+  if(temp==$(en).find("lrclist:last").index()){
+    temp=0
+  }  
+  
   highlightBg()
   highlight(temp)
   ModeCheck()
@@ -248,21 +311,6 @@ function pauseplay(){
  
 }
 
-function pauseplay2(){
-
-	  //$('#Step2PlayIcon').attr('class','Step1Pause link');
-	  //$('#Step2PlayIcon').attr('data-value','1')
-  $('.ST2Player').show();
-  $('.ST2Pause,.ST2Player2').hide();  
-
-  $('#Ste2Play'+temp).hide();
-  $('#Ste2Pause'+temp).show(); 	  		 		 
-  //$('#repeat').val($('#repeat_temp').attr('data-value'));
-  document.getElementById('audio1').play(); 
-
-}
-
-
 function updatetime1(){
 	if(document.getElementById("audio1").paused==false){
     document.getElementById("audio1").playbackRate = $('#Speed_range').val();		
@@ -270,6 +318,7 @@ function updatetime1(){
     updatetime()
 	}
 }
+
 function updatetime2(){
 	if(document.getElementById("audio2").paused==false){
     document.getElementById("audio2").playbackRate = $('#Speed_range').val();		
@@ -277,8 +326,15 @@ function updatetime2(){
     updatetime()	
 	}
 }
-
+function updatetime3(){
+	if(document.getElementById("audioP").paused==false){
+    document.getElementById("audioP").playbackRate = $('#Speed_range').val();		
+    playflag=3;
+    updatetime()
+	}
+}
 //計數
+
 function updatetime(){
   var Utime1=0,Utime2=0;
 
@@ -294,14 +350,14 @@ function updatetime(){
  
   if(playflag==1){
     Utime1=document.getElementById("audio1").currentTime;
-    Utime2=clock_num[temp+1]
+    Utime2=clock_num[(parseInt(temp)+1)]
   }else if(playflag==2){
     Utime1=document.getElementById("audio2").currentTime;
-    Utime2=clock_num_2[temp+1]
+    Utime2=clock_num_2[(parseInt(temp)+1)]
   }
 	
   //交換判斷
-  if(playmode==3){
+  if(playmode==3 || playmode==5){
     $("#repeat").val(1)	  
   }else{
     $("#repeat").val(0)	  
@@ -312,31 +368,49 @@ function updatetime(){
     count=$("#repeat").val()
   }
 
-  if(parseFloat(Utime1)>parseFloat(Utime2)){		
+  if(Me.Ispay==1 && Me.EnddateChk()<0){
+    DemoLimit(Me.customer,Me.Mindx,'news',refId)    
+  }
+  
+  if(DemoTimeout==1 && ( parseFloat(document.getElementById('audio2').currentTime)>=parseFloat(document.getElementById('audio2').duration)/3 || parseFloat(document.getElementById('audio2').currentTime)>=120) ){
+    count=1
+    pausetime();
+    JoinusLightBox()
+  }else if(parseFloat(Utime1)>parseFloat(Utime2)){		      
     if(parseInt($("#repeat").val())<=parseInt(count)){
     
       if($('.is-item-read').attr('data-value')=='0'){
         //$('#stepBlock1').scrollTop(document.getElementById(temp+1).offsetTop);
-        $('#stepBlock1').stop().animate({ 'scrollTop': document.getElementById(temp+1).offsetTop }, 1000, 'swing');	
+        $('#stepBlock1').stop().animate({ 'scrollTop': document.getElementById((parseInt(temp)+1)).offsetTop }, 1000, 'swing');
+        const scrollStep2=document.getElementById('s2-main-item'+(parseInt(temp)+1)).offsetTop * -1
+        if(playContinue==1){
+          // 109/4/30 mail bug : 朗讀自動換句，同時暗中改了加強記憶的行次 v
+          // $('.s2-main-box').animate({top : scrollStep2})
+        }
       }else{
         //$('#stepBlock1').scrollTop(document.getElementById('N'+(temp+1)).offsetTop);
-        $('#stepBlock1').stop().animate({ 'scrollTop': document.getElementById('N'+(temp+1)).offsetTop }, 1000, 'swing');	
+        $('#stepBlock1').stop().animate({ 'scrollTop': document.getElementById('N'+(parseInt(temp)+1)).offsetTop }, 1000, 'swing');
+        const scrollStep2=document.getElementById('s2-main-item'+(parseInt(temp)+1)).offsetTop * -1
+        if(playContinue==1){
+          // 109/4/30 mail bug : 講解自動換句，同時暗中改了加強記憶的行次 v
+          // $('.s2-main-box').animate({top : scrollStep2})
+        }
       }
 
-      temp=temp+1 
-
+      temp=temp+1;
       playflag=1;	  
     
-
-      count=0
-      jump_after(1) 
-
-           
+      count=0;
+      jump_after(1); 
+          
     }else{
-      
+
       if(playmode==3 && playflag==1 ){	 
         playflag=2;
         count=count+1;
+      }else if(playmode==5 && playflag==1 ){	 
+        playflag=3;
+        count=count+1;        
       }else{
         count=count+1;
       }
@@ -348,20 +422,36 @@ function updatetime(){
     
   if(playflag==2)
     bubble();
-
 }
 
 //暫緩數秒
 function jump_after(sc){
-   
-  if(parseInt(sc)==0){	 
-	  play(temp);	
-  }else{
-    var cs=sc	;
-    pausetime();
-    setTimeout("jump_after("+parseInt(cs-1)+")",1000);
-  }
+  if($('.is-step-switch2').hasClass('active')){
 
+    if(playContinue==1){
+      if(parseInt(sc)==0){	 
+        play(temp);	
+      }else{
+        var cs=sc	;
+        pausetime();
+        setTimeout("jump_after("+parseInt(cs-1)+")",1000);
+      }
+    }else{
+      count=0
+      play(temp-1);
+    }
+
+  }else{
+
+    if(parseInt(sc)==0){	 
+      play(temp);	
+    }else{
+      var cs=sc	;
+      pausetime();
+      setTimeout("jump_after("+parseInt(cs-1)+")",1000);
+    }   
+
+  }  
 }
 
 
@@ -383,6 +473,7 @@ function highlightBg(){
 
 //目前句子 highlight
 function highlight(id){
+  let readingChk=1;
   $("#t"+id).removeClass('lightheightBG')
   $("#ct"+id).removeClass('lightheightBG')
   $("#Nt"+id).removeClass('lightheightBG')
@@ -392,6 +483,18 @@ function highlight(id){
   $("#ct"+id).addClass('lightheight')
   $("#Nt"+id).addClass('lightheight')
   $("#Nct"+id).addClass('lightheight')
+
+  reading_check[id]="1"
+
+  for (i=0;i<=$(en).find("lrclist:last").index();i++){
+    if(reading_check[i]!='1'){
+      readingChk=0
+    }
+  }
+  if(readingChk==1){
+    StepFinish('Step1')
+    jquery_Record()
+  }
 }
 
 const lockTarget = function(){
@@ -482,6 +585,21 @@ function playSound(word){
 
 }
 
+function playFinish(){
+  var voca="http://funday.asia/learning2020/CheeringSound.mp3";	
+  var a =$('<audio id="audioVoca"  src="'+voca+'" type="audio/mpeg"  ></audio>');
+
+  if(document.getElementById("audioVoca")){
+    $('#audioVoca').remove();
+  }
+    
+  $('body').append(a);
+
+  document.getElementById('audioVoca').currentTime = 0;
+  document.getElementById('audioVoca').play();
+
+}
+
 function listen_play(){
  
   var a =$('<audio id="audio"  type="audio/mpeg"  ></audio>');
@@ -499,100 +617,317 @@ function listen_play(){
 }
 
 function finishplay1(){
-	
-  if(playmode==1){
-    count++;	
-    
-    if(parseInt($("#repeat").val())>=parseInt(count)){	       
-      document.getElementById('audio1').currentTime = clock_num[temp];   	  
-      document.getElementById('audio1').play(); 
+
+  if($('.is-step-switch2')){
+    if(playContinue==1){
+      count=0;
+      if(playmode==5){       
+        playflag=1; 
+      }else if(playmode==4 ){
+        playflag=3; 
+      }else if(playmode==3){
+        playflag=2;
+      }  
+
+      if(playmode==3){
+        play(temp)
+      }else{
+        temp=0
+        const scrollStep2=document.getElementById('s2-main-item'+(parseInt(temp))).offsetTop * -1
+        $('.s2-main-box').animate({top : scrollStep2})
+        
+        play(temp)
+      }
     }else{
-
-
-      document.getElementById('audio1').currentTime = 0;
-      
-      temp=0;
-           
-
-          
+      play(temp)
     }
-    
   }else{
-    playflag=2
-    document.getElementById('audio2').currentTime = clock_num_2[temp];   	  
-    document.getElementById('audio2').play();	
-  
-  }
+    if(playmode==1){
+      count++;	
+      
+      if(parseInt($("#repeat").val())>=parseInt(count)){	       
+        document.getElementById('audio1').currentTime = clock_num[temp];   	  
+        document.getElementById('audio1').play(); 
+      }else{
 
+        document.getElementById('audio1').currentTime = 0;   
+        temp=0;
+
+      }
+      
+    }else if(playmode==3){
+      playflag=2
+      document.getElementById('audio2').currentTime = clock_num_2[temp];   	  
+      document.getElementById('audio2').play();	
+    
+    }else if(playmode==5){
+      playflag=3
+      $('#audioP').attr('src',record_num[temp]) 	  
+      document.getElementById('audioP').play();	
+    
+    }
+  }
 }
 
 function finishplay2(){
 
-
   document.getElementById('audio2').currentTime = 0;
   temp=0;
   
-
-    
   if(playmode==3){
-    playflag=1	 
+    playflag=1
+    pausetime()	 
   }
  	
 }
 
 /* Record */
 
-function Record_init(){
- 
-  if(context==0){	
+
+var rec_function='',rec_State='0'
+
+function recordNow(id){
+  if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) { 
+      var constraints = { audio: true, video: false};
+      navigator.mediaDevices.getUserMedia(constraints) .then(function(stream) {
+        let options=''
+        options = { mimeType: 'audio/wave' };
+
+        recorder=new MediaRecorder(stream,options, workerOptions);
+
+        recorder.onstart=function(e){
+          chunks = [];
+          $('#s2-record'+record_C+ ' .is-r-start,#s2-record'+record_C+ ' .is-r-play,#s2-record'+record_C+ ' .is-r-re').hide()
+          $('#s2-record'+record_C+ ' .is-r-ing').show()
+          rec_State=1
+        }
+
+        recorder.ondataavailable = function(e) {
+          chunks.push(e.data);
+        }
+
+        recorder.onstop=function(i) {
+          let blob = new Blob(chunks, { 'type' : recorder.mimeType });
+          let percent=0;
+          chunks = [];
+          var url = URL.createObjectURL(blob);   
+          record_num[record_C]=url
+          record_blog[record_C]=blob
+          $('#s2-record'+record_C+ ' .is-r-ing,#s2-record'+record_C+ ' .is-r-start').hide()
+          $('#s2-record'+record_C+ ' .is-r-play,#s2-record'+record_C+ ' .is-r-re').show()
+          rec_State=0
+
+          
+          for (i=0;i<=$(en).find("lrclist:last").index();i++){
+            if(record_num[i]!='')
+              percent++    
+          }
+
+          $('.share-title-percent').html( parseInt(percent/($(en).find("lrclist:last").index()+1) * 100 ) + '%' )
+          if(percent==($(en).find("lrclist:last").index()+1)){
+            StepFinish('Step2')
+            jquery_Record()
+
+            $('.s2-main-wrapper .share-pre,.step2-finalbox,.funbar-update,.recoard-done').show()
+            $('#s2-main-item0 .share-pre').hide()
+
+
+	          $('.recoard-done,.funbar-update').on('click',function(){
+              uploadConfirm()
+
+              $('.is-item-audiotype').removeClass('is-not-ready')
+              $('.step-fnbar2').removeClass('is-not-ready')
+              $('.icon-rec-re').removeClass('icon-rec-re').addClass('icon-rec-restart') 
+              //$('.icon-rec-restart > span').html('全部重錄')    
+              $('.icon-C4 > span').html('全部重錄')
+              
+              $('.icon-rec-restart').off('click')
+              $('.icon-rec-restart').on('click',function(){
+                RecordResetConfirm()
+              })
+
+            })
+	          $('.next-unit').on('click',function(){
+              $('.is-step-switch3').trigger('click');
+            })
+          }
+        };	
+
+        record_C=id;
+        recorder.start(600000);
     
-    window.AudioContext = window.AudioContext || window.webkitAudioContext;
-    navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia;
-    window.URL = window.URL || window.webkitURL;
+        var rec_m=0
+        var rec_s=1
+        var rec_ss='00'
+        $('#rec_time'+id).html('0:00')
 
-    context = new AudioContext();
+        rec_function=setInterval(function(){
+          if(rec_s>=60){
+            rec_m++;
+            rec_s=0
+          }
+          if(rec_s<10){
+            rec_ss='0'+rec_s
+          }else{
+            rec_ss=rec_s
+          }
+          $('#rec_time'+id).html(rec_m+':'+rec_ss)
+          rec_s++
 
-    navigator.getUserMedia({audio: true}, function(stream) {
-      microphone = context.createMediaStreamSource(stream);
-      analyser = context.createAnalyser();
-      microphone.connect(analyser);
-      //analyser.connect(context.destination);
-      analyser.fftSize = 2048;
-      bufferLength = analyser.frequencyBinCount;
-      dataArray = new Uint8Array(analyser.fftSize);
-      analyser.getByteFrequencyData(dataArray);
-    }, function(){
-      console.log('error');
-    });
-    
-  }  
-  
-}
+          if(rec_m>=1 && rec_s>30){
+            $('.icon-rec-start').eq(id).trigger("click")
+          }  
 
-function recordNow(){
-  recorder = new Recorder(microphone);
-  recorder.record();
-  $('.RecordSpeaker,.RecordPlay').hide();
-  $('.RecordStop').show();
+        },1000)
+
+    })
+  }
 }
 
 function recordStop(){
-  clearTimeout(timer);
-  $('.RecordSpeaker,.RecordPlay').show();
-  $('.RecordStop').hide();
-  //pl.disabled = false;
-  $('.RecordPlay').attr('disabled',false);	
-  $('.RecordPlay').css('opacity',1);
   recorder.stop();
-  createDownloadLink();
-  recorder.clear();
+  clearInterval(rec_function);
+  //$('.is-item-audiotype').removeClass('is-not-ready')
+
+
 }
 
-function recordPlay(){
+function RecordResetConfirm(){
+
+  $('#stepBlock2 .msgbox').remove()
+  $('#stepBlock2').append('<div class="msgbox "><div class="msgbox-text">之前的錄音會全部刪除，確定重錄？</div><div class="msgbox-btnbox"><div class="msgbox-btn" id="msgboxCancel">取消</div><div class="msgbox-btn" id="msgCheck">確定</div></div></div>')
+
+  $('#msgboxCancel').on('click',function(){
+    $('#stepBlock2 .msgbox').remove()
+  })	
+
+  $('#msgCheck').on('click',function(){
+    RecordResetAll()
+  })	
+
+}
+
+function RecordResetAll(){
+  for (i=0;i<=$(en).find("lrclist:last").index();i++){
+    record_num[i]=''
+    record_blog[i]=''
+    reading_check[i]=''    
+  }
+
+  percent=0
+  $('.share-title-percent').html('')
+  $('#stepBlock2 .msgbox').remove()
+  $('.icon-C2').show()
+  $('.icon-C3,.icon-C4').hide()
+  $('.is-item-audiotype').addClass('is-not-ready')
+  $('.step-fnbar2').addClass('is-not-ready')
+  $('.icon-rec-restart').addClass('icon-rec-re').removeClass('icon-rec-restart') 
+  $('.icon-rec-restart > span').html('全部重錄')    
+  $('.share-pre,.step2-finalbox').hide()
+
+  $('.icon-rec-re').off('click')
+  $('icon-rec-re').on('click', function(){
+    const $this = $(this);
+    resetAll()
+    $('#s2-record'+$this.attr('data-value')+' .s2-record-item').hide();
+    $('#s2-record'+$this.attr('data-value')+' .icon-rec-start').addClass('active')
+    $('#s2-record'+$this.attr('data-value')+' .icon-C2').show()		
+    pausetime()
+    recordNow($this.attr('data-value'))
+  });
+
+  $('.s2-main-box').animate({top : 0})
+  
+
+
+
+  //resetAll()
+}
+
+function uploadFile(){
+  var formData = new FormData();
+
+  for (i=0;i<=$(en).find("lrclist:last").index();i++){
+    formData.append("mp3_"+i,record_blog[i],Me.customer+"-"+Me.Mindx+"-"+i+".mp3");
+  }
+
+  formData.append('member_id', Me.Mindx);
+  formData.append('customer_id', Me.customer);
+  formData.append('news_id', refId);
+
+  var urls='https://funday.asia/newmylessonmobile/api/LearningRecordUpload'
+  /** 
+  * 必須false才會避開jQuery對 formdata 的預設處理 
+  * XMLHttpRequest會對 formdata 進行正確的處理 
+  */ 
+
+  $('#stepBlock2 .msgbox').remove()
+  $('#stepBlock2').append('<div class="msgbox is-config"><img src="./images/congrats_step2.png"/><div class="msgbox-updatebox"><span></span><div class="msgbox-percent"><div lass="msgbox-bar"  id="msgbox-bar" style="width:0%;height: 3px;background: rgb(28,167,236,1);"></div></div></div></div>')			
+  $.ajax({
+    type: "POST",
+    url: urls,
+    contentType:false, //让xhr自动处理Content-Type header，multipart/form-data需要生成随机的boundary
+    processData:false, //不要处理data，让xhr自动处理			
+    data: formData ,
+    processData : false, 
+    //必須false才會自動加上正確的Content-Type 
+    contentType : false , 
+    xhr: function(){
+      var xhr = $.ajaxSettings.xhr();
+      if(onprogress && xhr.upload) {
+        xhr.upload.addEventListener("progress" , onprogress, false);
+        return xhr;
+      }
+    } 
+  });
+
+}
+
+function uploadConfirm(){
+
+  $('#stepBlock2 .msgbox').remove()
+  $('#stepBlock2').append('<div class="msgbox is-config"><img src="./images/congrats_step2.png"><div class="msgbox-text">要上傳本次的錄音檔嗎？</div><div class="msgbox-btnbox"><div class="msgbox-btn" id="msgboxCancel">取消</div><div class="msgbox-btn" id="msgCheck">確定</div></div></div>')
+
+  $('#msgboxCancel').on('click',function(){
+    $('#stepBlock2 .msgbox').remove()
+  })	
+
+  $('#msgCheck').on('click',function(){
+    uploadFile()
+  })	
+
+}
+
+/**
+/**
+* 偵查附件上傳情況 ,這個方法大概0.05-0.1秒執行一次
+*/
+function onprogress(evt){
+  var loaded = evt.loaded;     //已經上傳大小情況 
+  var tot = evt.total;      //附件總大小 
+  var per = Math.floor(100*loaded/tot);  //已經上傳的百分比 
+  $(".msgbox-updatebox > span").html( per + "%" );
+  $("#msgbox-bar").css("width" , per + "%");
+  if(per>=100){
+    setTimeout(function(){
+    $('.msgbox').remove()
+    },2000)
+  }
+}
+
+function recordPlay(id){
+  pausetime();
+  $('#audioP').attr('src',record_num[id])
+
   document.getElementById('audioP').play();
   //pl.disabled = true;
-  $('.RecordPlay').attr('disabled',true);	
-  $('.RecordPlay').css('opacity',0.5);
+}
+
+function recordPause(id){
+  pausetime();
+  //document.getElementById("audioP").pause();
+  $('.icon-rec-play').addClass('active')
+  //pl.disabled = true;
 }
 
 function createDownloadLink(){
@@ -604,7 +939,47 @@ function createDownloadLink(){
 }
 
 function finishplayP(){
-	//pl.disabled = false;
-	$('.RecordPlay').attr('disabled',false);	
-	$('.RecordPlay').css('opacity',1);
+
+  if (temp<$(en).find("lrclist:last").index()){
+    if(playContinue==1){
+      if(playmode==5){
+        count=0;
+        playflag=1; 
+        const scrollStep2=document.getElementById('s2-main-item'+(parseInt(temp)+1)).offsetTop * -1
+        $('.s2-main-box').animate({top : scrollStep2})
+        
+        play(temp+1)
+      }else if(playmode==4){
+        count=0;
+        playflag=3; 
+        const scrollStep2=document.getElementById('s2-main-item'+(parseInt(temp)+1)).offsetTop * -1
+        $('.s2-main-box').animate({top : scrollStep2})
+        
+        play(temp+1)       
+      }else{
+        count=1
+        pausetime();
+        $('.icon-rec-play').removeClass('active')
+      }
+    }else{ 
+      recordPlay(temp) 
+    }
+  }else{
+    if(playContinue==1){
+      count=0;
+      if(playmode==5){       
+        playflag=1; 
+      }else if(playmode==4){
+        playflag=3; 
+      }  
+      temp=0
+      const scrollStep2=document.getElementById('s2-main-item'+(parseInt(temp))).offsetTop * -1
+      $('.s2-main-box').animate({top : scrollStep2})
+      
+      play(temp)
+
+    }else{
+      recordPlay(temp) 
+    }    
+  }
 }
