@@ -56,7 +56,7 @@ function blank(ans,id){
 		  blank=blank+"＊";
 	  }
 	  
-	  blank='<INPUT type="text" name="EX2answer'+(id+1)+'" id="EX2answer'+(id+1)+'" placeholder="'+blank+'" p_r_o_1="'+parseInt(a2.length)+'" p_r_o_2="width: 85px;">'
+	  blank='<t_a_g p_r_o_3 p_r_o_4="EX2v_a_l_1'+(id+1)+'" p_r_o_5="EX2v_a_l_1'+(id+1)+'" p_r_o_6="'+blank+'" p_r_o_1="'+parseInt(a2.length)+'" p_r_o_2="v_a_l_2: 85px;">'
 
 	  blank=a1.replace(a2,blank);
   
@@ -72,7 +72,7 @@ function blank(ans,id){
 		for(var q=1;q>=parseInt(a2.length)-1;q--)
 		blank=blank+"＊";
 	  }
-	  blank='<INPUT type="text" name="EX2answer'+(id+1)+'" id="EX2answer'+(id+1)+'" placeholder="'+blank+'" p_r_o_1="'+parseInt(a2.length)+'" p_r_o_2="width: 85px;">'
+	  blank='<t_a_g p_r_o_3 p_r_o_4="EX2v_a_l_1'+(id+1)+'" p_r_o_5="EX2v_a_l_1'+(id+1)+'" p_r_o_6="'+blank+'" p_r_o_1="'+parseInt(a2.length)+'" p_r_o_2="v_a_l_2: 85px;">'
 	
 	  blank=al.replace(a2,'<span>'+blank+'</span>'+'<span>'+end1+'</span>');
 	
@@ -91,7 +91,7 @@ function blank(ans,id){
 		blank=blank+"＊";
 	  }
 	  //console.log(blank)
-	  blank='<INPUT  name="EX2answer'+(id+1)+'" id="EX2answer'+(id+1)+'" placeholder="'+blank+'" p_r_o_1="'+parseInt(a1.length-1)+'" p_r_o_2="width: 85px;">'
+	  blank='<t_a_g  p_r_o_4="EX2v_a_l_1'+(id+1)+'" id="EX2v_a_l_1'+(id+1)+'" p_r_o_6="'+blank+'" p_r_o_1="'+parseInt(a1.length-1)+'" p_r_o_2="width: 85px;">'
 	  
 	  //blank=al.replace(a1,'<span>'+blank+'</span>'+'<span>'+end1+'</span>');
 	  blank='<span>'+left(a1,1)+'</span>' + '<span>'+blank+'</span>' + '<span>'+right(a1,1)+'</span>'
@@ -513,11 +513,21 @@ function EX2(){
 		Str=Str+'<div class="s3-en">'+x[i]+'</div>';
 	}
 	
-	
+
+	Str = Str.replace( /t_a_g/g, 'input');
+	//
 	Str = Str.replace( /p_r_o_1/g, 'maxlength');
 	Str = Str.replace( /p_r_o_2/g, 'style');
-
+	Str = Str.replace( /p_r_o_3/g, 'type="text"');
+	Str = Str.replace( /p_r_o_4/g, 'name');
+	Str = Str.replace( /p_r_o_5/g, 'id');
+	Str = Str.replace( /p_r_o_6/g, 'placeholder' );
+	//
+	Str = Str.replace( /v_a_l_1/g, 'answer' );
+	Str = Str.replace( /v_a_l_2/g, 'width' );
+	console.log('replace done 3');
 	
+
 	$('.s3ex2-main').html(Str)
 	$('.s3ex2-submitbox .s3-submit').on('click',function(){EX2_end()})
 

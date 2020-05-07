@@ -257,7 +257,7 @@ function P1_Step2(){
 			playo="playC("+i+");"			
 			eu=eu.replace("**","");
 			trx=$(en).find("lrclist:eq("+i+")").attr("train")
-			console.log('講', trx);
+			// console.log('講', trx);
 			
 			if((trx!='' && trx!=undefined)){
 				enCode = fnEnRemoveSortString( i, tranchang(trx,i) );
