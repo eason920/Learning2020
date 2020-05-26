@@ -733,7 +733,8 @@ function recordNow(id){
 
 
 	          $('.recoard-done,.funbar-update').on('click',function(){
-              uploadConfirm()
+              pausetime();
+              uploadConfirm();
 
               $('.is-item-audiotype').removeClass('is-not-ready')
               $('.step-fnbar2').removeClass('is-not-ready')

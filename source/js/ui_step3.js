@@ -45,6 +45,9 @@ function blank(ans,id){
 	var a2='';
 	var a3='';
 	var blank='',end1='';
+	const fn = function(v){
+		return '<_a_t_b_ _n_a_m_e_="EX2_a_n_s_w_e_r_'+(id+1)+'" _i_d_="EX2_a_n_s_w_e_r_'+(id+1)+'" _p_h_="'+blank+'" p_r_o_1="'+parseInt(v.length)+'">'
+	}
 	if(left(a2,1)==" "){
 	  blank="　";
   
@@ -56,7 +59,7 @@ function blank(ans,id){
 		  blank=blank+"＊";
 	  }
 	  
-	  blank='<t_a_g p_r_o_3 p_r_o_4="EX2v_a_l_1'+(id+1)+'" p_r_o_5="EX2v_a_l_1'+(id+1)+'" p_r_o_6="'+blank+'" p_r_o_1="'+parseInt(a2.length)+'" p_r_o_2="v_a_l_2: 85px;">'
+	  blank=fn(a2);
 
 	  blank=a1.replace(a2,blank);
   
@@ -72,7 +75,7 @@ function blank(ans,id){
 		for(var q=1;q>=parseInt(a2.length)-1;q--)
 		blank=blank+"＊";
 	  }
-	  blank='<t_a_g p_r_o_3 p_r_o_4="EX2v_a_l_1'+(id+1)+'" p_r_o_5="EX2v_a_l_1'+(id+1)+'" p_r_o_6="'+blank+'" p_r_o_1="'+parseInt(a2.length)+'" p_r_o_2="v_a_l_2: 85px;">'
+	  blank=fn(a2);
 	
 	  blank=al.replace(a2,'<span>'+blank+'</span>'+'<span>'+end1+'</span>');
 	
@@ -91,7 +94,7 @@ function blank(ans,id){
 		blank=blank+"＊";
 	  }
 	  //console.log(blank)
-	  blank='<t_a_g  p_r_o_4="EX2v_a_l_1'+(id+1)+'" id="EX2v_a_l_1'+(id+1)+'" p_r_o_6="'+blank+'" p_r_o_1="'+parseInt(a1.length-1)+'" p_r_o_2="width: 85px;">'
+	  blank=fn(a1);
 	  
 	  //blank=al.replace(a1,'<span>'+blank+'</span>'+'<span>'+end1+'</span>');
 	  blank='<span>'+left(a1,1)+'</span>' + '<span>'+blank+'</span>' + '<span>'+right(a1,1)+'</span>'
@@ -513,18 +516,17 @@ function EX2(){
 		Str=Str+'<div class="s3-en">'+x[i]+'</div>';
 	}
 	
-
-	Str = Str.replace( /t_a_g/g, 'input');
+	console.log('attribute0525-01:53');
+	
 	//
 	Str = Str.replace( /p_r_o_1/g, 'maxlength');
-	Str = Str.replace( /p_r_o_2/g, 'style');
-	Str = Str.replace( /p_r_o_3/g, 'type="text"');
-	Str = Str.replace( /p_r_o_4/g, 'name');
-	Str = Str.replace( /p_r_o_5/g, 'id');
-	Str = Str.replace( /p_r_o_6/g, 'placeholder' );
+	Str = Str.replace( /_n_a_m_e_/g, 'name');
+	Str = Str.replace( /_i_d_/g, 'id');
+	Str = Str.replace( /_p_h_/g, 'placeholder' );
 	//
-	Str = Str.replace( /v_a_l_1/g, 'answer' );
-	Str = Str.replace( /v_a_l_2/g, 'width' );
+	Str = Str.replace( /_a_n_s_w_e_r_/g, 'answer' );
+	//
+	Str = Str.replace( /_a_t_b_/g, 'input autocomplete="off" type="text"');
 	console.log('replace done 3');
 	
 
