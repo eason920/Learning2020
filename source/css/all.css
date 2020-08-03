@@ -3358,6 +3358,11 @@ span.is-height-light {
   border-right: none !important;
 }
 
+.is-symbol {
+  position: relative;
+  z-index: 1;
+}
+
 .is-phrase + .is-symbol {
   position: relative;
   z-index: 1;
