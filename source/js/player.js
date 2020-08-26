@@ -1,4 +1,4 @@
-var state,clock_num='',clock_num0='',clock_num_2='',clock_num0_2='',count=0,pit=0,temp=0,temp2=0,clock,pausev=1,after=0,playmode=1;playflag=1,bubble_num='',bubble_num2='',record_num='',record_C='',record_Mode=0,playContinue=1;
+var state,clock_num='',clock_num0='',clock_num_2='',clock_num0_2='',count=0,pit=0,temp=0,temp2=0,clock,pausev=1,after=0,playmode=1;playflag=1,bubble_num='',bubble_num2='',record_num='',record_C='',record_Mode=0,playContinue=1,percent='';
 var record_blog=[];
 var reading_check=[];
 //初始化
@@ -686,76 +686,26 @@ function finishplay2(){
 
 var rec_function='',rec_State='0'
 
+
 function recordNow(id){
   if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) { 
       var constraints = { audio: true, video: false};
       navigator.mediaDevices.getUserMedia(constraints) .then(function(stream) {
-        let options=''
-        options = { mimeType: 'audio/wave' };
 
-        recorder=new MediaRecorder(stream,options, workerOptions);
+
+        
 
         recorder.onstart=function(e){
-          chunks = [];
           $('#s2-record'+record_C+ ' .is-r-start,#s2-record'+record_C+ ' .is-r-play,#s2-record'+record_C+ ' .is-r-re').hide()
           $('#s2-record'+record_C+ ' .is-r-ing').show()
           rec_State=1
         }
 
-        recorder.ondataavailable = function(e) {
-          chunks.push(e.data);
-        }
-
-        recorder.onstop=function(i) {
-          let blob = new Blob(chunks, { 'type' : recorder.mimeType });
-          let percent=0;
-          chunks = [];
-          var url = URL.createObjectURL(blob);   
-          record_num[record_C]=url
-          record_blog[record_C]=blob
-          $('#s2-record'+record_C+ ' .is-r-ing,#s2-record'+record_C+ ' .is-r-start').hide()
-          $('#s2-record'+record_C+ ' .is-r-play,#s2-record'+record_C+ ' .is-r-re').show()
-          rec_State=0
-
-          
-          for (i=0;i<=$(en).find("lrclist:last").index();i++){
-            if(record_num[i]!='')
-              percent++    
-          }
-
-          $('.share-title-percent').html( parseInt(percent/($(en).find("lrclist:last").index()+1) * 100 ) + '%' )
-          if(percent==($(en).find("lrclist:last").index()+1)){
-            StepFinish('Step2')
-            jquery_Record()
-
-            $('.s2-main-wrapper .share-pre,.step2-finalbox,.funbar-update,.recoard-done').show()
-            $('#s2-main-item0 .share-pre').hide()
 
 
-	          $('.recoard-done,.funbar-update').on('click',function(){
-              pausetime();
-              uploadConfirm();
-
-              $('.is-item-audiotype').removeClass('is-not-ready')
-              $('.step-fnbar2').removeClass('is-not-ready')
-              $('.icon-rec-re').removeClass('icon-rec-re').addClass('icon-rec-restart') 
-              //$('.icon-rec-restart > span').html('全部重錄')    
-              $('.icon-C4 > span').html('全部重錄')
-              
-              $('.icon-rec-restart').off('click')
-              $('.icon-rec-restart').on('click',function(){
-                RecordResetConfirm()
-              })
-
-            })
-	          $('.next-unit').on('click',function(){
-              $('.is-step-switch3').trigger('click');
-            })
-          }
-        };	
 
         record_C=id;
-        recorder.start(600000);
+        recorder.start();
     
         var rec_m=0
         var rec_s=1
@@ -786,7 +736,53 @@ function recordNow(id){
 }
 
 function recordStop(){
-  recorder.stop();
+  recorder.stop(function(blob,duration){
+    //console.log(blob,(window.URL||webkitURL).createObjectURL(blob),"时长:"+duration+"ms");
+
+    var url = URL.createObjectURL(blob);
+    record_num[record_C]=url
+    record_blog[record_C]=blob
+    $('#s2-record'+record_C+ ' .is-r-ing,#s2-record'+record_C+ ' .is-r-start').hide()
+    $('#s2-record'+record_C+ ' .is-r-play,#s2-record'+record_C+ ' .is-r-re').show()
+    rec_State=0
+
+    percent=0
+    for (i=0;i<=$(en).find("lrclist:last").index();i++){
+      if(record_num[i]!='')
+        percent++    
+    }
+
+    $('.share-title-percent').html( parseInt(percent/($(en).find("lrclist:last").index()+1) * 100 ) + '%' )
+    if(percent==($(en).find("lrclist:last").index()+1)){
+      StepFinish('Step2')
+      jquery_Record()
+
+      $('.s2-main-wrapper .share-pre,.step2-finalbox,.funbar-update,.recoard-done').show()
+      $('#s2-main-item0 .share-pre').hide()
+
+
+      $('.recoard-done,.funbar-update').on('click',function(){
+        pausetime();
+        uploadConfirm();
+
+        $('.is-item-audiotype').removeClass('is-not-ready')
+        $('.step-fnbar2').removeClass('is-not-ready')
+        $('.icon-rec-re').removeClass('icon-rec-re').addClass('icon-rec-restart') 
+        //$('.icon-rec-restart > span').html('全部重錄')    
+        $('.icon-C4 > span').html('全部重錄')
+        
+        $('.icon-rec-restart').off('click')
+        $('.icon-rec-restart').on('click',function(){
+          RecordResetConfirm()
+        })
+
+      })
+      $('.next-unit').on('click',function(){
+        $('.is-step-switch3').trigger('click');
+      })
+    }
+
+  });
   clearInterval(rec_function);
   //$('.is-item-audiotype').removeClass('is-not-ready')
 
