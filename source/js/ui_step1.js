@@ -3,10 +3,11 @@ $(function(){
 	// =============================
 	// == CONTROL EN & CH
 	// =============================
-	$('.is-item-language .controlbox-item').click(function(){
+	$('body').on('click', '.is-item-language', function(){
 		$('.is-item-language').toggleClass('active');
-		$('body').find('article').find('.Chinese').toggleClass('is-hide');
-		// $('article').find('.Chinese').toggleClass('is-hide');
+		// $('body').find('article').find('.Chinese').toggleClass('is-hide');
+		$('body').find('article').find('.Chinese').slideToggle(100);
+		$(this).hasClass('active') ? $(this).text('隱藏中文') : $(this).text('顯示中文');
 	});
 	
 	// ====================================
@@ -18,19 +19,37 @@ $(function(){
 			const $control = $('.is-item-read');
 			const $explain = $('.article2');
 			const $readOnly = $('.article');
-			$('.is-item-read b').click(function(){
-				$control.addClass("active");
-				$control.attr('data-value', '1');
-				$explain.show();
-				$readOnly.hide();
+
+			$control.click(function(){
+				console.log('clicked is-item-read');
+				if( $control.hasClass('active')){
+					console.log('講>朗');
+					$control.removeClass("active");
+					$control.attr('data-value', '0');
+					$explain.hide();
+					$readOnly.show();
+				}else{
+					console.log('朗>講');
+					$control.addClass("active");
+					$control.attr('data-value', '1');
+					$explain.show();
+					$readOnly.hide();
+				};
 			});
+
+			// $('.is-item-read b').click(function(){
+			// 	$control.addClass("active");
+			// 	$control.attr('data-value', '1');
+			// 	$explain.show();
+			// 	$readOnly.hide();
+			// });
 			
-			$('.is-item-read i').click(function(){
-				$control.removeClass("active");
-				$control.attr('data-value', '0');
-				$explain.hide();
-				$readOnly.show();
-			});				
+			// $('.is-item-read i').click(function(){
+			// 	$control.removeClass("active");
+			// 	$control.attr('data-value', '0');
+			// 	$explain.hide();
+			// 	$readOnly.show();
+			// });				
 		}
 	}
 	let sid = setInterval(ready, 50);

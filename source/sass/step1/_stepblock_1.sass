@@ -51,6 +51,7 @@ article
 	position: relative
 
 .icon-like
+	display: none!important// 1090826 改版刪除
 	position: absolute
 	top: 0
 	right: 3%
@@ -68,6 +69,11 @@ article
 		// transition: .3s
 		text:
 			decoration: none
+
+.icon-star-big
+	display: inline-block
+	margin-right: 9px
+	transform: translateY(5px)
 
 .english
 	display: flex
@@ -102,6 +108,7 @@ article
 			opacity: 1
 			transition: opacity .3s
 .art-star
+	position: relative
 	width: $w-star
 	padding:
 		top: 24px
@@ -159,6 +166,10 @@ span.is-height-light
 // -- TITLE
 // -----------------------------------
 // en v
+#Nt0 .icon-star,
+#t0 .icon-star
+	display: none//1090826 改版刪除
+
 #Nt0, #t0
 	font:
 		size: 2.5rem
@@ -166,8 +177,8 @@ span.is-height-light
 	line-height: 1.1
 	padding:
 		top: 0
-	padding:
-		right: 50px
+	// padding:
+	// 	right: 50px
 	span
 		font:
 			size: 2.5rem

@@ -110,6 +110,11 @@
     rs.movenext
   wend
 
+  if request("return")="teaching" then
+    Backurl="../teaching"
+  else
+    Backurl="../self-study"
+  end if
 %>
 
 <!DOCTYPE html>
@@ -136,9 +141,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap">
 	<script src="js/jquery-1.11.1.min.js"></script>
 	<script type="text/javascript" src="../../../jquery/jquery-1.10.4.ui.min.js"></script>	
-  <script src="https://cdn.jsdelivr.net/npm/opus-media-recorder@latest/OpusMediaRecorder.umd.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/opus-media-recorder@latest/encoderWorker.umd.js"></script>
-	<script type="text/javascript" src="Dr.eye/Dre.js"></script>
+	<script src="https://funday.asia/NewMylessonmobile/MusicBox/js/recorder.mp3.min.js"></script>
   <script src="../../../Joinus/joinus.js?a"></script>
 	<script src="../../library/js/lightBoxDIY-V2.js"></script>
   <script  src="../../jquery.cookie.js"></script>
@@ -149,19 +152,35 @@
 	<script src='../../../../Funfa/Fa.js'></script>
   <script src="./js/Times.js"></script>
   <script src="./js/alt_text.js"></script>
+  <script type="text/javascript" src="Dr.eye/Dre.js"></script>
 	<script>
       let pAry = [];
       var Me=new User();
 
-      if(Me.Ispay==1 && Me.EnddateChk()<=0 ){
+      function dateDiff(interval, date1, date2){
+        var objInterval = {'D' : 1000 * 60 * 60 * 24, 'H' : 1000 * 60 * 60, 'M' : 1000 * 60, 'S' : 1000, 'T' : 1};
+        interval = interval.toUpperCase();
+        var dt1 = Date.parse(date1.replace(/-/g, '/'));
+        var dt2 = Date.parse(date2.replace(/-/g, '/'));
+        try
+        {
+          return Math.round((dt2 - dt1) / eval('(objInterval.' + interval + ')'));
+        }
+        catch (e)
+        {
+          return e.message;
+        }
+      }
+      
+      if(Me.Ispay==1 && Me.EnddateChk()<0 ){
         var DemoTimeout=1
         DemoLimit(<%=cindx%>,<%=mindx%>,'news',<%=ref_id%>)		
-      }else if(Me.Ispay!=1 || Me.EnddateChk()<=0 ){
+      }else if(Me.Ispay!=1 && Me.EnddateChk()<0 ){
         var DemoTimeout=1
       }else{
         var DemoTimeout=''
       }
-
+		//console.log(DemoTimeout)
 		// art video v
       let videoId = '<%=Youbute%>';
       let refId=<%=ref_id%>
@@ -179,7 +198,7 @@
       //- let memoJSON = JSON.parse('[{"id":"memo1","text":"msg 1","top":"2200","left":"0"},{"id":"memo2","text":"msg 2","top":"500","left":"300"}]');
       //let memoJSON = JSON.parse('[{"id":"memo1","text":"msg%201%0Afloor2%0Afloor3%0AASDFIASJEFIASE%0A","basicid2":"Nct1-5","basicid1":"ct1-5"},{"id":"memo2","text":"%u4FBF%u5229%u8CBC%u6210%u529F%0Aya%7E%7E","basicid2":"Nt5-6","basicid1":"t5-6"}]');
 
-      let memoJSON = JSON.parse('<%=memo%>')
+      let memoJSON = JSON.parse(`<%=memo%>`)
 
       //let memoJSON='';
       let memoUpdate = '';
@@ -276,7 +295,7 @@ fbq('track', "PageView");
 
 </head>
 
-<body onload="DrInit();" oncontextmenu="return false">
+<body onLoad="DrInit();" oncontextmenu="return false">
 
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P5J9V9J"
@@ -296,7 +315,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="is-step1" id="stepBox">
       <div class="topbar">
         <div class="wrapper">
-          <div class="wrapper-left"><a class="topbar-back-btn" href="#">
+          <div class="wrapper-left"><a class="topbar-back-btn" href="#" onClick="location.href='<%=Backurl%>'">
               <div class="icon-arrowleft"></div>返回</a></div>
           <div class="wrapper-right-f1">
             <div class="wrapper-right-f2">
@@ -352,10 +371,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                   <div class="icon-correct" style="display:none;"></div>
                 </li>
               </ul>
-              <div class="topbar-icon"><a class="topbar-icon-item" href="#">
-                  <div class="icon-refresh"></div></a><a class="topbar-icon-item" href="#">
-                  <div class="icon-print"></div></a><a class="topbar-icon-item" href="#">
-                  <div class="icon-star-big"></div></a></div>
+              <div class="topbar-icon">
+                <!--a class="topbar-icon-item" href="#">
+                  <div class="icon-refresh"></div>
+                </a-->
+                <!--a class="topbar-icon-item" href="#">
+                  <div class="icon-print"></div>
+                </a-->
+                <!--a class="topbar-icon-item" href="#">
+                  <div class="icon-star-big"></div>
+                </a-->
+              </div>
             </div>
           </div>
         </div>
@@ -384,6 +410,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                       <input id="Speed_range" type="range" min="0.5" max="1.5" value="1" step="0.25"><b>快</b>
                     </div>
                     <input class="play_btn icon-play" id="playBtn1" type="button">
+                    <div class='is-item-read active' data-value='1'>老師講解</div>
                   </div>
                   <div class="aside-speedbox is-play2">
                     <div class="speed-point"></div>
@@ -499,9 +526,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <li class="funbar-item active is-item-language">
                   <div class="controlbox"><b class="controlbox-item" id="altD">中+EN</b><i class="controlbox-item" id="altE">EN</i></div>
                 </li>
-                <li class="funbar-item is-item-read active" data-value="1">
-                  <div class="controlbox"><b class="controlbox-item" id="altF">老師講解</b><i class="controlbox-item" id="altG">英文朗讀</i></div>
-                </li>
+                <li class="funbar-item is-item-memo"><a class="funbar-btn funbar-memobox do-insert-id" href="#">便利貼</a></li>
+                <li class="funbar-item is-item-group"><a class="funbar-btn funbar-phrase" href="#">單字片語</a></li>
+                <li class="funbar-item"><a class="funbar-btn funbar-collection" href="#">單字收錄</a></li>
                 <li class="funbar-item is-item-arttype"><a class="funbar-btn" id="alt0" href="#">原文分析</a>
                   <ul class="typebox">
                     <li class="typebox-item active" id="altA" data-arttype="muted">長句分解</li>
@@ -509,9 +536,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     <li class="typebox-item" id="altC" data-arttype="title">加強主題</li>
                   </ul>
                 </li>
-                <li class="funbar-item is-item-memo"><a class="funbar-btn funbar-memobox do-insert-id" href="#">便利貼</a></li>
-                <li class="funbar-item is-item-group"><a class="funbar-btn funbar-phrase" href="#">單字片語</a></li>
-                <li class="funbar-item"><a class="funbar-btn funbar-collection" href="#">單字收錄</a></li>
               </ul>
               <ul class="funbar step-fnbar2 is-not-ready">
 

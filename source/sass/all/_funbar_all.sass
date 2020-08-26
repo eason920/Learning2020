@@ -2,6 +2,7 @@
 	&.is-step1
 		.step-fnbar1
 			display: flex
+			height: 56px
 
 		.step-fnbar2
 			display: none
@@ -101,6 +102,28 @@
 		padding-right: 90px 
 		// ^ icon-how.width()
 
+.is-item-read,
+.is-item-language
+	width: 120px
+	line-height: 29px
+	font:
+		size: 1.0625rem
+	border:
+		radius: 10px
+		width: 1px
+		style: solid
+	letter-spacing: 1px
+	text-align: center
+	cursor: pointer
+	vertical-align: 33px
+	display: inline-block
+	user-select: none
+	transition: background-color .5s
+
+.is-item-language
+	position: absolute
+	top: -30px
+	left: 23px
 
 @media screen and (max-width: 1440px)
 	.funbar-item

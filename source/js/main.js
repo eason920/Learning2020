@@ -9,30 +9,36 @@ function Block(id){
 	}
 }
 
-// a#1~n , 朗讀-英文
+// a#1~n , 朗讀情狀 1 v
 function ch_font(str,clock){
 	var x='',y='',playo='';
 	y=clock;
 
 	playo="playC("+y+");"
-	str=spanWord((str), pAry)
+	str=spanWord((str), pAry);
+
+	let lan = '';
+	if( y === 1 ) lan = "<div class='is-item-language controlbox-item active'>隱藏中文</div>"
 
 	if(str.indexOf("**")!=-1){
+		// have **
+		// is 朗讀情狀 1 content v
 		str=str.replace("**","");
-		x=str.replace(str,"**<a name='"+y+"' id='"+y+"'></a><div id='t"+y+"' onDblClick='_dictClose();'  class='english'><div class='art-star'   onclick=goP_sentences('"+y+"') ><div class='icon-star' id='art-star"+y+"'></div></div><div class='art-art'>" +str+ "<input type='button' onclick='"+playo+"' class='read_btn link'></div></div>");
+		x=str.replace(str,"**<a name='"+y+"' id='"+y+"'></a><div id='t"+y+"' onDblClick='_dictClose();' class='english'><div class='art-star'>" + lan + "<div class='icon-star' id='art-star"+y+"' onclick=goP_sentences('"+y+"') ></div></div><div class='art-art'>" + str + "<input type='button' onclick='"+playo+"' class='read_btn link'></div></div>");
 	}else{
-		x=str.replace(str,"**<a name='"+y+"' id='"+y+"'></a><div id='t"+y+"' onDblClick='_dictClose();'  class='english'><div class='art-star' onclick=goP_sentences('"+y+"')><div class='icon-star' id='art-star"+y+"'></div></div><div class='art-art'>" +str+ "<input type='button' onclick='"+playo+"' class='read_btn link'></div></div>");
+		// no **
+		// is 朗讀情狀 1 TITLE v
+		x=str.replace(str,"**<a name='"+y+"' id='"+y+"'></a><div id='t"+y+"' onDblClick='_dictClose();'  class='english'><div class='art-star'>" + lan + "<div class='icon-star' id='art-star"+y+"' onclick=goP_sentences('"+y+"')></div></div><div class='art-art'>" + str + "<input type='button' onclick='"+playo+"' class='read_btn link'></div></div>");
 	}
 
 	return x;
 }
 
-// div#ct1~n , 朗讀-中文
+// div#ct1~n , 朗讀情狀 2 v
 function ch_font2(str,clock){
 	
 	var x='',y='',playo='';
 	y=clock;
-
 
 	playo="play("+y+");"
 
@@ -53,13 +59,20 @@ function ch_fontTran(str,clock){
 	y=clock;
 	
 	playo="play("+y+");"		
-	str=tranchang(str)
+	str=tranchang(str);
+
+	let lan = '';
+	if( y === 1 ) lan = "<div class='is-item-language controlbox-item active'>隱藏中文</div>"
 
 	if(str.indexOf("**")!=-1){
+		// has **
+		// is 朗讀情狀 2 content v
 		str=str.replace("**","");
-		x=str.replace(str,"**<a name='"+y+"' id='"+y+"'></a><div id='t"+y+"' onDblClick='_dictClose();'  class='english'><div class='art-star'  onclick=goP_sentences('"+y+"')><div class='icon-star' id='art-star"+y+"'></div></div><div class='art-art'>" +str+ "<input type='button' onclick='"+playo+"' class='read_btn link'></div></div>");
+		x=str.replace(str,"**<a name='"+y+"' id='"+y+"'></a><div id='t"+y+"' onDblClick='_dictClose();'  class='english'><div class='art-star'>"+lan+"<div class='icon-star' id='art-star"+y+"' onclick=goP_sentences('"+y+"')></div></div><div class='art-art'>" + str+ "<input type='button' onclick='"+playo+"' class='read_btn link'></div></div>");
 	}else{
-		x=str.replace(str,"**<a name='"+y+"' id='"+y+"'></a><div id='t"+y+"' onDblClick='_dictClose();'  class='english'><div class='art-star'  onclick=goP_sentences('"+y+"')><div class='icon-star' id='art-star"+y+"'></div></div><div class='art-art'>" +str+ "<input type='button' onclick='"+playo+"' class='read_btn link'></div></div>");
+		// no **
+		// is 朗讀情狀 2 TITLE v
+		x=str.replace(str,"**<a name='"+y+"' id='"+y+"'></a><div id='t"+y+"' onDblClick='_dictClose();'  class='english'><div class='art-star'>"+lan+"<div class='icon-star' id='art-star"+y+"' onclick=goP_sentences('"+y+"')></div></div><div class='art-art'>" + str + "<input type='button' onclick='"+playo+"' class='read_btn link'></div></div>");
 	}
 
 	return x;
@@ -117,7 +130,7 @@ function P1_Step1(){
 		if($(en).find("lrclist:eq("+i+")").index()!=-1){
 			trx=$(en).find("lrclist:eq("+i+")").attr("train")
 			
-			// en v
+			// en v ============================================== v
 			let enSource = '';
 			let enCode = '';
 			if((trx!='' && trx!=undefined)){	
@@ -155,10 +168,12 @@ function P1_Step1(){
 					}
 					enCode = newEnCode.replace(/(\<span\>\<\/span\>)/g, '');
 				}
+				// 朗讀加「加入收藏」鈕 1090826 v 
+				enCode = enCode.replace("art-art'>", "art-art'><div class='icon-star-big'></div>");
 			}
 			eu = eu + enCode;
 
-			// ch v
+			// ch v ============================================== v
 			const chSource = ch_font2($(tc).find("lrclist:eq("+i+")").attr("content"),i );
 			let chCode = '';
 			if( i != 0 ){
@@ -190,7 +205,6 @@ function P1_Step1(){
 		cxt=y[i].replace("<a name='"+y+"' id='"+y+"'></a>","")
 		Str=Str+ext+cxt;
 	}
-
 	replaceCode($('.article') , Str);
 	if((trx=='' || trx==undefined)){
 		$('.is-item-arttype').remove();
@@ -252,22 +266,26 @@ function P1_Step2(){
     var eu='',Str='', enCode='', chCode='';
 	
 	for (i=0;i<=$(en).find("lrclist:last").index();i++){
+		let starBigStr = '';
+		let lan = '';
+		if( i === 0 ) starBigStr = "<div class='icon-star-big'></div>";
+		if( i === 1 ) lan = "<div class='is-item-language controlbox-item active'>隱藏中文</div>";
 	
 		if($(en).find("lrclist:eq("+i+")").index()!=-1){
 			playo="playC("+i+");"			
 			eu=eu.replace("**","");
 			trx=$(en).find("lrclist:eq("+i+")").attr("train")
-			// console.log('講', trx);
-			
 			if((trx!='' && trx!=undefined)){
+				// is 講解情狀 1 (TITLE + content) v
 				enCode = fnEnRemoveSortString( i, tranchang(trx,i) );
 				chCode = fnChRemoveSortString( i , $(tc).find("lrclist:eq("+i+")").attr("content") );
-				eu=eu+'<a name="' + i + '" id="N' + i + '"></a><div class="english" id="Nt' + i + '" ><div class="art-star" id="art-star'+i+'" onclick=goP_sentences('+i+') ><div class="icon-star"></div></div><div class="art-art">' +enCode+'<input type="button" onclick="'+playo+'" class="read_btn link"></div></div><div id="bubble'+i+'"  class="annotation" style="display:none;"></div><div class="Chinese" id="Nct'+i+'" >'+chCode+'</div>';
+				eu=eu+'<a name="' + i + '" id="N' + i + '"></a><div class="english" id="Nt' + i + '" ><div class="art-star" id="art-star'+i+'" >'+lan+'<div class="icon-star" onclick=goP_sentences('+i+') ></div></div><div class="art-art">' + starBigStr + enCode +'<input type="button" onclick="'+playo+'" class="read_btn link"></div></div><div id="bubble'+i+'"  class="annotation" style="display:none;"></div><div class="Chinese" id="Nct'+i+'" >'+chCode+'</div>';
 
 			}else{
+				// is 講解情狀 2 (TITLE + content) v
 				enCode = fnEnRemoveSortString( i, spanWord($(en).find("lrclist:eq(" + i + ")").attr("content"), pAry) );
 				chCode = fnChRemoveSortString( i, $(tc).find("lrclist:eq("+i+")").attr("content") );
-				eu = eu + '<a name="' + i + '" id="N' + i + '"></a><div class="english" id="Nt' + i + '" ><div class="art-star" id="art-star'+i+'" onclick=goP_sentences('+i+') ><div class="icon-star"></div></div><div class="art-art">' + enCode +'<input type="button" onclick="'+playo+'" class="read_btn link"></div></div><div id="bubble'+i+'"  class="annotation" style="display:none;"></div><div class="Chinese" id="Nct'+i+'" >'+ chCode +'</div>';
+				eu = eu + '<a name="' + i + '" id="N' + i + '"></a><div class="english" id="Nt' + i + '" ><div class="art-star" id="art-star'+i+'" >'+lan+'<div class="icon-star" onclick=goP_sentences('+i+')></div></div><div class="art-art">' + starBigStr + enCode +'<input type="button" onclick="'+playo+'" class="read_btn link"></div></div><div id="bubble'+i+'"  class="annotation" style="display:none;"></div><div class="Chinese" id="Nct'+i+'" >'+ chCode +'</div>';
 			}
 			eu=eu.replace("**","");
 		
@@ -376,32 +394,38 @@ function phrase(){
 
 function goP_sentences(ix){
 
-	if(!$('#icon-star'+ix).hasClass('active')){
-		var tg='I'
+	if(Me.Product=='228'){
+		alert('本功能僅供完整方案以上會員使用');
+		return false;
 	}else{
-		var tg='D'
+	
+		if(!$('#icon-star'+ix).hasClass('active')){
+			var tg='I'
+		}else{
+			var tg='D'
+		}
+
+		$.ajax({
+			type:"POST",
+			url:"./Personal_Sentences_response.asp",
+			data: {
+				indx:refId,
+				orders: ix,
+				en:escape($(en).find("lrclist:eq("+ix+")").attr("content").replace('**','')),
+				tc:escape($(tc).find("lrclist:eq("+ix+")").attr("content").replace('**','')),
+				tg:tg,
+				clock:clock_num0[ix]
+			},
+			dataType:"html",
+			error: function(){
+			},
+			success:function(data){
+				$('body').append(data);
+				jquery_Record()
+			}				   
+		});	
+
 	}
-
-	$.ajax({
-		type:"POST",
-		url:"./Personal_Sentences_response.asp",
-		data: {
-			indx:refId,
-			orders: ix,
-			en:escape($(en).find("lrclist:eq("+ix+")").attr("content").replace('**','')),
-			tc:escape($(tc).find("lrclist:eq("+ix+")").attr("content").replace('**','')),
-			tg:tg,
-			clock:clock_num0[ix]
-		},
-		dataType:"html",
-		error: function(){
-		},
-		success:function(data){
-			$('body').append(data);
-			jquery_Record()
-		}				   
-	});		 
-
 }
 
 function StepFinish(tg){
@@ -422,7 +446,7 @@ function StepFinish(tg){
 }	
 
 function jquery_Record(){ 
-	
+	console.log('work jquery_Record');
 	$.ajax({
 		type:"POST",
 		url:"../../newmylessonmobile/api/LearningJson",

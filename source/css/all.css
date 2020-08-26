@@ -721,6 +721,16 @@ aside .sub {
   display: none;
 }
 
+.aside-speedbox.is-play1 .speed {
+  right: 135px;
+}
+.aside-speedbox.is-play1 .speed.show {
+  right: 157px;
+}
+.aside-speedbox.is-play1 .speed-point {
+  right: 131px;
+}
+
 @keyframes ani-point {
   15% {
     opacity: 1;
@@ -1295,6 +1305,7 @@ input[type=range]::-ms-track {
 
 #stepBox.is-step1 .step-fnbar1 {
   display: flex;
+  height: 56px;
 }
 #stepBox.is-step1 .step-fnbar2 {
   display: none;
@@ -1392,6 +1403,29 @@ input[type=range]::-ms-track {
 }
 .funbar-box .wrapper-right-f1 {
   padding-right: 90px;
+}
+
+.is-item-read,
+.is-item-language {
+  width: 120px;
+  line-height: 29px;
+  font-size: 1.0625rem;
+  border-radius: 10px;
+  border-width: 1px;
+  border-style: solid;
+  letter-spacing: 1px;
+  text-align: center;
+  cursor: pointer;
+  vertical-align: 33px;
+  display: inline-block;
+  user-select: none;
+  transition: background-color 0.5s;
+}
+
+.is-item-language {
+  position: absolute;
+  top: -30px;
+  left: 23px;
 }
 
 @media screen and (max-width: 1440px) {
@@ -2365,6 +2399,17 @@ input[type=range]::-ms-track {
 .skin1 .s3-true {
   color: #005f40!important;
 }
+.skin1 .is-item-read,
+.skin1 .is-item-language {
+  color: #f74769;
+  background-color: #fff;
+  border-color: #f74769;
+}
+.skin1 .is-item-read.active,
+.skin1 .is-item-language.active {
+  color: #fff;
+  background-color: #f74769;
+}
 .skin1 .funbar {
   background-color: rgba(247, 71, 105, 0.2);
 }
@@ -2957,6 +3002,17 @@ body.is-memo-moving .skin1 .english span:hover, body.is-memo-moving .skin1 .Chin
 .skin2 .s3-true {
   color: #005f40!important;
 }
+.skin2 .is-item-read,
+.skin2 .is-item-language {
+  color: #275246;
+  background-color: #fff;
+  border-color: #275246;
+}
+.skin2 .is-item-read.active,
+.skin2 .is-item-language.active {
+  color: #fff;
+  background-color: #275246;
+}
 .skin2 .funbar {
   background-color: rgba(39, 82, 70, 0.13);
 }
@@ -3203,6 +3259,7 @@ article {
 }
 
 .icon-like {
+  display: none !important;
   position: absolute;
   top: 0;
   right: 3%;
@@ -3216,6 +3273,12 @@ article {
 .icon-like:hover {
   opacity: 1;
   text-decoration: none;
+}
+
+.icon-star-big {
+  display: inline-block;
+  margin-right: 9px;
+  transform: translateY(5px);
 }
 
 .english {
@@ -3249,6 +3312,7 @@ article {
 }
 
 .art-star {
+  position: relative;
   width: 25px;
   padding-top: 24px;
 }
@@ -3307,12 +3371,16 @@ span.is-height-light {
   cursor: pointer;
 }
 
+#Nt0 .icon-star,
+#t0 .icon-star {
+  display: none;
+}
+
 #Nt0, #t0 {
   font-size: 2.5rem;
   font-weight: bold;
   line-height: 1.1;
   padding-top: 0;
-  padding-right: 50px;
 }
 #Nt0 span, #t0 span {
   font-size: 2.5rem;

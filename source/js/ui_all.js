@@ -348,8 +348,9 @@ $(function () {
 		location.href='./'
 	})
 
-	$('.icon-star-big').click(function(){
-		
+	// $('.icon-star-big').click(function(){
+	$('body').on('click', '.icon-star-big', function(){
+		console.log('clicked icon-start-big');
 		if(!$(this).hasClass('active')){
 			var tg='I'
 		}else{
