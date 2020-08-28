@@ -569,7 +569,8 @@ const finalShow=()=>{
 	})		
 }
 
-let sharePicUrl;
+let artData;
+let artNum;
 function main() {
 	playerinit()
 	jquery_Record()
@@ -581,9 +582,6 @@ function main() {
 	var ch_title = $(tc).find("lrc").attr("title");
 	var pic = $(en).find("lrc").attr("PIC").replace("http://fun-day.appspot.com/downloadFile?path=/en/", "../../en/")
 	var ids = xml.split("-");
-
-	sharePicUrl = pic;
-	console.log('pic is ', pic);
 
 	ids[1] = ids[1].replace("v2.xml", "");
 
@@ -615,10 +613,9 @@ function main() {
 	// == 若為行動載具，就轉址 v
 	// ==========================================
 	const nua = navigator.userAgent;
+	artData = left($(en).find("lrc").attr("Ndate"), 4) + mid($(en).find("lrc").attr("Ndate"), 4, 2) + mid($(en).find("lrc").attr("Ndate"), 6, 2);
+	artNum = ids[1];
 	if( /iphone | android/i.test( nua ) || nua.indexOf('iPad') >= 0 ){
-		const artData = left($(en).find("lrc").attr("Ndate"), 4) + mid($(en).find("lrc").attr("Ndate"), 4, 2) + mid($(en).find("lrc").attr("Ndate"), 6, 2);
-		const artNum = ids[1];
-	
 		location.href='https://funday.asia/NewMylessonMobile/learning2020/introIframe.asp?back=/newmylessonmobile/tailored.asp&xml=news'+artData+'-'+artNum+'v2.xml#explain'
 	}else{
 		console.log('is PC');

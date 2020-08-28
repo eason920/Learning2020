@@ -150,12 +150,12 @@
 	<script src="../../js/Uinfo.js?1090828"></script>   		
 	<script src='./js/player.js?1090828'></script>
 	<script src='./js/page.js?1090828'></script>
-	<script src='./js/main.js?1090828'></script>
+	<script src='./js/main.js?1090828-2'></script>
 	<script src='../../../../Funfa/Fa.js?1090828'></script>
   <script src="./js/Times.js?1090828"></script>
   <script src="./js/alt_text.js?1090828"></script>
   <script src="Dr.eye/Dre.js?1090828"></script>
-  <script src="./js/share.js?1090828"></script>
+  <script src="./js/share.js?1090828-2"></script>
 	<script>
       let pAry = [];
       var Me=new User();
