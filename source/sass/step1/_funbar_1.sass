@@ -4,8 +4,9 @@
 	display: flex
 	align-items: center
 	height: 100%
-	border-radius: 20px
+	border-radius: 6px
 	transition: .3s
+	padding: 0 12px
 
 .funbar-memobox.active,
 .funbar-phrase.active,
@@ -38,16 +39,17 @@
 			transition: left .2s
 	
 .controlbox-item
-	font:
-		size: 1.0625rem
-		weight: bold
-	font-style: normal
-	text-align: center
-	position: relative
-	z-index: 1
-	user-select: none
-	cursor: pointer
-	padding: 0 15px
+	// 1090826 改版刪除 v
+	// font:
+	// 	size: 1.0625rem
+	// 	weight: bold
+	// font-style: normal
+	// text-align: center
+	// position: relative
+	// z-index: 1
+	// user-select: none
+	// cursor: pointer
+	// padding: 0 15px
 
 
 .icon-how
@@ -100,7 +102,7 @@
 			display: flex
 			align-items: center
 			height: 100%
-			border-radius: 20px
+			border-radius: 6px
 
 .active
 	.typebox,
@@ -141,7 +143,7 @@
 	padding: 0 10px
 	line-height: 20px
 	height: 20px
-	border-radius: 8px
+	border-radius: 6px
 	&.active
 		cursor: default!important
 	& + .typebox-item
@@ -161,7 +163,7 @@
 	.controlbox-item,
 	.funbar-phrase,
 	.funbar-collection
-		padding: 0 10px
+		padding: 0 10px!important
 
 	.is-item-arttype,
 	.is-item-audiotype

@@ -59,9 +59,12 @@ $h-nav: 65px
 
 // -----------------------------------
 // -----------------------------------
+.svg
+	transform: scale(.8)
 .topbar-step
+	padding-left: 150px
 	@extend %block
-	width: calc( 100% - #{$w-icon * 3} )
+	width: calc( 100% - #{$w-icon * 2} )
 
 .topbar-step-item
 	display: flex
@@ -201,7 +204,8 @@ $h-nav: 65px
 // -----------------------------------
 .topbar-icon
 	@extend %block
-	width: $w-icon * 3
+	width: $w-icon * 2
+	justify-content: flex-end
 
 .topbar-icon-item
 	@extend %block
@@ -209,6 +213,7 @@ $h-nav: 65px
 	display: flex
 	justify-content: center
 	align-items: center
+	cursor: pointer
 	& > *
 		display: inline-block
 
@@ -226,6 +231,9 @@ $h-nav: 65px
 		padding:
 			left: 5px
 	
+	.topbar-step
+		padding-left: 90px
+	
 	.topbar-step-item
 		.icon-pink
 			margin-right: 10px
@@ -235,6 +243,11 @@ $h-nav: 65px
 
 	.topbar-box-r
 		width: 30%!important
+
+@media screen and (max-width: 1280px)
+	.topbar-step
+		padding-left: 0
+		width: 100%
 
 @media screen and (min-width: 1441px)
 	.topbar-num

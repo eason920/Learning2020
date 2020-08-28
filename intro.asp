@@ -123,36 +123,39 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name='description' content='<%=replace(og_description,"[p]","")%>' />
-	<meta property='og:title' content='<%=og_title%>' />
+  <!--vvvvv-->
+		<meta name="description" content="<%=replace(og_description,"[p]","")%>" />
+	<meta property="og:title" content="<%=og_title%>" />
 	<meta property="og:type" content="website" />
-	<meta property='og:url' content='https://funday.asia/learning2020/?rid=<%=ref_id%>' />
-	<meta property='og:image' content='https://funday.asia/en/pic/<%=og_image%>' />
-	<meta property='og:description' content='<%=replace(og_description,"[p]","")%>' />
+	<meta property="og:url" content="https://funday.asia/learning2020/?rid=<%=ref_id%>" />
+	<meta property="og:image" content="https://funday.asia/en/pic/<%=og_image%>" />
+	<meta property="og:description" content="<%=replace(og_description,"[p]","")%>" />
 	<meta property="fb:app_id" content="665673953932390" />
-	<link rel="icon" href="./images/favicon.ico" type="image/ico" />
+  <!--^^^^^-->
+  <link rel="icon" href="./images/favicon.ico" type="image/ico" />
 	<title>FUNDAY數位英語學堂</title>
 
-	<link href="css/bootstrap.min.css" rel='stylesheet' type='text/css' />
-	<link rel="stylesheet" href="css/all.css">
+	<link href="css/bootstrap.min.css?1090826" rel='stylesheet' type='text/css' />
+	<link rel="stylesheet" href="css/all.css?1090826">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display&amp;display=swap">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface&amp;display=swap">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Engagement&amp;display=swap">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap">
-	<script src="js/jquery-1.11.1.min.js"></script>
-	<script type="text/javascript" src="../../../jquery/jquery-1.10.4.ui.min.js"></script>	
-	<script src="https://funday.asia/NewMylessonmobile/MusicBox/js/recorder.mp3.min.js"></script>
-  <script src="../../../Joinus/joinus.js?a"></script>
-	<script src="../../library/js/lightBoxDIY-V2.js"></script>
-  <script  src="../../jquery.cookie.js"></script>
-	<script src="../../js/Uinfo.js"></script>   		
-	<script src='./js/player.js'></script>
-	<script src='./js/page.js'></script>
-	<script src='./js/main.js'></script>
-	<script src='../../../../Funfa/Fa.js'></script>
-  <script src="./js/Times.js"></script>
-  <script src="./js/alt_text.js"></script>
-  <script type="text/javascript" src="Dr.eye/Dre.js"></script>
+	<script src="js/jquery-1.11.1.min.js?1090828"></script>
+	<script type="text/javascript" src="../../../jquery/jquery-1.10.4.ui.min.js?1090828"></script>	
+	<script src="https://funday.asia/NewMylessonmobile/MusicBox/js/recorder.mp3.min.js?1090828"></script>
+  <script src="../../../Joinus/joinus.js?1090828?a"></script>
+	<script src="../../library/js/lightBoxDIY-V2.js?1090828"></script>
+  <script  src="../../jquery.cookie.js?1090828"></script>
+	<script src="../../js/Uinfo.js?1090828"></script>   		
+	<script src='./js/player.js?1090828'></script>
+	<script src='./js/page.js?1090828'></script>
+	<script src='./js/main.js?1090828'></script>
+	<script src='../../../../Funfa/Fa.js?1090828'></script>
+  <script src="./js/Times.js?1090828"></script>
+  <script src="./js/alt_text.js?1090828"></script>
+  <script src="Dr.eye/Dre.js?1090828"></script>
+  <script src="./js/share.js?1090828"></script>
 	<script>
       let pAry = [];
       var Me=new User();
@@ -220,24 +223,24 @@
       if((parseInt(edcheck)>parseInt(0)) && Product!='228' )
         display(refId,1)  
 	</script>		
-	<script src="js/ui_all.js"></script>
-  <script src="js/memobox.js"></script>
-  <script src='js/ui_step1.js'></script>
-  <script src="js/ui_step2.js"></script>
-  <script src="js/ui_step3.js"></script>
+	<script src="js/ui_all.js?1090828"></script>
+  <script src="js/memobox.js?1090828"></script>
+  <script src='js/ui_step1.js?1090828'></script>
+  <script src="js/ui_step2.js?1090828"></script>
+  <script src="js/ui_step3.js?1090828"></script>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+new Date().getTime(),event:'gtm.js?1090828'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+'https://www.googletagmanager.com/gtm.js?1090828?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-P5J9V9J');</script>
 <!-- End Google Tag Manager -->
 
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+new Date().getTime(),event:'gtm.js?1090828'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+'https://www.googletagmanager.com/gtm.js?1090828?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-K84D2RM');</script>
 <!-- End Google Tag Manager -->
 
@@ -250,7 +253,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   n.queue=[];t=b.createElement(e);t.async=!0;
   t.src=v;s=b.getElementsByTagName(e)[0];
   s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
+  'https://connect.facebook.net/en_US/fbevents.js?1090828');
   fbq('init', '318780062004624');
   fbq('track', 'PageView');
 </script>
@@ -265,7 +268,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
 n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-document,'script','https://connect.facebook.net/en_US/fbevents.js');
+document,'script','https://connect.facebook.net/en_US/fbevents.js?1090828');
 fbq('init', '791512797552313');
 fbq('track', "PageView");
 </script>
@@ -284,7 +287,7 @@ fbq('track', "PageView");
   n.queue=[];t=b.createElement(e);t.async=!0;
   t.src=v;s=b.getElementsByTagName(e)[0];
   s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
+  'https://connect.facebook.net/en_US/fbevents.js?1090828');
   fbq('init', '2785702161655695');
   fbq('track', 'PageView');
 </script>
@@ -309,7 +312,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 
 	<div id="fb-root"></div>
-	<script async defer crossorigin="anonymous" src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v4.0&appId=665673953932390&autoLogAppEvents=1"></script>
+	<script async defer crossorigin="anonymous" src="https://connect.facebook.net/zh_TW/sdk.js?1090828#xfbml=1&version=v4.0&appId=665673953932390&autoLogAppEvents=1"></script>
 	<input type="hidden" name="repeat" id="repeat" value="0" />
 	<!-- v HTML START v -->
   <div class="is-step1" id="stepBox">
@@ -375,12 +378,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <!--a class="topbar-icon-item" href="#">
                   <div class="icon-refresh"></div>
                 </a-->
-                <!--a class="topbar-icon-item" href="#">
-                  <div class="icon-print"></div>
-                </a-->
+                <div class="topbar-icon-item icon-print">
+                  <!--div class="icon-print"></div-->
+                  <svg class='svg' width="34" height="35" viewBox="0 0 34 35" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M25.5881 18.8726C25.9548 18.8725 26.2685 19.1362 26.3315 19.4975L28.7256 33.1921C28.7641 33.4117 28.7035 33.6371 28.56 33.8078C28.4166 33.9784 28.2051 34.077 27.9821 34.0769H5.28421C5.06127 34.077 4.84972 33.9784 4.70631 33.8078C4.56289 33.6371 4.50228 33.4117 4.54074 33.1921L6.93482 19.4975C6.99782 19.1362 7.31152 18.8725 7.6783 18.8726H25.5881ZM8.31267 20.3824L6.1825 32.5671H27.0839L24.9537 20.3824H8.31267Z"/><path d="M11.1348 23.7794H22.305C22.6177 23.7794 22.8711 23.5259 22.8711 23.2132C22.8711 22.9005 22.6177 22.647 22.305 22.647H11.1348C10.8221 22.647 10.5686 22.9005 10.5686 23.2132C10.5686 23.5259 10.8221 23.7794 11.1348 23.7794Z"/><path d="M10.7573 26.799H22.6773C22.99 26.799 23.2434 26.5456 23.2434 26.2329C23.2434 25.9202 22.99 25.6667 22.6773 25.6667H10.7573C10.4446 25.6667 10.1912 25.9202 10.1912 26.2329C10.1912 26.5456 10.4446 26.799 10.7573 26.799Z"/>
+                  <path d="M23.0496 29.0637H10.3799C10.0672 29.0637 9.81372 29.3172 9.81372 29.6299C9.81372 29.9426 10.0672 30.1961 10.3799 30.1961H23.0496C23.3623 30.1961 23.6158 29.9426 23.6158 29.6299C23.6158 29.3172 23.3623 29.0637 23.0496 29.0637Z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M3.59191 7.17157H30.3786C32.3624 7.17158 33.9706 8.77973 33.9706 10.7635V21.3198C33.9706 23.3036 32.3624 24.9117 30.3786 24.9117H29.1721L28.1709 19.1848C27.9833 18.0998 27.0412 17.3078 25.9401 17.3096H8.03033C6.92939 17.3078 5.98731 18.0995 5.79953 19.1843L4.79822 24.9117H3.59191C2.63928 24.9117 1.72566 24.5333 1.05204 23.8597C0.378425 23.1861 -5.00516e-06 22.2724 1.60872e-10 21.3198V10.7635C-9.00948e-06 9.81087 0.37842 8.89724 1.05204 8.22362C1.72565 7.55 2.63927 7.17157 3.59191 7.17157ZM28.6596 11.1482C28.6596 11.8852 29.257 12.4826 29.994 12.4826C30.3479 12.4826 30.6873 12.342 30.9376 12.0918C31.1878 11.8415 31.3284 11.5021 31.3284 11.1482C31.3284 10.4112 30.731 9.81373 29.994 9.81373C29.257 9.81373 28.6596 10.4112 28.6596 11.1482Z"/>
+                  <path d="M27.1765 5.60869V0.754902C27.1765 0.33799 26.8385 2.0844e-05 26.4216 0H7.54903C7.13212 2.0844e-05 6.79415 0.33799 6.79413 0.754902V5.60869H8.30393V1.5098H25.6667V5.60869H27.1765Z"/></svg>
+                </div>
                 <!--a class="topbar-icon-item" href="#">
                   <div class="icon-star-big"></div>
                 </a-->
+                <div class="topbar-icon-item share_btn">
+                  <svg class='svg' width="29" height="36" viewBox="0 0 29 36" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="21.592" cy="6.97856" r="5" transform="rotate(54.2779 21.592 6.97856)"/><circle cx="6.97854" cy="17.488" r="5" transform="rotate(54.2779 6.97854 17.488)"/><rect x="22.7597" y="8.60229" width="18" height="4" transform="rotate(144.278 22.7597 8.60229)"/><circle r="5" transform="matrix(-0.583854 0.811858 0.811858 0.583854 21.592 28.488)"/><rect width="18" height="4" transform="matrix(0.811858 0.583854 0.583854 -0.811858 5.81082 19.6023)"/></svg>
+                  <input type="text" class="copy-source"/>
+                  <div class="shareouter">
+                    <div class="share">
+                      <a href="#" class="line_btn share-line"></a>
+                      <a href="#" class="fb_btn share-fb"></a>
+                      <a href="#" class="link_btn copy-btn">
+                        <!--div class="copied">己拷貝連結</div-->
+                      </a>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -523,9 +542,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="wrapper-right-f1">
             <div class="wrapper-right-f2">
               <ul class="funbar step-fnbar1">
-                <li class="funbar-item active is-item-language">
+                <!--li class="funbar-item active is-item-language">
                   <div class="controlbox"><b class="controlbox-item" id="altD">中+EN</b><i class="controlbox-item" id="altE">EN</i></div>
-                </li>
+                </li-->
                 <li class="funbar-item is-item-memo"><a class="funbar-btn funbar-memobox do-insert-id" href="#">便利貼</a></li>
                 <li class="funbar-item is-item-group"><a class="funbar-btn funbar-phrase" href="#">單字片語</a></li>
                 <li class="funbar-item"><a class="funbar-btn funbar-collection" href="#">單字收錄</a></li>

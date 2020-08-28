@@ -4,10 +4,10 @@ $(function(){
 	// == CONTROL EN & CH
 	// =============================
 	$('body').on('click', '.is-item-language', function(){
-		$('.is-item-language').toggleClass('active');
-		// $('body').find('article').find('.Chinese').toggleClass('is-hide');
-		$('body').find('article').find('.Chinese').slideToggle(100);
-		$(this).hasClass('active') ? $(this).text('隱藏中文') : $(this).text('顯示中文');
+		const $this = $('.is-item-language');
+		$this.toggleClass('active');
+		$this.hasClass('active') ? $this.text('隱藏中文') : $this.text('顯示中文');
+		$('body').find('article').find('.Chinese').toggleClass('is-hide');
 	});
 	
 	// ====================================

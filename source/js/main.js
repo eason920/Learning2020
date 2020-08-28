@@ -1,4 +1,7 @@
-// JavaScript Document
+const turnLocation = 'https://funday.asia/NewMylessonMobile/learning2020/introIframe.asp?back=/newmylessonmobile/tailored.asp&xml=news20200724-19149v2.xml#explain'
+
+
+
 function Block(id){
 	if(id==1){
 	 $('.article').show();
@@ -566,6 +569,7 @@ const finalShow=()=>{
 	})		
 }
 
+let sharePicUrl;
 function main() {
 	playerinit()
 	jquery_Record()
@@ -577,6 +581,10 @@ function main() {
 	var ch_title = $(tc).find("lrc").attr("title");
 	var pic = $(en).find("lrc").attr("PIC").replace("http://fun-day.appspot.com/downloadFile?path=/en/", "../../en/")
 	var ids = xml.split("-");
+
+	sharePicUrl = pic;
+	console.log('pic is ', pic);
+
 	ids[1] = ids[1].replace("v2.xml", "");
 
 	pic = pic.replace("s.", ".")
@@ -599,16 +607,30 @@ function main() {
 		}
 	} else {
 		level = level + " A1"
-	}
+	};
 
-	var ndate = left($(en).find("lrc").attr("Ndate"), 4) + '/' + mid($(en).find("lrc").attr("Ndate"), 4, 2) + '/' + mid($(en).find("lrc").attr("Ndate"), 6, 2)
+	var ndate = left($(en).find("lrc").attr("Ndate"), 4) + '/' + mid($(en).find("lrc").attr("Ndate"), 4, 2) + '/' + mid($(en).find("lrc").attr("Ndate"), 6, 2);
+
+	// ==========================================
+	// == 若為行動載具，就轉址 v
+	// ==========================================
+	const nua = navigator.userAgent;
+	if( /iphone | android/i.test( nua ) || nua.indexOf('iPad') >= 0 ){
+		const artData = left($(en).find("lrc").attr("Ndate"), 4) + mid($(en).find("lrc").attr("Ndate"), 4, 2) + mid($(en).find("lrc").attr("Ndate"), 6, 2);
+		const artNum = ids[1];
+	
+		location.href='https://funday.asia/NewMylessonMobile/learning2020/introIframe.asp?back=/newmylessonmobile/tailored.asp&xml=news'+artData+'-'+artNum+'v2.xml#explain'
+	}else{
+		console.log('is PC');
+	}
 
 	$('#title-a, #title-b').html(en_title)
 	$('#subtitle-a, #subtitle-b').html(ch_title)
 	$('#class_f').html( E_Channel + '/' + C_Channel + level)
 
 	$('.ArticleInfo2').html('文章序號:' + ids[1] + ' Date:' + ndate)
-	$('.Article_pic').html(pic)
+	$('.Article_pic').html(pic);
+	
 	//Page1
 	Vocabulary()
 	phrase()

@@ -186,83 +186,87 @@ $(function(){
 	// ====================================
 	// v .art-art = .english area
 	$body.on('dblclick', '.art-art, .Chinese, .annotation', function(e){
-		const $this = $(this);
-		const id = $('.memobox').length + 1;
-		let times;
-		
-		if( $('.funbar-memobox').hasClass('do-insert-id') ){
-			fnInit();
-			times = 100;
-			//^ 剛入文章、第一次 create時，要等待 fnInit 加戴好 englist & chinese 中 span 的 id再執行 create memo
-		}else{
-			times = 0;
-			// 不是剛入文章、span 的 id 己加好，就直接執行 create memo
-		};
+		if(Me.Product!='228'){
 
-		setTimeout(function(){
-			// $('.funbar-memobox').hasClass('active') ? null : $('.memobox').show();
-			if( !$('.funbar-memobox').hasClass('active') ){
-				$('.funbar-memobox').addClass('active');
-				$('.memobox').show();
-			}
-			// $('.funbar-memobox').hasClass('active') ? null : $('.funbar-memobox').click();
-	
-			if( id < 16 ){
-				// $body.find('.memobox').eq(0).is(':visible') ? null : ;
-				const maxX = fnMaxXY()[0];
-				const maxY = fnMaxXY()[1];
-				const className = $this.attr('class');
-				const distanceX = fnDistanceX();
-				const distanceScrolltop = $stepblock.scrollTop();
-				let thisid;
-				let basicid1;
-				let basicid2;
-		
-				// xy
-				let left = Math.floor( e.pageX - distanceX);
-				$section.hasClass('move') ? left = left + Math.floor($section.width() * .25) : null;
-				left >= maxX ? left = maxX : null;
-				let top = $this.offset().top - distanceY + $this.innerHeight() + distanceScrolltop;
-				top >= maxY ? top = maxY : null;
-		
-				switch(true){
-					case /art-art/i.test( className ):
-						thisid = $this.find('span:last-child').attr('id');
-						break;
-					case /chinese/i.test( className ):
-						thisid = $this.find('span:last-child').attr('id');
-						top = top - 30;// 30 = .Chinese.padding-bottom
-						break;
-					case /annotation/i.test( className ):
-						thisid = $this.next().find('span:last-child').attr('id');
-						break
-					default:
-				}
-		
-				if ($('.article2').is(':visible')) {
-					// .article2
-					basicid2 = thisid;
-					basicid1 = thisid.substr(1);
-				} else {
-					// .article
-					basicid2 = 'N' + basicid;
-					basicid1 = thisid;
-				}
-				addMemo(id, '', left, top, basicid2, basicid1, false);
+			const $this = $(this);
+			const id = $('.memobox').length + 1;
+			let times;
+			
+			if( $('.funbar-memobox').hasClass('do-insert-id') ){
+				fnInit();
+				times = 100;
+				//^ 剛入文章、第一次 create時，要等待 fnInit 加戴好 englist & chinese 中 span 的 id再執行 create memo
 			}else{
-				alert('便利貼數量己逹上限 !')
-				// const st = $('#stepBlock1').scrollTop();
-				// $('#stepBlock1').append(
-				// 	$('<div>', {class: 'msgbox'}).css('transform', 'translateY('+st+')').append(
-				// 		$('<div>', {class: 'msgbox-text'}).text('便利貼數量己逹上限 !'),
-				// 		$('<div>', {class: 'msgbox-btn'}).text('確定')
-				// 	)
-				// );
-				$('.msgbox-btn').on('click',function(){
-					$('.msgbox').remove()
-				})	
+				times = 0;
+				// 不是剛入文章、span 的 id 己加好，就直接執行 create memo
 			};
-		}, times);
+
+			setTimeout(function(){
+				// $('.funbar-memobox').hasClass('active') ? null : $('.memobox').show();
+				if( !$('.funbar-memobox').hasClass('active') ){
+					$('.funbar-memobox').addClass('active');
+					$('.memobox').show();
+				}
+				// $('.funbar-memobox').hasClass('active') ? null : $('.funbar-memobox').click();
+		
+				if( id < 16 ){
+					// $body.find('.memobox').eq(0).is(':visible') ? null : ;
+					const maxX = fnMaxXY()[0];
+					const maxY = fnMaxXY()[1];
+					const className = $this.attr('class');
+					const distanceX = fnDistanceX();
+					const distanceScrolltop = $stepblock.scrollTop();
+					let thisid;
+					let basicid1;
+					let basicid2;
+			
+					// xy
+					let left = Math.floor( e.pageX - distanceX);
+					$section.hasClass('move') ? left = left + Math.floor($section.width() * .25) : null;
+					left >= maxX ? left = maxX : null;
+					let top = $this.offset().top - distanceY + $this.innerHeight() + distanceScrolltop;
+					top >= maxY ? top = maxY : null;
+			
+					switch(true){
+						case /art-art/i.test( className ):
+							thisid = $this.find('span:last-child').attr('id');
+							break;
+						case /chinese/i.test( className ):
+							thisid = $this.find('span:last-child').attr('id');
+							top = top - 30;// 30 = .Chinese.padding-bottom
+							break;
+						case /annotation/i.test( className ):
+							thisid = $this.next().find('span:last-child').attr('id');
+							break
+						default:
+					}
+			
+					if ($('.article2').is(':visible')) {
+						// .article2
+						basicid2 = thisid;
+						basicid1 = thisid.substr(1);
+					} else {
+						// .article
+						basicid2 = 'N' + basicid;
+						basicid1 = thisid;
+					}
+					addMemo(id, '', left, top, basicid2, basicid1, false);
+				}else{
+					alert('便利貼數量己逹上限 !')
+					// const st = $('#stepBlock1').scrollTop();
+					// $('#stepBlock1').append(
+					// 	$('<div>', {class: 'msgbox'}).css('transform', 'translateY('+st+')').append(
+					// 		$('<div>', {class: 'msgbox-text'}).text('便利貼數量己逹上限 !'),
+					// 		$('<div>', {class: 'msgbox-btn'}).text('確定')
+					// 	)
+					// );
+					$('.msgbox-btn').on('click',function(){
+						$('.msgbox').remove()
+					})	
+				};
+			}, times);
+			
+		}
 	});
 
 	// ====================================
@@ -381,7 +385,9 @@ $(function(){
 		lockTarget();
 	});
 
-	$('.controlbox-item, .is-step-switch1').click(function(){
+	// $('.controlbox-item, .is-step-switch1').click(function(){
+	$('body').on('click', '.controlbox-item, .is-step-switch1', function(){
+		console.log('got cleck memory controlbox-item');
 		setTimeout(function(){
 			lockTarget();
 		});
@@ -399,12 +405,17 @@ $(function(){
 	
 	$('.funbar-memobox').click(function(){
 		// console.log($(this).hasClass('do-insert-id'));
-		$(this).toggleClass('active');
-		if( $(this).hasClass('do-insert-id') ){
-			fnInit();
+		if(Me.Product=='228'){
+			alert('本功能僅供完整方案以上會員使用');
+			return false;
 		}else{
-			$('.memobox').toggle(0);
-			lockTarget();
+			$(this).toggleClass('active');
+			if( $(this).hasClass('do-insert-id') ){
+				fnInit();
+			}else{
+				$('.memobox').toggle(0);
+				lockTarget();
+			}
 		}
 	});
 

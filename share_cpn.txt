@@ -1,0 +1,7 @@
+	<meta name="description" content="<%=replace(og_description,"[p]","")%>" />
+	<meta property="og:title" content="<%=og_title%>" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://funday.asia/learning2020/?rid=<%=ref_id%>" />
+	<meta property="og:image" content="https://funday.asia/en/pic/<%=og_image%>" />
+	<meta property="og:description" content="<%=replace(og_description,"[p]","")%>" />
+	<meta property="fb:app_id" content="665673953932390" />

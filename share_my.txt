@@ -1,0 +1,7 @@
+my v
+<meta name="description" content="name description">
+<meta property="og:title" content="Hello title">
+<meta property="og:url" content="about Eason Chan">
+<meta property="og:image" content="https://eason920.github.io/share_btn/images/pic3.jpg">
+<meta property="og:description" content="陳奕迅（英語：Eason Chan Yick-shun，1974年7月27日－），香港著名男歌手及演員，曾擔任第八至第十屆香港演藝人協會副會長；亦曾獲美國《時代雜誌》形容為影響香港樂壇風格的人物[7][8][9][10]。2010年，入選全球華人音樂殿堂—中國華語金曲獎「30年經典評選」，成為90年代出道歌手唯一代表。">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
