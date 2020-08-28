@@ -613,9 +613,10 @@ function main() {
 	// == 若為行動載具，就轉址 v
 	// ==========================================
 	const nua = navigator.userAgent;
+	const ww = $(window).width();
 	artData = left($(en).find("lrc").attr("Ndate"), 4) + mid($(en).find("lrc").attr("Ndate"), 4, 2) + mid($(en).find("lrc").attr("Ndate"), 6, 2);
 	artNum = ids[1];
-	if( /iphone | android/i.test( nua ) || nua.indexOf('iPad') >= 0 ){
+	if( /iphone | android/i.test( nua ) || nua.indexOf('iPad') >= 0 || ww <= 1024 ){
 		location.href='https://funday.asia/NewMylessonMobile/learning2020/introIframe.asp?back=/newmylessonmobile/tailored.asp&xml=news'+artData+'-'+artNum+'v2.xml#explain'
 	}else{
 		console.log('is PC');
