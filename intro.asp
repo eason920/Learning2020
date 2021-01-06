@@ -12,10 +12,17 @@
   'enddate="2022/1/1" '--使用者到期日
   'Ispay=1
 
-  mindx=Get_mid()  '--使用者ID
-  cindx=Get_cid()  '--customer ID
-  enddate=Get_enddate()  '--使用者到期日
-  edcheck=datediff("d",date(),enddate)
+  if session("indx")<>"" then
+    mindx=Get_mid()  '--使用者ID
+    cindx=Get_cid()  '--customer ID
+    enddate=Get_enddate()  '--使用者到期日
+    edcheck=datediff("d",date(),enddate)
+  else
+    mindx=""  '--使用者ID
+    cindx=""  '--customer ID
+    enddate=-1  '--使用者到期日
+    edcheck=-1
+  end if
 
 	ADCode() '通路Code
 	On Error Resume Next '下一行程式是否會發生Exception'
@@ -90,6 +97,7 @@
   set rs=connection2.execute(sql)
   if not rs.eof then
     memo= rs("memo")
+	'memo=replace(memo,"""","\u0022")
   else
     memo="[]"  
   end if
@@ -112,9 +120,13 @@
 
   if request("return")="teaching" then
     Backurl="../teaching"
+  elseif request.cookies("Backurl")<>"" then
+    Backurl=request.cookies("Backurl")
   else
     Backurl="../self-study"
   end if
+
+
 %>
 
 <!DOCTYPE html>
@@ -135,27 +147,27 @@
   <link rel="icon" href="./images/favicon.ico" type="image/ico" />
 	<title>FUNDAY數位英語學堂</title>
 
-	<link href="css/bootstrap.min.css?1090826" rel='stylesheet' type='text/css' />
-	<link rel="stylesheet" href="css/all.css?1090826">
+	<link href="css/bootstrap.min.css?<%=Timer()%>" rel='stylesheet' type='text/css' />
+	<link rel="stylesheet" href="css/all.css?<%=Timer()%>">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display&amp;display=swap">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface&amp;display=swap">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Engagement&amp;display=swap">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap">
-	<script src="js/jquery-1.11.1.min.js?1090828"></script>
-	<script type="text/javascript" src="../../../jquery/jquery-1.10.4.ui.min.js?1090828"></script>	
-	<script src="https://funday.asia/NewMylessonmobile/MusicBox/js/recorder.mp3.min.js?1090828"></script>
-  <script src="../../../Joinus/joinus.js?1090828?a"></script>
-	<script src="../../library/js/lightBoxDIY-V2.js?1090828"></script>
-  <script  src="../../jquery.cookie.js?1090828"></script>
-	<script src="../../js/Uinfo.js?1090828"></script>   		
-	<script src='./js/player.js?1090828'></script>
-	<script src='./js/page.js?1090828'></script>
-	<script src='./js/main.js?1090828-3'></script>
-	<script src='../../../../Funfa/Fa.js?1090828'></script>
-  <script src="./js/Times.js?1090828"></script>
-  <script src="./js/alt_text.js?1090828"></script>
-  <script src="Dr.eye/Dre.js?1090828"></script>
-  <script src="./js/share.js?1090828-2"></script>
+	<script src="js/jquery-1.11.1.min.js?<%=Timer()%>"></script>
+	<script type="text/javascript" src="../../../jquery/jquery-1.10.4.ui.min.js?<%=Timer()%>"></script>	
+	<script src="https://funday.asia/NewMylessonmobile/MusicBox/js/recorder.mp3.min.js?<%=Timer()%>"></script>
+  <script src="../../../Joinus/joinus.js?<%=Timer()%>"></script>
+	<script src="../../library/js/lightBoxDIY-V2.js?<%=Timer()%>"></script>
+  <script  src="../../jquery.cookie.js?<%=Timer()%>"></script>
+	<script src="../../js/Uinfo.js?<%=Timer()%>"></script>   		
+	<script src='./js/player.js?<%=Timer()%>'></script>
+	<script src='./js/page.js?<%=Timer()%>'></script>
+	<script src='./js/main.js?<%=Timer()%>'></script>
+	<script src='../../../../Funfa/Fa.js?<%=Timer()%>'></script>
+  <script src="./js/Times.js?<%=Timer()%>"></script>
+  <script src="./js/alt_text.js?<%=Timer()%>"></script>
+  <script src="Dr.eye/Dre.js?<%=Timer()%>"></script>
+  <script src="./js/share.js?<%=Timer()%>"></script>
 	<script>
       let pAry = [];
       var Me=new User();
@@ -177,12 +189,18 @@
       
       if(Me.Ispay==1 && Me.EnddateChk()<0 ){
         var DemoTimeout=1
-        DemoLimit(<%=cindx%>,<%=mindx%>,'news',<%=ref_id%>)		
+        //DemoLimit(<%=cindx%>,<%=mindx%>,'news',<%=ref_id%>)		
       }else if(Me.Ispay!=1 && Me.EnddateChk()<0 ){
         var DemoTimeout=1
       }else{
         var DemoTimeout=''
       }
+
+      <%if session("indx")="" then%>
+        var Login=''
+      <%else%> 
+        var Login='1'
+      <%end if%>
 		//console.log(DemoTimeout)
 		// art video v
       let videoId = '<%=Youbute%>';
@@ -221,26 +239,26 @@
 
 
       if((parseInt(edcheck)>parseInt(0)) && Product!='228' )
-        display(refId,1)  
+        display(refId,4)  
 	</script>		
-	<script src="js/ui_all.js?1090828"></script>
-  <script src="js/memobox.js?1090828"></script>
-  <script src='js/ui_step1.js?1090828'></script>
-  <script src="js/ui_step2.js?1090828"></script>
-  <script src="js/ui_step3.js?1090828"></script>
+	<script src="js/ui_all.js?<%=Timer()%>"></script>
+  <script src="js/memobox.js?<%=Timer()%>"></script>
+  <script src='js/ui_step1.js?<%=Timer()%>'></script>
+  <script src="js/ui_step2.js?<%=Timer()%>"></script>
+  <script src="js/ui_step3.js?<%=Timer()%>"></script>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js?1090828'});var f=d.getElementsByTagName(s)[0],
+new Date().getTime(),event:'gtm.js?<%=Timer()%>'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?1090828?id='+i+dl;f.parentNode.insertBefore(j,f);
+'https://www.googletagmanager.com/gtm.js?<%=Timer()%>?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-P5J9V9J');</script>
 <!-- End Google Tag Manager -->
 
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js?1090828'});var f=d.getElementsByTagName(s)[0],
+new Date().getTime(),event:'gtm.js?<%=Timer()%>'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?1090828?id='+i+dl;f.parentNode.insertBefore(j,f);
+'https://www.googletagmanager.com/gtm.js?<%=Timer()%>?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-K84D2RM');</script>
 <!-- End Google Tag Manager -->
 
@@ -253,7 +271,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   n.queue=[];t=b.createElement(e);t.async=!0;
   t.src=v;s=b.getElementsByTagName(e)[0];
   s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js?1090828');
+  'https://connect.facebook.net/en_US/fbevents.js?<%=Timer()%>');
   fbq('init', '318780062004624');
   fbq('track', 'PageView');
 </script>
@@ -268,7 +286,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
 n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
-document,'script','https://connect.facebook.net/en_US/fbevents.js?1090828');
+document,'script','https://connect.facebook.net/en_US/fbevents.js?<%=Timer()%>');
 fbq('init', '791512797552313');
 fbq('track', "PageView");
 </script>
@@ -287,7 +305,7 @@ fbq('track', "PageView");
   n.queue=[];t=b.createElement(e);t.async=!0;
   t.src=v;s=b.getElementsByTagName(e)[0];
   s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js?1090828');
+  'https://connect.facebook.net/en_US/fbevents.js?<%=Timer()%>');
   fbq('init', '2785702161655695');
   fbq('track', 'PageView');
 </script>
@@ -312,7 +330,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 
 	<div id="fb-root"></div>
-	<script async defer crossorigin="anonymous" src="https://connect.facebook.net/zh_TW/sdk.js?1090828#xfbml=1&version=v4.0&appId=665673953932390&autoLogAppEvents=1"></script>
 	<input type="hidden" name="repeat" id="repeat" value="0" />
 	<!-- v HTML START v -->
   <div class="is-step1" id="stepBox">
@@ -612,10 +629,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 </html>
 <script>
-
-var dd='<%=now()%>'
+    $.get("./join.asp?rid=<%=rid%>",function(data){ //初始將tool.htm" include
+        $("body").append(data);
+    }); 
+var dd='<%=Timer()%>'
 var xml='<%=xml%>'
 var Sample_classify='<%=Sample_classify%>'
+
 
 jquery_en('<%=xml%>');
 </script>

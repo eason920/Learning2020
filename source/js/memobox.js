@@ -186,7 +186,13 @@ $(function(){
 	// ====================================
 	// v .art-art = .english area
 	$body.on('dblclick', '.art-art, .Chinese, .annotation', function(e){
-		if(Me.Product!='228'){
+		if(DemoTimeout==1){
+			if(Login==''){
+				JoinusLightBoxLogin()
+			}else{	
+				JoinusLightBox()
+			}
+		}else if(Me.Product!='228'){
 
 			const $this = $(this);
 			const id = $('.memobox').length + 1;

@@ -1,12 +1,6 @@
 
 var recorder='';
-let chunks = [];
 
-const workerOptions = {
-	OggOpusEncoderWasmPath: 'https://cdn.jsdelivr.net/npm/opus-media-recorder@latest/OggOpusEncoder.wasm',
-	WebMOpusEncoderWasmPath: 'https://cdn.jsdelivr.net/npm/opus-media-recorder@latest/WebMOpusEncoder.wasm'
-};
-window.MediaRecorder = OpusMediaRecorder;
 
 function P2_Step1(){
 	var eu='';
@@ -100,6 +94,11 @@ function P2_Step1(){
 			
 			// INIT
 			$('.s2-main-item').css({height});
+			recorder=Recorder({
+			type:"mp3",sampleRate:16000,bitRate:16 //mp3格式，指定采样率hz、比特率kbps，其他参数使用默认配置；注意：是数字的参数必须提供数字，不要用字符串；需要使用的type类型，需提前把格式支持文件加载进来，比如使用wav格式需要提前加载wav.js编码引擎
+			});
+			  
+			recorder.open();
 
 			// PREV
 			$('.share-pre').click(function(){

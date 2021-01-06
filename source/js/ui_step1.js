@@ -21,19 +21,27 @@ $(function(){
 			const $readOnly = $('.article');
 
 			$control.click(function(){
-				console.log('clicked is-item-read');
+				//console.log('clicked is-item-read');
 				if( $control.hasClass('active')){
-					console.log('講>朗');
+					//console.log('講>朗');
 					$control.removeClass("active");
 					$control.attr('data-value', '0');
 					$explain.hide();
 					$readOnly.show();
+					if((parseInt(edcheck)>parseInt(0)) && Product!='228' ){
+						display(refId,1)
+						//console.log(1)
+					}
 				}else{
-					console.log('朗>講');
+					//console.log('朗>講');
 					$control.addClass("active");
 					$control.attr('data-value', '1');
 					$explain.show();
 					$readOnly.hide();
+					if((parseInt(edcheck)>parseInt(0)) && Product!='228' ){
+						display(refId,4) 
+						//console.log(4)
+					}
 				};
 			});
 
@@ -57,47 +65,55 @@ $(function(){
 
 	let beforeClassName='';
 	$('.funbar-phrase, .funbar-collection').click(function (e) {
-		e.preventDefault;
-		// init class name
-		const className = $(this).attr('class');
-		// title text
-		let title;
-		let canIclose;
-		if(/phrase/i.test(className)){
-			title='Phrase'
-			canIclose = 'phrase';
-			$('.translation_list').show();
-			$('.translation_list2').hide();
-			$('#translation_Font1').text('Vocabulary');
-			$('#translation_Font2').text('Phrase');
-			$('#translation_Font2').show();
+		if(DemoTimeout==1 && $(this).hasClass('funbar-collection')){
+			if(Login==''){
+				JoinusLightBoxLogin()
+			}else{	
+				JoinusLightBox()
+			}	
 		}else{
-			title='單字收錄';
-			canIclose = 'collection';
-			$('.translation_list').hide();
+			e.preventDefault;
+			// init class name
+			const className = $(this).attr('class');
+			// title text
+			let title;
+			let canIclose;
+			if(/phrase/i.test(className)){
+				title='Phrase'
+				canIclose = 'phrase';
+				$('.translation_list').show();
+				$('.translation_list2').hide();
+				$('#translation_Font1').text('Vocabulary');
+				$('#translation_Font2').text('Phrase');
+				$('#translation_Font2').show();
+			}else{
+				title='單字收錄';
+				canIclose = 'collection';
+				$('.translation_list').hide();
 
-			wordlist_Get(refId);
+				wordlist_Get(refId);
 
-			$('.translation_list2').show();
-			$('#translation_Font2').hide();
-			$('#translation_Font1').text(title);
-		}
-		
-		// on vision
-		$('.funbar-phrase, .funbar-collection').removeClass('active');
-		$(this).addClass('active');
-		if( !$('section').hasClass('move') ){
-			$('section, .funbar-box').addClass("move");
-			$('.tranglationBody').addClass("show");
-			$('.is-step-main3').removeClass('is-open');
-		}else{
-			if( beforeClassName.indexOf( canIclose ) >= 0 ){
-				$(this).removeClass('active');
-				$('section, .funbar-box').toggleClass("move");
-				$('.tranglationBody').toggleClass("show");
+				$('.translation_list2').show();
+				$('#translation_Font2').hide();
+				$('#translation_Font1').text(title);
 			}
-		};
-		beforeClassName = className;
+			
+			// on vision
+			$('.funbar-phrase, .funbar-collection').removeClass('active');
+			$(this).addClass('active');
+			if( !$('section').hasClass('move') ){
+				$('section, .funbar-box').addClass("move");
+				$('.tranglationBody').addClass("show");
+				$('.is-step-main3').removeClass('is-open');
+			}else{
+				if( beforeClassName.indexOf( canIclose ) >= 0 ){
+					$(this).removeClass('active');
+					$('section, .funbar-box').toggleClass("move");
+					$('.tranglationBody').toggleClass("show");
+				}
+			};
+			beforeClassName = className;
+		}
 	});
 
 	// ====================================

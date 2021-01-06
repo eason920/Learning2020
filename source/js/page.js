@@ -89,7 +89,9 @@ function tranchang(transtr){
 	 transtr=transtr.replace(regEx5," [r3] ") 
 	 transtr=transtr.replace(regEx6," [/r3] ") 
 	 
-	 transtr=spanWord((transtr), pAry, 'page.js tranchang')
+	 
+	transtr=spanWord((transtr), pAry, 'page.js tranchang')
+
 	 
 	 transtr=transtr.replace(regEx5,"") 
 	 transtr=transtr.replace(regEx6,"") 
@@ -162,64 +164,68 @@ function spanWord( strText , ary){
 		var isR1=''
 		var isR3=''
 		var runnext=''
-		if(chstr[w].indexOf('%5Br1%5D')>=0){
-			chstr[w]='<div class=" is-art-strong" style="display: inline;">'
-			chstr2 +=chstr[w]
-			runnext=1
-		}	
+		// console.log('chstr', chstr[w], chstr[w] != '');
+		
+		// if( chstr[w] != '' ){
+			if(chstr[w].indexOf('%5Br1%5D')>=0){
+				chstr[w]='<div class=" is-art-strong" style="display: inline;">'
+				chstr2 +=chstr[w]
+				runnext=1
+			}	
 
-		if(chstr[w].indexOf('%5B/r1%5D')>=0){
-			chstr[w]='</div>'
-			chstr2 +=chstr[w]
-			runnext=1
-		}	
+			if(chstr[w].indexOf('%5B/r1%5D')>=0){
+				chstr[w]='</div>'
+				chstr2 +=chstr[w]
+				runnext=1
+			}	
 
-		if(chstr[w].indexOf('%5Br3%5D')>=0){
-			chstr[w]='<div class=" is-art-title" style="display: inline;">'
-			chstr2 +=chstr[w]
-			runnext=1
-		}	
+			if(chstr[w].indexOf('%5Br3%5D')>=0){
+				chstr[w]='<div class=" is-art-title" style="display: inline;">'
+				chstr2 +=chstr[w]
+				runnext=1
+			}	
 
-		if(chstr[w].indexOf('%5B/r3%5D')>=0){
-			chstr[w]='</div>'
-			chstr2 +=chstr[w]
-			runnext=1
-		}	
+			if(chstr[w].indexOf('%5B/r3%5D')>=0){
+				chstr[w]='</div>'
+				chstr2 +=chstr[w]
+				runnext=1
+			}	
 
-		//console.log('w |', chstr[w]);
+			//console.log('w |', chstr[w]);
 
-		if(runnext==''){
-			chstr2 += '<span '
-			for( a in ary ){
-				const re = new RegExp(ary[a], 'g');
-				if( re.test(chstr[w]) ){
-					isphrase=' is-phrase'
+			if(runnext==''){
+				chstr2 += '<span '
+				for( a in ary ){
+					const re = new RegExp(ary[a], 'g');
+					if( re.test(chstr[w]) ){
+						isphrase=' is-phrase'
+					}
 				}
+				
+				if(R1String.length>0)
+					for( b in R1String ){				
+						const re2 = new RegExp(R1String[b], 'g');
+						if( re2.test(chstr[w]) ){
+							//isR1=' is-art-strong'
+						}
+					}
+
+				if(R3String.length>0)
+					for( c in R3String ){
+						const re3 = new RegExp(R3String[c], 'g');
+						if( re3.test(chstr[w]) ){
+							//isR3=' is-art-title'
+						}
+					}
+
+				chstr2 += 'class="'+isphrase+ isR1+ isR3+'" '
+				
+				chstr2 += 'onClick=DrDate("';
+				chstr2 += RemoveTag(unescape(chstr[w])) + '");>'
+				chstr2 += unescape(chstr[w])
+				chstr2 += '</span>'
 			}
-			
-			if(R1String.length>0)
-				for( b in R1String ){				
-					const re2 = new RegExp(R1String[b], 'g');
-					if( re2.test(chstr[w]) ){
-						//isR1=' is-art-strong'
-					}
-				}
-
-			if(R3String.length>0)
-				for( c in R3String ){
-					const re3 = new RegExp(R3String[c], 'g');
-					if( re3.test(chstr[w]) ){
-						//isR3=' is-art-title'
-					}
-				}
-
-			chstr2 += 'class="'+isphrase+ isR1+ isR3+'" '
-			
-			chstr2 += 'onClick=DrDate("';
-			chstr2 += RemoveTag(unescape(chstr[w])) + '");>'
-			chstr2 += unescape(chstr[w])
-			chstr2 += '</span>'
-		}
+		// };
 	}
 	return chstr2; 
 } 

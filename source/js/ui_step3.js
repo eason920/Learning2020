@@ -351,6 +351,9 @@ function EX1_end(){
 			alert('尚有選項未答');
 		}else{
 			$.cookie('reading_cookie', ans, { path:'/', expires: 5 }); 
+			if( $('.play_btn').hasClass('pause') ){
+				$('#playBtn3').trigger('click');
+			}	   
 			EX1_answers()
 		}
 	}
@@ -568,10 +571,13 @@ function EX2(){
 		   $.cookie('listening_cookie', '', { path:'/', expires: 5 });  
    
 		   for(i=0;i<e.length;i++){
-			   ans=ans+$('#EX2answer'+(i+1)).val()+";";
+			ans=ans+$('#EX2answer'+(i+1)).val()+";";
 		   }
 		   $.cookie('listening_cookie', ans, { path:'/', expires: 5 }); 
 		   //EX_pause()
+		   if( $('.play_btn').hasClass('pause') ){
+			$('#playBtn3').trigger('click');
+		   }	   
 		   EX2_answers()
 	   }
    }
@@ -779,6 +785,9 @@ function EX3(){
 				$.cookie('cloze_cookie', '', { path:'/', expires: 5 });  
 				$.cookie('cloze_cookie', $("#cloze_ans").val(), { path:'/', expires: 5 }); 
 				//EX3_Clear()
+				if( $('.play_btn').hasClass('pause') ){
+					$('#playBtn3').trigger('click');
+				   }	   
 				EX3_answers()				
 			}
 		} 

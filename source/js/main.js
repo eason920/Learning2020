@@ -396,8 +396,13 @@ function phrase(){
 }
 
 function goP_sentences(ix){
-
-	if(Me.Product=='228'){
+	if(DemoTimeout==1){
+		if(Login==''){
+			JoinusLightBoxLogin()
+		}else{	
+			JoinusLightBox()
+		}	
+	}else if(Me.Product=='228'){
 		alert('本功能僅供完整方案以上會員使用');
 		return false;
 	}else{

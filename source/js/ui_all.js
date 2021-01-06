@@ -170,20 +170,47 @@ $(function () {
 				break;
 			default:
 		}
-		$('#stepBox').removeClass('is-step1 is-step2 is-step3').addClass('is-step'+i);
+		//console.log(i)
+		if(DemoTimeout==1 && i>1){
+			if(Login==''){
+				JoinusLightBoxLogin()
+			}else{	
+				JoinusLightBox()
+			}
+		}else{	
+			$('#stepBox').removeClass('is-step1 is-step2 is-step3').addClass('is-step'+i);
 
-		// job 4 : EX3 SCROLLTOP control v
-		if( !/3/.test( i ) ){
-			$('#exBox').css({top: 0});
-			// aside player status v
-			$('.aside-speedbox.is-play3').removeClass('is-lock');
+			// job 4 : EX3 SCROLLTOP control v
+			if( !/3/.test( i ) ){
+				$('#exBox').css({top: 0});
+				// aside player status v
+				$('.aside-speedbox.is-play3').removeClass('is-lock');
+			}
+		}
+		//console.log(i)
+		if(i==1){
+			if((parseInt(edcheck)>parseInt(0)) && Product!='228' ){
+				if($('.is-item-read').hasClass('active')==true){
+					display(refId,4)  
+					//console.log(4)
+				}else{
+					display(refId,1)
+					//console.log(1)  
+				}	
+			}
+		}else if(i==2){
+			if((parseInt(edcheck)>parseInt(0)) && Product!='228' )
+				display(refId,1)  
+		}else{
+			if((parseInt(edcheck)>parseInt(0)) && Product!='228' )
+				stopdisplay()  
 		}
 
 		// job 5 : LIGHT-BOX CHECK v
 		read1 = true
 		switch(true){
 			case i === '1' && read1 === false:
-				$body.append(lbHtml1);
+				$body.append(lbHtml1);	
 				break;
 			case i === '2' && read2 === false:
 				$body.append(lbHtml2);
@@ -341,7 +368,15 @@ $(function () {
 	};
 
 	$('.icon-print').click(function(){
-		window.open("../../newsPDF/PG2.asp?indx="+refId+"&r=1")	  
+		if(DemoTimeout==1){
+			if(Login==''){
+				JoinusLightBoxLogin()
+			}else{	
+				JoinusLightBox()
+			}	
+		}else{	
+			window.open("../../newsPDF/PG2.asp?indx="+refId+"&r=1")	 
+		}	 
 	});
 
 	$('.icon-refresh').click(function(){
@@ -350,20 +385,28 @@ $(function () {
 
 	// $('.icon-star-big').click(function(){
 	$('body').on('click', '.icon-star-big', function(){
-		console.log('clicked icon-start-big');
-		if(!$(this).hasClass('active')){
-			var tg='I'
+		//console.log('clicked icon-start-big');
+		if(DemoTimeout==1){
+			if(Login==''){
+				JoinusLightBoxLogin()
+			}else{	
+				JoinusLightBox()
+			}	
 		}else{
-			var tg='D'
+			if(!$(this).hasClass('active')){
+				var tg='I'
+			}else{
+				var tg='D'
+			}
+			$.ajax({
+				type:"GET",
+				url:'./booking.asp?tg='+tg+'&indx='+refId,
+				dataType:"html",
+				success:function(data){
+					$('body').append(data);			
+				} 
+			});
 		}
-		$.ajax({
-			type:"GET",
-			url:'./booking.asp?tg='+tg+'&indx='+refId,
-			dataType:"html",
-			success:function(data){
-				$('body').append(data);			
-			} 
-		});
 	})
 
 

@@ -315,6 +315,7 @@ function updatetime1(){
 	if(document.getElementById("audio1").paused==false){
     document.getElementById("audio1").playbackRate = $('#Speed_range').val();		
     playflag=1;
+
     updatetime()
 	}
 }
@@ -369,13 +370,18 @@ function updatetime(){
   }
 
   if(Me.Ispay==1 && Me.EnddateChk()<0){
-    DemoLimit(Me.customer,Me.Mindx,'news',refId)    
+    //DemoLimit(Me.customer,Me.Mindx,'news',refId)    
   }
-  
-  if(DemoTimeout==1 && ( parseFloat(document.getElementById('audio2').currentTime)>=parseFloat(document.getElementById('audio2').duration)/3 || parseFloat(document.getElementById('audio2').currentTime)>=120) ){
+
+  console.log(1)
+  if(DemoTimeout==1 && ( ( parseFloat(document.getElementById('audio1').currentTime)>=parseFloat(document.getElementById('audio1').duration)/4 || parseFloat(document.getElementById('audio1').currentTime)>=60) || ( parseFloat(document.getElementById('audio2').currentTime)>=parseFloat(document.getElementById('audio2').duration)/4 || parseFloat(document.getElementById('audio2').currentTime)>=60) ) ){
     count=1
     pausetime();
-    JoinusLightBox()
+	if(Login==''){
+		JoinusLightBoxLogin()
+	}else{	
+		JoinusLightBox()
+	}
   }else if(parseFloat(Utime1)>parseFloat(Utime2)){		      
     if(parseInt($("#repeat").val())<=parseInt(count)){
     
